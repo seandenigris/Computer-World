@@ -1,0 +1,4 @@
+documentation
+macVersion
+
+	^ GpgTools.
