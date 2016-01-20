@@ -1,0 +1,15 @@
+{
+	"category" : "PDFtk",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"model",
+		"tempFile" ],
+	"name" : "PDFtkMemoryFileArgument",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
