@@ -1,0 +1,14 @@
+{
+	"category" : "ComputerWorld",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "CwPList",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
