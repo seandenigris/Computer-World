@@ -1,0 +1,15 @@
+{
+	"category" : "PDFtk-Experimental",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"lines",
+		"fields" ],
+	"name" : "PDFtkAssembledFDF",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
