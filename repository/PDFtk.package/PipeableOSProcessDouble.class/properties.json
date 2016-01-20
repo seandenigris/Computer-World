@@ -1,0 +1,14 @@
+{
+	"category" : "PDFtk-Specification",
+	"classinstvars" : [
+		"answers" ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"output" ],
+	"name" : "PipeableOSProcessDouble",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

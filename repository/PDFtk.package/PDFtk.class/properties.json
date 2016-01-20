@@ -1,0 +1,19 @@
+{
+	"category" : "PDFtk",
+	"classinstvars" : [
+		"runnerClass" ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "<historical>",
+	"instvars" : [
+		"command",
+		"outputConverter",
+		"outputFlag",
+		"operation",
+		"inputFile",
+		"operationInput" ],
+	"name" : "PDFtk",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

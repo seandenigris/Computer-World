@@ -1,0 +1,14 @@
+{
+	"category" : "PDFtk",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"lines" ],
+	"name" : "PdfFDF",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

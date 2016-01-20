@@ -1,0 +1,14 @@
+{
+	"category" : "PDFtk",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "PDFtkNullOperationInput",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

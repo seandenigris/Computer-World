@@ -1,0 +1,17 @@
+{
+	"class" : {
+		"binary" : "SeanDeNigris 12/23/2013 14:43",
+		"dumpFieldsOf:" : "SeanDeNigris 12/23/2013 14:19",
+		"runnerClass" : "SeanDeNigris 12/23/2013 15:01",
+		"runnerClass:" : "SeanDeNigris 12/23/2013 15:00",
+		"sampleFieldDumpOutput" : "SeanDeNigris 12/23/2013 19:44" },
+	"instance" : {
+		"command" : "SeanDeNigris 12/24/2013 11:02",
+		"dumpFieldsOf:" : "SeanDeNigris 12/24/2013 11:29",
+		"generateFdfFor:" : "SeanDeNigris 12/23/2013 19:39",
+		"initialize" : "SeanDeNigris 12/24/2013 11:29",
+		"operation" : "SeanDeNigris 12/24/2013 11:20",
+		"outputFlag" : "SeanDeNigris 12/23/2013 19:33",
+		"run" : "SeanDeNigris 12/24/2013 11:01",
+		"saveFilledForm:to:" : "SeanDeNigris 12/24/2013 11:28",
+		"toStdOut" : "SeanDeNigris 12/23/2013 19:51" } }

@@ -1,0 +1,4 @@
+private
+sampleInput
+
+	^ sampleInput

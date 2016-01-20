@@ -1,0 +1,14 @@
+{
+	"category" : "PDFtk-Specification",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"sampleInput" ],
+	"name" : "PdftkFieldDumpParserSpecification",
+	"pools" : [
+		 ],
+	"super" : "BabyPhexample",
+	"type" : "normal" }

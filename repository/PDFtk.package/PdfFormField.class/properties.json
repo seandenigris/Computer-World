@@ -1,0 +1,16 @@
+{
+	"category" : "PDFtk",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"name",
+		"value",
+		"default" ],
+	"name" : "PdfFormField",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

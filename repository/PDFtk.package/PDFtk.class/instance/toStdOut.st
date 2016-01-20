@@ -1,0 +1,4 @@
+output
+toStdOut
+
+	outputFlag := 'output -'.

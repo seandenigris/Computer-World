@@ -1,0 +1,14 @@
+{
+	"category" : "PDFtk-Specification",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "PdfFormSpecification",
+	"pools" : [
+		 ],
+	"super" : "TestCase",
+	"type" : "normal" }

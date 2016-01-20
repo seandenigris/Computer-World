@@ -1,0 +1,12 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"sampleInput" : "SeanDeNigris 12/23/2013 16:06",
+		"sampleInput:" : "SeanDeNigris 12/23/2013 16:10",
+		"testFieldWithValue" : "SeanDeNigris 12/24/2013 11:29",
+		"testFieldWithValueDefault" : "SeanDeNigris 12/24/2013 11:29",
+		"testFieldWithoutValue" : "SeanDeNigris 12/24/2013 11:29",
+		"testMandatoryAttributeLine" : "SeanDeNigris 12/24/2013 11:29",
+		"testOptionalAttributeLine" : "SeanDeNigris 12/24/2013 11:29",
+		"testParseFull" : "SeanDeNigris 12/24/2013 11:29" } }
