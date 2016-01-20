@@ -1,6 +1,4 @@
 instance creation
-at: absolutePathString
+at: stringOrFileReference
 
-	| path |
-	path := Path from: absolutePathString.
-	^ self fileSystem: FileSystem disk path: path.
+	^ self fileSystem: FileSystem disk path: stringOrFileReference asFileReference path.
