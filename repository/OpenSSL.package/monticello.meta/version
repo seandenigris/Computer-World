@@ -1,0 +1,1 @@
+(name 'OpenSSL-SeanDeNigris.1' message '- query whether current version vulnerable to heartbleed; mostly for documentation as hardcoded for Mac via homebrew' id '2833a617-40d5-4a8a-9948-d34ad210545a' date '14 April 2014' time '9:41:45.566597 am' author 'SeanDeNigris' ancestors () stepChildren ())

@@ -1,0 +1,14 @@
+{
+	"category" : "OpenSSL",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "SeanDeNigris 4/13/2014 23:20",
+	"instvars" : [
+		 ],
+	"name" : "OpenSSL",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
