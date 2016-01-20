@@ -1,0 +1,14 @@
+{
+	"category" : "Tor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "ExifTool",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
