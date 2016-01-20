@@ -1,15 +1,13 @@
 {
-	"category" : "PDFtk",
+	"category" : "PDFtk-Experimental",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "",
+	"commentStamp" : "<historical>",
 	"instvars" : [
-		"name",
-		"value",
-		"default" ],
-	"name" : "PdfFormField",
+		 ],
+	"name" : "PDFtkFdfFormat",
 	"pools" : [
 		 ],
 	"super" : "Object",

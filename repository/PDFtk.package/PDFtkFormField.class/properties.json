@@ -1,14 +1,16 @@
 {
-	"category" : "PDFtk-Specification",
+	"category" : "PDFtk",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		 ],
-	"name" : "PDFtkSpecification",
+		"name",
+		"value",
+		"default" ],
+	"name" : "PDFtkFormField",
 	"pools" : [
 		 ],
-	"super" : "BabyPhexample",
+	"super" : "Object",
 	"type" : "normal" }

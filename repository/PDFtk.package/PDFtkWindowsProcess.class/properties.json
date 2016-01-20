@@ -1,14 +1,14 @@
 {
-	"category" : "PDFtk-Specification",
+	"category" : "PDFtk",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		 ],
-	"name" : "PDFtkSpecification",
+		"process" ],
+	"name" : "PDFtkWindowsProcess",
 	"pools" : [
 		 ],
-	"super" : "BabyPhexample",
+	"super" : "Object",
 	"type" : "normal" }

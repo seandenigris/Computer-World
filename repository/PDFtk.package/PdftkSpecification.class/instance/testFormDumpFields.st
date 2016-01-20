@@ -3,7 +3,7 @@ testFormDumpFields
 
 	| form pdfPathString fields |
 	pdfPathString := '/usr/local/form.pdf'.
-	form := PdfForm at: pdfPathString.
+	form := PDFtkForm at: pdfPathString.
 	
 	PipeableOSProcessDouble
 		onCommand: PDFtk binary fullName surroundedByDoubleQuotes, ' ', pdfPathString surroundedByDoubleQuotes, ' dump_data_fields'

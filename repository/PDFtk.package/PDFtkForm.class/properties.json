@@ -1,14 +1,14 @@
 {
-	"category" : "PDFtk-Specification",
+	"category" : "PDFtk",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		 ],
-	"name" : "PDFtkSpecification",
+		"fdf" ],
+	"name" : "PDFtkForm",
 	"pools" : [
 		 ],
-	"super" : "BabyPhexample",
+	"super" : "FileReference",
 	"type" : "normal" }
