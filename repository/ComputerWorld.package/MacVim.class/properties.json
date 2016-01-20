@@ -1,0 +1,14 @@
+{
+	"category" : "ComputerWorld-Mac",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "SeanDeNigris 8/25/2011 11:15",
+	"instvars" : [
+		 ],
+	"name" : "MacVim",
+	"pools" : [
+		 ],
+	"super" : "Software",
+	"type" : "normal" }

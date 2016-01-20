@@ -1,0 +1,14 @@
+{
+	"category" : "ComputerWorld",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "Squeaksource",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

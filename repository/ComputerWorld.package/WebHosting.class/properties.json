@@ -1,0 +1,14 @@
+{
+	"category" : "ComputerWorld",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "WebHosting",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

@@ -1,0 +1,14 @@
+{
+	"category" : "ComputerWorld-Morphic",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "PharoCastsMorph",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

@@ -1,0 +1,15 @@
+{
+	"category" : "ComputerWorld",
+	"classinstvars" : [
+		"database" ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"title",
+		"url" ],
+	"name" : "PharoCast",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

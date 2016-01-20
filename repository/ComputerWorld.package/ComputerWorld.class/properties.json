@@ -1,0 +1,17 @@
+{
+	"category" : "ComputerWorld",
+	"classinstvars" : [
+		"uniqueInstance" ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "SeanDeNigris 9/8/2011 17:00",
+	"instvars" : [
+		"software",
+		"webHostingServices",
+		"onlineFiles",
+		"projects" ],
+	"name" : "ComputerWorld",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
