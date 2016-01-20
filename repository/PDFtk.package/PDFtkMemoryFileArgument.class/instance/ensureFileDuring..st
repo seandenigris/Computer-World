@@ -1,6 +1,6 @@
 as yet unclassified
 ensureFileDuring: aBlock
 	
-	tempFile := FileLocator imageDirectory / ('PDFtkTemp', DateAndTime now asString) asLegalSelector, 'fdf'.
+	tempFile := PDFtk tempFolder / ('PDFtkTemp', DateAndTime now asString) asLegalSelector, 'fdf'.
 	model saveTo: tempFile.
 	aBlock ensure: [ tempFile delete ].
