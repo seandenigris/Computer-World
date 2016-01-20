@@ -1,0 +1,14 @@
+{
+	"category" : "Homebrew",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "Homebrew",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
