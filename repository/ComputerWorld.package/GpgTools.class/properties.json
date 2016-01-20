@@ -1,0 +1,14 @@
+{
+	"category" : "ComputerWorld-Gnu",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "GpgTools",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

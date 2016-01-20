@@ -1,0 +1,14 @@
+{
+	"category" : "ComputerWorld-Tor",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "Tor",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

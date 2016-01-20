@@ -1,0 +1,14 @@
+{
+	"category" : "ComputerWorld-Gnu",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "Gnu",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
