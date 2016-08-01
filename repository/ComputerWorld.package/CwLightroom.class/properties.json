@@ -1,0 +1,14 @@
+{
+	"category" : "ComputerWorld",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "CwLightroom",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

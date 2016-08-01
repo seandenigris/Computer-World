@@ -1,0 +1,14 @@
+{
+	"category" : "BaselineOfComputerWorld",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "BaselineOfComputerWorld",
+	"pools" : [
+		 ],
+	"super" : "BaselineOf",
+	"type" : "normal" }
