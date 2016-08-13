@@ -1,6 +1,5 @@
 as yet unclassified
 movePhotosFrom: source ToExternalDrive: target
-	"Reference: Link command from http://www.lightroomfanatic.com/tutorials/advanced/lightroom-sharing-dropbox-folders/"
 	
 	| moveTemplate moveCommand linkTemplate linkCommand |
 	self error: 'Not tested! I recommend you step through and verify!!'.

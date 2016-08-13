@@ -3,6 +3,7 @@ SystemOrganization addCategory: 'ComputerWorld-EBooks'!
 SystemOrganization addCategory: 'ComputerWorld-ExifTool'!
 SystemOrganization addCategory: 'ComputerWorld-Gnu'!
 SystemOrganization addCategory: 'ComputerWorld-Help'!
+SystemOrganization addCategory: 'ComputerWorld-KeePass'!
 SystemOrganization addCategory: 'ComputerWorld-Mac'!
 SystemOrganization addCategory: 'ComputerWorld-Morphic'!
 SystemOrganization addCategory: 'ComputerWorld-Tests'!
