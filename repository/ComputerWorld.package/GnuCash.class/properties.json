@@ -1,0 +1,14 @@
+{
+	"category" : "ComputerWorld-GnuCash",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "GnuCash",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
