@@ -1,0 +1,14 @@
+{
+	"category" : "ComputerWorld-GitHub",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "CwGitHub",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

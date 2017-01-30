@@ -1,7 +1,10 @@
 {
 	"class" : {
-		"hideHiddenFiles" : "SeanDeNigris 3/28/2014 12:46",
-		"shell" : "SeanDeNigris 3/28/2014 12:46",
-		"showHiddenFiles" : "SeanDeNigris 3/28/2014 12:46" },
+		"uniqueInstance" : "SeanDeNigris 1/30/2017 13:59" },
 	"instance" : {
-		 } }
+		"hideHiddenFiles" : "SeanDeNigris 1/30/2017 13:53",
+		"restart" : "SeanDeNigris 1/30/2017 13:56",
+		"restartAfterRunning:" : "SeanDeNigris 1/30/2017 13:56",
+		"run:" : "SeanDeNigris 1/30/2017 13:52",
+		"showHiddenFiles" : "SeanDeNigris 1/30/2017 13:53",
+		"showHiddenFiles:" : "SeanDeNigris 1/30/2017 13:54" } }

@@ -1,0 +1,14 @@
+{
+	"category" : "ComputerWorld-KeePass",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "CwKeePassX",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

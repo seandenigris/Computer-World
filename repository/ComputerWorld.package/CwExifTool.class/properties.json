@@ -1,0 +1,14 @@
+{
+	"category" : "ComputerWorld-ExifTool",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "CwExifTool",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

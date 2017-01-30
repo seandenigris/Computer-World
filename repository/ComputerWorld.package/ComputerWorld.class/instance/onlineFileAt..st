@@ -2,5 +2,5 @@ as yet unclassified
 onlineFileAt: aUrlOfString
 
 	^ onlineFiles
-		detect: [ :f | f = (OnlineFile at: aUrlOfString asUrl) ]
-		ifNone: [ onlineFiles add: (OnlineFile at: aUrlOfString asUrl) ].
+		detect: [ :f | f = (CwOnlineFile at: aUrlOfString asUrl) ]
+		ifNone: [ onlineFiles add: (CwOnlineFile at: aUrlOfString asUrl) ].

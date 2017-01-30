@@ -1,0 +1,19 @@
+{
+	"category" : "ComputerWorld",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "SeanDeNigris 8/12/2011 12:20",
+	"instvars" : [
+		"name",
+		"urlDownloadsOnOpen",
+		"timePageOpened",
+		"downloadingFile",
+		"webpageUrl",
+		"downloadUrl" ],
+	"name" : "CwSoftware",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

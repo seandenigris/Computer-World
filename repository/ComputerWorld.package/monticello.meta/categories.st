@@ -1,6 +1,7 @@
 SystemOrganization addCategory: #ComputerWorld!
 SystemOrganization addCategory: 'ComputerWorld-EBooks'!
 SystemOrganization addCategory: 'ComputerWorld-ExifTool'!
+SystemOrganization addCategory: 'ComputerWorld-GitHub'!
 SystemOrganization addCategory: 'ComputerWorld-Gnu'!
 SystemOrganization addCategory: 'ComputerWorld-GnuCash'!
 SystemOrganization addCategory: 'ComputerWorld-Help'!

@@ -1,0 +1,14 @@
+{
+	"category" : "ComputerWorld-Mac",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "SeanDeNigris 8/12/2011 00:04",
+	"instvars" : [
+		 ],
+	"name" : "Cw1Password",
+	"pools" : [
+		 ],
+	"super" : "CwSoftware",
+	"type" : "normal" }

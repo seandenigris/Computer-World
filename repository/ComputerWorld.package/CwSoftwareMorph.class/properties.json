@@ -1,0 +1,14 @@
+{
+	"category" : "ComputerWorld",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"software" ],
+	"name" : "CwSoftwareMorph",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

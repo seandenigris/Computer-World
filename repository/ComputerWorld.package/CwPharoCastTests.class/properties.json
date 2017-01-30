@@ -1,0 +1,14 @@
+{
+	"category" : "ComputerWorld-Tests",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "CwPharoCastTests",
+	"pools" : [
+		 ],
+	"super" : "TestCase",
+	"type" : "normal" }

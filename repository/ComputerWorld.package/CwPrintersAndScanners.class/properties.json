@@ -1,0 +1,14 @@
+{
+	"category" : "ComputerWorld-Mac",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "CwPrintersAndScanners",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

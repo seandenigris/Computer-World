@@ -1,0 +1,14 @@
+{
+	"category" : "ComputerWorld",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"url" ],
+	"name" : "CwOnlineFile",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

@@ -1,9 +1,0 @@
-{
-	"class" : {
-		 },
-	"instance" : {
-		"testDownloadUrlShouldAcceptStrings" : "SeanDeNigris 8/12/2011 08:47",
-		"testDownloadUrlShouldAcceptUrls" : "SeanDeNigris 8/12/2011 08:47",
-		"testPrinting" : "SeanDeNigris 8/12/2011 08:32",
-		"testWebpageShouldAcceptStrings" : "SeanDeNigris 8/12/2011 08:45",
-		"testWebpageShouldAcceptUrls" : "SeanDeNigris 8/12/2011 08:45" } }

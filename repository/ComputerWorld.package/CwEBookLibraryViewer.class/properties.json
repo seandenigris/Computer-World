@@ -1,0 +1,14 @@
+{
+	"category" : "ComputerWorld-EBooks",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "CwEBookLibraryViewer",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

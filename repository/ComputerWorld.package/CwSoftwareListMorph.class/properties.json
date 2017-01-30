@@ -1,0 +1,15 @@
+{
+	"category" : "ComputerWorld",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"model",
+		"contactSelectedIndex" ],
+	"name" : "CwSoftwareListMorph",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

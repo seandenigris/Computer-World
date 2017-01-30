@@ -1,0 +1,14 @@
+{
+	"category" : "ComputerWorld-Morphic",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "CwOnlineFileMorph",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
