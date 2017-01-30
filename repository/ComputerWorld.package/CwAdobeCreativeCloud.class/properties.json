@@ -1,13 +1,13 @@
 {
-	"category" : "ComputerWorld-Mac",
+	"category" : "ComputerWorld-AdobeCC",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "SeanDeNigris 1/30/2017 15:34",
+	"commentStamp" : "",
 	"instvars" : [
 		 ],
-	"name" : "ComputerMigration",
+	"name" : "CwAdobeCreativeCloud",
 	"pools" : [
 		 ],
 	"super" : "Object",
