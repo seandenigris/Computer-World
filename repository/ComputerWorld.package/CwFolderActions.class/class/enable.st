@@ -1,4 +1,4 @@
-turning on/off
+API
 enable
 
-	OSProcess command: 'defaults write com.apple.FolderActions folderActionsEnabled -bool true'.
+	self enabled: true.

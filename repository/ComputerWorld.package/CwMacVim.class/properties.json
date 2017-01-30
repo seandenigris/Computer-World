@@ -1,10 +1,10 @@
 {
-	"category" : "ComputerWorld-Mac",
+	"category" : "ComputerWorld-Apps",
 	"classinstvars" : [
 		 ],
 	"classvars" : [
 		 ],
-	"commentStamp" : "SeanDeNigris 8/25/2011 11:15",
+	"commentStamp" : "SeanDeNigris 1/30/2017 16:41",
 	"instvars" : [
 		 ],
 	"name" : "CwMacVim",

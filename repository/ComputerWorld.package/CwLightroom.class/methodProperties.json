@@ -1,5 +1,7 @@
 {
 	"class" : {
-		"movePhotosFrom:ToExternalDrive:" : "SeanDeNigris 8/1/2016 10:37" },
+		 },
 	"instance" : {
-		 } }
+		"excludePreviewsFromTimeMachine" : "SeanDeNigris 1/30/2017 16:41",
+		"movePhotosFrom:ToExternalDrive:" : "SeanDeNigris 1/30/2017 16:32",
+		"previewFile" : "SeanDeNigris 1/30/2017 16:32" } }

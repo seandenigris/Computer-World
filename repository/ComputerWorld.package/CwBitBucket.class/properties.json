@@ -1,0 +1,14 @@
+{
+	"category" : "ComputerWorld-Apps",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "CwBitBucket",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

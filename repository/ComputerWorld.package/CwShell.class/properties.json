@@ -1,0 +1,14 @@
+{
+	"category" : "ComputerWorld-Apps",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "CwShell",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

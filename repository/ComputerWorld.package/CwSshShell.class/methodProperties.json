@@ -1,0 +1,17 @@
+{
+	"class" : {
+		"downloadExpectScript" : "SeanDeNigris 2/13/2013 15:28",
+		"expectFile" : "SeanDeNigris 2/13/2013 15:29",
+		"expectFileReference" : "SeanDeNigris 2/13/2013 15:26",
+		"on:as:withPassword:" : "SeanDeNigris 2/13/2013 15:06" },
+	"instance" : {
+		"expectFile" : "SeanDeNigris 2/13/2013 15:33",
+		"ipAddress:" : "SeanDeNigris 2/13/2013 15:09",
+		"loginTimeout" : "SeanDeNigris 2/13/2013 16:38",
+		"output" : "SeanDeNigris 2/18/2013 21:25",
+		"password:" : "SeanDeNigris 2/13/2013 15:09",
+		"prepareForCommands" : "SeanDeNigris 2/18/2013 21:25",
+		"process" : "SeanDeNigris 2/13/2013 16:31",
+		"prompt" : "SeanDeNigris 2/13/2013 16:31",
+		"run:" : "SeanDeNigris 2/13/2013 16:36",
+		"username:" : "SeanDeNigris 2/13/2013 15:09" } }

@@ -1,0 +1,14 @@
+{
+	"category" : "ComputerWorld-Apps",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "SeanDeNigris 8/20/2016 14:59",
+	"instvars" : [
+		 ],
+	"name" : "CwTimeMachine",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
