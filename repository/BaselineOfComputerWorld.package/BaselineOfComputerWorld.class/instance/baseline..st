@@ -9,5 +9,5 @@ baseline: spec
 			baseline: 'OSShell' with: [
 				spec repository: 'github://seandenigris/Pharo-Shell:master/repository' ];
 			baseline: 'ExternalWebBrowser' with: [
-				spec repository: 'github://seandenigris/Pharo-Web-Browsere:master/repository' ].
+				spec repository: 'github://seandenigris/Pharo-Web-Browser:master/repository' ].
 		spec package: 'ComputerWorld' with: [ spec requires: #(BabyPhexample OSShell ExternalWebBrowser) ] ].
