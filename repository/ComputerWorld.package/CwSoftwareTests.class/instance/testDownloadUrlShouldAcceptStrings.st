@@ -7,5 +7,5 @@ testDownloadUrlShouldAcceptStrings
 	
 	software 	canBeDownloadedAt: address.
 
-	software downloadUrl should beKindOf: HttpUrl. 
+	software downloadUrl should beKindOf: ZnUrl. 
 	software downloadUrl asString should = address.

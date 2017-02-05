@@ -7,8 +7,8 @@
 	"commentStamp" : "",
 	"instvars" : [
 		 ],
-	"name" : "CwPharoCastTests",
+	"name" : "CwTravisCISpecification",
 	"pools" : [
 		 ],
-	"super" : "TestCase",
+	"super" : "BabyPhexample",
 	"type" : "normal" }
