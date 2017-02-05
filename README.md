@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/seandenigris/Commputer-World.png?branch=master)](https://travis-ci.org/seandenigris/Commputer-World)
+[![Build Status](https://travis-ci.org/seandenigris/Computer-World.png?branch=master)](https://travis-ci.org/seandenigris/Computer-World)
 
 # Computer-World
 
