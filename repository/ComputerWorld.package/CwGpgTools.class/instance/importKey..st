@@ -5,5 +5,5 @@ importKey: hexString
 	| commandTemplate command exitCode |
 	commandTemplate := 'gpg --keyserver x-hkp://pool.sks-keyservers.net --recv-keys {1}'.
 	command := commandTemplate format: { hexString }.
-	exitCode := LibC system: command.
+	exitCode := Smalltalk tools shell waitForCommand: command.
 	exitCode = 0 ifFalse: [ self error: 'Couldn''t import gpg key' ].

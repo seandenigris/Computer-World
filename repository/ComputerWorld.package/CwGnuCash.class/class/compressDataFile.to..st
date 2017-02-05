@@ -6,4 +6,4 @@ compressDataFile: source to: targetFolder
 		#source -> source fullName.
 		#target -> ((targetFolder / source base), 'gnucash') fullName } asDictionary.
 	Halt now.
-	LibC system: command
+	Smalltalk tools shell command: command

@@ -5,4 +5,4 @@ uncompressDataFile: reference
 	command := commandTemplate format: { 
 		#source -> reference fullName.
 		#target -> ((reference parent / reference base), 'xml') fullName } asDictionary.
-	LibC system: command
+	Smalltalk tools shell command: command

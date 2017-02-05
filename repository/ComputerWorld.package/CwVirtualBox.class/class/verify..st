@@ -4,4 +4,5 @@ verify: file
 	filenameTokens := file basenameWithoutExtension findTokens: '-'.
 	version := filenameTokens second.
 	shaUrl := 'https://www.virtualbox.org/download/hashes' asUrl / version / 'SHA256SUMS'.
-	file verifySha256Equals: shaUrl
+	file verifySha256Equals: shaUrl.
+	UIManager default inform: 'VirtualBox file verified.'

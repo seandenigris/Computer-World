@@ -1,6 +1,9 @@
 as yet unclassified
 linuxVmSwapCmdAndCtrl
-	"Reference: https://askubuntu.com/questions/131900/how-do-i-switch-the-command-key-and-control-key-on-a-macbook-pro"
+	"
+First, change the host key to a key other than Left Cmd (e.g. Right Cmd)
+
+	Reference: https://askubuntu.com/questions/131900/how-do-i-switch-the-command-key-and-control-key-on-a-macbook-pro"
 	
 	"Put the following in ~/.Xmodmap:
 

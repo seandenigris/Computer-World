@@ -1,6 +1,6 @@
 {
 	"class" : {
-		 },
+		"optimumSpaceToBackupGB:" : "SeanDeNigris 2/1/2017 12:52" },
 	"instance" : {
 		"disableLocalSnapshots" : "SeanDeNigris 8/20/2016 12:46",
 		"enableLocalSnapshots" : "SeanDeNigris 8/20/2016 12:42",

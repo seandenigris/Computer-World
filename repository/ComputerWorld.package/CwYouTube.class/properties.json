@@ -1,0 +1,14 @@
+{
+	"category" : "ComputerWorld-Apps",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "CwYouTube",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

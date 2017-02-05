@@ -5,7 +5,7 @@ verify: file with: key
 	| commandTemplate command exitCode |
 	commandTemplate := '/usr/local/bin/gpg --verify "{1}" "{2}"'.
 	command := commandTemplate format: { key fullName. file fullName }.
-	exitCode := LibC system: command.
+	exitCode := Smalltalk tools shell waitForCommand: command.
 	exitCode = 0
 		ifTrue: [ self inform: file base, ' validated!' ]
 		ifFalse: [ self error: file base, ' failed validation' ].

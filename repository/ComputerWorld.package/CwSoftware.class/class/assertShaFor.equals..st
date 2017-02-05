@@ -4,9 +4,9 @@ assertShaFor: file equals: aString
 	
 	| commandTemplate tmpOutputFile command computedSha |
 	commandTemplate := 'shasum "{1}" > "{2}"'.
-	tmpOutputFile := ('sha', file fullName asLegalSelector, '.txt') asFileReference.
+	tmpOutputFile := ('sha', file fullName asValidSelector, '.txt') asFileReference.
 	command := commandTemplate format: { file fullName. tmpOutputFile fullName }.
-	NBMacShell run: command.
+	Smalltalk tools shell waitForCommand: command.
 	computedSha := tmpOutputFile contents copyUpTo: Character space.
 	self assert: computedSha = aString.
 	

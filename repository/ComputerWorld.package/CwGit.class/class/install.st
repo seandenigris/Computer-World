@@ -12,4 +12,4 @@ install
 end tell'.
 	script := scriptTemplate format: { #installCommand -> scriptSafeUnixCommand } asDictionary.
 	command := 'osascript -e ''', script, ''''.
-	LibC system: command.
+	Smalltalk tools shell command: command.
