@@ -7,5 +7,5 @@ addBadgeToReadmeIn: repositoryFolder for: projectName by: user
 	reference writeStreamDo: [ :str |
 		str
 			nextPutAll: (self badgeMarkupForProject: projectName byUser: user);
-			crlf;
+			lf;
 			nextPutAll: originalContents ]
