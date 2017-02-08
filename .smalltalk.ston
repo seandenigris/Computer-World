@@ -1,1 +1,9 @@
-SmalltalkCISpec {  #loading : [    SCIMetacelloLoadSpec {      #baseline : 'ComputerWorld',      #directory : 'repository',      #platforms : [ #pharo ]    }  ]}
+SmalltalkCISpec {
+  #loading : [
+    SCIMetacelloLoadSpec {
+      #baseline : 'ComputerWorld',
+      #directory : 'repository',
+      #platforms : [ #pharo ]
+    }
+  ]
+}
