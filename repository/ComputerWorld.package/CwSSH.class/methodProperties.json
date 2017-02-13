@@ -1,9 +1,7 @@
 {
 	"class" : {
-		 },
+		"run:" : "SeanDeNigris 2/13/2017 17:26",
+		"useKeychainForSshPassphrases" : "SeanDeNigris 2/13/2017 17:27" },
 	"instance" : {
-		"addPrivateKeyToMacKeychain" : "SeanDeNigris 1/30/2017 16:40",
-		"addToKeychain" : "SeanDeNigris 1/30/2017 15:19",
 		"privateKeyFile" : "SeanDeNigris 1/30/2017 16:40",
-		"run:" : "SeanDeNigris 1/30/2017 16:40",
-		"setPrivateKeyPermissions" : "SeanDeNigris 1/30/2017 16:40" } }
+		"setPrivateKeyPermissions" : "SeanDeNigris 2/13/2017 17:26" } }
