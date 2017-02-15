@@ -1,0 +1,14 @@
+{
+	"category" : "ComputerWorld-Apps",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "CwGfxCardStatus",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
