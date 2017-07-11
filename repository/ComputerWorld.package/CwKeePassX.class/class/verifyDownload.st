@@ -1,5 +1,7 @@
 documentation
 verifyDownload
+	<script>
+	
 	| keyFilename keyFileUrl |
 	keyFilename := self downloadFilename, '.sig'.
 	keyFileUrl := self downloadSourceFolder / keyFilename.
