@@ -11,5 +11,7 @@ baseline: spec
 			baseline: 'ExternalWebBrowser' with: [
 				spec repository: 'github://seandenigris/Pharo-Web-Browser:master/repository' ];
 			baseline: 'Tempfile' with: [
-				spec repository: 'github://seandenigris/TempfileSt:master/repository' ].
-		spec package: 'ComputerWorld' with: [ spec requires: #(BabyPhexample OSShell ExternalWebBrowser) ] ].
+				spec repository: 'github://seandenigris/TempfileSt:master/repository' ];
+			baseline: 'PharoEnhancements' with: [
+				spec repository: 'github://seandenigris/Pharo-Enhancements:master/repository' ].
+		spec package: 'ComputerWorld' with: [ spec requires: #(BabyPhexample OSShell ExternalWebBrowser PharoEnhancements) ] ].
