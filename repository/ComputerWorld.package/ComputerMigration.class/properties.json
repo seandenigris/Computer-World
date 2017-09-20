@@ -1,14 +1,11 @@
 {
-	"category" : "ComputerWorld-Mac",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "SeanDeNigris 1/30/2017 15:34",
-	"instvars" : [
-		 ],
-	"name" : "ComputerMigration",
-	"pools" : [
-		 ],
 	"super" : "Object",
-	"type" : "normal" }
+	"category" : "ComputerWorld-Mac",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "ComputerMigration",
+	"type" : "normal"
+}

@@ -1,14 +1,11 @@
 {
-	"category" : "ComputerWorld-Apps",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "SeanDeNigris 4/13/2014 23:20",
-	"instvars" : [
-		 ],
-	"name" : "CwOpenSSL",
-	"pools" : [
-		 ],
 	"super" : "Object",
-	"type" : "normal" }
+	"category" : "ComputerWorld-Apps",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "CwOpenSSL",
+	"type" : "normal"
+}

@@ -1,15 +1,16 @@
 {
+	"commentStamp" : "",
+	"super" : "Object",
 	"category" : "ComputerWorld-Core",
 	"classinstvars" : [
-		"database" ],
-	"classvars" : [
-		 ],
-	"commentStamp" : "",
+		"database"
+	],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"title",
-		"url" ],
+		"url"
+	],
 	"name" : "CwPharoCast",
-	"pools" : [
-		 ],
-	"super" : "Object",
-	"type" : "normal" }
+	"type" : "normal"
+}

@@ -1,7 +1,0 @@
-{
-	"class" : {
-		"run:" : "SeanDeNigris 2/13/2017 17:26",
-		"useKeychainForSshPassphrases" : "SeanDeNigris 2/13/2017 17:27" },
-	"instance" : {
-		"privateKeyFile" : "SeanDeNigris 1/30/2017 16:40",
-		"setPrivateKeyPermissions" : "SeanDeNigris 2/13/2017 17:26" } }

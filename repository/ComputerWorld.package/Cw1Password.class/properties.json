@@ -1,14 +1,11 @@
 {
-	"category" : "ComputerWorld-Apps",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "SeanDeNigris 8/12/2011 00:04",
-	"instvars" : [
-		 ],
-	"name" : "Cw1Password",
-	"pools" : [
-		 ],
 	"super" : "CwSoftware",
-	"type" : "normal" }
+	"category" : "ComputerWorld-Apps",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "Cw1Password",
+	"type" : "normal"
+}

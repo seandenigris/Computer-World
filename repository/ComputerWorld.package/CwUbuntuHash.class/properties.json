@@ -1,15 +1,14 @@
 {
-	"category" : "ComputerWorld-Support",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "SeanDeNigris 9/3/2015 23:05",
+	"super" : "Object",
+	"category" : "ComputerWorld-Support",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"filename",
-		"md5" ],
+		"md5"
+	],
 	"name" : "CwUbuntuHash",
-	"pools" : [
-		 ],
-	"super" : "Object",
-	"type" : "normal" }
+	"type" : "normal"
+}

@@ -1,18 +1,17 @@
 {
-	"category" : "ComputerWorld-Core",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "<historical>",
+	"super" : "Object",
+	"category" : "ComputerWorld-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"process",
 		"password",
 		"ipAddress",
 		"username",
-		"prompt" ],
+		"prompt"
+	],
 	"name" : "CwSshShell",
-	"pools" : [
-		 ],
-	"super" : "Object",
-	"type" : "normal" }
+	"type" : "normal"
+}

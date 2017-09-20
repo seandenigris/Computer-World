@@ -1,14 +1,15 @@
 {
+	"commentStamp" : "",
+	"super" : "Object",
 	"category" : "ComputerWorld-EBooks",
 	"classinstvars" : [
-		"library" ],
-	"classvars" : [
-		 ],
-	"commentStamp" : "",
+		"library"
+	],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
-		"file" ],
+		"file"
+	],
 	"name" : "CwEBook",
-	"pools" : [
-		 ],
-	"super" : "Object",
-	"type" : "normal" }
+	"type" : "normal"
+}

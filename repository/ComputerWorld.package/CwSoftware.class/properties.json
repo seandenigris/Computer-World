@@ -1,19 +1,18 @@
 {
-	"category" : "ComputerWorld-Core",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "SeanDeNigris 8/12/2011 12:20",
+	"super" : "Object",
+	"category" : "ComputerWorld-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"name",
 		"urlDownloadsOnOpen",
 		"timePageOpened",
 		"downloadingFile",
 		"webpageUrl",
-		"downloadUrl" ],
+		"downloadUrl"
+	],
 	"name" : "CwSoftware",
-	"pools" : [
-		 ],
-	"super" : "Object",
-	"type" : "normal" }
+	"type" : "normal"
+}

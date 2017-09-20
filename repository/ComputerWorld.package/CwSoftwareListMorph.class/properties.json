@@ -1,15 +1,14 @@
 {
-	"category" : "ComputerWorld-Core",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
+	"super" : "Object",
+	"category" : "ComputerWorld-Core",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"model",
-		"contactSelectedIndex" ],
+		"contactSelectedIndex"
+	],
 	"name" : "CwSoftwareListMorph",
-	"pools" : [
-		 ],
-	"super" : "Object",
-	"type" : "normal" }
+	"type" : "normal"
+}

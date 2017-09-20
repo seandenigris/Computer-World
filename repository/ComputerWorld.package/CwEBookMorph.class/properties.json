@@ -1,14 +1,11 @@
 {
-	"category" : "ComputerWorld-EBooks",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "CwEBookMorph",
-	"pools" : [
-		 ],
 	"super" : "ImageMorph",
-	"type" : "normal" }
+	"category" : "ComputerWorld-EBooks",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "CwEBookMorph",
+	"type" : "normal"
+}

@@ -1,14 +1,11 @@
 {
-	"category" : "ComputerWorld-Apps",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "SeanDeNigris 1/30/2017 16:41",
-	"instvars" : [
-		 ],
-	"name" : "CwMacVim",
-	"pools" : [
-		 ],
 	"super" : "CwSoftware",
-	"type" : "normal" }
+	"category" : "ComputerWorld-Apps",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "CwMacVim",
+	"type" : "normal"
+}

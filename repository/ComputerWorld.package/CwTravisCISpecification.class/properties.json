@@ -1,14 +1,11 @@
 {
-	"category" : "ComputerWorld-Specification",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		 ],
-	"name" : "CwTravisCISpecification",
-	"pools" : [
-		 ],
 	"super" : "BabyPhexample",
-	"type" : "normal" }
+	"category" : "ComputerWorld-Specification",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "CwTravisCISpecification",
+	"type" : "normal"
+}
