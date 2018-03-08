@@ -1,4 +1,4 @@
-as yet unclassified
+commands
 squashCommitsSince: aString
 	"aString examples
 		- short SHA for specific commit
