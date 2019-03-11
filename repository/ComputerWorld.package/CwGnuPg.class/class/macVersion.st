@@ -1,4 +1,0 @@
-documentation
-macVersion
-
-	^ CwGpgTools.

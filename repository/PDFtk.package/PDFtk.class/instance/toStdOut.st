@@ -1,4 +1,0 @@
-output
-toStdOut
-
-	outputFlag := 'output -'.

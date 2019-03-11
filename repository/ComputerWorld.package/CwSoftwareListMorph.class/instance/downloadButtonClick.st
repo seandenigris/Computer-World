@@ -1,4 +1,0 @@
-callbacks
-downloadButtonClick
-
-	self selectedSoftware download

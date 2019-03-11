@@ -1,3 +1,0 @@
-*ComputerWorld-Mac
-asCwPlistString
-	^ 'NO'

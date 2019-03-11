@@ -1,4 +1,0 @@
-actions
-applicationName
-
-	self subclassResponsibility.
