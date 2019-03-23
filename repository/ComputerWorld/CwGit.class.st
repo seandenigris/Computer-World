@@ -4,7 +4,37 @@ Class {
 	#category : 'ComputerWorld-Apps'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #examples }
+CwGit class >> example1 [
+	| root gitRepos skipList potentials glRepos relevantRepos clone |
+	
+	self error: 'for documentation only, not made to be directly runnable'.
+	root := FileLocator home / 'Dynabook' / 'Repositories' / 'seandenigris'.
+	gitRepos := root directories select: [ :e | (e / '.git') exists ].
+	skipList := #('Quote-Me' 'gitlab-smalltalk-ci').
+	potentials := gitRepos reject: [ :e | skipList includes: e basename ].
+	"noCiRepos := gitRepos select: [ :e | (e filesMatching: '*.yml') isEmpty ]."
+	glRepos := potentials select: [ :e | (e / '.git' / 'config') contents includesSubstring: 'url = git@gitlab.com:SeanDeNigris/' ].
+	relevantRepos := glRepos reject: [ :e | (e / '.gitlab-ci.yml') contents includesSubstring: 'pharo70_build' ].
+	relevantRepos
+		do: [ :e | 
+			(e / '.gitlab-ci.yml') ensureDelete.
+			FileLocator home / 'Documents/Reference/Smalltalk/Repositories/seandenigris/gitlab-smalltalk-ci/.gitlab-ci.yml' copyTo: e / '.gitlab-ci.yml' ].
+
+	"e := glRepos first."
+	relevantRepos
+		do: [ :e | 
+			clone := CwGit new localCloneAt: e.
+			clone stageAll.
+			clone commit: '[CI]: Update YML - Pharo 6.1 and 7 Builds'.
+			clone push ].	"allButFirst"
+	CwGitClone maAddField: #location
+
+	"nonSrcRepos := glRepos reject: [ :e | (e / 'src') exists ].
+nonSrcRepos collect: #directories."
+]
+
+{ #category : #installation }
 CwGit class >> install [
 	"Use Homebrew because suggested install method is via Sourceforge and from unidentified developer"
 	<script>
