@@ -15,7 +15,7 @@ Class {
 		'webpageUrl',
 		'downloadUrl'
 	],
-	#category : 'ComputerWorld-Core'
+	#category : #'ComputerWorld-Core'
 }
 
 { #category : #'as yet unclassified' }

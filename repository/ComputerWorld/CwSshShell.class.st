@@ -15,7 +15,7 @@ Class {
 		'username',
 		'prompt'
 	],
-	#category : 'ComputerWorld-Core'
+	#category : #'ComputerWorld-Core'
 }
 
 { #category : #private }

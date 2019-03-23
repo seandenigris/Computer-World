@@ -15,7 +15,7 @@ CwSSH class >> refreshKeychainSsh [
 
 { #category : #'as yet unclassified' }
 CwSSH class >> run: command [
-	OSPlatform current shell run: command
+	Smalltalk tools shell new run: command
 ]
 
 { #category : #'as yet unclassified' }

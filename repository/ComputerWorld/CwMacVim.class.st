@@ -10,7 +10,7 @@ Configuration Files:
 Class {
 	#name : #CwMacVim,
 	#superclass : #CwSoftware,
-	#category : 'ComputerWorld-Apps'
+	#category : #'ComputerWorld-Apps'
 }
 
 { #category : #'as yet unclassified' }

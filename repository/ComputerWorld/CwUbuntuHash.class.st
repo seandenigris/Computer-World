@@ -11,7 +11,7 @@ Class {
 		'filename',
 		'md5'
 	],
-	#category : 'ComputerWorld-Support'
+	#category : #'ComputerWorld-Support'
 }
 
 { #category : #accessing }

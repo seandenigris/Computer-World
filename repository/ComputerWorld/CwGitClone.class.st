@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'location'
 	],
-	#category : 'ComputerWorld-Apps'
+	#category : #'ComputerWorld-Apps'
 }
 
 { #category : #accessing }

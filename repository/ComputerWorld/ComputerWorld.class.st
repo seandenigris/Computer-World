@@ -19,7 +19,7 @@ Class {
 	#classInstVars : [
 		'uniqueInstance'
 	],
-	#category : 'ComputerWorld-Core'
+	#category : #'ComputerWorld-Core'
 }
 
 { #category : #'instance creation' }

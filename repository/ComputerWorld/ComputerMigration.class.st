@@ -12,7 +12,7 @@
 Class {
 	#name : #ComputerMigration,
 	#superclass : #Object,
-	#category : 'ComputerWorld-Mac'
+	#category : #'ComputerWorld-Mac'
 }
 
 { #category : #'as yet unclassified' }

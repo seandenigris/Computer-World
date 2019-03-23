@@ -1,7 +1,7 @@
 Class {
 	#name : #CwDocker,
 	#superclass : #Object,
-	#category : 'ComputerWorld-Apps'
+	#category : #'ComputerWorld-Apps'
 }
 
 { #category : #installation }

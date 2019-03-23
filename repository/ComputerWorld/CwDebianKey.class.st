@@ -9,7 +9,7 @@ Class {
 		'fingerprint',
 		'id'
 	],
-	#category : 'ComputerWorld-Apps'
+	#category : #'ComputerWorld-Apps'
 }
 
 { #category : #accessing }

@@ -1,7 +1,7 @@
 Class {
 	#name : #BaselineOfComputerWorld,
 	#superclass : #BaselineOf,
-	#category : 'BaselineOfComputerWorld'
+	#category : #BaselineOfComputerWorld
 }
 
 { #category : #baseline }
@@ -11,17 +11,19 @@ BaselineOfComputerWorld >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'BabyPhexample' with: [
-				spec repository: 'github://seandenigris/Baby-Phexample:master/repository' ];
+				spec repository: 'github://seandenigris/Baby-Phexample' ];
 			baseline: 'OSShell' with: [
-				spec repository: 'github://seandenigris/Pharo-Shell:master/repository' ];
+				spec repository: 'github://seandenigris/Pharo-Shell' ];
 			baseline: 'ExternalWebBrowser' with: [
-				spec repository: 'github://seandenigris/Pharo-Web-Browser:master/repository' ];
+				spec repository: 'github://seandenigris/Pharo-Web-Browser' ];
 			baseline: 'Tempfile' with: [
-				spec repository: 'github://seandenigris/TempfileSt:master/repository' ];
+				spec repository: 'github://seandenigris/TempfileSt' ];
 			baseline: 'PharoEnhancements' with: [
-				spec repository: 'github://seandenigris/Pharo-Enhancements:master/repository' ];
+				spec repository: 'github://seandenigris/Pharo-Enhancements' ];
 			baseline: 'Superuser' with: [
-				spec repository: 'github://seandenigris/Superuser:master/src' ].
-		spec package: 'ComputerWorld' with: [ spec requires: #(BabyPhexample OSShell ExternalWebBrowser PharoEnhancements Superuser) ] ].
+				spec repository: 'github://seandenigris/Superuser' ];
+			baseline: 'SimpleApplescript' with: [
+				spec repository: 'github://seandenigris/Applescript-St' ].
+		spec package: 'ComputerWorld' with: [ spec requires: #(BabyPhexample OSShell ExternalWebBrowser PharoEnhancements Superuser #'SimpleApplescript') ] ].
 
 ]

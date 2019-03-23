@@ -52,3 +52,13 @@ CwSafari >> shell [
 
 	^ Smalltalk tools shell new
 ]
+
+{ #category : #'video control' }
+CwSafari >> videoSpeed: aNumber [
+	"Adapted from https://www.quora.com/Is-there-any-way-to-watch-Facebook-videos-at-double-the-speed"
+	| js script |
+	js := 'var ta=document.getElementsByTagName(''video''); 
+		for(var i=0;i<ta.length;i++) {ta[i].playbackRate=', aNumber asString, '};'.
+	script := 'tell application "Safari" to do JavaScript "', js, '" in document 1'.
+	Applescript doIt: script
+]

@@ -9,7 +9,7 @@ Whichever of the above you choose, you have to #makeUsrLocalWritable by either y
 Class {
 	#name : #CwHomebrew,
 	#superclass : #Object,
-	#category : 'ComputerWorld-Apps'
+	#category : #'ComputerWorld-Apps'
 }
 
 { #category : #'as yet unclassified' }
@@ -41,6 +41,12 @@ CwHomebrew >> applicationFolder: folder [
 	
 	self shouldBeImplemented.
 	'export HOMEBREW_CASK_OPTS="--appdir=~/Applications"'
+]
+
+{ #category : #'as yet unclassified' }
+CwHomebrew >> caskInstall: aString [
+	"--require-sha: abort installation of cask if no checksum is defined"
+	Smalltalk tools shell runExternally: 'brew cask install --require-sha ', aString
 ]
 
 { #category : #'as yet unclassified' }

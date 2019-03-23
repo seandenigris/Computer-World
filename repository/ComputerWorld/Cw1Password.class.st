@@ -7,7 +7,7 @@ software downloadByOpening: 'http://agilebits.com/downloads/1Password/Mac' asUrl
 Class {
 	#name : #Cw1Password,
 	#superclass : #CwSoftware,
-	#category : 'ComputerWorld-Apps'
+	#category : #'ComputerWorld-Apps'
 }
 
 { #category : #'as yet unclassified' }
