@@ -23,7 +23,9 @@ BaselineOfComputerWorld >> baseline: spec [
 			baseline: 'Superuser' with: [
 				spec repository: 'github://seandenigris/Superuser' ];
 			baseline: 'SimpleApplescript' with: [
-				spec repository: 'github://seandenigris/Applescript-St' ].
-		spec package: 'ComputerWorld' with: [ spec requires: #(BabyPhexample OSShell ExternalWebBrowser PharoEnhancements Superuser #'SimpleApplescript') ] ].
+				spec repository: 'github://seandenigris/Applescript-St' ];
+			baseline: 'CPanel' with: [
+				spec repository: 'github://seandenigris/cPanel-Live' ].
+		spec package: 'ComputerWorld' with: [ spec requires: #(BabyPhexample OSShell ExternalWebBrowser PharoEnhancements Superuser #'SimpleApplescript' #'CPanel') ] ].
 
 ]
