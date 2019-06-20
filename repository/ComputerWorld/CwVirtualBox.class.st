@@ -28,7 +28,7 @@ CwVirtualBox class >> fileReaderServicesForFile: fullName suffix: suffix [
 { #category : #installation }
 CwVirtualBox class >> install [
 	<script>
-	self notify: 'Can be installed via cask (has checksum or https'.
+	self notify: 'Can be installed via cask (has checksum or https)'.
 	Smalltalk tools webBrowser open: self downloadPage.
 	
 ]

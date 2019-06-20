@@ -9,8 +9,21 @@ Whichever of the above you choose, you have to #makeUsrLocalWritable by either y
 Class {
 	#name : #CwHomebrew,
 	#superclass : #Object,
-	#category : #'ComputerWorld-Apps'
+	#classVars : [
+		'Admin'
+	],
+	#category : #'ComputerWorld-Homebrew'
 }
+
+{ #category : #'as yet unclassified' }
+CwHomebrew class >> admin [
+	^ Admin
+]
+
+{ #category : #'as yet unclassified' }
+CwHomebrew class >> admin: aString [
+	Admin := aString
+]
 
 { #category : #'as yet unclassified' }
 CwHomebrew class >> install [
