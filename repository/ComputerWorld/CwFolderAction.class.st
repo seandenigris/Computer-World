@@ -25,7 +25,7 @@ CwFolderAction class >> scripts [
 { #category : #'as yet unclassified' }
 CwFolderAction class >> systemScripts [
 
-	^ (FileDirectory on: '/Library/Scripts/Folder Action Scripts/') fileNames.
+	^ '/Library/Scripts/Folder Action Scripts/' asFileReference fileNames.
 ]
 
 { #category : #'as yet unclassified' }
