@@ -18,5 +18,5 @@ CwMac >> saveScreenshotsAs: aString [
 { #category : #'as yet unclassified' }
 CwMac >> viewKernelPanicLogs [
 	"From https://www.macobserver.com/tmo/article/os-x-troubleshooting-kernel-panics"
-	Smalltalk tools shell command: 'open /Library/Logs/DiagnosticReports/*.panic'
+	Smalltalk tools shell new command: 'open /Library/Logs/DiagnosticReports/*.panic'
 ]
