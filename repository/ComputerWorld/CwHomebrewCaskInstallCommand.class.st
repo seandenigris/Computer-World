@@ -31,6 +31,15 @@ CwHomebrewCaskInstallCommand >> execute [
 	Smalltalk tools shell new runExternally: self commandString
 ]
 
+{ #category : #'as yet unclassified' }
+CwHomebrewCaskInstallCommand >> gtInspectorIn: composite [
+	<gtInspectorPresentationOrder: 10>
+	
+	composite text
+		title: 'Command';
+		display: [ self commandString ]
+]
+
 { #category : #accessing }
 CwHomebrewCaskInstallCommand >> project [
 	^ project
