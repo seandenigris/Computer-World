@@ -1,5 +1,10 @@
 "
 A system voice installed on your Mac. Not all voices are installed by Default.
+
+There are several ways to access voices:
+- Unixy `say` command - both Unixy and Applescript version
+- Cocoa (e.g. `[NSSpeechSynthesizer availableVoices]`)
+- Accessibility Preferences
 "
 Class {
 	#name : #CwMacSystemVoice,
