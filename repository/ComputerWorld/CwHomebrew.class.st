@@ -58,8 +58,11 @@ CwHomebrew >> applicationFolder: folder [
 
 { #category : #'as yet unclassified' }
 CwHomebrew >> caskInstall: aString [
-	"--require-sha: abort installation of cask if no checksum is defined"
-	Smalltalk tools shell runExternally: 'brew cask install --require-sha ', aString
+	"
+	--require-sha: abort installation of cask if no checksum is defined
+	--no-quarantine: Prevent Gatekeeper from enforcing its security restrictions on the Cask. This will let you run it straightaway.
+	"
+	Smalltalk tools shell runExternally: 'brew cask install --require-sha --no-quarantine ', aString
 ]
 
 { #category : #'as yet unclassified' }
