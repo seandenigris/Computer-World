@@ -17,9 +17,11 @@ Class {
 CwMacVim class >> fixMacLineEndings [
 	<script>
 	
-	| command |
+	| command macLineEnding |
 	"From http://stackoverflow.com/questions/811193/how-to-convert-the-m-linebreak-to-normal-linebreak-in-a-file-opened-in-vim"
-	command := ':%s/', Character cr asString, '/\r/g'.
+	
+	macLineEnding := Character cr. "This is equivalent to the manual way to type this in on a Mac i.e. CTRL-V and then CTRL-M"
+	command := ':%s/', macLineEnding asString, '/\r/g'.
 	Clipboard clipboardText: command allButFirst.
 	UIManager default inform: 'Paste into command mode'
 ]
