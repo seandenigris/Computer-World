@@ -9,6 +9,7 @@ BaselineOfComputerWorld >> baseline: spec [
   <baseline>
 
 	spec for: #'common' do: [
+		spec postLoadDoIt: #'postLoad'.
 		spec
 			baseline: 'BabyPhexample' with: [
 				spec repository: 'github://seandenigris/Baby-Phexample' ];
@@ -28,4 +29,13 @@ BaselineOfComputerWorld >> baseline: spec [
 				spec repository: 'github://seandenigris/cPanel-Live' ].
 		spec package: 'ComputerWorld' with: [ spec requires: #(BabyPhexample OSShell ExternalWebBrowser PharoEnhancements Superuser #'SimpleApplescript' #'CPanel') ] ].
 
+]
+
+{ #category : #'post load' }
+BaselineOfComputerWorld >> postLoad [
+	| rootFolder |
+	rootFolder := FileLocator dynabookData / 'Computer World'.
+	GTPlayBook 
+		cacheDirectory: rootFolder / 'play-cache';
+		stashDirectory: rootFolder / 'play-stash'.
 ]
