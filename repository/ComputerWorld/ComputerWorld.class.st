@@ -22,6 +22,18 @@ Class {
 	#category : #'ComputerWorld-Core'
 }
 
+{ #category : #persistence }
+ComputerWorld class >> restoreFrom: anObject [
+
+	uniqueInstance := anObject.
+]
+
+{ #category : #persistence }
+ComputerWorld class >> spData [
+
+	^ uniqueInstance
+]
+
 { #category : #'instance creation' }
 ComputerWorld class >> uniqueInstance [
 

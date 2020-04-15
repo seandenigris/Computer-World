@@ -11,13 +11,13 @@ Class {
 	#category : 'ComputerWorld-Core'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 CwPharoCast class >> database [
 
 	^ database ifNil: [ database := OrderedCollection new ].
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'world menu' }
 CwPharoCast class >> menuCommandOn: aBuilder [ 
 
 	<worldMenu>
@@ -37,7 +37,19 @@ CwPharoCast class >> openMainPage [
 	ExternalWebBrowser open: 'http://www.pharocasts.com/'.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #persistence }
+CwPharoCast class >> restoreFrom: anObject [
+
+	database := anObject.
+]
+
+{ #category : #persistence }
+CwPharoCast class >> spData [
+
+	^ database
+]
+
+{ #category : #'instance creation' }
 CwPharoCast class >> titled: aString [
 
 	^ self new setTitle: aString.

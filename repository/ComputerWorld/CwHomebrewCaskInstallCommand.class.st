@@ -12,7 +12,7 @@ Class {
 CwHomebrewCaskInstallCommand class >> exampleCommandString [
 	<sampleInstance>
 	^ CwHomebrewCaskInstallCommand new
-			admin: 'admin';
+			"admin: 'admin'; can be set globally or per-command"
 			project: 'bettertouchtool';
 			commandString.
 ]

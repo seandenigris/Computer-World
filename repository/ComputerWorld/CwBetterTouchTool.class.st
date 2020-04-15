@@ -40,6 +40,13 @@ CwBetterTouchTool class >> detectActionNamed: aString [
 	^ self actions detect: [ :e | (e at: 'BTTPredefinedActionName') = aString ]
 ]
 
+{ #category : #persistence }
+CwBetterTouchTool class >> restoreFrom: aCollection [
+
+	self actions: aCollection first.
+	self sharedSecret: aCollection second
+]
+
 { #category : #'as yet unclassified' }
 CwBetterTouchTool class >> sharedSecret [
 	^ SharedSecret
@@ -48,6 +55,12 @@ CwBetterTouchTool class >> sharedSecret [
 { #category : #'as yet unclassified' }
 CwBetterTouchTool class >> sharedSecret: aString [
 	SharedSecret := aString
+]
+
+{ #category : #persistence }
+CwBetterTouchTool class >> spData [
+
+	^ { Actions. SharedSecret }
 ]
 
 { #category : #accessing }

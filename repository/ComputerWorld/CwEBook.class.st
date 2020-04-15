@@ -31,6 +31,18 @@ CwEBook class >> library [
 	^ library ifNil: [ library := OrderedCollection new ].
 ]
 
+{ #category : #persistence }
+CwEBook class >> restoreFrom: anObject [
+
+	library := anObject.
+]
+
+{ #category : #persistence }
+CwEBook class >> spData [
+
+	^ library
+]
+
 { #category : #'as yet unclassified' }
 CwEBook >> asMorph [
 
