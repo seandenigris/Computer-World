@@ -9,6 +9,15 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
+CwHomebrewCaskInstallCommand class >> exampleCommandString [
+	<sampleInstance>
+	^ CwHomebrewCaskInstallCommand new
+			admin: 'admin';
+			project: 'bettertouchtool';
+			commandString.
+]
+
+{ #category : #'as yet unclassified' }
 CwHomebrewCaskInstallCommand >> admin [
 	^ CwHomebrew admin
 ]
