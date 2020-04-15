@@ -10,6 +10,17 @@ CwMacApplication class >> reference [
 	^ self new.
 ]
 
+{ #category : #actions }
+CwMacApplication class >> unquarantine [
+	"Only needs to be admin user, not root"
+
+	Smalltalk tools shell new runExternally: 'sudo xattr -r -d com.apple.quarantine ', self bundle fullName surroundedByDoubleQuotes
+	
+	"Reference: 
+		- https://apple.stackexchange.com/questions/243687/allow-applications-downloaded-from-anywhere-in-macos-sierra
+		- https://apple.stackexchange.com/a/342403/9507"
+]
+
 { #category : #'as yet unclassified' }
 CwMacApplication >> activate [
 
@@ -82,15 +93,4 @@ CwMacApplication >> tellGUITo: applescriptCommand [
 		end tell'.
 	script := scriptTemplate format: { self applicationName. applescriptCommand }.
 	^ Applescript doIt: script.
-]
-
-{ #category : #actions }
-CwMacApplication >> unquarantine [
-	"Only needs to be admin user, not root"
-
-	Smalltalk tools shell runExternally: 'sudo xattr -r -d com.apple.quarantine ', self bundle fullName surroundedByDoubleQuotes
-	
-	"Reference: 
-		- https://apple.stackexchange.com/questions/243687/allow-applications-downloaded-from-anywhere-in-macos-sierra
-		- https://apple.stackexchange.com/a/342403/9507"
 ]

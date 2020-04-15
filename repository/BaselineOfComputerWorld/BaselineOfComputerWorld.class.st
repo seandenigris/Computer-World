@@ -26,8 +26,10 @@ BaselineOfComputerWorld >> baseline: spec [
 			baseline: 'SimpleApplescript' with: [
 				spec repository: 'github://seandenigris/Applescript-St' ];
 			baseline: 'CPanel' with: [
-				spec repository: 'github://seandenigris/cPanel-Live' ].
-		spec package: 'ComputerWorld' with: [ spec requires: #(BabyPhexample OSShell ExternalWebBrowser PharoEnhancements Superuser #'SimpleApplescript' #'CPanel') ] ].
+				spec repository: 'github://seandenigris/cPanel-Live' ];
+			baseline: 'NeoJSON' with: [
+				spec repository: 'github://svenvc/NeoJSON' ].
+		spec package: 'ComputerWorld' with: [ spec requires: #(BabyPhexample CPanel ExternalWebBrowser NeoJSON "for BTT" OSShell PharoEnhancements SimpleApplescript Superuser ) ] ].
 
 ]
 
