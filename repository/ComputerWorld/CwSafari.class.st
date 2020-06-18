@@ -1,7 +1,7 @@
 Class {
 	#name : #CwSafari,
 	#superclass : #Object,
-	#category : 'ComputerWorld-Mac'
+	#category : #'ComputerWorld-Mac'
 }
 
 { #category : #private }
@@ -55,7 +55,9 @@ CwSafari >> shell [
 
 { #category : #'video control' }
 CwSafari >> videoSpeed: aNumber [
-	"Adapted from https://www.quora.com/Is-there-any-way-to-watch-Facebook-videos-at-double-the-speed"
+	"Adapted from Quora [1]. There is a slight variation recommended on SO [2] using querySelectorAll instead of getElementsByTagName if this ever must be revisited.
+	[1] https://www.quora.com/Is-there-any-way-to-watch-Facebook-videos-at-double-the-speed
+	[2] https://stackoverflow.com/a/44158819/424245 "
 	| js script |
 	js := 'var ta=document.getElementsByTagName(''video''); 
 		for(var i=0;i<ta.length;i++) {ta[i].playbackRate=', aNumber asString, '};'.
