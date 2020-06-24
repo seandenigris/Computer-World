@@ -44,7 +44,6 @@ CwBetterTouchTool class >> detectActionNamed: aString [
 CwBetterTouchTool class >> restoreFrom: aCollection [
 
 	self actions: aCollection first.
-	self sharedSecret: aCollection second
 ]
 
 { #category : #'as yet unclassified' }
@@ -60,7 +59,7 @@ CwBetterTouchTool class >> sharedSecret: aString [
 { #category : #persistence }
 CwBetterTouchTool class >> spData [
 
-	^ { Actions. SharedSecret }
+	^ { Actions }
 ]
 
 { #category : #accessing }
