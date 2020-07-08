@@ -18,6 +18,7 @@ ComputerWorldDB class >> schema [
 			CwBetterTouchTool.
 			CwEBook.
 			CwHomebrew.
+			CwNAS.
 			CwPharoCast
 		}.
 ]
