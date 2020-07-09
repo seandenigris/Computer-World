@@ -22,18 +22,6 @@ CwNAS class >> db: aCollection [
 	DB := aCollection
 ]
 
-{ #category : #accessing }
-CwNAS class >> endOfLifeList [
-	<script>
-
-	^ 'https://www.qnap.com/th-th/product/eol.php' asUrl open.
-]
-
-{ #category : #'as yet unclassified' }
-CwNAS class >> modelParser [ 
-	^ $T asParser, $V asParser optional, $S asParser, $- asParser, #digit asParser, #digit asParser plus flatten, #any asParser plus optional.
-]
-
 { #category : #persistence }
 CwNAS class >> restoreFrom: aCollection [
 
@@ -44,22 +32,6 @@ CwNAS class >> restoreFrom: aCollection [
 CwNAS class >> spData [
 
 	^ DB
-]
-
-{ #category : #'as yet unclassified' }
-CwNAS class >> supportsDirectConnection: model [
-	"E.g. via USB-B (look for a port on the lower left front) or Thunberbolt. TS-x51A series allow direct connection via USB from the NAS to your workstation. Our Thunderbolt series including the TVS-871T (https://www.qnap.com/static/landing/perfect_combo/index.html)
-	
-	Example:
-		CwNAS supportsDirectConnection: 'TS-231p' >>> false.
-		CwNAS supportsDirectConnection: 'TS-251A' >>> true.
-		CwNAS supportsDirectConnection: 'TVS-472XT' >>> true.
-		
-	NB: Analyzing model numbers is not generally useful because apparently QNAP is inconsistent in their naming policy (see https://forum.qnap.com/viewtopic.php?t=141223)"
-	
-	| tokens |
-	tokens := self modelParser parse: model.
-	^ tokens sixth = '51' or: [ tokens seventh includes: $T ].
 ]
 
 { #category : #accessing }
