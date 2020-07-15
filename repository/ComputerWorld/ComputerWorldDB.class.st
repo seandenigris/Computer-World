@@ -7,7 +7,7 @@ Class {
 { #category : #accessing }
 ComputerWorldDB class >> backupDirectoryParent [
 	
-	^ FileLocator dynabookData
+	^ FileLocator dynabookData / 'Computer World'
 ]
 
 { #category : #'loading/saving' }
