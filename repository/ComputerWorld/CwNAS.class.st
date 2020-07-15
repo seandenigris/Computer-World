@@ -3,8 +3,11 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'adapters',
+		'manufacturer',
 		'model',
-		'manufacturer'
+		'adminUser',
+		'rootUser',
+		'macAddress'
 	],
 	#classVars : [
 		'DB'
@@ -57,12 +60,50 @@ CwNAS >> adaptersDescription [
 		yourself
 ]
 
+{ #category : #accessing }
+CwNAS >> adminUser [
+	^ self maLazyFrom: self adminUserDescription
+]
+
+{ #category : #accessing }
+CwNAS >> adminUser: aString [
+	adminUser := aString
+]
+
+{ #category : #'magritte-accessing' }
+CwNAS >> adminUserDescription [
+	<magritteDescription>
+	^ MAToOneRelationDescription new
+		accessor: #adminUser;
+		classes: { CwUnixUser };
+		priority: 250;
+		yourself
+]
+
 { #category : #actions }
 CwNAS >> connectAdHocTo: aNAS [
 
 	Smalltalk tools workspace openContents: 'Assign the TVS-1282 a static IP address on the 10G port to
 192.168.2.3 with a subnet mask of 255.255.255.0. Now make the 670Pro 10G port a static IP address of 192.168.2.4 with subnet mask 255.255.255.0
 Install Hybrid Backup Sync on both systems. The 670Pro is your backup unit, and the 1282 is the master. Enable backup on the 670 Pro Hybrid Backup Sync. On the Master run Hybrid Backup Sync - Backup, and do a REMOTE BACKUP - enter the name, password, and static IP address of the backup QNAP (192.168.2.4) - select the folders you want to backup, and it starts. (from https://www.reddit.com/r/qnap/comments/b82zi0/10_gbe_direct_connection_between_two_nas/ejvmx8y?utm_source=share&utm_medium=web2x)'
+]
+
+{ #category : #accessing }
+CwNAS >> macAddress [
+	^ self maLazyFrom: self macAddressDescription
+]
+
+{ #category : #accessing }
+CwNAS >> macAddress: aString [
+	macAddress := aString
+]
+
+{ #category : #'magritte-accessing' }
+CwNAS >> macAddressDescription [
+	<magritteDescription>
+	^ MAStringDescription new
+		accessor: #macAddress;
+		yourself
 ]
 
 { #category : #accessing }
@@ -108,4 +149,48 @@ CwNAS >> printOn: aStream [
 	aStream
 		nextPutAll: model;
 		nextPutAll: ' (', manufacturer, ')'
+]
+
+{ #category : #accessing }
+CwNAS >> rootUser [
+	^ self maLazyFrom: self rootUserDescription
+]
+
+{ #category : #accessing }
+CwNAS >> rootUser: anObject [
+	rootUser := anObject
+]
+
+{ #category : #'magritte-accessing' }
+CwNAS >> rootUserDescription [
+	<magritteDescription>
+	^ MAToOneRelationDescription new
+		accessor: #rootUser;
+		classes:
+			(Set new
+				add: CwUnixUser;
+				yourself);
+		yourself
+]
+
+{ #category : #ssh }
+CwNAS >> sshAdmin [
+	self sshAs: self adminUser
+]
+
+{ #category : #ssh }
+CwNAS >> sshAs: user [
+	| adapter |
+	adapter := self adapters detect: [ :e | e usage includesSubstring: 'MBP' ].
+	CwTerminal new doScript: 'ssh ', user name, '@', adapter ipAddress.
+]
+
+{ #category : #ssh }
+CwNAS >> sshRoot [
+	self sshAs: self rootUser
+]
+
+{ #category : #misc }
+CwNAS >> timeMachineDIYSetup [
+	Smalltalk tools webBrowser new open: 'https://netfuture.ch/2013/08/simple-versioned-timemachine-like-backup-using-rsync/' asUrl
 ]

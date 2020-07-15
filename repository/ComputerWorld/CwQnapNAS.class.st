@@ -36,6 +36,22 @@ CwQnapNAS >> browseAppCenter [
 	url open
 ]
 
+{ #category : #misc }
+CwQnapNAS >> defaultRootPassword [
+	^ self macAddress copyWithout: $:
+]
+
+{ #category : #'magritte-accessing' }
+CwQnapNAS >> rootUserDescription [
+	| root |
+	root := CwUnixUser new
+		name: 'admin';
+		yourself.
+	^ super rootUserDescription
+			default: root;
+			yourself
+]
+
 { #category : #testing }
 CwQnapNAS >> supportsDirectConnection [
 	"E.g. via USB-B (look for a port on the lower left front) or Thunberbolt. TS-x51A series allow direct connection via USB from the NAS to your workstation. Our Thunderbolt series including the TVS-871T (https://www.qnap.com/static/landing/perfect_combo/index.html)
