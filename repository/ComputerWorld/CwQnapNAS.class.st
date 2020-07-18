@@ -41,6 +41,16 @@ CwQnapNAS >> defaultRootPassword [
 	^ self macAddress copyWithout: $:
 ]
 
+{ #category : #misc }
+CwQnapNAS >> persistSudoers [
+	
+	Smalltalk tools workspace openContents: '"Per https://forum.qnap.com/viewtopic.php?t=143966#p689236"
+	
+	''echo "USERNAME ALL=(ALL) ALL" > /usr/etc/sudoers.d/USERNAME''
+
+"Apparently another solutiono is to install sudo via entware: See https://forum.qnap.com/viewtopic.php?t=152969'.
+]
+
 { #category : #'magritte-accessing' }
 CwQnapNAS >> rootUserDescription [
 	| root |
@@ -50,6 +60,12 @@ CwQnapNAS >> rootUserDescription [
 	^ super rootUserDescription
 			default: root;
 			yourself
+]
+
+{ #category : #accessing }
+CwQnapNAS >> sudoersFile [
+	"As of QTS 4.3.3. per https://superuser.com/a/1299662"
+	^ '/usr/etc/sudoers' asFileReference.
 ]
 
 { #category : #testing }

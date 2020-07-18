@@ -7,7 +7,8 @@ Class {
 		'model',
 		'adminUser',
 		'rootUser',
-		'macAddress'
+		'macAddress',
+		'name'
 	],
 	#classVars : [
 		'DB'
@@ -144,11 +145,35 @@ CwNAS >> modelDescription [
 		yourself
 ]
 
+{ #category : #accessing }
+CwNAS >> name [
+	^ self maLazyFrom: self nameDescription
+]
+
+{ #category : #accessing }
+CwNAS >> name: aString [
+	name := aString
+]
+
+{ #category : #'magritte-accessing' }
+CwNAS >> nameDescription [
+	<magritteDescription>
+	^ MAStringDescription new
+		accessor: #name;
+		priority: 50;
+		yourself
+]
+
 { #category : #printing }
 CwNAS >> printOn: aStream [
 	aStream
+		nextPutAll: name;
+		space;
+		nextPutAll: ' (';
 		nextPutAll: model;
-		nextPutAll: ' (', manufacturer, ')'
+		space;
+		nextPutAll: manufacturer;
+		nextPut: $)
 ]
 
 { #category : #accessing }

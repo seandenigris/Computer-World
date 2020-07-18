@@ -87,5 +87,6 @@ CwNetworkAdapter >> usageDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		accessor: #usage;
+		default: ''; "prevent nil checks"
 		yourself
 ]
