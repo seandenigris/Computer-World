@@ -13,7 +13,7 @@ CwQnapNAS class >> endOfLifeList [
 
 { #category : #examples }
 CwQnapNAS class >> exampleModel: aString [
-	^ CwNAS new
+	^ self new
 			model: aString;
 			manufacturer: 'QNAP';
 			yourself
@@ -21,7 +21,7 @@ CwQnapNAS class >> exampleModel: aString [
 
 { #category : #accessing }
 CwQnapNAS class >> modelParser [ 
-	^ $T asParser, $V asParser optional, $S asParser, $- asParser, #digit asParser, #digit asParser plus flatten, #any asParser plus optional.
+	^ ($T asParser, $V asParser optional, $S asParser) flatten, $- asParser, #digit asParser plus flatten, #any asParser plus optional.
 ]
 
 { #category : #misc }
@@ -41,14 +41,38 @@ CwQnapNAS >> defaultRootPassword [
 	^ self macAddress copyWithout: $:
 ]
 
-{ #category : #misc }
-CwQnapNAS >> persistSudoers [
+{ #category : #'as yet unclassified' }
+CwQnapNAS >> editAutorunDotSh [
+	"Reference: https://wiki.qnap.com/wiki/Running_Your_Own_Application_at_Startup"
 	
-	Smalltalk tools workspace openContents: '"Per https://forum.qnap.com/viewtopic.php?t=143966#p689236"
-	
-	''echo "USERNAME ALL=(ALL) ALL" > /usr/etc/sudoers.d/USERNAME''
+	| modelTokens isALBased contents |
+	modelTokens := self class modelParser parse: self model.
+	isALBased := modelTokens first = 'TS' and: [ modelTokens third endsWith: '31' ].
+	isALBased ifTrue: [ 
+		contents := 'ubiattach -m 6 -d 2
+/bin/mount -t ubifs ubi2:config /tmp/config
+vi /tmp/config/autorun.sh
+chmod +x /tmp/config/autorun.sh
+echo .
+echo "unmounting /tmp/config..."
+umount /tmp/config
+ubidetach -m 6' ].
+	Smalltalk tools workspace openContents: contents
+]
 
-"Apparently another solutiono is to install sudo via entware: See https://forum.qnap.com/viewtopic.php?t=152969'.
+{ #category : #misc }
+CwQnapNAS >> persistSudoerEntry: entry inFileNamed: aString [
+	| template command |
+	template := 'echo "{entry}" > /usr/etc/sudoers.d/{filename}'.
+	command := template format: { #entry -> entry asString. #filename -> aString } asDictionary.
+	
+	Smalltalk tools workspace openContents: 'Options:
+	- Add to autorun.sh [1]: 
+		', command, '
+	- Apparently another solution is to install sudo via entware [2]
+	
+	1. https://forum.qnap.com/viewtopic.php?t=143966#p689236
+	2. https://forum.qnap.com/viewtopic.php?t=152969'.
 ]
 
 { #category : #'magritte-accessing' }
@@ -62,6 +86,29 @@ CwQnapNAS >> rootUserDescription [
 			yourself
 ]
 
+{ #category : #misc }
+CwQnapNAS >> sampleAutorunDotSh [
+
+	'mkdir -p /usr/etc/sudoers.d
+echo "%administrators ALL=(ALL) ALL" > /usr/etc/sudoers.d/teamfar' withUnixLineEndings.
+]
+
+{ #category : #misc }
+CwQnapNAS >> sampleAutorunDotShUnencryptedDisk [
+
+	'#!/bin/sh
+# Run with generic shell per https://stackoverflow.com/a/5725402
+
+# Run script in same (i.e. not a new) shell as this one per https://superuser.com/a/176788/84195
+source /share/homes/admin/autorun.sh' withUnixLineEndings.
+]
+
+{ #category : #misc }
+CwQnapNAS >> sampleSudoersDotDFile [
+
+	'%administrators ALL=(ALL) ALL' withUnixLineEndings.
+]
+
 { #category : #accessing }
 CwQnapNAS >> sudoersFile [
 	"As of QTS 4.3.3. per https://superuser.com/a/1299662"
@@ -73,15 +120,15 @@ CwQnapNAS >> supportsDirectConnection [
 	"E.g. via USB-B (look for a port on the lower left front) or Thunberbolt. TS-x51A series allow direct connection via USB from the NAS to your workstation. Our Thunderbolt series including the TVS-871T (https://www.qnap.com/static/landing/perfect_combo/index.html)
 	
 	Example:
-		(CwQnapNAS exampleQNAPModel: 'TS-231P') supportsDirectConnection >>> false.
-		(CwQnapNAS exampleQNAPModel: 'TS-251A') supportsDirectConnection >>> true.
-		(CwQnapNAS exampleQNAPModel: 'TVS-472XT') supportsDirectConnection >>> true.
+		(CwQnapNAS exampleModel: 'TS-231P') supportsDirectConnection >>> false.
+		(CwQnapNAS exampleModel: 'TS-251A') supportsDirectConnection >>> true.
+		(CwQnapNAS exampleModel: 'TVS-472XT') supportsDirectConnection >>> true.
 		
 	NB: Analyzing model numbers is not generally useful because apparently QNAP is inconsistent in their naming policy (see https://forum.qnap.com/viewtopic.php?t=141223)"
 	
 	| tokens |
 	tokens := self class modelParser parse: model.
-	^ tokens sixth = '51' or: [ tokens seventh includes: $T ].
+	^ (tokens third endsWith: '51') or: [ tokens fourth includes: $T ].
 ]
 
 { #category : #misc }

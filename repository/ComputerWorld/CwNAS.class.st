@@ -8,7 +8,8 @@ Class {
 		'adminUser',
 		'rootUser',
 		'macAddress',
-		'name'
+		'name',
+		'rsaKeyFingerprint'
 	],
 	#classVars : [
 		'DB'
@@ -195,6 +196,24 @@ CwNAS >> rootUserDescription [
 			(Set new
 				add: CwUnixUser;
 				yourself);
+		yourself
+]
+
+{ #category : #accessing }
+CwNAS >> rsaKeyFingerprint [
+	^ self maLazyFrom: self rsaKeyFingerprintDescription
+]
+
+{ #category : #accessing }
+CwNAS >> rsaKeyFingerprint: aString [
+	rsaKeyFingerprint := aString
+]
+
+{ #category : #'magritte-accessing' }
+CwNAS >> rsaKeyFingerprintDescription [
+	<magritteDescription>
+	^ MAStringDescription new
+		accessor: #rsaKeyFingerprint;
 		yourself
 ]
 
