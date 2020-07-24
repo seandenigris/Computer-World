@@ -92,12 +92,13 @@ Install Hybrid Backup Sync on both systems. The 670Pro is your backup unit, and 
 
 { #category : #accessing }
 CwNAS >> macAddress [
-	^ self maLazyFrom: self macAddressDescription
+	^ self adapters first macAddress
 ]
 
 { #category : #accessing }
 CwNAS >> macAddress: aString [
-	macAddress := aString
+	self adapters ifEmpty: [ self adapters add: CwNetworkAdapter new ].
+	self adapters first macAddress: aString
 ]
 
 { #category : #'magritte-accessing' }
@@ -105,6 +106,7 @@ CwNAS >> macAddressDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		accessor: #macAddress;
+		comment: 'The medium access control (MAC) address that is printed on the enclosure is that of its first NIC Adapter';
 		yourself
 ]
 

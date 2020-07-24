@@ -100,7 +100,7 @@ CwEntropy >> equivalentDescription [
 	<magritteDescription>
 	^ MAMemoDescription new
 		accessor: #equivalent;
-		beReadonly;
+		beReadOnly;
 		yourself
 ]
 
@@ -132,6 +132,6 @@ CwEntropy >> vulnerabilityDescription [
 	<magritteDescription>
 	^ MAMemoDescription new
 		accessor: #vulnerability;
-		beReadonly;
+		beReadOnly;
 		yourself
 ]

@@ -45,7 +45,7 @@ CwQnapNAS >> defaultRootPassword [
 CwQnapNAS >> editAutorunDotSh [
 	"Reference: https://wiki.qnap.com/wiki/Running_Your_Own_Application_at_Startup"
 	
-	| modelTokens isALBased contents |
+	| modelTokens isALBased contents isHALBasedIntelOrAMD |
 	modelTokens := self class modelParser parse: self model.
 	isALBased := modelTokens first = 'TS' and: [ modelTokens third endsWith: '31' ].
 	isALBased ifTrue: [ 
@@ -57,7 +57,21 @@ echo .
 echo "unmounting /tmp/config..."
 umount /tmp/config
 ubidetach -m 6' ].
+	self flag: 'This next line only covers one model, but there are a lot more'.
+	isHALBasedIntelOrAMD := modelTokens first = 'TVS' and: [ modelTokens third endsWith: '72' ].
+	isHALBasedIntelOrAMD ifTrue: [ 
+			contents := 'mount $(/sbin/hal_app --get_boot_pd port_id=0)6 /tmp/config
+touch /tmp/config/autorun.sh
+chmod +x /tmp/config/autorun.sh
+$EDITOR /tmp/config/autorun.sh
+umount /tmp/config' ].
 	Smalltalk tools workspace openContents: contents
+]
+
+{ #category : #testing }
+CwQnapNAS >> isHAL [
+	"https://www.qnap.com/en/how-to/knowledge-base/article/how-to-check-if-your-qts-is-legacy-or-hal-type/"
+	^ (UIManager default request: 'Does the following return 0?' initialAnswer: 'ls /sbin/hal_app') isNotNil
 ]
 
 { #category : #misc }
@@ -90,7 +104,7 @@ CwQnapNAS >> rootUserDescription [
 CwQnapNAS >> sampleAutorunDotSh [
 
 	'mkdir -p /usr/etc/sudoers.d
-echo "%administrators ALL=(ALL) ALL" > /usr/etc/sudoers.d/teamfar' withUnixLineEndings.
+echo "%administrators ALL=(ALL) ALL" > /usr/etc/sudoers.d/administrators' withUnixLineEndings.
 ]
 
 { #category : #misc }

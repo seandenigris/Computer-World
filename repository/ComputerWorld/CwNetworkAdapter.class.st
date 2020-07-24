@@ -5,7 +5,8 @@ Class {
 		'ipAddress',
 		'description',
 		'usage',
-		'speed'
+		'speed',
+		'macAddress'
 	],
 	#category : #'ComputerWorld-NAS'
 }
@@ -43,6 +44,24 @@ CwNetworkAdapter >> ipAddressDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		accessor: #ipAddress;
+		yourself
+]
+
+{ #category : #accessing }
+CwNetworkAdapter >> macAddress [
+	^ self maLazyFrom: self macAddressDescription
+]
+
+{ #category : #accessing }
+CwNetworkAdapter >> macAddress: aString [
+	macAddress := aString
+]
+
+{ #category : #'magritte-accessing' }
+CwNetworkAdapter >> macAddressDescription [
+	<magritteDescription>
+	^ MAStringDescription new
+		accessor: #macAddress;
 		yourself
 ]
 

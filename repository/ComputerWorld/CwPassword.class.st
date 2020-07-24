@@ -90,7 +90,7 @@ CwPassword >> isPassphraseDescription [
 	<magritteDescription>
 	^ MABooleanDescription new
 		accessor: #isPassphrase;
-		readonly: true;
+		readOnly: true;
 		yourself
 ]
 
