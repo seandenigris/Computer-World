@@ -1,5 +1,5 @@
 Class {
-	#name : #CwNAS,
+	#name : #CwServer,
 	#superclass : #Object,
 	#instVars : [
 		'adapters',
@@ -18,42 +18,51 @@ Class {
 }
 
 { #category : #accessing }
-CwNAS class >> db [
+CwServer class >> db [
 	^ DB ifNil: [ DB := OrderedCollection new ]
 ]
 
 { #category : #accessing }
-CwNAS class >> db: aCollection [
+CwServer class >> db: aCollection [
 	DB := aCollection
 ]
 
+{ #category : #accessing }
+CwServer class >> exampleRouter [
+	^ CwServer new
+			name: 'Home Router';
+			rootUser: CwUnixUser exampleAdmin;
+			yourself.
+]
+
 { #category : #persistence }
-CwNAS class >> restoreFrom: aCollection [
+CwServer class >> restoreFrom: aCollection [
 
 	self db: aCollection.
 ]
 
 { #category : #persistence }
-CwNAS class >> spData [
+CwServer class >> spData [
 
 	^ DB
 ]
 
 { #category : #accessing }
-CwNAS >> adapters [
+CwServer >> adapters [
 	^ self maLazyFrom: self adaptersDescription
 ]
 
 { #category : #accessing }
-CwNAS >> adapters: aCollection [
+CwServer >> adapters: aCollection [
 	adapters := aCollection
 ]
 
 { #category : #'magritte-accessing' }
-CwNAS >> adaptersDescription [
+CwServer >> adaptersDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
 		accessor: #adapters;
+		default: OrderedCollection new;
 		classes:
 			(Set new
 				add: CwNetworkAdapter;
@@ -63,17 +72,17 @@ CwNAS >> adaptersDescription [
 ]
 
 { #category : #accessing }
-CwNAS >> adminUser [
+CwServer >> adminUser [
 	^ self maLazyFrom: self adminUserDescription
 ]
 
 { #category : #accessing }
-CwNAS >> adminUser: aString [
+CwServer >> adminUser: aString [
 	adminUser := aString
 ]
 
 { #category : #'magritte-accessing' }
-CwNAS >> adminUserDescription [
+CwServer >> adminUserDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		accessor: #adminUser;
@@ -83,7 +92,7 @@ CwNAS >> adminUserDescription [
 ]
 
 { #category : #actions }
-CwNAS >> connectAdHocTo: aNAS [
+CwServer >> connectAdHocTo: aNAS [
 
 	Smalltalk tools workspace openContents: 'Assign the TVS-1282 a static IP address on the 10G port to
 192.168.2.3 with a subnet mask of 255.255.255.0. Now make the 670Pro 10G port a static IP address of 192.168.2.4 with subnet mask 255.255.255.0
@@ -91,18 +100,20 @@ Install Hybrid Backup Sync on both systems. The 670Pro is your backup unit, and 
 ]
 
 { #category : #accessing }
-CwNAS >> macAddress [
-	^ self adapters first macAddress
+CwServer >> macAddress [
+	^ self adapters 
+			ifNotEmpty: [ :col | col first macAddress ]
+			ifEmpty: [ nil ]
 ]
 
 { #category : #accessing }
-CwNAS >> macAddress: aString [
+CwServer >> macAddress: aString [
 	self adapters ifEmpty: [ self adapters add: CwNetworkAdapter new ].
 	self adapters first macAddress: aString
 ]
 
 { #category : #'magritte-accessing' }
-CwNAS >> macAddressDescription [
+CwServer >> macAddressDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		accessor: #macAddress;
@@ -111,17 +122,17 @@ CwNAS >> macAddressDescription [
 ]
 
 { #category : #accessing }
-CwNAS >> manufacturer [
+CwServer >> manufacturer [
 	^ self maLazyFrom: self manufacturerDescription
 ]
 
 { #category : #accessing }
-CwNAS >> manufacturer: aString [
+CwServer >> manufacturer: aString [
 	manufacturer := aString
 ]
 
 { #category : #'magritte-accessing' }
-CwNAS >> manufacturerDescription [
+CwServer >> manufacturerDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		accessor: #manufacturer;
@@ -130,17 +141,17 @@ CwNAS >> manufacturerDescription [
 ]
 
 { #category : #accessing }
-CwNAS >> model [
+CwServer >> model [
 	^ self maLazyFrom: self modelDescription
 ]
 
 { #category : #accessing }
-CwNAS >> model: aString [
+CwServer >> model: aString [
 	model := aString
 ]
 
 { #category : #'magritte-accessing' }
-CwNAS >> modelDescription [
+CwServer >> modelDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		accessor: #model;
@@ -149,17 +160,17 @@ CwNAS >> modelDescription [
 ]
 
 { #category : #accessing }
-CwNAS >> name [
+CwServer >> name [
 	^ self maLazyFrom: self nameDescription
 ]
 
 { #category : #accessing }
-CwNAS >> name: aString [
+CwServer >> name: aString [
 	name := aString
 ]
 
 { #category : #'magritte-accessing' }
-CwNAS >> nameDescription [
+CwServer >> nameDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		accessor: #name;
@@ -168,29 +179,29 @@ CwNAS >> nameDescription [
 ]
 
 { #category : #printing }
-CwNAS >> printOn: aStream [
+CwServer >> printOn: aStream [
 	aStream
 		nextPutAll: name;
 		space;
 		nextPutAll: ' (';
-		nextPutAll: model;
+		maPrint: self modelDescription for: self;
 		space;
-		nextPutAll: manufacturer;
+		maPrint: self manufacturerDescription for: self;
 		nextPut: $)
 ]
 
 { #category : #accessing }
-CwNAS >> rootUser [
+CwServer >> rootUser [
 	^ self maLazyFrom: self rootUserDescription
 ]
 
 { #category : #accessing }
-CwNAS >> rootUser: anObject [
+CwServer >> rootUser: anObject [
 	rootUser := anObject
 ]
 
 { #category : #'magritte-accessing' }
-CwNAS >> rootUserDescription [
+CwServer >> rootUserDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		accessor: #rootUser;
@@ -202,17 +213,17 @@ CwNAS >> rootUserDescription [
 ]
 
 { #category : #accessing }
-CwNAS >> rsaKeyFingerprint [
+CwServer >> rsaKeyFingerprint [
 	^ self maLazyFrom: self rsaKeyFingerprintDescription
 ]
 
 { #category : #accessing }
-CwNAS >> rsaKeyFingerprint: aString [
+CwServer >> rsaKeyFingerprint: aString [
 	rsaKeyFingerprint := aString
 ]
 
 { #category : #'magritte-accessing' }
-CwNAS >> rsaKeyFingerprintDescription [
+CwServer >> rsaKeyFingerprintDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		accessor: #rsaKeyFingerprint;
@@ -220,23 +231,25 @@ CwNAS >> rsaKeyFingerprintDescription [
 ]
 
 { #category : #ssh }
-CwNAS >> sshAdmin [
+CwServer >> sshAdmin [
 	self sshAs: self adminUser
 ]
 
 { #category : #ssh }
-CwNAS >> sshAs: user [
+CwServer >> sshAs: user [
 	| adapter |
-	adapter := self adapters detect: [ :e | e usage includesSubstring: 'MBP' ].
+	adapter := self adapters size = 1
+		ifTrue: [ self adapters first ]
+		ifFalse: [ self adapters detect: [ :e | e usage includesSubstring: 'MBP' ] ].
 	CwTerminal new doScript: 'ssh ', user name, '@', adapter ipAddress.
 ]
 
 { #category : #ssh }
-CwNAS >> sshRoot [
+CwServer >> sshRoot [
 	self sshAs: self rootUser
 ]
 
 { #category : #misc }
-CwNAS >> timeMachineDIYSetup [
+CwServer >> timeMachineDIYSetup [
 	Smalltalk tools webBrowser new open: 'https://netfuture.ch/2013/08/simple-versioned-timemachine-like-backup-using-rsync/' asUrl
 ]

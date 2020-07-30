@@ -1,6 +1,6 @@
 Class {
 	#name : #CwQnapNAS,
-	#superclass : #CwNAS,
+	#superclass : #CwServer,
 	#category : #'ComputerWorld-NAS'
 }
 
