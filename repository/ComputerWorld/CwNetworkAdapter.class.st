@@ -42,7 +42,7 @@ CwNetworkAdapter >> ipAddress: aString [
 { #category : #'magritte-accessing' }
 CwNetworkAdapter >> ipAddressDescription [
 	<magritteDescription>
-	^ MAStringDescription new
+	^ MAIPAddressDescription new
 		accessor: #ipAddress;
 		yourself
 ]
@@ -68,8 +68,17 @@ CwNetworkAdapter >> macAddressDescription [
 { #category : #printing }
 CwNetworkAdapter >> printOn: aStream [
 	aStream
-		nextPutAll: description;
-		nextPutAll: ' (', speed asString, 'Gb/s)'
+		nextPutAll: self description;
+		nextPutAll: ' ('.
+	self speed ifNotNil: [ :spd |
+		aStream 
+			print: spd;
+			nextPutAll: 'Gb/s';
+			nextPutAll: ' - ' ].
+	self ipAddress ifNotNil: [ :ip |
+		aStream print: ip ].
+	aStream nextPut: $)
+	
 ]
 
 { #category : #accessing }

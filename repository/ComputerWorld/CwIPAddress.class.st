@@ -41,16 +41,42 @@ CwIPAddress class >> fromString: aString [
 	"Example: 
 		CwIPAddress fromString: '169.254.0.1'
 	"
+	
+	^ self fromInteger: (self stringToRawAddress: aString)
+]
+
+{ #category : #'instance creation' }
+CwIPAddress class >> maxRawAddress [
+	^ 4294967295.	"#[ 255 255 255 255] asInteger."
+]
+
+{ #category : #'instance creation' }
+CwIPAddress class >> rawAddressToString: anInteger [
+	"Example: 
+		(CwIPAddress rawAddressToString: 2851995649) >>> '169.254.0.1'
+	"
+
+	^ String streamContents: [ :s |
+			(anInteger asByteArrayOfSize: 4) 
+				do: [ :byte | s print: byte ]
+				separatedBy: [ s nextPut: $. ] ]
+]
+
+{ #category : #'instance creation' }
+CwIPAddress class >> stringToRawAddress: aString [
+	"Example: 
+		CwIPAddress stringToRawAddress: '169.254.0.1' >>> 2851995649
+	"
 
 	| byteStrings bytes |
 	byteStrings := aString splitOn: $..
 	bytes := byteStrings collect: [ :e | e asInteger ].
-	^ self fromInteger: (ByteArray newFrom: bytes) asInteger
+	^ (ByteArray newFrom: bytes) asInteger
 ]
 
 { #category : #comparing }
 CwIPAddress >> = rhs [
-	^ self rawAddress = rhs rawAddress
+	^ self species = rhs species and: [ self rawAddress = rhs rawAddress ]
 ]
 
 { #category : #comparing }
@@ -71,7 +97,7 @@ CwIPAddress >> isPrivate [
 
 { #category : #printing }
 CwIPAddress >> printOn: aStream [
-	rawAddress asByteArray 
+	self rawAddress asByteArray 
 		do: [ :byte | aStream print: byte ]
 		separatedBy: [ aStream nextPut: $. ]
 ]
@@ -89,7 +115,8 @@ CwIPAddress >> rawAddress: aNumber [
 { #category : #'magritte-accessing' }
 CwIPAddress >> rawAddressDescription [
 	<magritteDescription>
-	^ MANumberDescription new
-		accessor: #rawAddress;
+	^ MAIPAddressDescription new
+		accessor: (MASelectorAccessor read: #displayString write: #copySameFrom:);
+		default: 0;
 		yourself
 ]
