@@ -5,6 +5,13 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
+CwUnixUser class >> exampleAdmin [
+	^ CwUnixUser new
+		name: 'admin';
+		yourself.
+]
+
+{ #category : #'as yet unclassified' }
 CwUnixUser >> sudoerIDString [
 	^ '#', self id
 ]
