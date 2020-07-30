@@ -1,7 +1,7 @@
 Class {
 	#name : #MAIPAddressDescription,
 	#superclass : #MAElementDescription,
-	#category : #ComputerWorld
+	#category : #'ComputerWorld-Magritte'
 }
 
 { #category : #'accessing-defaults' }

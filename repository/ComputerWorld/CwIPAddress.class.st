@@ -115,8 +115,18 @@ CwIPAddress >> rawAddress: aNumber [
 { #category : #'magritte-accessing' }
 CwIPAddress >> rawAddressDescription [
 	<magritteDescription>
-	^ MAIPAddressDescription new
-		accessor: (MASelectorAccessor read: #displayString write: #copySameFrom:);
+	^ MANumberDescription new
+		accessor: #rawAddress;
 		default: 0;
+		yourself
+]
+
+{ #category : #'magritte-accessing' }
+CwIPAddress >> stringDescription [
+	"<magritteDescription>"
+	self flag: 'Part of experiment to describe types in multiple ways, one of which being a simple string equivalent. Doesn''t work if enabled at the same time as #rawAddressdescription, presumably because they both operate on the same datat'.
+	^ MAIPAddressDescription new
+		label: 'IP Address';
+		accessor: (MASelectorAccessor read: #displayString write: #copySameFrom:);
 		yourself
 ]
