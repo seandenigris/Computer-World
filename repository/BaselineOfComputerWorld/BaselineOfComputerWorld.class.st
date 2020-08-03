@@ -13,23 +13,25 @@ BaselineOfComputerWorld >> baseline: spec [
 		spec
 			baseline: 'BabyPhexample' with: [
 				spec repository: 'github://seandenigris/Baby-Phexample' ];
-			baseline: 'OSShell' with: [
-				spec repository: 'github://seandenigris/Pharo-Shell' ];
-			baseline: 'ExternalWebBrowser' with: [
-				spec repository: 'github://seandenigris/Pharo-Web-Browser' ];
-			baseline: 'Tempfile' with: [
-				spec repository: 'github://seandenigris/TempfileSt' ];
-			baseline: 'PharoEnhancements' with: [
-				spec repository: 'github://seandenigris/Pharo-Enhancements' ];
-			baseline: 'Superuser' with: [
-				spec repository: 'github://seandenigris/Superuser' ];
-			baseline: 'SimpleApplescript' with: [
-				spec repository: 'github://seandenigris/Applescript-St' ];
 			baseline: 'CPanel' with: [
 				spec repository: 'github://seandenigris/cPanel-Live' ];
+			baseline: 'ExternalWebBrowser' with: [
+				spec repository: 'github://seandenigris/Pharo-Web-Browser' ];
+			baseline: 'Magritte' with: [
+				spec repository: 'github://seandenigris/Magritte' ];
 			baseline: 'NeoJSON' with: [
-				spec repository: 'github://svenvc/NeoJSON' ].
-		spec package: 'ComputerWorld' with: [ spec requires: #(BabyPhexample CPanel ExternalWebBrowser NeoJSON "for BTT" OSShell PharoEnhancements SimpleApplescript Superuser ) ] ].
+				spec repository: 'github://svenvc/NeoJSON' ];
+			baseline: 'OSShell' with: [
+				spec repository: 'github://seandenigris/Pharo-Shell' ];
+			baseline: 'PharoEnhancements' with: [
+				spec repository: 'github://seandenigris/Pharo-Enhancements' ];
+			baseline: 'SimpleApplescript' with: [
+				spec repository: 'github://seandenigris/Applescript-St' ];
+			baseline: 'Superuser' with: [
+				spec repository: 'github://seandenigris/Superuser' ];
+			baseline: 'Tempfile' with: [
+				spec repository: 'github://seandenigris/TempfileSt' ].
+		spec package: 'ComputerWorld' with: [ spec requires: #(BabyPhexample CPanel ExternalWebBrowser Magritte NeoJSON "for BTT" OSShell PharoEnhancements SimpleApplescript Superuser ) ] ].
 
 ]
 
