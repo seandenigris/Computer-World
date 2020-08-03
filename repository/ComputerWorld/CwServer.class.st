@@ -241,7 +241,7 @@ CwServer >> sshAs: user [
 	adapter := self adapters size = 1
 		ifTrue: [ self adapters first ]
 		ifFalse: [ self adapters detect: [ :e | e usage includesSubstring: 'MBP' ] ].
-	CwTerminal new doScript: 'ssh ', user name, '@', adapter ipAddress.
+	CwTerminal new doScript: 'ssh ', user name, '@', adapter ipAddress asString.
 ]
 
 { #category : #ssh }
