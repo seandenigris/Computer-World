@@ -73,9 +73,9 @@ CwSoftware >> closeTheBrowserWindow [
 CwSoftware >> download [
 
 	| commandTemplate |
-	(FileDirectory on: self downloadPath) assureExistence.
+	self downloadPath ensureCreateFile.
 	commandTemplate := 'cd "{1}" > /dev/null ; curl -O "{2}"'.
-	OSProcess command: (commandTemplate format: { self downloadPath. downloadUrl }).
+	Smalltalk tools shell new run: (commandTemplate format: { self downloadPath. downloadUrl }).
 ]
 
 { #category : #private }
