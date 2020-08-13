@@ -1,8 +1,18 @@
 Class {
 	#name : #CwMacApplication,
 	#superclass : #Object,
-	#category : 'ComputerWorld-Core'
+	#category : #'ComputerWorld-Core'
 }
+
+{ #category : #actions }
+CwMacApplication class >> isQuarantined [
+	"For some of the implications of quarantine, see https://www.synack.com/blog/untranslocating-apps/"
+
+	^ (Smalltalk tools shell new outputOf: 'xattr ', self bundle fullName surroundedByDoubleQuotes) includesSubstring: 'com.apple.quarantine'
+	
+	"Reference: 
+		- https://derflounder.wordpress.com/2012/11/20/clearing-the-quarantine-extended-attribute-from-downloaded-applications/"
+]
 
 { #category : #'instance creation' }
 CwMacApplication class >> reference [
