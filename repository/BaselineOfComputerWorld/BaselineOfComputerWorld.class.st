@@ -39,7 +39,10 @@ BaselineOfComputerWorld >> baseline: spec [
 BaselineOfComputerWorld >> postLoad [
 	| rootFolder |
 	rootFolder := FileLocator dynabookData / 'Computer World'.
-	GTPlayBook 
+	GTPlayBook
 		cacheDirectory: rootFolder / 'play-cache';
 		stashDirectory: rootFolder / 'play-stash'.
+	Smalltalk globals
+		at: #XdPlaygroundSettings
+		ifPresent: [ :cls | cls directory: rootFolder / 'xdocs' ]
 ]
