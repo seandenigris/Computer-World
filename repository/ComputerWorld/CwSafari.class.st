@@ -1,3 +1,7 @@
+"
+!Messages / API
+-${method:name=CwSafari>>#videoSpeed:|label='#videoSpeed:'}$ - Set the speed of all HTML5 ==<video>== elements. 1 is regular speed. See the ==playbackRate== property *docs >https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/playbackRate* for more info. Assumes Safari 'document 1', which will be the topmost (in the current Mac Space if there is one)
+"
 Class {
 	#name : #CwSafari,
 	#superclass : #Object,
@@ -55,12 +59,15 @@ CwSafari >> shell [
 
 { #category : #'video control' }
 CwSafari >> videoSpeed: aNumber [
-	"Adapted from Quora [1]. There is a slight variation recommended on SO [2] using querySelectorAll instead of getElementsByTagName if this ever must be revisited.
-	[1] https://www.quora.com/Is-there-any-way-to-watch-Facebook-videos-at-double-the-speed
-	[2] https://stackoverflow.com/a/44158819/424245 "
+	<apiDocumentation>
+	<description: 'Set the speed of all HTML5 ==<video>== elements. 1 is regular speed. See the ==playbackRate== property *docs >https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/playbackRate* for more info. Assumes Safari ''document 1'', which will be the topmost (in the current Mac Space if there is one)'>
+	
 	| js script |
 	js := 'var ta=document.getElementsByTagName(''video''); 
 		for(var i=0;i<ta.length;i++) {ta[i].playbackRate=', aNumber asString, '};'.
 	script := 'tell application "Safari" to do JavaScript "', js, '" in document 1'.
-	Applescript doIt: script
+	Applescript doIt: script.
+	
+	"! Implementation note
+Adapted from *this Quora answer>https://www.quora.com/Is-there-any-way-to-watch-Facebook-videos-at-double-the-speed*. There is a slight variation recommended *on SO>https://stackoverflow.com/a/44158819/424245* using querySelectorAll instead of getElementsByTagName if this ever must be revisited."
 ]
