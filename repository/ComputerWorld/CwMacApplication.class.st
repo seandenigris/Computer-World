@@ -1,34 +1,40 @@
+"
+There are two ways to use me.
+
+!Generic Application Mode
+This may be how most applications start out. There is no behavior yet to justify a subclass, and we may never come back to implement any, so we ${example:CwMacApplication>>#exampleMail|label='just specify a bundle'}$ and we're able to do things that are universal to all applications, like ${method:CwMacApplication>>#unquarantine|label=unquarantine}$.
+!Application with Specific Behavior
+Once we begin to implement features unqiue to the app, a subclass is in order. Here are some already available:
+[[[language=smalltalk
+CwMacApplication allSubclasses
+]]]
+"
 Class {
 	#name : #CwMacApplication,
 	#superclass : #Object,
-	#category : #'ComputerWorld-Core'
+	#instVars : [
+		'bundle'
+	],
+	#category : #'ComputerWorld-Mac'
 }
 
-{ #category : #actions }
-CwMacApplication class >> isQuarantined [
-	"For some of the implications of quarantine, see https://www.synack.com/blog/untranslocating-apps/"
+{ #category : #accessing }
+CwMacApplication class >> bundle [
+	"Subclasses can override instead of setting on the instance-side, so that the bundle is availalbe without an instance. This seems to make sense as on the Mac a bundle is something one may reason about independently from the application e.g. from the filesystem perspective"
+	self subclassResponsibility
+]
 
-	^ (Smalltalk tools shell new outputOf: 'xattr ', self bundle fullName surroundedByDoubleQuotes) includesSubstring: 'com.apple.quarantine'
-	
-	"Reference: 
-		- https://derflounder.wordpress.com/2012/11/20/clearing-the-quarantine-extended-attribute-from-downloaded-applications/"
+{ #category : #accessing }
+CwMacApplication class >> fromBundle: aFileReference [ 
+	^ self new
+		bundle: aFileReference;
+		yourself.
 ]
 
 { #category : #'instance creation' }
 CwMacApplication class >> reference [
 
 	^ self new.
-]
-
-{ #category : #actions }
-CwMacApplication class >> unquarantine [
-	"Only needs to be admin user, not root"
-
-	Smalltalk tools shell new runExternally: 'sudo xattr -r -d com.apple.quarantine ', self bundle fullName surroundedByDoubleQuotes
-	
-	"Reference: 
-		- https://apple.stackexchange.com/questions/243687/allow-applications-downloaded-from-anywhere-in-macos-sierra
-		- https://apple.stackexchange.com/a/342403/9507"
 ]
 
 { #category : #'as yet unclassified' }
@@ -43,10 +49,39 @@ CwMacApplication >> applicationName [
 	self subclassResponsibility.
 ]
 
+{ #category : #accessing }
+CwMacApplication >> bundle [
+	^ bundle ifNil: [ bundle := self class bundle ]
+]
+
+{ #category : #accessing }
+CwMacApplication >> bundle: aFileReference [ 
+	bundle := aFileReference
+]
+
 { #category : #'as yet unclassified' }
 CwMacApplication >> delay: aDuration [ 
 
 	self tellApplicationTo: 'delay ', aDuration seconds asString.
+]
+
+{ #category : #accessing }
+CwMacApplication >> exampleMail [
+	<gtExample>
+	| bundleFile result |
+	bundleFile := '/Applications/Mail.app' asFileReference.
+	result := CwMacApplication fromBundle: bundleFile.
+	self assert: result bundle equals: bundleFile
+]
+
+{ #category : #actions }
+CwMacApplication >> isQuarantined [
+	"For some of the implications of quarantine, see https://www.synack.com/blog/untranslocating-apps/"
+
+	^ (Smalltalk tools shell new outputOf: 'xattr ', self bundle fullName surroundedByDoubleQuotes) includesSubstring: 'com.apple.quarantine'
+	
+	"Reference: 
+		- https://derflounder.wordpress.com/2012/11/20/clearing-the-quarantine-extended-attribute-from-downloaded-applications/"
 ]
 
 { #category : #actions }
@@ -103,4 +138,16 @@ CwMacApplication >> tellGUITo: applescriptCommand [
 		end tell'.
 	script := scriptTemplate format: { self applicationName. applescriptCommand }.
 	^ Applescript doIt: script.
+]
+
+{ #category : #actions }
+CwMacApplication >> unquarantine [
+	"Only needs to be admin user, not root"
+
+	Smalltalk tools shell new runExternally: 'sudo xattr -r -d com.apple.quarantine ', self bundle fullName surroundedByDoubleQuotes
+	
+	"
+!References 
+  - *https://apple.stackexchange.com/questions/243687/allow-applications-downloaded-from-anywhere-in-macos-sierra*
+  - *https://apple.stackexchange.com/a/342403/9507*"
 ]
