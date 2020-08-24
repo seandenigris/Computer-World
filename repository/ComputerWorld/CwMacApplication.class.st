@@ -2,7 +2,7 @@
 There are two ways to use me.
 
 !Generic Application Mode
-This may be how most applications start out. There is no behavior yet to justify a subclass, and we may never come back to implement any, so we ${example:CwMacApplication>>#exampleMail|label='just specify a bundle'}$ and we're able to do things that are universal to all applications, like ${method:CwMacApplication>>#unquarantine|label=unquarantine}$.
+This may be how most applications start out. There is no behavior yet to justify a subclass, and we may never come back to implement any, so we ${example:CwMacApplication>>#mail|label='just specify a bundle'}$ and we're able to do things that are universal to all applications, like ${method:CwMacApplication>>#unquarantine|label=unquarantine}$.
 !Application with Specific Behavior
 Once we begin to implement features unqiue to the app, a subclass is in order. Here are some already available:
 [[[language=smalltalk
@@ -25,10 +25,29 @@ CwMacApplication class >> bundle [
 ]
 
 { #category : #accessing }
+CwMacApplication class >> calibre [
+	^ CwMacApplication fromBundle: '/Applications/calibre.app' asFileReference.
+]
+
+{ #category : #accessing }
 CwMacApplication class >> fromBundle: aFileReference [ 
 	^ self new
 		bundle: aFileReference;
 		yourself.
+]
+
+{ #category : #accessing }
+CwMacApplication class >> glamorousToolkit [
+	^ self fromBundle: '/Applications/GlamorousToolkit/GlamorousToolkit.app' asFileReference.
+]
+
+{ #category : #accessing }
+CwMacApplication class >> mail [
+	<gtExample>
+	| bundleFile result |
+	bundleFile := '/Applications/Mail.app' asFileReference.
+	result := CwMacApplication fromBundle: bundleFile.
+	self assert: result bundle equals: bundleFile
 ]
 
 { #category : #'instance creation' }
@@ -63,15 +82,6 @@ CwMacApplication >> bundle: aFileReference [
 CwMacApplication >> delay: aDuration [ 
 
 	self tellApplicationTo: 'delay ', aDuration seconds asString.
-]
-
-{ #category : #accessing }
-CwMacApplication >> exampleMail [
-	<gtExample>
-	| bundleFile result |
-	bundleFile := '/Applications/Mail.app' asFileReference.
-	result := CwMacApplication fromBundle: bundleFile.
-	self assert: result bundle equals: bundleFile
 ]
 
 { #category : #actions }
