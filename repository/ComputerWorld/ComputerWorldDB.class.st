@@ -15,6 +15,7 @@ ComputerWorldDB class >> schema [
 
 	^ { 
 			ComputerWorld.
+			CPanelDB.
 			CwBetterTouchTool.
 			CwEBook.
 			CwHomebrew.
