@@ -1,3 +1,9 @@
+"
+!Time Machine
+After *setting up>https://www.qnap.com/en/how-to/tutorial/article/using-time-machine-to-back-up-your-mac-to-a-qnap-nas-via-smb*, it's pretty much seemless. On reconnecting via Thunderbolt, do one of the following to make the disk available to TM:
+- Map Network Drives (e.g. from QFinder)
+- Login via the web interfact (will this work?)
+"
 Class {
 	#name : #CwQnapNAS,
 	#superclass : #CwServer,
@@ -139,9 +145,4 @@ CwQnapNAS >> supportsDirectConnection [
 	| tokens |
 	tokens := self class modelParser parse: model.
 	^ (tokens third endsWith: '51') or: [ tokens fourth includes: $T ].
-]
-
-{ #category : #misc }
-CwQnapNAS >> timeMachineSetup [
-	Smalltalk tools webBrowser new open: 'https://www.qnap.com/en/how-to/tutorial/article/using-time-machine-to-back-up-your-mac-to-a-qnap-nas-via-smb' asUrl
 ]
