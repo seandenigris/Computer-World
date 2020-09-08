@@ -43,8 +43,21 @@ CwQnapNAS >> browseAppCenter [
 ]
 
 { #category : #misc }
+CwQnapNAS >> browseDownloadCenter [
+	self flag: 'This may go away. We are experimenting with more open-ended, general API coupled with GT e.g. `aServer downloadCenter open` instead of `aServer downloadCenter`, because it''s just one more token *or* presumably, you''d already have a common task like `#open` in the next miller column'.
+	self downloadCenter open
+]
+
+{ #category : #misc }
 CwQnapNAS >> defaultRootPassword [
 	^ self macAddress copyWithout: $:
+]
+
+{ #category : #misc }
+CwQnapNAS >> downloadCenter [
+	^ 'https://www.qnap.com/en-us/download' asUrl
+		queryAt: 'model' put: self model;
+		yourself.
 ]
 
 { #category : #'as yet unclassified' }
