@@ -2,9 +2,12 @@
 There are two ways to use me.
 
 !Generic Application Mode
-This may be how most applications start out. There is no behavior yet to justify a subclass, and we may never come back to implement any, so we ${example:CwMacApplication>>#mail|label='just specify a bundle'}$ and we're able to do things that are universal to all applications, like ${method:CwMacApplication>>#unquarantine|label=unquarantine}$.
+This may be how most applications start out. There is no behavior yet to justify a subclass, and we may never come back to implement any, so we ${example:CwMacApplication class>>#mail|previewShow=true}$ create an instance like so:
+and we're able to do things that are universal to all applications.
+!!Quarantine on Mac
+In certain circumstances, MacOS places downloaded apps in ""quarantine"". One of the consequences that can cause confusion is that the app is then copied to a read-only DMG in another location and run from there.  This can stymy code that relies on the image or VM being in a particular place. I provide the ability to check via ${method:CwMacApplication>>#isQuarantined|label=isQuarantined}$ and fix via ${method:CwMacApplication>>#unquarantine|label=unquarantine}$.
 !Application with Specific Behavior
-Once we begin to implement features unqiue to the app, a subclass is in order. Here are some already available:
+Once we begin to implement features unique to the app, a subclass is in order. Here are some already available:
 [[[language=smalltalk
 CwMacApplication allSubclasses
 ]]]
