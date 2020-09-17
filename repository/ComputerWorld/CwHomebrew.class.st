@@ -69,15 +69,6 @@ CwHomebrew >> applicationFolder: folder [
 ]
 
 { #category : #'as yet unclassified' }
-CwHomebrew >> caskInstall: aString [
-	"
-	--require-sha: abort installation of cask if no checksum is defined
-	--no-quarantine: Prevent Gatekeeper from enforcing its security restrictions on the Cask. This will let you run it straightaway.
-	"
-	Smalltalk tools shell runExternally: 'brew cask install --require-sha --no-quarantine ', aString
-]
-
-{ #category : #'as yet unclassified' }
 CwHomebrew >> caskUpgrade [
 	"
 	- Must be run as administrator
@@ -93,6 +84,19 @@ CwHomebrew >> doctor [
 	| exitCode |
 	exitCode := Smalltalk tools shell waitForCommand: '/usr/local/bin/brew doctor'.
 	exitCode = 0 ifFalse: [ self error: 'brew doctor failed' ].
+]
+
+{ #category : #accessing }
+CwHomebrew >> exampleInstallTesseract [
+	<gtExample>
+	^ CwHomebrew new installCommand
+		project: 'tesseract';
+		yourself
+]
+
+{ #category : #accessing }
+CwHomebrew >> installCommand [
+	^ CwHomebrewInstallCommand new
 ]
 
 { #category : #'as yet unclassified' }
