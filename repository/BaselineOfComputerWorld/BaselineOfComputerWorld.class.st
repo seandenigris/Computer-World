@@ -40,9 +40,10 @@ BaselineOfComputerWorld >> postLoad [
 	| rootFolder |
 	rootFolder := FileLocator dynabookData / 'Computer World'.
 	GTPlayBook
-		cacheDirectory: rootFolder / 'play-cache';
-		stashDirectory: rootFolder / 'play-stash'.
+		cacheDirectory: (rootFolder / 'play-cache') ensureCreateDirectory;
+		stashDirectory: (rootFolder / 'play-stash') ensureCreateDirectory.
 	Smalltalk globals
 		at: #XdPlaygroundSettings
-		ifPresent: [ :cls | cls directory: rootFolder / 'xdocs' ]
+		ifPresent: [ :cls | cls directory: (rootFolder / 'xdocs') ensureCreateDirectory ].
+	OmSessionStore defaultBaseLocator: rootFolder / 'ombu-sessions'
 ]
