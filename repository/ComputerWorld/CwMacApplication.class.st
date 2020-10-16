@@ -32,11 +32,33 @@ CwMacApplication class >> calibre [
 	^ CwMacApplication fromBundle: '/Applications/calibre.app' asFileReference.
 ]
 
+{ #category : #examples }
+CwMacApplication class >> exampleGeneric [
+	<gtExample>
+	| result |
+	result := self mail.
+	self assert: result class equals: CwMacApplication.
+	self assert: result bundle equals: '/Applications/Mail.app' asFileReference.
+	^ result
+]
+
+{ #category : #examples }
+CwMacApplication class >> exampleSubclassExists [
+	<gtExample>
+	| result |
+	result := CwMacApplication fromBundle: '/Applications/OBS.app' asFileReference.
+	self assert: result class equals: CwOBS.
+	^ result
+]
+
 { #category : #accessing }
-CwMacApplication class >> fromBundle: aFileReference [ 
-	^ self new
-		bundle: aFileReference;
-		yourself.
+CwMacApplication class >> fromBundle: aFileReference [
+	^ self allSubclasses
+		detect: [ :cls | cls bundle = aFileReference ]
+		ifFound: [ :cls | cls new ]
+		ifNone: [ self new
+				bundle: aFileReference;
+				yourself ]
 ]
 
 { #category : #accessing }
@@ -44,13 +66,11 @@ CwMacApplication class >> glamorousToolkit [
 	^ self fromBundle: '/Applications/GlamorousToolkit/GlamorousToolkit.app' asFileReference.
 ]
 
-{ #category : #accessing }
+{ #category : #'instance creation' }
 CwMacApplication class >> mail [
-	<gtExample>
-	| bundleFile result |
+	| bundleFile |
 	bundleFile := '/Applications/Mail.app' asFileReference.
-	result := CwMacApplication fromBundle: bundleFile.
-	self assert: result bundle equals: bundleFile
+	^ CwMacApplication fromBundle: bundleFile.
 ]
 
 { #category : #'instance creation' }
