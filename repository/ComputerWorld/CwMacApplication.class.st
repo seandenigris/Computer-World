@@ -88,7 +88,16 @@ CwMacApplication >> activate [
 { #category : #actions }
 CwMacApplication >> applicationName [
 
-	self subclassResponsibility.
+	^ self bundle base.
+]
+
+{ #category : #accessing }
+CwMacApplication >> applicationNameDescription [
+	<magritteDescription>
+	^ MAStringDescription new
+		accessor: #applicationName;
+		priority: 100;
+		yourself.
 ]
 
 { #category : #accessing }
