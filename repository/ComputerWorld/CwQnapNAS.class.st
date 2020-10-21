@@ -1,4 +1,25 @@
 "
+!iPhone
+!!Backup?
+First, decide if ''backup'' is what you really want to do. The iPhone stores photos in a complex directory structure unrelated to the domain of photos. Do you want to just copy that implementation detail over to another location? Also, in what circumstances would you ''restore'' the photos back to the device. Probably what most users want to do is ''import'' photos from the phone to another device, like a computer, external disk, or NAS.
+
+However, if you're sure you want to ''backup''. Here's the (unsettling) situation...
+
+When you plug an iPhone into the front USB port, a dialog appears on the phone confirming that you want the NAS to access your photos and videos. After confirmation, the iPhone shows up as a shared folder. So far, so good! Not so fast...
+
+You theoretically should be able to use Hybrid Backup Sync by just specifying the phone as the source folder. However, for some reason, the backup job seems to intermittently slow to a crawl and then fail.
+
+No matter what method you try, the first annoyance is that each time the phone mounts, the only user with access will be root (which you disabled, right?!). If you administer from a non-root user, you'll have to add that user """"every time you plug the phone in"""".
+
+Now, you may think, ""I'm a superuser. I'll just use ==rsync=="" to create my own backup system. Not quite. The version of rsync on your box is likely to be well behind the current version. It also seems to throw lots of random errors (e.g. ==rsync: read errors mapping... No data available==) for which there doesn't seem to be any good explanation via google. I could've sworn that I successfully used rsync on my Mac by using mounted SMB shares for the source and destination, but I spent a day trying to reproduce that and could not. I could barely get a file or two to copy and the shares kept unmounting. WTH.
+!!!Experiments
+Let's list the possible sources of problems:
+- phone - try with a different phone; iOS version, free space, ect.
+- permissions
+- NAS
+- rsync - e.g. flags, initiated from NAS or externally; although this wouldn't explain the HBS failure...
+- HBS settings
+
 !Time Machine
 After *setting up>https://www.qnap.com/en/how-to/tutorial/article/using-time-machine-to-back-up-your-mac-to-a-qnap-nas-via-smb*, it's pretty much seemless. On reconnecting via Thunderbolt, do one of the following to make the disk available to TM:
 - Map Network Drives (e.g. from QFinder)
