@@ -27,8 +27,8 @@ CwSSH class >> shell [
 ]
 
 { #category : #'key management' }
-CwSSH class >> useKeychainForSshPassphrases [
-	"Persist after reboot. Required as of MacOS Sierra. Reference: http://apple.stackexchange.com/a/264974"
+CwSSH class >> useKeychainForPassphrases [
+	"Persists after reboot. Required as of MacOS Sierra. Reference: https://developer.apple.com/library/archive/technotes/tn2449/_index.html and discussion at http://apple.stackexchange.com/a/264974"
 	<script>
 	
 	| config |
