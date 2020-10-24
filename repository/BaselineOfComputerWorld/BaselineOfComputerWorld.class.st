@@ -32,7 +32,22 @@ BaselineOfComputerWorld >> baseline: spec [
 			baseline: 'Tempfile' with: [
 				spec repository: 'github://seandenigris/TempfileSt' ].
 		spec package: 'ComputerWorld' with: [ spec requires: #(BabyPhexample CPanel ExternalWebBrowser Magritte NeoJSON "for BTT" OSShell PharoEnhancements SimpleApplescript Superuser ) ] ].
+	
+	spec for: #GToolkit do: [ 
+		spec package: 'ComputerWorld-GToolkit' with: [ spec requires: #(ComputerWorld) ] ]
 
+]
+
+{ #category : #accessing }
+BaselineOfComputerWorld >> customProjectAttributes [
+	^ self isGTImage
+			ifFalse: [ #() ]
+			ifTrue: [ #(GToolkit) ]
+]
+
+{ #category : #testing }
+BaselineOfComputerWorld >> isGTImage [
+	^ RPackageOrganizer default packageNames anySatisfy: [ :pn | pn beginsWith: 'GToolkit-' ]
 ]
 
 { #category : #'post load' }
