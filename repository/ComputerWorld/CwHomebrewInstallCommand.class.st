@@ -42,15 +42,6 @@ CwHomebrewInstallCommand class >> exampleCask [
 			self assert: it equalsCommand: 'brew cask install --no-quarantine --require-sha bettertouchtool' asUser: CwHomebrew admin ]
 ]
 
-{ #category : #accessing }
-CwHomebrewInstallCommand class >> given: givenBlock when: whenBlock then: thenBlock [
-	| result |
-	givenBlock value.
-	result := whenBlock value.
-	thenBlock value: result.
-	^ result
-]
-
 { #category : #'as yet unclassified' }
 CwHomebrewInstallCommand >> admin [
 	^ CwHomebrew admin
