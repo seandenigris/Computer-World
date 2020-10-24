@@ -14,7 +14,7 @@ Class {
 CwSudoerEntry class >> example [
 	<sampleInstance>
 	| user |
-	user := CwUnixGroup new name: 'administrators'; yourself.
+	user := SuUnixGroup new name: 'administrators'; yourself.
 	^ CwSudoerEntry new
 			user: user;
 			yourself
@@ -69,7 +69,7 @@ CwSudoerEntry >> runAsDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		accessor: #runAs;
-		classes: CwUnixUserEntity subclasses;
+		classes: SuUnixUserEntity subclasses;
 		default: CwUnixNullUserEntity new;
 		priority: 300;
 		yourself
@@ -103,7 +103,7 @@ CwSudoerEntry >> userDescription [
 	^ MAToOneRelationDescription new
 		accessor: #user;
 		priority: 100;
-		classes: CwUnixUserEntity subclasses;
+		classes: SuUnixUserEntity subclasses;
 		yourself
 ]
 

@@ -31,7 +31,7 @@ CwServer class >> db: aCollection [
 CwServer class >> exampleRouter [
 	^ CwServer new
 			name: 'Home Router';
-			rootUser: CwUnixUser exampleAdmin;
+			rootUser: SuUnixUser exampleAdmin;
 			yourself.
 ]
 
@@ -86,7 +86,7 @@ CwServer >> adminUserDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
 		accessor: #adminUser;
-		classes: { CwUnixUser };
+		classes: { SuUnixUser };
 		priority: 250;
 		yourself
 ]
@@ -207,7 +207,7 @@ CwServer >> rootUserDescription [
 		accessor: #rootUser;
 		classes:
 			(Set new
-				add: CwUnixUser;
+				add: SuUnixUser;
 				yourself);
 		yourself
 ]

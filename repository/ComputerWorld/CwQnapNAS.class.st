@@ -132,7 +132,7 @@ CwQnapNAS >> persistSudoerEntry: entry inFileNamed: aString [
 { #category : #'magritte-accessing' }
 CwQnapNAS >> rootUserDescription [
 	^ super rootUserDescription
-			default: CwUnixUser exampleAdmin;
+			default: SuUnixUser exampleAdmin;
 			yourself
 ]
 

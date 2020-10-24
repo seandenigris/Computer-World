@@ -1,6 +1,6 @@
 Class {
 	#name : #CwUnixNullUserEntity,
-	#superclass : #CwUnixUserEntity,
+	#superclass : #SuUnixUserEntity,
 	#category : #'ComputerWorld-Unix'
 }
 

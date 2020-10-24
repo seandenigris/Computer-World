@@ -184,10 +184,11 @@ CwMacApplication >> tellGUITo: applescriptCommand [
 
 { #category : #actions }
 CwMacApplication >> unquarantine [
-	"Only needs to be admin user, not root"
+	SuGenericUnixCommand new
+		template: 'sudo xattr -r -d com.apple.quarantine {bundle}';
+		argumentSource: { #bundle -> self bundle } asDictionary;
+		runInTerminal.
 
-	Smalltalk tools shell new runExternally: 'sudo xattr -r -d com.apple.quarantine ', self bundle fullName surroundedByDoubleQuotes
-	
 	"
 !References 
   - *https://apple.stackexchange.com/questions/243687/allow-applications-downloaded-from-anywhere-in-macos-sierra*
