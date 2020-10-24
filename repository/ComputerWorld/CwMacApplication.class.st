@@ -23,7 +23,7 @@ Class {
 
 { #category : #accessing }
 CwMacApplication class >> bundle [
-	"Subclasses can override instead of setting on the instance-side, so that the bundle is availalbe without an instance. This seems to make sense as on the Mac a bundle is something one may reason about independently from the application e.g. from the filesystem perspective"
+	"Subclasses should override to e.g. allow matching a bundle file to the correct (sub)class. NB should return a resolveable FS artifact; this creates a little confusion in other code because sometimes you care about the full path (e.g. when connecting to an app that is known to be installed at a certain location) and sometimes you care about the filename only (e.g. is this bundle file for this particular app, regardless of where it is on disk"
 	self subclassResponsibility
 ]
 
@@ -54,8 +54,12 @@ CwMacApplication class >> exampleSubclassExists [
 { #category : #accessing }
 CwMacApplication class >> fromBundle: aFileReference [
 	^ self allSubclasses
-		detect: [ :cls | cls bundle = aFileReference ]
-		ifFound: [ :cls | cls new ]
+		detect: [ :cls | cls bundle basename = aFileReference basename ]
+		ifFound: [ :cls | 
+			| instance |
+			instance := cls new.
+			instance bundle ~= aFileReference ifTrue: [ instance bundle: aFileReference ]. "See class-side #bundle method comment"
+			instance ]
 		ifNone: [ self new
 				bundle: aFileReference;
 				yourself ]
