@@ -25,13 +25,15 @@ BaselineOfComputerWorld >> baseline: spec [
 				spec repository: 'github://seandenigris/Pharo-Shell' ];
 			baseline: 'PharoEnhancements' with: [
 				spec repository: 'github://seandenigris/Pharo-Enhancements' ];
+			baseline: 'ResourcesLive' with: [
+				spec repository: 'github://seandenigris/ResourcesLive' ];
 			baseline: 'SimpleApplescript' with: [
 				spec repository: 'github://seandenigris/Applescript-St' ];
 			baseline: 'Superuser' with: [
 				spec repository: 'github://seandenigris/Superuser' ];
 			baseline: 'Tempfile' with: [
 				spec repository: 'github://seandenigris/TempfileSt' ].
-		spec package: 'ComputerWorld' with: [ spec requires: #(BabyPhexample CPanel ExternalWebBrowser Magritte NeoJSON "for BTT" OSShell PharoEnhancements SimpleApplescript Superuser ) ] ].
+		spec package: 'ComputerWorld' with: [ spec requires: #(BabyPhexample CPanel ExternalWebBrowser Magritte NeoJSON "for BTT" OSShell PharoEnhancements ResourcesLive SimpleApplescript Superuser ) ] ].
 	
 	spec for: #GToolkit do: [ 
 		spec package: 'ComputerWorld-GToolkit' with: [ spec requires: #(ComputerWorld) ] ]

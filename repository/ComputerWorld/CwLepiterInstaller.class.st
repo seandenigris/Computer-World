@@ -1,6 +1,6 @@
 Class {
 	#name : #CwLepiterInstaller,
-	#superclass : #Object,
+	#superclass : #RlResource,
 	#instVars : [
 		'version'
 	],
@@ -13,6 +13,16 @@ CwLepiterInstaller class >> example [
 	self new
 		version: '0.5.110';
 		install
+]
+
+{ #category : #accessing }
+CwLepiterInstaller class >> fileExtensions [
+	^ #('dmg')
+]
+
+{ #category : #testing }
+CwLepiterInstaller class >> isClassFor: file [
+	^ (super isClassFor: file) and: [ file basename beginsWith: 'Lepiter' ]
 ]
 
 { #category : #accessing }
@@ -37,6 +47,7 @@ CwLepiterInstaller >> copy: source to: target [
 
 { #category : #accessing }
 CwLepiterInstaller >> install [
+	self open.
 	self installVM.
 	self installImage.
 ]
@@ -86,12 +97,12 @@ CwLepiterInstaller >> targetBundle [
 
 { #category : #accessing }
 CwLepiterInstaller >> targetVM_ParentName [
-	^ 'le-' , self version , '-x64'
+	^ 'le-' , self version, '-x64'
 ]
 
 { #category : #accessing }
 CwLepiterInstaller >> version [
-	^ version
+	^ self file base allButFirst: 'Lepiter-v' size
 ]
 
 { #category : #accessing }
