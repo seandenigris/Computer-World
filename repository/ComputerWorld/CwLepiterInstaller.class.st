@@ -1,9 +1,6 @@
 Class {
 	#name : #CwLepiterInstaller,
 	#superclass : #RlResource,
-	#instVars : [
-		'version'
-	],
 	#category : #'ComputerWorld-Mac'
 }
 
@@ -109,9 +106,4 @@ CwLepiterInstaller >> targetVM_ParentName [
 { #category : #accessing }
 CwLepiterInstaller >> version [
 	^ self file base allButFirst: 'Lepiter-v' size
-]
-
-{ #category : #accessing }
-CwLepiterInstaller >> version: anObject [
-	version := anObject
 ]
