@@ -7,12 +7,17 @@ Class {
 	#category : #'ComputerWorld-Mac'
 }
 
-{ #category : #accessing }
+{ #category : #examples }
 CwLepiterInstaller class >> example [
-	"DMG should already be mounted"
-	self new
-		version: '0.5.110';
-		install
+	^ self
+		given: [ FileLocator home / 'Downloads' / 'Lepiter-v0.5.109.dmg' ]
+		when: [ :diskImageFile | 
+			(self on: diskImageFile)
+				install;
+				yourself ]
+		then: [ 
+			self assert: (FileLocator dynabookData parent / 'vms' / 'le-0.5.109-x64' / 'Lepiter.app') exists.
+			self assert: (FileLocator dynabookData parent / 'Working Images' / 'Lepiter 0.5.109' / 'Lepiter 0.5.109.image') exists ]
 ]
 
 { #category : #accessing }
@@ -62,6 +67,7 @@ CwLepiterInstaller >> installImage [
 	self move: imageSourceFolder / 'Lepiter.image' to: targetFolder / installationName , 'image'.
 	self move: imageSourceFolder / 'Lepiter.changes' to: targetFolder / installationName , 'changes'.
 	self move: imageSourceFolder / 'gt-extra' to: targetFolder / 'gt-extra'.
+	(targetFolder / 'pharo.version') ensureCreateFile writeStreamDo: [ :str | str nextPutAll: 'le-', self version ]
 ]
 
 { #category : #accessing }
