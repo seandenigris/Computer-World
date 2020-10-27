@@ -25,6 +25,14 @@ CwMac >> saveScreenshotsAs: extensionString [
 		waitForCommand: 'killall SystemUIServer'
 ]
 
+{ #category : #accessing }
+CwMac >> setUpForSmalltalk [
+	Su_ln new
+		link: FileLocator dynabookData parent / 'preferences';
+		target: FileLocator preferences / 'pharo';
+		run
+]
+
 { #category : #admin }
 CwMac >> viewKernelPanicLogs [
 	"From https://www.macobserver.com/tmo/article/os-x-troubleshooting-kernel-panics"
