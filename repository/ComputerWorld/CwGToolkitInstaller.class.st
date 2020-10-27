@@ -19,12 +19,12 @@ CwGToolkitInstaller class >> example [
 
 { #category : #accessing }
 CwGToolkitInstaller class >> fileExtensions [
-	^ #('dmg')
+	^ #('zip')
 ]
 
 { #category : #testing }
 CwGToolkitInstaller class >> isClassFor: file [
-	^ (super isClassFor: file) and: [ file basename beginsWith: 'Lepiter' ]
+	^ (super isClassFor: file) and: [ file basename beginsWith: 'GlamorousToolkit' ]
 ]
 
 { #category : #accessing }
