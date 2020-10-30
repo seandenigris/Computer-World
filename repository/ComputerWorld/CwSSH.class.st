@@ -7,6 +7,7 @@ Class {
 { #category : #'key management' }
 CwSSH class >> addKeysToKeychain [
 	"Will not persist after reboot as of MacOS Sierra. Reference: http://apple.stackexchange.com/a/264974"
+	self flag: 'do we need to run externally? Maybe not - not sudo or interactive'.
 	self shell runExternally: 'ssh-add -K ', self privateKeyFile fullName surroundedByDoubleQuotes
 
 ]
