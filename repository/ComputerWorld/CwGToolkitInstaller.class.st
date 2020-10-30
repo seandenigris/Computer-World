@@ -79,16 +79,23 @@ CwGToolkitInstaller >> isInstalled [
 { #category : #accessing }
 CwGToolkitInstaller >> move: sourceFile to: targetFile [
 
-	| safeTarget |
+	| targetArgument sourceArgument |
+	"If the target is an existing directory, mv will move source file(s) into it; otherwise it renames the source as the target (per mv man page)"
+	sourceArgument := (sourceFile isDirectory and: [ targetFile exists ]) 
+		ifTrue: [ 
+			"Adapted from https://askubuntu.com/a/172634; NB. * can't be inside the quotes or the command fails"
+			sourceFile fullName surroundedByDoubleQuotes, '/*'  ]
+		ifFalse: [ sourceFile ].
+	
 	"Destination directory should get trailing slash per https://stackoverflow.com/a/24925767"
-	safeTarget := targetFile isDirectory 
+	targetArgument := targetFile isDirectory 
 		ifTrue: [ (targetFile fullName , '/') surroundedByDoubleQuotes ]
 		ifFalse: [ targetFile ].
 	SuGenericUnixCommand new
 		template: 'mv {source} {target}';
 		argumentSource: {
-			#source -> sourceFile.
-			#target -> safeTarget } asDictionary;
+			#source -> sourceArgument.
+			#target -> targetArgument } asDictionary;
 		run.
 ]
 

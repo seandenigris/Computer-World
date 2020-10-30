@@ -14,6 +14,14 @@ CwMac >> addSSH_KeysToKeychain [
 	CwSSH addKeysToKeychain
 ]
 
+{ #category : #accessing }
+CwMac >> openFilesByProcess [
+	SuGenericUnixCommand new
+		template: 'sudo lsof -n +c 0 | cut -f1 -d'' '' | uniq -c | sort | tail';
+		runInTerminal.
+	"Adapted from https://superuser.com/a/1180084 n.b. `+c 0` prevents process name truncation"
+]
+
 { #category : #user }
 CwMac >> saveScreenshotsAs: extensionString [
 	"
