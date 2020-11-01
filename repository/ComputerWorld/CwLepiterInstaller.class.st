@@ -83,8 +83,7 @@ CwLepiterInstaller >> isInstalled [
 
 { #category : #accessing }
 CwLepiterInstaller >> mount [
-	SuGenericUnixCommand new
-		template: 'hdiutil attach {diskImage}';
+	Su_hdiutil mounting
 		argumentAt: #diskImage put: self file;
 		run.
 ]
