@@ -49,7 +49,7 @@ CwLepiterInstaller >> copy: source to: target [
 
 { #category : #accessing }
 CwLepiterInstaller >> install [
-	self open.
+	self mount.
 	self installVM.
 	self installImage.
 ]
@@ -79,6 +79,14 @@ CwLepiterInstaller >> isInstalled [
 	| installationLocations |
 	installationLocations := { CwLepiter bundle parent. FileLocator dynabookData / 'vms' / self targetVM_ParentName }.
 	^ installationLocations anySatisfy: [ :e | (e / self bundleName) exists ].
+]
+
+{ #category : #accessing }
+CwLepiterInstaller >> mount [
+	SuGenericUnixCommand new
+		template: 'hdiutil attach {diskImage}';
+		argumentAt: #diskImage put: self file;
+		run.
 ]
 
 { #category : #accessing }
