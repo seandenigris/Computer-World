@@ -56,11 +56,18 @@ BaselineOfComputerWorld >> isGTImage [
 BaselineOfComputerWorld >> postLoad [
 	| rootFolder |
 	rootFolder := FileLocator dynabookData / 'Computer World'.
+	
+	"Old-style GT"
 	GTPlayBook
 		cacheDirectory: (rootFolder / 'play-cache') ensureCreateDirectory;
 		stashDirectory: (rootFolder / 'play-stash') ensureCreateDirectory.
+	
+	"Gtoolkit"
 	Smalltalk globals
 		at: #XdPlaygroundSettings
 		ifPresent: [ :cls | cls directory: (rootFolder / 'xdocs') ensureCreateDirectory ].
-	OmSessionStore defaultBaseLocator: rootFolder / 'ombu-sessions'
+	
+	"Epicea"
+	OmSessionStore defaultBaseLocator: rootFolder / 'ombu-sessions'.
+	EpMonitor restart.
 ]
