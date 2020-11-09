@@ -1,6 +1,6 @@
 Class {
 	#name : #CwGToolkitInstaller,
-	#superclass : #RlResource,
+	#superclass : #RlZipArchive,
 	#category : #'ComputerWorld-Mac'
 }
 
@@ -17,11 +17,6 @@ CwGToolkitInstaller class >> example [
 			self assert: (FileLocator dynabookData parent / 'Working Images' / 'GT 0.8.271' / 'GT 0.8.271') exists ]
 ]
 
-{ #category : #accessing }
-CwGToolkitInstaller class >> fileExtensions [
-	^ #('zip')
-]
-
 { #category : #testing }
 CwGToolkitInstaller class >> isClassFor: file [
 	^ (super isClassFor: file) and: [ file basename beginsWith: 'GlamorousToolkit' ]
@@ -35,11 +30,6 @@ CwGToolkitInstaller >> bundle [
 { #category : #accessing }
 CwGToolkitInstaller >> bundleName [
 	^ 'GlamorousToolkit.app'
-]
-
-{ #category : #accessing }
-CwGToolkitInstaller >> decompressTo: folder [
-	Su_unzip new source: self file; target: folder; run.
 ]
 
 { #category : #accessing }
