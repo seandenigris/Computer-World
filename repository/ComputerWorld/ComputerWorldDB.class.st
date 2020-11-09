@@ -20,6 +20,7 @@ ComputerWorldDB class >> schema [
 			CwEBook.
 			CwHomebrew.
 			CwServer.
-			CwPharoCast
+			CwPharoCast.
+			ResourcesLiveDB
 		}.
 ]
