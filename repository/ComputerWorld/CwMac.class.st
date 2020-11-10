@@ -19,7 +19,9 @@ CwMac >> openFilesByProcess [
 	SuGenericUnixCommand new
 		template: 'sudo lsof -n +c 0 | cut -f1 -d'' '' | uniq -c | sort | tail';
 		runInTerminal.
-	"Adapted from https://superuser.com/a/1180084 n.b. `+c 0` prevents process name truncation"
+	"Adapted from https://superuser.com/a/1180084
+		- `+c 0` prevents process name truncation
+		- without sudo, it doesn't show all processes"
 ]
 
 { #category : #user }
