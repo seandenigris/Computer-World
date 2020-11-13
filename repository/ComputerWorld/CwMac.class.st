@@ -24,6 +24,23 @@ CwMac >> openFilesByProcess [
 		- without sudo, it doesn't show all processes"
 ]
 
+{ #category : #accessing }
+CwMac >> openFilesLimit: aNumber [
+	"More background, see https://wilsonmar.github.io/maximum-limits/"
+	
+	SuGenericUnixCommand new
+		template: 'launchctl limit maxfiles {softLimit} unlimited';
+		asRoot;
+		argumentAt: #softLimit put: aNumber;
+		runInTerminal
+]
+
+{ #category : #accessing }
+CwMac >> openFilesLimitExample [
+	"<gtExample> Don't run automatically because requires interaction"
+	self openFilesLimit: 1000
+]
+
 { #category : #user }
 CwMac >> saveScreenshotsAs: extensionString [
 	"
