@@ -9,7 +9,6 @@ BaselineOfComputerWorld >> baseline: spec [
   <baseline>
 
 	spec for: #'common' do: [
-		spec postLoadDoIt: #'postLoad'.
 		spec
 			baseline: 'BabyPhexample' with: [
 				spec repository: 'github://seandenigris/Baby-Phexample' ];
@@ -53,7 +52,7 @@ BaselineOfComputerWorld >> isGTImage [
 ]
 
 { #category : #'post load' }
-BaselineOfComputerWorld >> postLoad [
+BaselineOfComputerWorld >> setUpIDE [
 	| rootFolder |
 	rootFolder := FileLocator dynabookData / 'Computer World'.
 	
