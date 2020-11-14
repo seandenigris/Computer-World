@@ -49,7 +49,7 @@ CwServer class >> spData [
 
 { #category : #accessing }
 CwServer >> adapters [
-	^ self maLazyFrom: self adaptersDescription
+	^ self maLazyInstVarUsing: self adaptersDescription
 ]
 
 { #category : #accessing }
@@ -73,7 +73,7 @@ CwServer >> adaptersDescription [
 
 { #category : #accessing }
 CwServer >> adminUser [
-	^ self maLazyFrom: self adminUserDescription
+	^ self maLazyInstVarUsing: self adminUserDescription
 ]
 
 { #category : #accessing }
@@ -123,7 +123,7 @@ CwServer >> macAddressDescription [
 
 { #category : #accessing }
 CwServer >> manufacturer [
-	^ self maLazyFrom: self manufacturerDescription
+	^ self maLazyInstVarUsing: self manufacturerDescription
 ]
 
 { #category : #accessing }
@@ -142,7 +142,7 @@ CwServer >> manufacturerDescription [
 
 { #category : #accessing }
 CwServer >> model [
-	^ self maLazyFrom: self modelDescription
+	^ self maLazyInstVarUsing: self modelDescription
 ]
 
 { #category : #accessing }
@@ -161,7 +161,7 @@ CwServer >> modelDescription [
 
 { #category : #accessing }
 CwServer >> name [
-	^ self maLazyFrom: self nameDescription
+	^ self maLazyInstVarUsing: self nameDescription
 ]
 
 { #category : #accessing }
@@ -192,7 +192,7 @@ CwServer >> printOn: aStream [
 
 { #category : #accessing }
 CwServer >> rootUser [
-	^ self maLazyFrom: self rootUserDescription
+	^ self maLazyInstVarUsing: self rootUserDescription
 ]
 
 { #category : #accessing }
@@ -214,7 +214,7 @@ CwServer >> rootUserDescription [
 
 { #category : #accessing }
 CwServer >> rsaKeyFingerprint [
-	^ self maLazyFrom: self rsaKeyFingerprintDescription
+	^ self maLazyInstVarUsing: self rsaKeyFingerprintDescription
 ]
 
 { #category : #accessing }

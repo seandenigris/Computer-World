@@ -13,7 +13,7 @@ Class {
 
 { #category : #accessing }
 CwNetworkAdapter >> description [
-	^ self maLazyFrom: self descriptionDescription
+	^ self maLazyInstVarUsing: self descriptionDescription
 ]
 
 { #category : #accessing }
@@ -31,7 +31,7 @@ CwNetworkAdapter >> descriptionDescription [
 
 { #category : #accessing }
 CwNetworkAdapter >> ipAddress [
-	^ self maLazyFrom: self ipAddressDescription
+	^ self maLazyInstVarUsing: self ipAddressDescription
 ]
 
 { #category : #accessing }
@@ -49,7 +49,7 @@ CwNetworkAdapter >> ipAddressDescription [
 
 { #category : #accessing }
 CwNetworkAdapter >> macAddress [
-	^ self maLazyFrom: self macAddressDescription
+	^ self maLazyInstVarUsing: self macAddressDescription
 ]
 
 { #category : #accessing }
@@ -83,7 +83,7 @@ CwNetworkAdapter >> printOn: aStream [
 
 { #category : #accessing }
 CwNetworkAdapter >> speed [
-	^ self maLazyFrom: self speedDescription
+	^ self maLazyInstVarUsing: self speedDescription
 ]
 
 { #category : #accessing }
@@ -102,7 +102,7 @@ CwNetworkAdapter >> speedDescription [
 
 { #category : #accessing }
 CwNetworkAdapter >> usage [
-	^ self maLazyFrom: self usageDescription
+	^ self maLazyInstVarUsing: self usageDescription
 ]
 
 { #category : #accessing }

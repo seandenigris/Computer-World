@@ -22,7 +22,7 @@ CwSudoerEntry class >> example [
 
 { #category : #accessing }
 CwSudoerEntry >> host [
-	^ self maLazyFrom: self hostDescription
+	^ self maLazyInstVarUsing: self hostDescription
 ]
 
 { #category : #accessing }
@@ -56,7 +56,7 @@ CwSudoerEntry >> printOn: aStream [
 
 { #category : #accessing }
 CwSudoerEntry >> runAs [
-	^ self maLazyFrom: self runAsDescription
+	^ self maLazyInstVarUsing: self runAsDescription
 ]
 
 { #category : #accessing }
@@ -89,7 +89,7 @@ CwSudoerEntry >> stringForUserEntity: aCwUnixUserEntity [
 
 { #category : #accessing }
 CwSudoerEntry >> user [
-	^ self maLazyFrom: self userDescription
+	^ self maLazyInstVarUsing: self userDescription
 ]
 
 { #category : #accessing }
@@ -114,7 +114,7 @@ CwSudoerEntry >> userString [
 
 { #category : #accessing }
 CwSudoerEntry >> usesNames [
-	^ self maLazyFrom: self usesNamesDescription
+	^ self maLazyInstVarUsing: self usesNamesDescription
 ]
 
 { #category : #accessing }

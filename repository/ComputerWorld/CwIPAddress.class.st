@@ -104,7 +104,7 @@ CwIPAddress >> printOn: aStream [
 
 { #category : #accessing }
 CwIPAddress >> rawAddress [
-	^ self maLazyFrom: self rawAddressDescription
+	^ self maLazyInstVarUsing: self rawAddressDescription
 ]
 
 { #category : #accessing }

@@ -96,7 +96,7 @@ CwPassword >> isPassphraseDescription [
 
 { #category : #accessing }
 CwPassword >> length [
-	^ self maLazyFrom: self lengthDescription
+	^ self maLazyInstVarUsing: self lengthDescription
 ]
 
 { #category : #accessing }
@@ -114,7 +114,7 @@ CwPassword >> lengthDescription [
 
 { #category : #accessing }
 CwPassword >> possibilities [
-	^ self maLazyFrom: self possibilitiesDescription
+	^ self maLazyInstVarUsing: self possibilitiesDescription
 ]
 
 { #category : #accessing }

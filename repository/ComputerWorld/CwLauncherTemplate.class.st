@@ -24,7 +24,7 @@ CwLauncherTemplate class >> isClassFor: file [
 
 { #category : #accessing }
 CwLauncherTemplate >> isDeprecated [
-	^ self maLazyFrom: self isDeprecatedDescription
+	^ self maLazyInstVarUsing: self isDeprecatedDescription
 ]
 
 { #category : #accessing }

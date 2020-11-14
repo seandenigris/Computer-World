@@ -69,7 +69,7 @@ CwEntropy class >> lenstraEstimates [
 
 { #category : #accessing }
 CwEntropy >> bits [
-	^ self maLazyFrom: self bitsDescription
+	^ self maLazyInstVarUsing: self bitsDescription
 ]
 
 { #category : #accessing }
