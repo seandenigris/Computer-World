@@ -1,26 +1,25 @@
 Class {
 	#name : #CwGnuCash,
 	#superclass : #Object,
-	#category : 'ComputerWorld-Apps'
+	#category : #'ComputerWorld-Apps'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'file compression' }
 CwGnuCash class >> compressDataFile: source to: targetFolder [
 	| commandTemplate command |
 	commandTemplate := '/usr/bin/gzip -c "{source}" > "{target}"'.
 	command := commandTemplate format: { 
 		#source -> source fullName.
 		#target -> ((targetFolder / source base), 'gnucash') fullName } asDictionary.
-	Halt now.
 	Smalltalk tools shell command: command
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'file compression' }
 CwGnuCash class >> uncompressDataFile: reference [
 	self uncompressDataFile: reference to: (reference parent / reference base), 'xml'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'file compression' }
 CwGnuCash class >> uncompressDataFile: reference to: target [
 	| commandTemplate command |
 	commandTemplate := '/usr/bin/gunzip -c "{source}" > "{target}"'.
