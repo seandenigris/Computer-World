@@ -7,9 +7,24 @@ Class {
 	#category : #'ComputerWorld-Mac'
 }
 
-{ #category : #accessing }
+{ #category : #'active-accessing' }
 CwLauncherTemplate class >> allActive [
-	^ self folder allFiles select: [ :f | self isClassFor: f ] thenCollect: [ :f | self on: f ]
+	| active |
+	active := self folder allFiles select: [ :f | self isClassFor: f ] thenCollect: [ :f | self on: f ].
+	^ active sort: [ :a :b | a file base < b file base ]
+]
+
+{ #category : #'active-accessing' }
+CwLauncherTemplate class >> allActiveMatching: regexString [
+	"Example: self allActiveMatching: '(GT |Le).*'"
+	| relevant |
+	relevant := self allActive select: [ :e | e file base matchesRegex: regexString ].
+	^ relevant "sort: [ :a :b | a file base < b file base ]."
+]
+
+{ #category : #'active-accessing' }
+CwLauncherTemplate class >> allActiveMissingFromRlLibrary [
+	^ self allActive reject: [ :e | RlResourceLibrary uniqueInstance resources includes: e ]
 ]
 
 { #category : #accessing }
@@ -17,9 +32,41 @@ CwLauncherTemplate class >> folder [
 	^ FileLocator preferences / 'pharo' / 'templateCache'
 ]
 
+{ #category : #'gt-views' }
+CwLauncherTemplate class >> gtActiveFor: aView [
+	<gtClassView>
+	^ aView list
+		title: 'Active';
+		items: self allActive;
+		itemText: #displayString;
+		yourself
+]
+
 { #category : #testing }
 CwLauncherTemplate class >> isClassFor: file [
 	^ (super isClassFor: file) and: [ file parent asFileReference = self folder asFileReference ]
+]
+
+{ #category : #comparing }
+CwLauncherTemplate >> = rhs [
+	^ self class = rhs class and: [ self file basename = rhs file basename ]
+]
+
+{ #category : #accessing }
+CwLauncherTemplate >> deprecate [
+	"Motivation: keep currently unneeded templates from cluttering Launcher by moving them out of the template folder. Having them around makes it more awkard because e.g. one has to scroll down further and further in the template list."
+	self isDeprecated: true.
+	RlResourceLibrary uniqueInstance import: self
+]
+
+{ #category : #accessing }
+CwLauncherTemplate >> displayStringOn: aStream [
+	aStream nextPutAll: self file base
+]
+
+{ #category : #comparing }
+CwLauncherTemplate >> hash [
+	^ self file basename hash
 ]
 
 { #category : #accessing }
@@ -30,7 +77,6 @@ CwLauncherTemplate >> isDeprecated [
 { #category : #accessing }
 CwLauncherTemplate >> isDeprecated: aBoolean [
 	isDeprecated := aBoolean.
-	self moveFileInto: self file parent / 'Deprecated'
 ]
 
 { #category : #'magritte-accessing' }
