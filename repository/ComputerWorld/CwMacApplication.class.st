@@ -189,9 +189,10 @@ CwMacApplication >> tellGUITo: applescriptCommand [
 { #category : #actions }
 CwMacApplication >> unquarantine [
 	SuGenericUnixCommand new
-		template: 'sudo xattr -r -d com.apple.quarantine {bundle}';
+		template: 'xattr -r -d com.apple.quarantine {bundle}';
 		argumentSource: { #bundle -> self bundle } asDictionary;
-		runInTerminal.
+		asRoot;
+		run.
 
 	"
 !References 
