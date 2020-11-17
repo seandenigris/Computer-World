@@ -129,15 +129,11 @@ CwNetworkAdapter >> usageDescription [
 
 { #category : #accessing }
 CwNetworkAdapter >> wakeOnLAN [
-	| hexString packet socket |
+	| packet socket |
 	"Adapted from description at https://www.tweaking4all.com/network-internet/miniwol-wake-on-lan/"
-	hexString := String streamContents: [ :str |
-		6 timesRepeat: [ str nextPutAll: 'FF' ].
-		16 timesRepeat: [ 
-			| macUnformatted |
-			macUnformatted := self macAddress select: #isAlphaNumeric.
-			str nextPutAll: macUnformatted ] ].
-	packet := ByteArray readHexFrom: hexString.
+	packet := ByteArray streamContents: [ :str |
+		6 timesRepeat: [ str nextPut: (Integer readFrom: 'FF' radix: 16) ].
+		16 timesRepeat: [ str nextPutAll: self macAddress asByteArray ] ].
 	socket := Socket newUDP.
 	[ 
 		| bytesSent |

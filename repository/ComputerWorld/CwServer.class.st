@@ -265,8 +265,4 @@ CwServer >> timeMachineDIYSetup [
 CwServer >> wakeOnLAN [
 	| hexString packet |
 	self error: 'How do we figure out which adapter is on the same network? For now send this directly to the adapter'.
-	hexString := String streamContents: [ :str |
-		6 timesRepeat: [ str nextPutAll: 'FF' ].
-		16 timesRepeat: [ str nextPutAll: self macAddress ] ].
-	packet := ByteArray readHexFrom: hexString
 ]

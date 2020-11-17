@@ -7,7 +7,7 @@ Integer >> asCwIPAddress [
 	| shift max |
 	shift := 32 - self.
 	max := #[255 255 255 255] asInteger.
-	^ CwIPAddress fromInteger: ((max bitShift: shift negated) bitShift: shift).
+	^ CwIP_Address fromInteger: ((max bitShift: shift negated) bitShift: shift).
 
 	"Other algorithms, baased on a discussion on Pharo Users(http://forum.world.st/Bit-Manipulation-Challenge-tp5119845.html):
 	(max bitClear: (2 raisedTo: shift) - 1) asByteArray.

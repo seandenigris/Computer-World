@@ -6,10 +6,10 @@ Class {
 
 { #category : #tests }
 CwIPAddressSpecification >> test [
-	CwIPAddress examplePrivate displayString should equal: '172.16.0.0'
+	CwIP_Address examplePrivate displayString should equal: '172.16.0.0'
 ]
 
 { #category : #tests }
 CwIPAddressSpecification >> testIsPrivate [
-	CwIPAddress examplePrivate isPrivate should beTrue
+	CwIP_Address examplePrivate isPrivate should beTrue
 ]
