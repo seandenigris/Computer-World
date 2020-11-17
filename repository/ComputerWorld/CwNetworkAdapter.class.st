@@ -48,6 +48,14 @@ CwNetworkAdapter >> ipAddressDescription [
 ]
 
 { #category : #accessing }
+CwNetworkAdapter >> isSameNetworkAs: aCwIPAddress [ 
+	self error: 'Incomplete implementation: need to find *all* our ipAddresses and both subnet masks'.
+	self ipAddress ifNil: [ ^ false ].
+	aCwIPAddress ifNil: [ ^ false ].
+	^ (self ipAddress asByteArray first: 2) = (aCwIPAddress asByteArray first: 2)
+]
+
+{ #category : #accessing }
 CwNetworkAdapter >> macAddress [
 	^ self maLazyInstVarUsing: self macAddressDescription
 ]
@@ -117,4 +125,22 @@ CwNetworkAdapter >> usageDescription [
 		accessor: #usage;
 		default: ''; "prevent nil checks"
 		yourself
+]
+
+{ #category : #accessing }
+CwNetworkAdapter >> wakeOnLAN [
+	| hexString packet socket |
+	"Adapted from description at https://www.tweaking4all.com/network-internet/miniwol-wake-on-lan/"
+	hexString := String streamContents: [ :str |
+		6 timesRepeat: [ str nextPutAll: 'FF' ].
+		16 timesRepeat: [ 
+			| macUnformatted |
+			macUnformatted := self macAddress select: #isAlphaNumeric.
+			str nextPutAll: macUnformatted ] ].
+	packet := ByteArray readHexFrom: hexString.
+	socket := Socket newUDP.
+	[ 
+		| bytesSent |
+		bytesSent := socket sendData: packet toHost: self ipAddress asByteArray port: 7.
+		self assert: bytesSent equals: packet size ] ensure: [ socket closeAndDestroy ].
 ]

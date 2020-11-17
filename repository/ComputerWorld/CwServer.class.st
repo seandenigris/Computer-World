@@ -100,6 +100,13 @@ Install Hybrid Backup Sync on both systems. The 670Pro is your backup unit, and 
 ]
 
 { #category : #accessing }
+CwServer >> ipAddress [
+	| relevantAdapter |
+	relevantAdapter := self adapters detect: [ :e | e isSameNetworkAs: OSPlatform current ipAddress ].
+	^ relevantAdapter ipAddress
+]
+
+{ #category : #accessing }
 CwServer >> macAddress [
 	^ self adapters 
 			ifNotEmpty: [ :col | col first macAddress ]
@@ -252,4 +259,14 @@ CwServer >> sshRoot [
 { #category : #misc }
 CwServer >> timeMachineDIYSetup [
 	Smalltalk tools webBrowser new open: 'https://netfuture.ch/2013/08/simple-versioned-timemachine-like-backup-using-rsync/' asUrl
+]
+
+{ #category : #accessing }
+CwServer >> wakeOnLAN [
+	| hexString packet |
+	self error: 'How do we figure out which adapter is on the same network? For now send this directly to the adapter'.
+	hexString := String streamContents: [ :str |
+		6 timesRepeat: [ str nextPutAll: 'FF' ].
+		16 timesRepeat: [ str nextPutAll: self macAddress ] ].
+	packet := ByteArray readHexFrom: hexString
 ]

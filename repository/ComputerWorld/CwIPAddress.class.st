@@ -45,12 +45,12 @@ CwIPAddress class >> fromString: aString [
 	^ self fromInteger: (self stringToRawAddress: aString)
 ]
 
-{ #category : #'instance creation' }
+{ #category : #accessing }
 CwIPAddress class >> maxRawAddress [
 	^ 4294967295.	"#[ 255 255 255 255] asInteger."
 ]
 
-{ #category : #'instance creation' }
+{ #category : #utilities }
 CwIPAddress class >> rawAddressToString: anInteger [
 	"Example: 
 		(CwIPAddress rawAddressToString: 2851995649) >>> '169.254.0.1'
@@ -62,7 +62,7 @@ CwIPAddress class >> rawAddressToString: anInteger [
 				separatedBy: [ s nextPut: $. ] ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : #utilities }
 CwIPAddress class >> stringToRawAddress: aString [
 	"Example: 
 		CwIPAddress stringToRawAddress: '169.254.0.1' >>> 2851995649
@@ -79,6 +79,11 @@ CwIPAddress >> = rhs [
 	^ self species = rhs species and: [ self rawAddress = rhs rawAddress ]
 ]
 
+{ #category : #accessing }
+CwIPAddress >> asByteArray [
+	^ self rawAddress asByteArray
+]
+
 { #category : #comparing }
 CwIPAddress >> hash [
 	^ self rawAddress hash
@@ -93,6 +98,11 @@ CwIPAddress >> isPrivate [
 		CwIPAddressRange startingAt: '192.168.0.0' subnetMask: '255.255.0.0'.
 	}.
 	^ privateRanges anySatisfy: [ :e | e includes: self ]
+]
+
+{ #category : #accessing }
+CwIPAddress >> open [
+	^ Smalltalk tools webBrowser new open: ('https://', self displayString) asZnUrl.
 ]
 
 { #category : #printing }
