@@ -4,6 +4,26 @@ Class {
 	#category : #BaselineOfComputerWorld
 }
 
+{ #category : #configuration }
+BaselineOfComputerWorld class >> setUpIDE [
+	| rootFolder |
+	rootFolder := FileLocator dynabookData / 'Computer World'.
+	
+	"Old-style GT"
+	GTPlayBook
+		cacheDirectory: (rootFolder / 'play-cache') ensureCreateDirectory;
+		stashDirectory: (rootFolder / 'play-stash') ensureCreateDirectory.
+	
+	"Gtoolkit"
+	Smalltalk globals
+		at: #XdPlaygroundSettings
+		ifPresent: [ :cls | cls directory: (rootFolder / 'xdocs') ensureCreateDirectory ].
+	
+	"Epicea"
+	OmSessionStore defaultBaseLocator: rootFolder / 'ombu-sessions'.
+	EpMonitor restart.
+]
+
 { #category : #baseline }
 BaselineOfComputerWorld >> baseline: spec [
   <baseline>
@@ -49,24 +69,4 @@ BaselineOfComputerWorld >> customProjectAttributes [
 { #category : #testing }
 BaselineOfComputerWorld >> isGTImage [
 	^ RPackageOrganizer default packageNames anySatisfy: [ :pn | pn beginsWith: 'GToolkit-' ]
-]
-
-{ #category : #'post load' }
-BaselineOfComputerWorld >> setUpIDE [
-	| rootFolder |
-	rootFolder := FileLocator dynabookData / 'Computer World'.
-	
-	"Old-style GT"
-	GTPlayBook
-		cacheDirectory: (rootFolder / 'play-cache') ensureCreateDirectory;
-		stashDirectory: (rootFolder / 'play-stash') ensureCreateDirectory.
-	
-	"Gtoolkit"
-	Smalltalk globals
-		at: #XdPlaygroundSettings
-		ifPresent: [ :cls | cls directory: (rootFolder / 'xdocs') ensureCreateDirectory ].
-	
-	"Epicea"
-	OmSessionStore defaultBaseLocator: rootFolder / 'ombu-sessions'.
-	EpMonitor restart.
 ]
