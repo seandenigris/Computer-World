@@ -4,6 +4,13 @@ Class {
 	#category : #'ComputerWorld-Mac'
 }
 
+{ #category : #accessing }
+CwGToolkitInstaller class >> allDownloaded [
+	^ FileLocator downloads files
+		select: [ :e | { self. CwLepiterInstaller } anySatisfy: [ :cls | cls isClassFor: e ] ]
+		thenCollect: [ :e | RlResource on: e ]
+]
+
 { #category : #examples }
 CwGToolkitInstaller class >> example [
 	^ self
