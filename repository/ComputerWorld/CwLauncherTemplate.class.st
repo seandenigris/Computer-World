@@ -24,6 +24,7 @@ CwLauncherTemplate class >> allActiveMatching: regexString [
 
 { #category : #'active-accessing' }
 CwLauncherTemplate class >> allActiveMissingFromRlLibrary [
+	"This should be the same as #allActive because we're not currently storing active templates in the library"
 	^ self allActive reject: [ :e | RlResourceLibrary uniqueInstance resources includes: e ]
 ]
 
