@@ -32,7 +32,7 @@ CwMac >> openFilesLimit: aNumber [
 		template: 'launchctl limit maxfiles {softLimit} unlimited';
 		asRoot;
 		argumentAt: #softLimit put: aNumber;
-		runInTerminal
+		run
 ]
 
 { #category : #accessing }
