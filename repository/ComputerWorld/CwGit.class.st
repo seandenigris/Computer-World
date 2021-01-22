@@ -1,7 +1,12 @@
+"
+!Ignoring Files
+- Anywhere recursively inside current folder - just filename e.g. ==bin/==
+- Defined path prefix and suffix, matching zero or more folders in middle e.g. ==/main/**/leaf==
+"
 Class {
 	#name : #CwGit,
 	#superclass : #Object,
-	#category : 'ComputerWorld-Apps'
+	#category : #'ComputerWorld-Apps'
 }
 
 { #category : #examples }
