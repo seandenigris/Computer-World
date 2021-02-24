@@ -46,7 +46,7 @@ BaselineOfComputerWorld >> baseline: spec [
 
 { #category : #accessing }
 BaselineOfComputerWorld >> customProjectAttributes [
-	^ self isGTImage
+	^ self class isGTImage
 			ifFalse: [ #() ]
 			ifTrue: [ #(GToolkit) ]
 ]
