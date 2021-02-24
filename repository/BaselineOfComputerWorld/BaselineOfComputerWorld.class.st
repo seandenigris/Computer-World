@@ -50,8 +50,3 @@ BaselineOfComputerWorld >> customProjectAttributes [
 			ifFalse: [ #() ]
 			ifTrue: [ #(GToolkit) ]
 ]
-
-{ #category : #testing }
-BaselineOfComputerWorld >> isGTImage [
-	^ RPackageOrganizer default packageNames anySatisfy: [ :pn | pn beginsWith: 'GToolkit-' ]
-]
