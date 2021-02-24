@@ -5,23 +5,8 @@ Class {
 }
 
 { #category : #configuration }
-BaselineOfComputerWorld class >> setUpIDE [
-	| rootFolder |
-	rootFolder := FileLocator dynabookData / 'Computer World'.
-	
-	"Old-style GT"
-	GTPlayBook
-		cacheDirectory: (rootFolder / 'play-cache') ensureCreateDirectory;
-		stashDirectory: (rootFolder / 'play-stash') ensureCreateDirectory.
-	
-	"Gtoolkit"
-	Smalltalk globals
-		at: #XdPlaygroundSettings
-		ifPresent: [ :cls | cls directory: (rootFolder / 'xdocs') ensureCreateDirectory ].
-	
-	"Epicea"
-	OmSessionStore defaultBaseLocator: rootFolder / 'ombu-sessions'.
-	EpMonitor restart.
+BaselineOfComputerWorld class >> dataFolder [
+	^ FileLocator dynabookData / 'Computer World'
 ]
 
 { #category : #baseline }
