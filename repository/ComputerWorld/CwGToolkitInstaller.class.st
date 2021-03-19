@@ -47,14 +47,15 @@ CwGToolkitInstaller >> install [
 
 { #category : #accessing }
 CwGToolkitInstaller >> installImage [
-	| imageSourceFolder targetFolder installationName |
+	| imageSourceFolder targetFolder installationName supportFolders |
 	installationName := 'GT ', self version.
 	imageSourceFolder := self targetBundle parent.
 	targetFolder := (FileLocator dynabookData parent / 'Working Images'
 		/ installationName) ensureCreateDirectory.
 	self move: imageSourceFolder / 'GlamorousToolkit.image' to: targetFolder / installationName , 'image'.
 	self move: imageSourceFolder / 'GlamorousToolkit.changes' to: targetFolder / installationName , 'changes'.
-	self move: imageSourceFolder / 'gt-extra' to: targetFolder / 'gt-extra'.
+	supportFolders := imageSourceFolder directories reject: [ :e | e extension = 'app' ].
+	supportFolders do: [ :folder | self move: folder to: targetFolder / folder basename ].
 	(targetFolder / 'pharo.version') ensureCreateFile writeStreamDo: [ :str | str nextPutAll: 'gt-', self version ]
 ]
 
@@ -81,7 +82,7 @@ CwGToolkitInstaller >> move: sourceFile to: targetFile [
 	sourceArgument := (sourceFile isDirectory and: [ targetFile exists ]) 
 		ifTrue: [ 
 			"Adapted from https://askubuntu.com/a/172634; NB. * can't be inside the quotes or the command fails"
-			sourceFile fullName surroundedByDoubleQuotes, '/*'  ]
+			sourceFile fullName surroundedByDoubleQuotes, '/*' ]
 		ifFalse: [ sourceFile ].
 	
 	"Destination directory should get trailing slash per https://stackoverflow.com/a/24925767"
