@@ -1,6 +1,8 @@
 Class {
 	#name : #CwGToolkitInstaller,
 	#superclass : #RlZipArchive,
+	#traits : 'CwTGToolkitInstaller',
+	#classTraits : 'CwTGToolkitInstaller classTrait',
 	#category : #'ComputerWorld-Mac'
 }
 
@@ -30,86 +32,38 @@ CwGToolkitInstaller class >> isClassFor: file [
 ]
 
 { #category : #accessing }
-CwGToolkitInstaller >> bundle [
-	^ '/Applications' asFileReference / self bundleName
-]
-
-{ #category : #accessing }
 CwGToolkitInstaller >> bundleName [
 	^ 'GlamorousToolkit.app'
 ]
 
 { #category : #accessing }
-CwGToolkitInstaller >> install [
-	self installVM.
-	self installImage.
+CwGToolkitInstaller >> bundleParent [
+	^ '/Applications' asFileReference
 ]
 
 { #category : #accessing }
-CwGToolkitInstaller >> installImage [
-	| imageSourceFolder targetFolder installationName supportFolders |
-	installationName := 'GT ', self version.
-	imageSourceFolder := self targetBundle parent.
-	targetFolder := (FileLocator dynabookData parent / 'Working Images'
-		/ installationName) ensureCreateDirectory.
-	self move: imageSourceFolder / 'GlamorousToolkit.image' to: targetFolder / installationName , 'image'.
-	self move: imageSourceFolder / 'GlamorousToolkit.changes' to: targetFolder / installationName , 'changes'.
-	supportFolders := imageSourceFolder directories reject: [ :e | e extension = 'app' ].
-	supportFolders do: [ :folder | self move: folder to: targetFolder / folder basename ].
-	(targetFolder / 'pharo.version') ensureCreateFile writeStreamDo: [ :str | str nextPutAll: 'gt-', self version ]
+CwGToolkitInstaller >> imageSourceFolder [
+	^ self targetBundle parent.
 ]
 
 { #category : #accessing }
-CwGToolkitInstaller >> installVM [
+CwGToolkitInstaller >> installVMFiles [
 	Tempfile do: [ :folder |
 		self decompressTo: folder.
 		self move: folder / self file base to: self targetBundle parent ].
-	(CwMacApplication fromBundle: self targetBundle) unquarantine.
 ]
 
 { #category : #accessing }
-CwGToolkitInstaller >> isInstalled [
-	| installationLocations |
-	installationLocations := { FileLocator dynabookData / 'vms' / self targetVM_ParentName }.
-	^ installationLocations anySatisfy: [ :e | (e / self bundleName) exists ].
+CwGToolkitInstaller >> installationLocations [
+	^ { FileLocator dynabookData / 'vms' / self targetVM_ParentName }.
 ]
 
 { #category : #accessing }
-CwGToolkitInstaller >> move: sourceFile to: targetFile [
-
-	| targetArgument sourceArgument |
-	"If the target is an existing directory, mv will move source file(s) into it; otherwise it renames the source as the target (per mv man page)"
-	sourceArgument := (sourceFile isDirectory and: [ targetFile exists ]) 
-		ifTrue: [ 
-			"Adapted from https://askubuntu.com/a/172634; NB. * can't be inside the quotes or the command fails"
-			sourceFile fullName surroundedByDoubleQuotes, '/*' ]
-		ifFalse: [ sourceFile ].
-	
-	"Destination directory should get trailing slash per https://stackoverflow.com/a/24925767"
-	targetArgument := targetFile isDirectory 
-		ifTrue: [ (targetFile fullName , '/') surroundedByDoubleQuotes ]
-		ifFalse: [ targetFile ].
-	SuGenericUnixCommand new
-		template: 'mv {source} {target}';
-		argumentSource: {
-			#source -> sourceArgument.
-			#target -> targetArgument } asDictionary;
-		run.
+CwGToolkitInstaller >> productName [
+	^ 'GT'
 ]
 
 { #category : #accessing }
-CwGToolkitInstaller >> targetBundle [
-	| targetVM_Parent |
-	targetVM_Parent := FileLocator dynabookData parent / 'vms' / self targetVM_ParentName.
-	^ targetVM_Parent ensureCreateDirectory / self bundleName
-]
-
-{ #category : #accessing }
-CwGToolkitInstaller >> targetVM_ParentName [
-	^ 'gt-' , self version, '-x64'
-]
-
-{ #category : #accessing }
-CwGToolkitInstaller >> version [
-	^ self file base allButFirst: 'GlamorousToolkitOSX64-v' size
+CwGToolkitInstaller >> versionPrefix [
+	^ 'GlamorousToolkitOSX64-v'
 ]

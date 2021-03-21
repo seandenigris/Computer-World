@@ -1,6 +1,8 @@
 Class {
 	#name : #CwLepiterInstaller,
 	#superclass : #RlResource,
+	#traits : 'CwTGToolkitInstaller @ {#traitInstall->#install}',
+	#classTraits : 'CwTGToolkitInstaller classTrait',
 	#category : #'ComputerWorld-Mac'
 }
 
@@ -28,57 +30,35 @@ CwLepiterInstaller class >> isClassFor: file [
 ]
 
 { #category : #accessing }
-CwLepiterInstaller >> bundle [
-	^ '/Volumes/Lepiter' asFileReference / self bundleName
-]
-
-{ #category : #accessing }
 CwLepiterInstaller >> bundleName [
 	^ CwLepiter bundle basename
 ]
 
 { #category : #accessing }
-CwLepiterInstaller >> copy: source to: target [
-	SuGenericUnixCommand new
-		template: 'cp -R {source} {target}';
-		argumentSource: { 
-			#source -> source.
-			#target -> target } asDictionary;
-		run. 
+CwLepiterInstaller >> bundleParent [
+	^ '/Volumes/Lepiter' asFileReference
+]
+
+{ #category : #accessing }
+CwLepiterInstaller >> imageSourceFolder [
+	^ self targetBundle / 'Contents' / 'MacOS'.
 ]
 
 { #category : #accessing }
 CwLepiterInstaller >> install [
 	self mount.
-	self installVM.
-	self installImage.
+	self traitInstall
 ]
 
 { #category : #accessing }
-CwLepiterInstaller >> installImage [
-	| imageSourceFolder targetFolder installationName |
-	installationName := 'Lepiter ', self version.
-	imageSourceFolder := self targetBundle / 'Contents' / 'MacOS'.
-	targetFolder := (FileLocator dynabookData parent / 'Working Images'
-		/ installationName) ensureCreateDirectory.
-	self move: imageSourceFolder / 'Lepiter.image' to: targetFolder / installationName , 'image'.
-	self move: imageSourceFolder / 'Lepiter.changes' to: targetFolder / installationName , 'changes'.
-	self move: imageSourceFolder / 'gt-extra' to: targetFolder / 'gt-extra'.
-	(targetFolder / 'pharo.version') ensureCreateFile writeStreamDo: [ :str | str nextPutAll: 'le-', self version ]
-]
-
-{ #category : #accessing }
-CwLepiterInstaller >> installVM [
+CwLepiterInstaller >> installVMFiles [
 	"We'll install everything - even the image files - because we know we can move them from there, but the source might be read-only (e.g. a mounted dmg)"
 	self copy: self bundle to: self targetBundle.
-	(CwLepiter fromBundle: self targetBundle) unquarantine.
 ]
 
 { #category : #accessing }
-CwLepiterInstaller >> isInstalled [
-	| installationLocations |
-	installationLocations := { CwLepiter bundle parent. FileLocator dynabookData / 'vms' / self targetVM_ParentName }.
-	^ installationLocations anySatisfy: [ :e | (e / self bundleName) exists ].
+CwLepiterInstaller >> installationLocations [
+	^ { CwLepiter bundle parent. FileLocator dynabookData / 'vms' / self targetVM_ParentName }.
 ]
 
 { #category : #accessing }
@@ -89,28 +69,11 @@ CwLepiterInstaller >> mount [
 ]
 
 { #category : #accessing }
-CwLepiterInstaller >> move: source to: target [
-
-	SuGenericUnixCommand new
-		template: 'mv {source} {target}';
-		argumentSource: {
-			#source -> source.
-			#target -> target } asDictionary;
-		run.
+CwLepiterInstaller >> productName [
+	^ 'Lepiter'
 ]
 
 { #category : #accessing }
-CwLepiterInstaller >> targetBundle [
-	^ (FileLocator dynabookData parent / 'vms' / self targetVM_ParentName)
-		ensureCreateDirectory / self bundleName
-]
-
-{ #category : #accessing }
-CwLepiterInstaller >> targetVM_ParentName [
-	^ 'le-' , self version, '-x64'
-]
-
-{ #category : #accessing }
-CwLepiterInstaller >> version [
-	^ self file base allButFirst: 'Lepiter-v' size
+CwLepiterInstaller >> versionPrefix [
+	^ 'Lepiter-v'
 ]
