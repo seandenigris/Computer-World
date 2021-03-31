@@ -1,7 +1,7 @@
 Class {
 	#name : #CwMacMail,
 	#superclass : #Object,
-	#category : 'ComputerWorld-Mac'
+	#category : #'ComputerWorld-Mac'
 }
 
 { #category : #'as yet unclassified' }
@@ -10,10 +10,11 @@ CwMacMail class >> browseSignatures [
 	self new signatures inspect
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 CwMacMail >> signatureFolder [
 
 	| libraryMailFolder vFolders |
+	self flag: 'Only works if not using iCloud for Mail. See http://matt.coneybeare.me/how-to-make-an-html-signature-in-apple-mail-for-mojave-os-x-10-dot-14/ for details'.
 	libraryMailFolder := FileLocator home / 'Library' / 'Mail'.
 	vFolders := libraryMailFolder directoriesMatching: 'V*'.
 	self assert: vFolders size = 1. "Domain assumption"
