@@ -59,8 +59,18 @@ CwGToolkitInstaller >> installationLocations [
 ]
 
 { #category : #accessing }
-CwGToolkitInstaller >> productName [
+CwGToolkitInstaller >> installationPrefix [
+	^ self productAbbreviation
+]
+
+{ #category : #accessing }
+CwGToolkitInstaller >> productAbbreviation [
 	^ 'GT'
+]
+
+{ #category : #accessing }
+CwGToolkitInstaller >> productName [
+	^ 'GlamorousToolkit'
 ]
 
 { #category : #accessing }

@@ -62,6 +62,11 @@ CwLepiterInstaller >> installationLocations [
 ]
 
 { #category : #accessing }
+CwLepiterInstaller >> installationPrefix [
+	^ self productName
+]
+
+{ #category : #accessing }
 CwLepiterInstaller >> mount [
 	Su_hdiutil mounting
 		argumentAt: #diskImage put: self file;

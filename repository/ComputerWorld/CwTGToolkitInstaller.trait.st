@@ -30,14 +30,15 @@ CwTGToolkitInstaller >> install [
 { #category : #accessing }
 CwTGToolkitInstaller >> installImage [
 	| targetFolder installationName supportFolders |
-	installationName := self productName, ' ', self version.
+	installationName := self installationPrefix, ' ', self version.
 	targetFolder := (FileLocator dynabookData parent / 'Working Images'
 		/ installationName) ensureCreateDirectory.
-	self move: self imageSourceFolder / self productName, 'image' to: targetFolder / installationName , 'image'.
-	self move: self imageSourceFolder / self productName, 'changes' to: targetFolder / installationName , 'changes'.
-	supportFolders := self imageSourceFolder directories reject: [ :e | e extension = 'app' ].
+	self move: self imageSourceFolder / self installationPrefix, 'image' to: targetFolder / installationName , 'image'.
+	self move: self imageSourceFolder / self installationPrefix, 'changes' to: targetFolder / installationName , 'changes'.
+	supportFolders := self imageSourceFolder directories reject: [ :e | 
+		e extension = 'app' or: [ e basename = 'Plugins' ] ].
 	supportFolders do: [ :folder | self move: folder to: targetFolder / folder basename ].
-	(targetFolder / 'pharo.version') ensureCreateFile writeStreamDo: [ :str | str nextPutAll: self productAbbreviation, '-', self version ]
+	(targetFolder / 'pharo.version') ensureCreateFile writeStreamDo: [ :str | str nextPutAll: self versionID ]
 ]
 
 { #category : #accessing }
@@ -87,10 +88,15 @@ CwTGToolkitInstaller >> targetBundle [
 
 { #category : #accessing }
 CwTGToolkitInstaller >> targetVM_ParentName [
-	^ self productAbbreviation asLowercase, '-' , self version, '-x64'
+	^ self versionID , '-x64'
 ]
 
 { #category : #accessing }
 CwTGToolkitInstaller >> version [
 	^ self file base allButFirst: self versionPrefix size
+]
+
+{ #category : #accessing }
+CwTGToolkitInstaller >> versionID [
+	^ self productAbbreviation asLowercase , '-' , self version
 ]
