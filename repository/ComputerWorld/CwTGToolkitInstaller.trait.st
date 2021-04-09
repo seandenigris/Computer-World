@@ -33,8 +33,8 @@ CwTGToolkitInstaller >> installImage [
 	installationName := self installationPrefix, ' ', self version.
 	targetFolder := (FileLocator dynabookData parent / 'Working Images'
 		/ installationName) ensureCreateDirectory.
-	self move: self imageSourceFolder / self installationPrefix, 'image' to: targetFolder / installationName , 'image'.
-	self move: self imageSourceFolder / self installationPrefix, 'changes' to: targetFolder / installationName , 'changes'.
+	self move: self imageSourceFolder / self productName, 'image' to: targetFolder / installationName , 'image'.
+	self move: self imageSourceFolder / self productName, 'changes' to: targetFolder / installationName , 'changes'.
 	supportFolders := self imageSourceFolder directories reject: [ :e | 
 		e extension = 'app' or: [ e basename = 'Plugins' ] ].
 	supportFolders do: [ :folder | self move: folder to: targetFolder / folder basename ].
