@@ -65,3 +65,16 @@ CwMac >> viewKernelPanicLogs [
 	"From https://www.macobserver.com/tmo/article/os-x-troubleshooting-kernel-panics"
 	Smalltalk tools shell new command: 'open /Library/Logs/DiagnosticReports/*.panic'
 ]
+
+{ #category : #actions }
+CwMac >> wifiPower: aBoolean [
+	| statusString |
+	statusString := aBoolean
+		ifTrue: [ 'on' ]
+		ifFalse: [ 'off' ].
+	
+	SuGenericUnixCommand new
+		template: 'networksetup -setairportpower en0 {status}';
+		argumentAt: #status put: statusString;
+		run	
+]
