@@ -1,3 +1,9 @@
+"
+!Wi-Fi Control
+Power can already easily be toggled with ${method:CwMac>>#wifiPower:}$:
+
+For a comprehensive overview of what other actions might be available, see *here>https://www.techrepublic.com/article/pro-tip-manage-wi-fi-with-terminal-commands-on-os-x/*.
+"
 Class {
 	#name : #CwMac,
 	#superclass : #Object,
