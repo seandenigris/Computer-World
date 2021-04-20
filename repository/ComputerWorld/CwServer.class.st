@@ -35,6 +35,19 @@ CwServer class >> exampleRouter [
 			yourself.
 ]
 
+{ #category : #accessing }
+CwServer class >> gtViewServersOn: aView [
+	<gtView>
+	<gtClassView>
+	^ aView columnedList
+		title: 'Servers' translated;
+		priority: 5;
+		items: [ self db ];
+		column: 'Name' text: [ :serv | serv name ];
+		column: 'Manufacturer' text: [ :serv | serv manufacturer ];
+		column: 'Model' text: [ :serv | serv model ]
+]
+
 { #category : #persistence }
 CwServer class >> restoreFrom: aCollection [
 
