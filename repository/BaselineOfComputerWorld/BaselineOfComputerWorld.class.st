@@ -16,9 +16,7 @@ In a GToolkit (preferably) or Pharo (v. 8 best supported at time of writing), do
 N.B. you only have to do the outer fork if on GT and you want the UI to stay responsive during the load.
 !! Features
 !!! Server Management
-![Screen Shot 2021-04-30 at 10 03 53 AM](https://user-images.githubusercontent.com/184176/116708691-f593dd00-a99d-11eb-88cc-cc27f3c21a94.png)
-A basic implementation has been started. It models IP addresses nicely, users and privileges, mac addresses. Ations include ""SSH as admin"".
-
+A good place to start is ${class:CwServer}$.  There are also IP addresses, users and privileges, mac addresses. Actions include ""SSH as admin"".
 "
 Class {
 	#name : #BaselineOfComputerWorld,
