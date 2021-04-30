@@ -13,7 +13,6 @@ In a GToolkit (preferably) or Pharo (v. 8 best supported at time of writing), do
 		repository: 'github://seandenigris/Computer-World';
 		onConflictUseLoaded;
 		load ] ensure: [ EpMonitor current enable ].
-	#BaselineOfComputerWorld asClass setUpIDE.
 	#SuperuserDB asClass restoreLastBackup.
 	#ComputerWorldDB asClass restoreLastBackup.
 ] fork
