@@ -26,6 +26,15 @@ CwIP_Address class >> exampleMask [
 	^ CwIP_Address fromString: '255.255.0.0'
 ]
 
+{ #category : #example }
+CwIP_Address class >> exampleMasking [
+	<gtExample>
+	| result |
+	result := self example maskedWith: self exampleMask.
+	self assert: result equals: (CwIP_Address fromString: '169.254.0.0').
+	^ result
+]
+
 { #category : #'instance creation' }
 CwIP_Address class >> examplePrivate [
 	<sampleInstance>
@@ -59,6 +68,11 @@ CwIP_Address class >> stringToRawAddressExample [
 	self assert: (CwIP_Address stringToRawAddress: '169.254.0.1') equals: 2851995649.
 ]
 
+{ #category : #converting }
+CwIP_Address >> asCwIPAddress [
+	^ self
+]
+
 { #category : #testing }
 CwIP_Address >> isPrivate [
 	| privateRanges |
@@ -68,6 +82,11 @@ CwIP_Address >> isPrivate [
 		CwIPAddressRange startingAt: '192.168.0.0' subnetMask: '255.255.0.0'.
 	}.
 	^ privateRanges anySatisfy: [ :e | e includes: self ]
+]
+
+{ #category : #accessing }
+CwIP_Address >> maskedWith: anAddress [
+	^ CwIP_Address fromInteger: (self rawAddress bitAnd: anAddress rawAddress)
 ]
 
 { #category : #accessing }

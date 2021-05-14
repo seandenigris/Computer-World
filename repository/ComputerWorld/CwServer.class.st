@@ -129,6 +129,12 @@ CwServer >> ipAddress [
 ]
 
 { #category : #accessing }
+CwServer >> logIn [
+	self error: 'WIP - have to consider all devices, not just default network'.
+	^ self adapters detect: [ :e | e ipAddress ifNotNil: [ :a | CwMac current defaultNetwork includes: a ] ifNil: [ false ] ]
+]
+
+{ #category : #accessing }
 CwServer >> macAddress [
 	^ self adapters 
 			ifNotEmpty: [ :col | col first macAddress ]
