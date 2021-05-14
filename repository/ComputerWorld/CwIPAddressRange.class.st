@@ -10,6 +10,17 @@ Class {
 }
 
 { #category : #accessing }
+CwIPAddressRange class >> including: address subnetMask: maskAddress [
+	"CwIPAddressRange startingAt: CwIPAddress example subnetMask: CwIPAddress exampleMask"
+	| startAddress |
+	startAddress := address maskedWith: maskAddress.
+	^ self new
+			start: startAddress;
+			subnetMask: maskAddress asCwIPAddress;
+			yourself
+]
+
+{ #category : #accessing }
 CwIPAddressRange class >> linkLocal [
 	"If no DHCP server is found, then it is common practice for OSs to assign an IP address in this range (per https://www.ni.com/en-us/support/documentation/supplemental/11/best-practices-for-using-multiple-network-interfaces--nics--with.html)"
 	^ self startingAt: '169.254.0.0' subnetMask: '255.255.0.0'
