@@ -21,6 +21,44 @@ CwMac >> addSSH_KeysToKeychain [
 ]
 
 { #category : #accessing }
+CwMac >> defaultIPAddress [
+	^ SuGenericUnixCommand new
+		template: 'ipconfig getifaddr {deviceName}'; "via OSX Daily https://osxdaily.com/2010/08/08/lan-ip-address-mac/#comment-110377"
+		argumentAt: #deviceName put: self defaultNetworkDeviceName;
+		outputDecoder: [ :str | CwIP_Address fromString: str ];
+		output
+]
+
+{ #category : #accessing }
+CwMac >> defaultNetwork [
+	^ CwIPAddressRange including: self defaultIPAddress subnetMask: self defaultSubnetMask
+]
+
+{ #category : #accessing }
+CwMac >> defaultNetworkDeviceName [
+	^ SuGenericUnixCommand new
+		template: 'route -n get default|grep interface|awk ''\{ print $2 \}'''; "via OSX Daily https://osxdaily.com/2010/08/08/lan-ip-address-mac/#comment-110377"
+		outputDecoder: [ :str | str trimBoth ];
+		output
+]
+
+{ #category : #accessing }
+CwMac >> defaultSubnetMask [
+	^ SuGenericUnixCommand new
+		template: 'ifconfig | grep -A 5 {deviceName}'; "via OSX Daily https://osxdaily.com/2010/08/08/lan-ip-address-mac/#comment-110377"
+		argumentAt: #deviceName put: self defaultNetworkDeviceName;
+		outputDecoder: [ :str | 
+			| line tokens labelIndex hex0x raw |
+			line := str lines detect: [ :l | l trimLeft beginsWith: 'inet ' ].
+			tokens := line findTokens: ' '.
+			labelIndex := tokens detectIndex: [ :e | e = 'netmask' ].
+			hex0x := tokens at: labelIndex + 1.
+			raw := Integer readFrom: (hex0x allButFirst: 2) base: 16.
+			CwIP_Address fromInteger: raw ];
+		output
+]
+
+{ #category : #accessing }
 CwMac >> openFilesByProcess [
 	SuGenericUnixCommand new
 		template: 'sudo lsof -n +c 0 | cut -f1 -d'' '' | uniq -c | sort | tail';
