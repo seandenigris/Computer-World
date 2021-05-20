@@ -2,10 +2,10 @@
 There are two ways to use me.
 
 !Generic Application Mode
-This may be how most applications start out. There is no behavior yet to justify a subclass, and we may never come back to implement any, so we ${example:CwMacApplication class>>#mail|previewShow=true}$ create an instance like so:
+This may be how most applications start out. There is no behavior yet to justify a subclass, and we may never come back to implement any, so we create an instance ${method:CwMacApplication class>>#mail|expanded=true|label='like so'}$:
 and we're able to do things that are universal to all applications.
 !!Quarantine on Mac
-In certain circumstances, MacOS places downloaded apps in ""quarantine"". One of the consequences that can cause confusion is that the app is then copied to a read-only DMG in another location and run from there.  This can stymy code that relies on the image or VM being in a particular place. I provide the ability to check via ${method:CwMacApplication>>#isQuarantined|label=isQuarantined}$ and fix via ${method:CwMacApplication>>#unquarantine|label=unquarantine}$.
+In certain circumstances, MacOS places downloaded apps in ""quarantine"". One of the consequences that can cause confusion is that the app is then copied to a read-only DMG in another location and run from there.  This can stymie code that relies on the image or VM being in a particular place. I provide the ability to check via ${method:CwMacApplication>>#isQuarantined|label=isQuarantined}$ and fix via ${method:CwMacApplication>>#unquarantine|label=unquarantine}$.
 !Application with Specific Behavior
 Once we begin to implement features unique to the app, a subclass is in order. Here are some already available:
 [[[language=smalltalk
@@ -27,7 +27,7 @@ CwMacApplication class >> bundle [
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : #'instance creation' }
 CwMacApplication class >> calibre [
 	^ CwMacApplication fromBundle: '/Applications/calibre.app' asFileReference.
 ]
@@ -52,6 +52,15 @@ CwMacApplication class >> exampleSubclassExists [
 ]
 
 { #category : #accessing }
+CwMacApplication class >> executable [
+	| folder files |
+	folder := self bundle / 'Contents' / 'MacOS'.
+	files := folder files.
+	self assert: files size = 1. "Domain assumption"
+	^ files first.
+]
+
+{ #category : #accessing }
 CwMacApplication class >> fromBundle: aFileReference [
 	^ self allSubclasses
 		detect: [ :cls | cls bundle basename = aFileReference basename ]
@@ -65,9 +74,22 @@ CwMacApplication class >> fromBundle: aFileReference [
 				yourself ]
 ]
 
-{ #category : #accessing }
+{ #category : #'instance creation' }
 CwMacApplication class >> glamorousToolkit [
 	^ self fromBundle: '/Applications/GlamorousToolkit/GlamorousToolkit.app' asFileReference.
+]
+
+{ #category : #'process management' }
+CwMacApplication class >> killAll [
+	SuGenericUnixCommand new
+		template: 'killall {processName}';
+		argumentAt: #processName put: self executable basename;
+		run.
+]
+
+{ #category : #'process management' }
+CwMacApplication class >> launch [
+	self bundle open.
 ]
 
 { #category : #'instance creation' }
@@ -83,19 +105,27 @@ CwMacApplication class >> reference [
 	^ self new.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #'process management' }
+CwMacApplication class >> relaunch [
+	self killAll.
+	[ "Give enough time to shut down without freezing the image"
+		3 seconds wait.
+		self launch ] fork
+]
+
+{ #category : #actions }
 CwMacApplication >> activate [
 
 	self tellApplicationTo: 'activate'.
 ]
 
-{ #category : #actions }
+{ #category : #accessing }
 CwMacApplication >> applicationName [
 
 	^ self bundle base.
 ]
 
-{ #category : #accessing }
+{ #category : #'Magritte-accessing' }
 CwMacApplication >> applicationNameDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -114,13 +144,13 @@ CwMacApplication >> bundle: aFileReference [
 	bundle := aFileReference
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #actions }
 CwMacApplication >> delay: aDuration [ 
 
 	self tellApplicationTo: 'delay ', aDuration seconds asString.
 ]
 
-{ #category : #actions }
+{ #category : #testing }
 CwMacApplication >> isQuarantined [
 	"For some of the implications of quarantine, see https://www.synack.com/blog/untranslocating-apps/"
 
