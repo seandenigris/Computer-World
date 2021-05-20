@@ -15,6 +15,8 @@ In a GToolkit (preferably) or Pharo (v. 8 best supported at time of writing), do
 ]]]
 N.B. you only have to do the outer fork if on GT and you want the UI to stay responsive during the load.
 !! Features
+!!Mac Control
+The primary entry point is ${class:CwMac}$.
 !!! Server Management
 A good place to start is ${class:CwServer}$.  There are also IP addresses, users and privileges, mac addresses. Actions include ""SSH as admin"".
 "
