@@ -1,6 +1,6 @@
 Class {
 	#name : #CwNetworkSpecification,
-	#superclass : #BabyPhexample,
+	#superclass : #TestCase,
 	#category : #'ComputerWorld-Specification'
 }
 
@@ -21,7 +21,7 @@ CwNetworkSpecification >> testAvailableAddresses [
 
 { #category : #tests }
 CwNetworkSpecification >> testConvertToString [
-	CwIP_Address examplePrivate displayString should equal: '172.16.0.0'
+	CwIPAddress examplePrivate displayString should equal: '172.16.0.0'
 ]
 
 { #category : #tests }
@@ -43,7 +43,7 @@ CwNetworkSpecification >> testIsPrivate [
 		'192.168.0.0' 
 		'192.168.255.255'
 	).
-	privateAddresses do: [ :e | (CwIP_Address fromString: e) isPrivate should beTrue ].
+	privateAddresses do: [ :e | (CwIPAddress fromString: e) should be isPrivate ].
 	
 	nonPrivateAddresses := #( 
 		'9.255.255.255'
@@ -53,5 +53,5 @@ CwNetworkSpecification >> testIsPrivate [
 		'192.167.255.255'
 		'192.169.0.0' 
 	).
-	nonPrivateAddresses do: [ :e | (CwIP_Address fromString: e) isPrivate should beFalse ]
+	nonPrivateAddresses do: [ :e | (CwIPAddress fromString: e) should not be isPrivate ]
 ]

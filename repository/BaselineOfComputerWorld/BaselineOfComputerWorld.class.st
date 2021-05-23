@@ -37,8 +37,6 @@ BaselineOfComputerWorld >> baseline: spec [
 
 	spec for: #'common' do: [
 		spec
-			baseline: 'BabyPhexample' with: [
-				spec repository: 'github://seandenigris/Baby-Phexample' ];
 			baseline: 'CPanel' with: [
 				spec repository: 'github://seandenigris/cPanel-Live' ];
 			baseline: 'ExternalWebBrowser' with: [
@@ -55,11 +53,13 @@ BaselineOfComputerWorld >> baseline: spec [
 				spec repository: 'github://seandenigris/ResourcesLive' ];
 			baseline: 'SimpleApplescript' with: [
 				spec repository: 'github://seandenigris/Applescript-St' ];
+			baseline: 'StateSpecs' with: [
+				spec repository: 'github://dionisiydk/StateSpecs' ];
 			baseline: 'Superuser' with: [
 				spec repository: 'github://seandenigris/Superuser' ];
 			baseline: 'Tempfile' with: [
 				spec repository: 'github://seandenigris/TempfileSt' ].
-		spec package: 'ComputerWorld' with: [ spec requires: #(BabyPhexample CPanel ExternalWebBrowser Magritte NeoJSON "for BTT" OSShell PharoEnhancements ResourcesLive SimpleApplescript Superuser Tempfile) ] ].
+		spec package: 'ComputerWorld' with: [ spec requires: #(CPanel ExternalWebBrowser Magritte NeoJSON "for BTT" OSShell PharoEnhancements ResourcesLive SimpleApplescript StateSpecs Superuser Tempfile) ] ].
 	
 	spec for: #GToolkit do: [ 
 		spec package: 'ComputerWorld-GToolkit' with: [ spec requires: #(ComputerWorld) ] ]

@@ -1,13 +1,13 @@
 Class {
 	#name : #CwPharoCastTests,
 	#superclass : #TestCase,
-	#category : 'ComputerWorld-Specification'
+	#category : #'ComputerWorld-Specification'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 CwPharoCastTests >> testCreation [
 
 	| pharoCast |
 	pharoCast := CwPharoCast titled: 'Pharo GUI with Polymorph'.
-	pharoCast title should = 'Pharo GUI with Polymorph'.
+	pharoCast title should equal: 'Pharo GUI with Polymorph'.
 ]

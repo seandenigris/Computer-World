@@ -1,6 +1,6 @@
 Class {
 	#name : #CwPasswordSpecification,
-	#superclass : #BabyPhexample,
+	#superclass : #TestCase,
 	#category : #'ComputerWorld-Specification'
 }
 

@@ -1,10 +1,10 @@
 Class {
 	#name : #CwSoftwareTests,
 	#superclass : #TestCase,
-	#category : 'ComputerWorld-Specification'
+	#category : #'ComputerWorld-Specification'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 CwSoftwareTests >> testDownloadUrlShouldAcceptStrings [
 
 	| software address |
@@ -14,10 +14,10 @@ CwSoftwareTests >> testDownloadUrlShouldAcceptStrings [
 	software 	canBeDownloadedAt: address.
 
 	software downloadUrl should beKindOf: ZnUrl. 
-	software downloadUrl asString should = address.
+	software downloadUrl asString should equal: address.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 CwSoftwareTests >> testDownloadUrlShouldAcceptUrls [
 
 	| software address |
@@ -27,19 +27,19 @@ CwSoftwareTests >> testDownloadUrlShouldAcceptUrls [
 	software 	canBeDownloadedAt: address asUrl.
 
 	software downloadUrl should beKindOf: ZnUrl. 
-	software downloadUrl asString should = address.
+	software downloadUrl asString should equal: address.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 CwSoftwareTests >> testPrinting [
 
 	| software |
 	software := CwSoftware named: 'UIBrowser'.
 	
-	software printString should = 'UIBrowser'.
+	software printString should equal: 'UIBrowser'.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 CwSoftwareTests >> testWebpageShouldAcceptStrings [
 
 	| software |
@@ -47,10 +47,10 @@ CwSoftwareTests >> testWebpageShouldAcceptStrings [
 	
 	software webpage: 'http://pfiddlesoft.com/uibrowser/index.html'.
 	software webpage should beKindOf: ZnUrl. 
-	software webpage asString should = 'http://pfiddlesoft.com/uibrowser/index.html'.
+	software webpage asString should equal: 'http://pfiddlesoft.com/uibrowser/index.html'.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 CwSoftwareTests >> testWebpageShouldAcceptUrls [
 
 	| software |
@@ -58,5 +58,5 @@ CwSoftwareTests >> testWebpageShouldAcceptUrls [
 	
 	software webpage: 'http://pfiddlesoft.com/uibrowser/index.html' asUrl.
 	software webpage should beKindOf: ZnUrl. 
-	software webpage asString should = 'http://pfiddlesoft.com/uibrowser/index.html'.
+	software webpage asString should equal: 'http://pfiddlesoft.com/uibrowser/index.html'.
 ]

@@ -1,7 +1,7 @@
 Class {
 	#name : #CwTravisCISpecification,
-	#superclass : #BabyPhexample,
-	#category : 'ComputerWorld-Specification'
+	#superclass : #TestCase,
+	#category : #'ComputerWorld-Specification'
 }
 
 { #category : #'as yet unclassified' }
@@ -19,12 +19,12 @@ CwTravisCISpecification >> testSetUpMissingRepository [
 		[ CwTravisCI new setUp: tf ] should signal: Error ].
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 CwTravisCISpecification >> testSetUpRepository [
 	
 	Tempfile do: [ :tf |
 		tf ensureCreateDirectory.
 		CwTravisCI new setUp: tf.
-		(tf / '.smalltalk.ston') exists should beTrue.
-		(tf / '.travis.yml') exists should beTrue ].
+		(tf / '.smalltalk.ston') should be exists.
+		(tf / '.travis.yml') should be exists ].
 ]
