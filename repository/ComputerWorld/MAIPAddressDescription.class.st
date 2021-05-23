@@ -6,7 +6,7 @@ Class {
 
 { #category : #'accessing-defaults' }
 MAIPAddressDescription class >> defaultKind [
-	^ CwIP_Address
+	^ CwIPAddress
 ]
 
 { #category : #visiting }

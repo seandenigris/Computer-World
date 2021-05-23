@@ -29,7 +29,7 @@ CwMac >> defaultIPAddress [
 	^ SuGenericUnixCommand new
 		template: 'ipconfig getifaddr {deviceName}'; "via OSX Daily https://osxdaily.com/2010/08/08/lan-ip-address-mac/#comment-110377"
 		argumentAt: #deviceName put: self defaultNetworkDeviceName;
-		outputDecoder: [ :str | CwIP_Address fromString: str ];
+		outputDecoder: [ :str | CwIPAddress fromString: str ];
 		output
 ]
 
@@ -58,7 +58,7 @@ CwMac >> defaultSubnetMask [
 			labelIndex := tokens detectIndex: [ :e | e = 'netmask' ].
 			hex0x := tokens at: labelIndex + 1.
 			raw := Integer readFrom: (hex0x allButFirst: 2) base: 16.
-			CwIP_Address fromInteger: raw ];
+			CwIPAddress fromInteger: raw ];
 		output
 ]
 

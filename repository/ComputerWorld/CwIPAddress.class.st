@@ -1,80 +1,80 @@
 Class {
-	#name : #'CwIP_Address',
+	#name : #CwIPAddress,
 	#superclass : #CwInternetAddress,
 	#category : #'ComputerWorld-Core'
 }
 
 { #category : #utilities }
-CwIP_Address class >> byteToString: anInteger [
+CwIPAddress class >> byteToString: anInteger [
 	^ anInteger printString
 ]
 
 { #category : #printing }
-CwIP_Address class >> displaySeparator [
+CwIPAddress class >> displaySeparator [
 	^ $.
 ]
 
 { #category : #'instance creation' }
-CwIP_Address class >> example [
+CwIPAddress class >> example [
 	<gtExample>
-	^ CwIP_Address fromString: '169.254.0.1'
+	^ CwIPAddress fromString: '169.254.0.1'
 ]
 
 { #category : #'instance creation' }
-CwIP_Address class >> exampleMask [
+CwIPAddress class >> exampleMask [
 	<sampleInstance>
-	^ CwIP_Address fromString: '255.255.0.0'
+	^ CwIPAddress fromString: '255.255.0.0'
 ]
 
 { #category : #example }
-CwIP_Address class >> exampleMasking [
+CwIPAddress class >> exampleMasking [
 	<gtExample>
 	| result |
 	result := self example maskedWith: self exampleMask.
-	self assert: result equals: (CwIP_Address fromString: '169.254.0.0').
+	result should equal: '169.254.0.0'.
 	^ result
 ]
 
 { #category : #'instance creation' }
-CwIP_Address class >> examplePrivate [
+CwIPAddress class >> examplePrivate [
 	<sampleInstance>
-	^ CwIP_Address fromString: '172.16.0.0'
+	^ CwIPAddress fromString: '172.16.0.0'
 ]
 
 { #category : #accessing }
-CwIP_Address class >> maxRawAddress [
+CwIPAddress class >> maxRawAddress [
 	^ 4294967295.	"#[ 255 255 255 255] asInteger."
 ]
 
 { #category : #examples }
-CwIP_Address class >> rawAddressToStringExample [
+CwIPAddress class >> rawAddressToStringExample [
 	<gtExample>
-	self assert: (CwIP_Address rawAddressToString: 2851995649) equals: '169.254.0.1'.
+	(CwIPAddress rawAddressToString: 2851995649) should equal: '169.254.0.1'.
 ]
 
 { #category : #'as yet unclassified' }
-CwIP_Address class >> sizeInBytes [
+CwIPAddress class >> sizeInBytes [
 	^ 4
 ]
 
 { #category : #utilities }
-CwIP_Address class >> stringToByte: aString [
+CwIPAddress class >> stringToByte: aString [
 	^ aString asInteger
 ]
 
 { #category : #examples }
-CwIP_Address class >> stringToRawAddressExample [
+CwIPAddress class >> stringToRawAddressExample [
 	<gtExample>
-	self assert: (CwIP_Address stringToRawAddress: '169.254.0.1') equals: 2851995649.
+	(CwIPAddress stringToRawAddress: '169.254.0.1') should equal: 2851995649.
 ]
 
 { #category : #converting }
-CwIP_Address >> asCwIPAddress [
+CwIPAddress >> asCwIPAddress [
 	^ self
 ]
 
 { #category : #testing }
-CwIP_Address >> isPrivate [
+CwIPAddress >> isPrivate [
 	| privateRanges |
 	privateRanges := { 
 		CwIPAddressRange startingAt: '10.0.0.0' subnetMask: '255.0.0.0'.
@@ -85,17 +85,24 @@ CwIP_Address >> isPrivate [
 ]
 
 { #category : #accessing }
-CwIP_Address >> maskedWith: anAddress [
-	^ CwIP_Address fromInteger: (self rawAddress bitAnd: anAddress rawAddress)
+CwIPAddress >> maskedWith: anAddress [
+	^ CwIPAddress fromInteger: (self rawAddress bitAnd: anAddress rawAddress)
 ]
 
 { #category : #accessing }
-CwIP_Address >> open [
+CwIPAddress >> open [
 	^ Smalltalk tools webBrowser new open: ('https://', self displayString) asZnUrl.
 ]
 
+{ #category : #accessing }
+CwIPAddress >> should [
+	^ CwIPAddressShouldSpec new
+		receiver: self;
+		yourself
+]
+
 { #category : #'magritte-accessing' }
-CwIP_Address >> stringDescription [
+CwIPAddress >> stringDescription [
 	"<magritteDescription>"
 	self flag: 'Part of experiment to describe types in multiple ways, one of which being a simple string equivalent. Doesn''t work if enabled at the same time as #rawAddressdescription, presumably because they both operate on the same datat'.
 	^ MAIPAddressDescription new

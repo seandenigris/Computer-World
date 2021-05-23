@@ -6,5 +6,5 @@ MacOSXPlatform >> ipAddresses [
 	| ipString |
 	self error: 'we may have several. `arp -a` gets all ips on the network and `ifconfig` gets all our Mac''s IPs, but output needs to be parsed'.
 	ipString := Smalltalk tools shell new outputOf: 'ipconfig getifaddr en0'.
-	^ CwIP_Address fromString: ipString 
+	^ CwIPAddress fromString: ipString 
 ]
