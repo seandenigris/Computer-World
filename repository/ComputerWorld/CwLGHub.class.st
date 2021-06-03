@@ -1,6 +1,6 @@
 Class {
 	#name : #CwLGHub,
-	#superclass : #CwMacApplication,
+	#superclass : #CwLogitechApplication,
 	#category : #'ComputerWorld-Apps'
 }
 
@@ -11,5 +11,15 @@ CwLGHub class >> bundle [
 
 { #category : #accessing }
 CwLGHub >> manual [
-	^ Smalltalk tools webBrowser new open: 'https://www.logitech.com/assets/65550/ghub.pdf'
+	^ self productHome / 'assets' / '65550' / 'ghub.pdf'
+]
+
+{ #category : #accessing }
+CwLGHub >> productHome [
+	^ 'https://logitech.com' asUrl
+]
+
+{ #category : #accessing }
+CwLGHub >> supportHome [
+	^ 'https://support.logi.com' asUrl
 ]
