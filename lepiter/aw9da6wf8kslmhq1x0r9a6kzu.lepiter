@@ -63,14 +63,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-06-07T17:42:26.400691-04:00"
+						"dateAndTimeString" : "2021-06-07T17:44:09.7738-04:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "9V2ZppWADQCvOaeTC2wMuA=="
 				},
-				"code" : "\"How do we programmatically \"repair discarding image changes without checkout\"\""
+				"code" : "\"How do we programmatically 'repair discarding image changes without checkout'? Have to explore from a vanilla Pharo image because no Morphic halos in GT...\""
 			}
 		]
 	},

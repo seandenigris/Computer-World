@@ -63,14 +63,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-06-07T17:42:16.969074-04:00"
+						"dateAndTimeString" : "2021-06-07T17:43:48.168911-04:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "9V2ZppWADQCvOaeTC2wMuA=="
 				},
-				"code" : "\"How do we \""
+				"code" : "\"How do we programmatically 'repair discarding image changes without checkout'?\""
 			}
 		]
 	},
