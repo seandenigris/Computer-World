@@ -1,13 +1,14 @@
 "
-!Diff
-!!Between Two Commits
-For example, between the last two commits: ==git diff HEAD^ HEAD==. See *SO>https://stackoverflow.com/a/9903611* for more exotic versions.
-!Copying commits
-!!One particular commit between branches
-Checkout destination branch and ==git cherry-pick <SHA of commit to cherry-pick>== (per *SO>https://stackoverflow.com/a/2474371*, much more info there)
-!Ignoring Files
-- Anywhere recursively inside current folder - just filename e.g. ==bin/==
-- Defined path prefix and suffix, matching zero or more folders in middle e.g. ==/main/**/leaf==
+# Diff
+## Between Two Commits
+For example, between the last two commits: `git diff HEAD^ HEAD`. See [SO](https://stackoverflow.com/a/9903611) for more exotic versions.
+# Copying commits
+## One particular commit between branches
+Checkout destination branch and `git cherry-pick <SHA of commit to cherry-pick>` (per [SO](https://stackoverflow.com/a/2474371), much more info there)
+# Ignoring Files
+- Anywhere recursively inside current folder - just filename e.g. `bin/`
+- Defined path prefix and suffix, matching zero or more folders in middle e.g. `/main/**/leaf`
+
 "
 Class {
 	#name : #CwGit,

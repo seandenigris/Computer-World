@@ -1,9 +1,9 @@
 "
 The server database lives on my class-side. It is available as a CwServer Coder view, or try:
-[[[
+```
 CwServer db
-]]]
-![Screen Shot 2021-04-30 at 10 03 53 AM](https://user-images.githubusercontent.com/184176/116708691-f593dd00-a99d-11eb-88cc-cc27f3c21a94.png)
+```
+# [Screen Shot 2021-04-30 at 10 03 53 AM](https://user-images.githubusercontent.com/184176/116708691-f593dd00-a99d-11eb-88cc-cc27f3c21a94.png)
 
 
 "

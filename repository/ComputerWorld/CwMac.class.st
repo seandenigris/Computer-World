@@ -1,12 +1,13 @@
 "
-!Application Control
-See ${class:CwMacApplication}$.
-!Audio Output Control
-*audiodevice>http://whoshacks.blogspot.com/2009/01/change-audio-devices-via-shell-script.html* seems intriguing, but it's canonical download point is on an individual's blog. It is recommended on several threads including *here>https://apple.stackexchange.com/a/213047/9507* on SO. *Here>https://github.com/gerardmassey/audiodevice* is a mirror repo on GH.
-!Wi-Fi Control
-Power can already easily be toggled with ${method:CwMac>>#wifiPower:}$:
+# Application Control
+See {{gtClass:CwMacApplication}}.
+# Audio Output Control
+[audiodevice](http://whoshacks.blogspot.com/2009/01/change-audio-devices-via-shell-script.html) seems intriguing, but it's canonical download point is on an individual's blog. It is recommended on several threads including [here](https://apple.stackexchange.com/a/213047/9507) on SO. [Here](https://github.com/gerardmassey/audiodevice) is a mirror repo on GH.
+# Wi-Fi Control
+Power can already easily be toggled with {{gtMethod:CwMac>>#wifiPower:}}:
 
-For a comprehensive overview of what other actions might be available, see *here>https://www.techrepublic.com/article/pro-tip-manage-wi-fi-with-terminal-commands-on-os-x/*.
+For a comprehensive overview of what other actions might be available, see [here](https://www.techrepublic.com/article/pro-tip-manage-wi-fi-with-terminal-commands-on-os-x/).
+
 "
 Class {
 	#name : #CwMac,

@@ -1,7 +1,8 @@
 "
 Control time machine from the Mac command line.
 
-There are a few more commands that haven't been implemented. See *here>https://www.macworld.com/article/2033804/control-time-machine-from-the-command-line.html* for more info.
+There are a few more commands that haven't been implemented. See [here](https://www.macworld.com/article/2033804/control-time-machine-from-the-command-line.html) for more info.
+
 "
 Class {
 	#name : #'Cw_tmutil',

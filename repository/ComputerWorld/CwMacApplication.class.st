@@ -1,17 +1,18 @@
 "
-!Getting Started - Usage Modes
+# Getting Started - Usage Modes
 There are two ways to use me.
-!!Generic Application Mode
-This may be how most applications start out. There is no behavior yet to justify a subclass, and we may never come back to implement any, so we create an instance ${method:CwMacApplication class>>#mail|expanded=true|label='like so'}$:
+## Generic Application Mode
+This may be how most applications start out. There is no behavior yet to justify a subclass, and we may never come back to implement any, so we create an instance {{gtMethod:CwMacApplication class>>#mail|expanded=true|label='like so'}}:
 and we're able to do things that are universal to all applications.
-!!Application with Specific Behavior
+## Application with Specific Behavior
 Once we begin to implement features unique to the app, a subclass is in order. Here are some already available:
-[[[language=smalltalk
+```language=smalltalk
 CwMacApplication allSubclasses
-]]]
-!Features
-!!Quarantine on Mac
-In certain circumstances, MacOS places downloaded apps in ""quarantine"". One of the consequences that can cause confusion is that the app is then copied to a read-only DMG in another location and run from there.  This can stymie code that relies on the image or VM being in a particular place. I provide the ability to check via ${method:CwMacApplication>>#isQuarantined|label=isQuarantined}$ and fix via ${method:CwMacApplication>>#unquarantine|label=unquarantine}$.
+```
+# Features
+## Quarantine on Mac
+In certain circumstances, MacOS places downloaded apps in ""quarantine"". One of the consequences that can cause confusion is that the app is then copied to a read-only DMG in another location and run from there.  This can stymie code that relies on the image or VM being in a particular place. I provide the ability to check via {{gtMethod:CwMacApplication>>#isQuarantined|label=isQuarantined}} and fix via {{gtMethod:CwMacApplication>>#unquarantine|label=unquarantine}}.
+
 "
 Class {
 	#name : #CwMacApplication,

@@ -1,6 +1,7 @@
 "
-!Installation
-${example:CwHomebrew>>#exampleInstallTesseract}$
+# Installation
+{{gtExample:CwHomebrew>>#exampleInstallTesseract}}
+
 "
 Class {
 	#name : #CwTesseract,

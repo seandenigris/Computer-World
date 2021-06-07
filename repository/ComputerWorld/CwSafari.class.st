@@ -1,6 +1,7 @@
 "
-!Messages / API
--${method:name=CwSafari>>#videoSpeed:|label='#videoSpeed:'}$ - Set the speed of all HTML5 ==<video>== elements. 1 is regular speed. See the ==playbackRate== property *docs >https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/playbackRate* for more info. Assumes Safari 'document 1', which will be the topmost (in the current Mac Space if there is one). Here's an example usage: ${example:CwSafari class>>#exampleVideoSpeedDouble}$
+# Messages / API
+- {{gtMethod:name=CwSafari>>#videoSpeed:|label='#videoSpeed:'}} - Set the speed of all HTML5 `<video>` elements. 1 is regular speed. See the `playbackRate` property [docs ](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/playbackRate) for more info. Assumes Safari 'document 1', which will be the topmost (in the current Mac Space if there is one). Here's an example usage: {{gtExample:CwSafari class>>#exampleVideoSpeedDouble}}
+
 "
 Class {
 	#name : #CwSafari,
