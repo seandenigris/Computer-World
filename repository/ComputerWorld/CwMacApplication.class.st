@@ -65,7 +65,7 @@ CwMacApplication class >> executable [
 { #category : #accessing }
 CwMacApplication class >> fromBundle: aFileReference [
 	^ self allSubclasses
-		detect: [ :cls | cls bundle basename = aFileReference basename ]
+		detect: [ :cls | cls isAbstract not and: [ cls bundle basename = aFileReference basename ] ]
 		ifFound: [ :cls | 
 			| instance |
 			instance := cls new.

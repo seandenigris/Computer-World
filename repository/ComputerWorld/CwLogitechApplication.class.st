@@ -4,6 +4,11 @@ Class {
 	#category : #'ComputerWorld-Apps'
 }
 
+{ #category : #testing }
+CwLogitechApplication class >> isAbstract [
+	^ true
+]
+
 { #category : #accessing }
 CwLogitechApplication >> productHome [
 	^ 'https://logitech.com' asUrl

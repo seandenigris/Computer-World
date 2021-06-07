@@ -1,9 +1,14 @@
 "
-The server database lives on my class-side. It is available as a CwServer Coder view, or try:
+# Database
+
+The server database lives on my class-side. One way to view it is:
 ```
 CwServer db
 ```
-# [Screen Shot 2021-04-30 at 10 03 53 AM](https://user-images.githubusercontent.com/184176/116708691-f593dd00-a99d-11eb-88cc-cc27f3c21a94.png)
+
+Or, it is available in Coder via my ""Servers"" tab:
+
+![Screen Shot 2021-04-30 at 10 03 53 AM](https://user-images.githubusercontent.com/184176/116708691-f593dd00-a99d-11eb-88cc-cc27f3c21a94.png)
 
 
 "
