@@ -21,7 +21,7 @@ CwMac class >> current [
 ]
 
 { #category : #admin }
-CwMac >> addSSH_KeysToKeychain [
+CwMac >> addSSHKeysToKeychain [
 	CwSSH addKeysToKeychain
 ]
 

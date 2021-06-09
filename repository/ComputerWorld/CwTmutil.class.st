@@ -5,18 +5,18 @@ There are a few more commands that haven't been implemented. See [here](https://
 
 "
 Class {
-	#name : #'Cw_tmutil',
+	#name : #CwTmutil,
 	#superclass : #SuGenericUnixCommand,
 	#category : #'ComputerWorld-Mac'
 }
 
 { #category : #accessing }
-Cw_tmutil class >> binary [
+CwTmutil class >> binary [
 	^ 'tmutil'
 ]
 
 { #category : #accessing }
-Cw_tmutil class >> disablingLocalSnapshots [
+CwTmutil class >> disablingLocalSnapshots [
 	^ self new
 		template: self binary, ' disablelocal';
 		asRoot;
@@ -24,7 +24,7 @@ Cw_tmutil class >> disablingLocalSnapshots [
 ]
 
 { #category : #accessing }
-Cw_tmutil class >> enablingLocalSnapshots [
+CwTmutil class >> enablingLocalSnapshots [
 	^ self new
 		template: self binary, ' enablelocal';
 		asRoot;
@@ -32,7 +32,7 @@ Cw_tmutil class >> enablingLocalSnapshots [
 ]
 
 { #category : #accessing }
-Cw_tmutil class >> excluding [
+CwTmutil class >> excluding [
 	"This command is 'sticky' in that is will persist if the file is moved. If you don't want this, you can pass -p, which we have not implemented (reference https://www.macworld.com/article/2033804/control-time-machine-from-the-command-line.html)"
 	^ self new
 		template: self binary, ' addexclusion {file}';
@@ -41,28 +41,28 @@ Cw_tmutil class >> excluding [
 ]
 
 { #category : #accessing }
-Cw_tmutil class >> listingBackups [
+CwTmutil class >> listingBackups [
 	^ self new
 		template: self binary, ' listbackups';
 		yourself.
 ]
 
 { #category : #accessing }
-Cw_tmutil class >> showingDestinationIngo [
+CwTmutil class >> showingDestinationIngo [
 	^ self new
 		template: self binary, ' destinationinfo';
 		yourself.
 ]
 
 { #category : #accessing }
-Cw_tmutil class >> startingBackup [
+CwTmutil class >> startingBackup [
 	^ self new
 		template: self binary, ' startbackup';
 		yourself.
 ]
 
 { #category : #accessing }
-Cw_tmutil class >> stoppingBackup [
+CwTmutil class >> stoppingBackup [
 	^ self new
 		template: self binary, ' stopbackup';
 		yourself.

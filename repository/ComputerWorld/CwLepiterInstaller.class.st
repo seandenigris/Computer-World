@@ -68,7 +68,7 @@ CwLepiterInstaller >> installationPrefix [
 
 { #category : #accessing }
 CwLepiterInstaller >> mount [
-	Su_hdiutil mounting
+	SuHdiutil mounting
 		argumentAt: #diskImage put: self file;
 		run.
 ]

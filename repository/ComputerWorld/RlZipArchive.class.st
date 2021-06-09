@@ -11,5 +11,5 @@ RlZipArchive class >> fileExtensions [
 
 { #category : #accessing }
 RlZipArchive >> decompressTo: folder [
-	Su_unzip new source: self file; target: folder; run.
+	SuUnzip new source: self file; target: folder; run.
 ]
