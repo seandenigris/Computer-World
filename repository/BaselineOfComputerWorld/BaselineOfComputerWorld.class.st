@@ -1,8 +1,9 @@
 "
 Motivation: make computing objects like applications, servers, etc come alive. The primary strategy is to document common computing tasks and when possible wrap them in Smalltalk.
-!! Installation
+
+# Installation
 In a GToolkit (preferably) or Pharo (v. 8 best supported at time of writing), do the following:
-[[[language=smalltalk
+```smalltalk
 [ EpMonitor current disable.
 	[ Metacello new
 		baseline: 'ComputerWorld';
@@ -12,13 +13,16 @@ In a GToolkit (preferably) or Pharo (v. 8 best supported at time of writing), do
 	#SuperuserDB asClass restoreLastBackup.
 	#ComputerWorldDB asClass restoreLastBackup.
 ] fork
-]]]
+```
 N.B. you only have to do the outer fork if on GT and you want the UI to stay responsive during the load.
-!! Features
-!!Mac Control
-The primary entry point is ${class:CwMac}$.
-!!! Server Management
-A good place to start is ${class:CwServer}$.  There are also IP addresses, users and privileges, mac addresses. Actions include ""SSH as admin"".
+
+# Features
+
+## Mac Control
+The primary entry point is {{gtClass:CwMac}}.
+
+## Server Management
+A good place to start is {{gtClass:CwServer}}.  There are also IP addresses, users and privileges, mac addresses. Actions include ""SSH as admin"".
 "
 Class {
 	#name : #BaselineOfComputerWorld,
