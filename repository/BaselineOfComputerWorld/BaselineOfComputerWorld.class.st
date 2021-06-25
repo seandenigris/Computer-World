@@ -54,7 +54,7 @@ BaselineOfComputerWorld >> baseline: spec [
 			baseline: 'PharoEnhancements' with: [
 				spec repository: 'github://seandenigris/Pharo-Enhancements' ];
 			baseline: 'ResourcesLive' with: [
-				spec repository: 'github://seandenigris/ResourcesLive' ];
+				spec repository: 'github://seandenigris/Resources-Live' ];
 			baseline: 'SimpleApplescript' with: [
 				spec repository: 'github://seandenigris/Applescript-St' ];
 			baseline: 'StateSpecs' with: [
