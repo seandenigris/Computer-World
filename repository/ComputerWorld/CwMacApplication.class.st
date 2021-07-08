@@ -162,6 +162,11 @@ CwMacApplication >> isQuarantined [
 		- https://derflounder.wordpress.com/2012/11/20/clearing-the-quarantine-extended-attribute-from-downloaded-applications/"
 ]
 
+{ #category : #accessing }
+CwMacApplication >> open: aFileOrResource [
+	aFileOrResource suOpenWith: self
+]
+
 { #category : #actions }
 CwMacApplication >> saveAsPdfAt: aFileReference [
 	"Saves the current document"
