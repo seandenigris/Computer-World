@@ -5,8 +5,8 @@ Class {
 }
 
 { #category : #accessing }
-CwITunes class >> bundle [
-	^ '/Applications/iTunes.app' asFileReference
+CwITunes class >> bundleBasename [
+	^ 'iTunes.app'
 ]
 
 { #category : #accessing }

@@ -9,6 +9,9 @@ Once we begin to implement features unique to the app, a subclass is in order. H
 ```language=smalltalk
 CwMacApplication allSubclasses
 ```
+
+A subclass should declare where the app lives. For most apps, just implement class-side `#bundleBasename` and it will be looked up in the default locations (see {{gtMethod:CwMacApplication class>>#bundleParent}}. For other locations, implement class-side `#bundleParent` as well returning an FS resolvable.
+
 # Features
 ## Quarantine on Mac
 In certain circumstances, MacOS places downloaded apps in ""quarantine"". One of the consequences that can cause confusion is that the app is then copied to a read-only DMG in another location and run from there.  This can stymie code that relies on the image or VM being in a particular place. I provide the ability to check via {{gtMethod:CwMacApplication>>#isQuarantined|label=isQuarantined}} and fix via {{gtMethod:CwMacApplication>>#unquarantine|label=unquarantine}}.
@@ -25,8 +28,22 @@ Class {
 
 { #category : #accessing }
 CwMacApplication class >> bundle [
-	"Subclasses should override to e.g. allow matching a bundle file to the correct (sub)class. NB should return a resolveable FS artifact; this creates a little confusion in other code because sometimes you care about the full path (e.g. when connecting to an app that is known to be installed at a certain location) and sometimes you care about the filename only (e.g. is this bundle file for this particular app, regardless of where it is on disk"
+	"Returns a resolveable FS artifact; this creates a little confusion in other code because sometimes you care about the full path (e.g. when connecting to an app that is known to be installed at a certain location) and sometimes you care about the filename only (e.g. is this bundle file for this particular app, regardless of where it is on disk"
+	^ self bundleParent / self bundleBasename
+]
+
+{ #category : #accessing }
+CwMacApplication class >> bundleBasename [
+	"Subclasses should override to e.g. allow matching a bundle file to the correct (sub)class."
 	self subclassResponsibility
+]
+
+{ #category : #accessing }
+CwMacApplication class >> bundleParent [
+	"Override in subclass if location not listed. Return a resolveable FS artifact"
+	^ { 
+		'/System/Applications' asFileReference.
+		'/Applications' asFileReference } detect: [ :e | e directoryNames includes: self bundleBasename ]
 ]
 
 { #category : #'instance creation' }
@@ -79,6 +96,12 @@ CwMacApplication class >> fromBundle: aFileReference [
 { #category : #'instance creation' }
 CwMacApplication class >> glamorousToolkit [
 	^ self fromBundle: '/Applications/GlamorousToolkit/GlamorousToolkit.app' asFileReference.
+]
+
+{ #category : #testing }
+CwMacApplication class >> isSystem [
+	"As of 10.5 Catalina, apps that are part of macOS and are located in the read-only /System/Applications/ as opposed to /Applications"
+	^ self isAbstract not and: [ '/System/Applications/' asFileReference directoryNames includes: self bundle basename ]
 ]
 
 { #category : #'process management' }

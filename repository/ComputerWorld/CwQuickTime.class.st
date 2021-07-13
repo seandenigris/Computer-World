@@ -4,6 +4,11 @@ Class {
 	#category : #'ComputerWorld-Mac'
 }
 
+{ #category : #accessing }
+CwQuickTime class >> bundleBasename [
+	^ 'QuickTime Player.app'
+]
+
 { #category : #private }
 CwQuickTime >> applicationName [
 

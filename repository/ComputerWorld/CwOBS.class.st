@@ -5,8 +5,8 @@ Class {
 }
 
 { #category : #accessing }
-CwOBS class >> bundle [
-	^ '/Applications/OBS.app' asFileReference
+CwOBS class >> bundleBasename [
+	^ 'OBS.app'
 ]
 
 { #category : #accessing }

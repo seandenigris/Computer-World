@@ -5,6 +5,6 @@ Class {
 }
 
 { #category : #accessing }
-CwLepiter class >> bundle [
-	^ '/Applications/Lepiter.app' asFileReference
+CwLepiter class >> bundleBasename [
+	^ 'Lepiter.app'
 ]
