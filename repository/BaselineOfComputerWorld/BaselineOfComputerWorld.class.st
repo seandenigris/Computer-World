@@ -59,13 +59,13 @@ BaselineOfComputerWorld >> baseline: spec [
 				spec repository: 'github://seandenigris/Applescript-St' ];
 			baseline: 'SimplePersistence' with: [
 				spec repository: 'github://seandenigris/Simple-Persistence' ];
-			baseline: 'StateSpecs' with: [
-				spec repository: 'github://dionisiydk/StateSpecs' ];
+			baseline: 'Mocketry' with: [
+				spec repository: 'github://seandenigris/Mocketry' ];
 			baseline: 'Superuser' with: [
 				spec repository: 'github://seandenigris/Superuser' ];
 			baseline: 'Tempfile' with: [
 				spec repository: 'github://seandenigris/TempfileSt' ].
-		spec package: 'ComputerWorld' with: [ spec requires: #(CPanel ExternalWebBrowser Magritte NeoJSON "for BTT" OSShell PharoEnhancements ResourcesLive SimpleApplescript SimplePersistence StateSpecs Superuser Tempfile) ] ].
+		spec package: 'ComputerWorld' with: [ spec requires: #(CPanel ExternalWebBrowser Magritte Mocketry NeoJSON "for BTT" OSShell PharoEnhancements ResourcesLive SimpleApplescript SimplePersistence Superuser Tempfile) ] ].
 	
 	spec for: #GToolkit do: [ 
 		spec package: 'ComputerWorld-GToolkit' with: [ spec requires: #(ComputerWorld) ] ]
