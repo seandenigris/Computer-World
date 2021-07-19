@@ -9,6 +9,11 @@ Class {
 	#category : #'ComputerWorld-Mac'
 }
 
+{ #category : #accessing }
+CwSafari class >> bundleBasename [
+	^ 'Safari.app'
+]
+
 { #category : #examples }
 CwSafari class >> exampleVideoSpeedDouble [
 	<gtExample>
