@@ -5,7 +5,7 @@
 "
 Class {
 	#name : #CwSafari,
-	#superclass : #Object,
+	#superclass : #CwMacApplication,
 	#category : #'ComputerWorld-Mac'
 }
 
@@ -28,6 +28,17 @@ EOD' withUnixLineEndings format: { aString }.
 
 	"Ideally this would not wait, but the implementation of OSShell #run: doesn't work with HEREDOCs"
 	self shell runAndWait: command
+]
+
+{ #category : #scripting }
+CwSafari >> doJavascript: aSuJSScript [
+	<apiDocumentation>
+	<description: 'Assumes Safari ''document 1'', which will be the topmost (in the current Mac Space if there is one)'>
+	
+	| script jsContents |
+	jsContents := aSuJSScript string  copyReplaceAll: '"' with: '\"'.
+	script := 'tell application "Safari" to do JavaScript "', jsContents, '" in document 1'.
+	^ Applescript doIt: script.
 ]
 
 { #category : #opening }
@@ -67,12 +78,10 @@ CwSafari >> shell [
 { #category : #'video control' }
 CwSafari >> videoSpeed: aNumber [
 	<apiDocumentation>
-	<description: 'Assumes Safari ''document 1'', which will be the topmost (in the current Mac Space if there is one)'>
 	
-	| js script |
+	| js |
 	js := SuJSScript htmlVideoSpeed
 		argumentAt: #videoSpeed put: 2.0;
 		yourself.
-	script := 'tell application "Safari" to do JavaScript "', js string, '" in document 1'.
-	Applescript doIt: script.
+	self doJavascript: js
 ]
