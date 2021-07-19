@@ -90,6 +90,14 @@ CwMac >> openFilesLimitExample [
 	self openFilesLimit: 1000
 ]
 
+{ #category : #accessing }
+CwMac >> privacyResetAutomationPermissions [
+	"Useful if '{{Application}} wants to control {{Target}} popups not appearing"
+	SuGenericUnixCommand new
+		template: 'tccutil reset AppleEvents';
+		run
+]
+
 { #category : #user }
 CwMac >> saveScreenshotsAs: extensionString [
 	"
