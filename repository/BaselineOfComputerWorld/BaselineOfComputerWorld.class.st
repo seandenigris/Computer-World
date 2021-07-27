@@ -47,8 +47,6 @@ BaselineOfComputerWorld >> baseline: spec [
 				spec repository: 'github://seandenigris/Pharo-Web-Browser' ];
 			baseline: 'Magritte' with: [
 				spec repository: 'github://seandenigris/Magritte' ];
-			baseline: 'NeoJSON' with: [
-				spec repository: 'github://svenvc/NeoJSON' ];
 			baseline: 'OSShell' with: [
 				spec repository: 'github://seandenigris/Pharo-Shell' ];
 			baseline: 'PharoEnhancements' with: [
@@ -65,7 +63,12 @@ BaselineOfComputerWorld >> baseline: spec [
 				spec repository: 'github://seandenigris/Superuser' ];
 			baseline: 'Tempfile' with: [
 				spec repository: 'github://seandenigris/TempfileSt' ].
-		spec package: 'ComputerWorld' with: [ spec requires: #(CPanel ExternalWebBrowser Magritte Mocketry NeoJSON "for BTT" OSShell PharoEnhancements ResourcesLive SimpleApplescript SimplePersistence Superuser Tempfile) ] ].
+		spec package: 'ComputerWorld' with: [ spec requires: #(CPanel ExternalWebBrowser Magritte Mocketry OSShell PharoEnhancements ResourcesLive SimpleApplescript SimplePersistence Superuser Tempfile) ] ].
+		
+	spec for: #notGToolkit do: [ 
+		spec baseline: 'NeoJSON' with: [
+				spec repository: 'github://svenvc/NeoJSON' ].
+		spec package: 'ComputerWorld' with: [ spec requires: #(NeoJSON "for BTT") ] ]
 	
 	spec for: #GToolkit do: [ 
 		spec package: 'ComputerWorld-GToolkit' with: [ spec requires: #(ComputerWorld) ] ]
