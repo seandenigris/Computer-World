@@ -3,6 +3,8 @@
 See {{gtClass:CwMacApplication}}.
 # Audio Output Control
 [audiodevice](http://whoshacks.blogspot.com/2009/01/change-audio-devices-via-shell-script.html) seems intriguing, but it's canonical download point is on an individual's blog. It is recommended on several threads including [here](https://apple.stackexchange.com/a/213047/9507) on SO. [Here](https://github.com/gerardmassey/audiodevice) is a mirror repo on GH.
+# Command Line
+<http://osxdaily.com/2006/11/22/ten-os-x-command-line-utilities-you-might-not-know-about/>
 # Wi-Fi Control
 Power can already easily be toggled with {{gtMethod:CwMac>>#wifiPower:}}:
 
