@@ -68,7 +68,7 @@ BaselineOfComputerWorld >> baseline: spec [
 	spec for: #notGToolkit do: [ 
 		spec baseline: 'NeoJSON' with: [
 				spec repository: 'github://svenvc/NeoJSON' ].
-		spec package: 'ComputerWorld' with: [ spec requires: #(NeoJSON "for BTT") ] ]
+		spec package: 'ComputerWorld' with: [ spec requires: #(NeoJSON "for BTT") ] ].
 	
 	spec for: #GToolkit do: [ 
 		spec package: 'ComputerWorld-GToolkit' with: [ spec requires: #(ComputerWorld) ] ]
