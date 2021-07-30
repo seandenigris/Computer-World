@@ -2,7 +2,13 @@
 
 # Computer-World
 
-Motivation: make computing objects like applications, servers, etc come alive. The primary strategy is to document common computing tasks and when possible wrap them in Smalltalk.
+What if interfacing with computing artifacts felt like your  mental models had come alive?
+
+Interacting programmatically with high-level computing artifacts (e.g. servers, applications, windows, peripherals) can be like the proverbial blind men feeling the elephant. To do XYZ in this app, was it a CLI util, applescript, JS? How do I install it? What was its arcane syntax? 
+
+But why?! These artifacts are experienced as objects in our minds. What if our interfaces brought them to life with the same tangibility and clarity?
+
+Rather than descend into the exising chaos of endless "tips and tricks" to hack in missing features, becoming the "high priests of a low cult" Alan Kay has warned us about, we choose to create a beautiful, sane model that matches our existing reality. Join us.
 
 ## Installation
 In a GToolkit (preferably) or Pharo (v. 8 best supported at time of writing), do the following:
