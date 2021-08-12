@@ -95,7 +95,7 @@ CwTGToolkitInstaller >> targetVM_ParentName [
 
 { #category : #accessing }
 CwTGToolkitInstaller >> version [
-	^ self file base allButFirst: self versionPrefix size
+	^ (self file base splitOn: $-) last allButFirst
 ]
 
 { #category : #accessing }

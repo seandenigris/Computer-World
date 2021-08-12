@@ -9,7 +9,7 @@ Class {
 { #category : #accessing }
 CwGToolkitInstaller class >> allDownloaded [
 	^ FileLocator downloads files
-		select: [ :e | { self. CwLepiterInstaller } anySatisfy: [ :cls | cls isClassFor: e ] ]
+		select: [ :e | self isClassFor: e ]
 		thenCollect: [ :e | RlResource on: e ]
 ]
 
@@ -68,9 +68,4 @@ CwGToolkitInstaller >> productAbbreviation [
 { #category : #accessing }
 CwGToolkitInstaller >> productName [
 	^ 'GlamorousToolkit'
-]
-
-{ #category : #accessing }
-CwGToolkitInstaller >> versionPrefix [
-	^ 'GlamorousToolkitOSX64-v'
 ]
