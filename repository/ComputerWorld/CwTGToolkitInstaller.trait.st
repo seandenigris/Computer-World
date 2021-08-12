@@ -23,27 +23,29 @@ CwTGToolkitInstaller >> copy: source to: target [
 
 { #category : #accessing }
 CwTGToolkitInstaller >> install [
-	self installVM.
-	self installImage.
+	Tempfile do: [ :folder |
+		self decompressTo: folder.
+		self installVMFrom: folder.
+		self installImageFrom: folder. ]
 ]
 
 { #category : #accessing }
-CwTGToolkitInstaller >> installImage [
+CwTGToolkitInstaller >> installImageFrom: folder [
 	| targetFolder installationName supportFolders |
 	installationName := self installationPrefix, ' ', self version.
 	targetFolder := (FileLocator dynabookData parent / 'Working Images'
 		/ installationName) ensureCreateDirectory.
-	self move: self imageSourceFolder / self productName, 'image' to: targetFolder / installationName , 'image'.
-	self move: self imageSourceFolder / self productName, 'changes' to: targetFolder / installationName , 'changes'.
-	supportFolders := self imageSourceFolder directories reject: [ :e | 
+	self move: folder / self productName, 'image' to: targetFolder / installationName , 'image'.
+	self move: folder / self productName, 'changes' to: targetFolder / installationName , 'changes'.
+	supportFolders := folder directories reject: [ :e | 
 		e extension = 'app' or: [ e basename = 'Plugins' ] ].
-	supportFolders do: [ :folder | self move: folder to: targetFolder / folder basename ].
+	supportFolders do: [ :e | self move: e to: targetFolder / e basename ].
 	(targetFolder / 'pharo.version') ensureCreateFile writeStreamDo: [ :str | str nextPutAll: self versionID ]
 ]
 
 { #category : #accessing }
-CwTGToolkitInstaller >> installVM [
-	self installVMFiles.
+CwTGToolkitInstaller >> installVMFrom: folder [
+	self installVMFilesFrom: folder.
 	(CwMacApplication fromBundle: self targetBundle) unquarantine.
 ]
 

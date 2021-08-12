@@ -42,15 +42,12 @@ CwGToolkitInstaller >> bundleParent [
 ]
 
 { #category : #accessing }
-CwGToolkitInstaller >> imageSourceFolder [
-	^ self targetBundle parent.
-]
-
-{ #category : #accessing }
-CwGToolkitInstaller >> installVMFiles [
-	Tempfile do: [ :folder |
-		self decompressTo: folder.
-		self move: folder / self file base to: self targetBundle parent ].
+CwGToolkitInstaller >> installVMFilesFrom: folder [
+	| sourcesFile |
+	self move: folder / self bundleName to: self targetBundle parent / self bundleName.
+	
+	sourcesFile := (folder filesMatching: '*.sources') first.
+	self move: sourcesFile to: self targetBundle parent.
 ]
 
 { #category : #accessing }
