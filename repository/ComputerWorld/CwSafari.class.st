@@ -86,7 +86,7 @@ CwSafari >> videoSpeed: aNumber [
 	
 	| js |
 	js := SuJSScript htmlVideoSpeed
-		argumentAt: #videoSpeed put: 2.0;
+		argumentAt: #videoSpeed put: aNumber;
 		yourself.
 	self doJavascript: js
 ]
