@@ -1,10 +1,10 @@
 Class {
-	#name : #CwYouTube,
-	#superclass : #Object,
+	#name : 'CwYouTube',
+	#superclass : 'Object',
 	#category : 'ComputerWorld-Apps'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwYouTube class >> keyboardShortcuts [
 	"https://sites.google.com/a/umich.edu/going-google/accessibility/google-keyboard-shortcuts---youtube
 	

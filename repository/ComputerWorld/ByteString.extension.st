@@ -1,6 +1,6 @@
-Extension { #name : #ByteString }
+Extension { #name : 'ByteString' }
 
-{ #category : #'*ComputerWorld' }
+{ #category : '*ComputerWorld' }
 ByteString >> asCwIPAddress [
 	^ CwIPAddress fromString: self
 ]

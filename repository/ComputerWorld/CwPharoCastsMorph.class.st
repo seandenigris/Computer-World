@@ -1,5 +1,5 @@
 Class {
-	#name : #CwPharoCastsMorph,
-	#superclass : #Object,
+	#name : 'CwPharoCastsMorph',
+	#superclass : 'Object',
 	#category : 'ComputerWorld-Morphic'
 }

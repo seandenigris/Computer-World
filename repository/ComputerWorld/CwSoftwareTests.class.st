@@ -1,10 +1,10 @@
 Class {
-	#name : #CwSoftwareTests,
-	#superclass : #TestCase,
-	#category : #'ComputerWorld-Specification'
+	#name : 'CwSoftwareTests',
+	#superclass : 'TestCase',
+	#category : 'ComputerWorld-Specification'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftwareTests >> testDownloadUrlShouldAcceptStrings [
 
 	| software address |
@@ -17,7 +17,7 @@ CwSoftwareTests >> testDownloadUrlShouldAcceptStrings [
 	software downloadUrl asString should equal: address.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftwareTests >> testDownloadUrlShouldAcceptUrls [
 
 	| software address |
@@ -30,7 +30,7 @@ CwSoftwareTests >> testDownloadUrlShouldAcceptUrls [
 	software downloadUrl asString should equal: address.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftwareTests >> testPrinting [
 
 	| software |
@@ -39,7 +39,7 @@ CwSoftwareTests >> testPrinting [
 	software printString should equal: 'UIBrowser'.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftwareTests >> testWebpageShouldAcceptStrings [
 
 	| software |
@@ -50,7 +50,7 @@ CwSoftwareTests >> testWebpageShouldAcceptStrings [
 	software webpage asString should equal: 'http://pfiddlesoft.com/uibrowser/index.html'.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftwareTests >> testWebpageShouldAcceptUrls [
 
 	| software |

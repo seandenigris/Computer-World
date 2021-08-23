@@ -1,22 +1,22 @@
 Class {
-	#name : #CwHomebrewInstallCommand,
-	#superclass : #Object,
+	#name : 'CwHomebrewInstallCommand',
+	#superclass : 'Object',
 	#instVars : [
 		'admin',
 		'project',
 		'isCask'
 	],
-	#category : #'ComputerWorld-Homebrew'
+	#category : 'ComputerWorld-Homebrew'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallCommand class >> assert: anObject equalsCommand: commandString asUser: userString [
 	<debuggerCompleteToSender>
 	"See #template for rationale"
 	self assert: anObject commandString equals: 'su ', userString, ' -c "', commandString, '"'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallCommand class >> example [
 	<gtExample>
 	^ self
@@ -28,7 +28,7 @@ CwHomebrewInstallCommand class >> example [
 		then: [ :it | self assert: it equalsCommand: 'brew install tesseract' asUser: CwHomebrew admin  ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallCommand class >> exampleCask [
 	<gtExample>
 	^ self
@@ -42,17 +42,17 @@ CwHomebrewInstallCommand class >> exampleCask [
 			self assert: it equalsCommand: 'brew cask install --no-quarantine --require-sha bettertouchtool' asUser: CwHomebrew admin ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwHomebrewInstallCommand >> admin [
 	^ CwHomebrew admin
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallCommand >> admin: anObject [
 	admin := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallCommand >> commandString [
 	"Reference: https://unix.stackexchange.com/a/1088/104011"
 
@@ -71,12 +71,12 @@ CwHomebrewInstallCommand >> commandString [
 	^ result withBlanksCondensed
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwHomebrewInstallCommand >> execute [
 	Smalltalk tools shell new runExternally: self commandString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallCommand >> gtCommandStringFor: aView [
 	<gtView>
 	
@@ -85,27 +85,27 @@ CwHomebrewInstallCommand >> gtCommandStringFor: aView [
 		text: [ self commandString ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallCommand >> isCask [
 	^ isCask ifNil: [ false ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallCommand >> isCask: aBoolean [
 	isCask := aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallCommand >> project [
 	^ project
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallCommand >> project: anObject [
 	project := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallCommand >> template [
 	"--require-sha: abort installation of cask if no checksum is defined
 	--no-quarantine: Prevent Gatekeeper from enforcing its security restrictions on the Cask. This will let you run it straightaway.

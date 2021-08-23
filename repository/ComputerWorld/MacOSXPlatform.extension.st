@@ -1,6 +1,6 @@
-Extension { #name : #MacOSXPlatform }
+Extension { #name : 'MacOSXPlatform' }
 
-{ #category : #'*ComputerWorld' }
+{ #category : '*ComputerWorld' }
 MacOSXPlatform >> ipAddresses [
 	"Default wifi adapter; `NetNameResolver localHostAddress` is buggy on Mac per its method comment"
 	| ipString |

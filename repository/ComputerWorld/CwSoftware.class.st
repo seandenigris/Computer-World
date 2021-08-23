@@ -5,8 +5,8 @@ Maybe:
 '~/Library/Preferences/com.red-sweater.FastScripts.plist.JaqYaCy' }.
 "
 Class {
-	#name : #CwSoftware,
-	#superclass : #Object,
+	#name : 'CwSoftware',
+	#superclass : 'Object',
 	#instVars : [
 		'name',
 		'urlDownloadsOnOpen',
@@ -15,17 +15,17 @@ Class {
 		'webpageUrl',
 		'downloadUrl'
 	],
-	#category : #'ComputerWorld-Core'
+	#category : 'ComputerWorld-Core'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwSoftware class >> assertSha: algorithmNumber for: file equals: aString [
 	"This should obviously be better integrated i.e. on the instance side, etc."
 	
 	CwShaSum assertSha: algorithmNumber for: file equals: aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwSoftware class >> assertShaFor: file equals: aString [
 	"This should obviously be better integrated i.e. on the instance side, etc."
 	
@@ -39,37 +39,37 @@ CwSoftware class >> assertShaFor: file equals: aString [
 	
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CwSoftware class >> named: aString [ 
 
 	^ self new setName: aString.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwSoftware >> = rhs [
 
 	^ self fullName = rhs fullName.
 ]
 
-{ #category : #Morphic }
+{ #category : 'Morphic' }
 CwSoftware >> asMorph [
 
 	^ CwSoftwareMorph on: self.
 ]
 
-{ #category : #downloading }
+{ #category : 'downloading' }
 CwSoftware >> canBeDownloadedAt: aUrlOrString [ 
 
 	downloadUrl := aUrlOrString asUrl.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwSoftware >> closeTheBrowserWindow [
 
 	Safari reference closeWindow: 1. 
 ]
 
-{ #category : #downloading }
+{ #category : 'downloading' }
 CwSoftware >> download [
 
 	| commandTemplate |
@@ -78,7 +78,7 @@ CwSoftware >> download [
 	Smalltalk tools shell new run: (commandTemplate format: { self downloadPath. downloadUrl }).
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwSoftware >> downloadByOpening: aUrl [
 
 	urlDownloadsOnOpen := aUrl.
@@ -91,44 +91,44 @@ CwSoftware >> downloadByOpening: aUrl [
 	self moveFileToApplicationsFolder.
 ]
 
-{ #category : #downloading }
+{ #category : 'downloading' }
 CwSoftware >> downloadPath [
 
 	^ FileLocator home / 'Documents/Squeak Library/Software' / self fullName / 'Download'.
 ]
 
-{ #category : #downloading }
+{ #category : 'downloading' }
 CwSoftware >> downloadUrl [
 
 	^ downloadUrl.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftware >> fullName [
 
 	^ name.
 ]
 
-{ #category : #'private-testing' }
+{ #category : 'private-testing' }
 CwSoftware >> hasBeenDownloaded [
 
 	^ self downloadPath hasChildren.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwSoftware >> hash [
 
 	^ self fullName hash.
 ]
 
-{ #category : #installing }
+{ #category : 'installing' }
 CwSoftware >> install [
 
 	self hasBeenDownloaded ifFalse: [ self download ].
 	self unzipDownloadedFile.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwSoftware >> moveFileToApplicationsFolder [
 
 	| commandTemplate sourceFolder sourceFile |
@@ -138,25 +138,25 @@ CwSoftware >> moveFileToApplicationsFolder [
 	"OSProcess command: (commandTemplate format: { sourceFile fullName })."
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwSoftware >> openInBrowser: aUrl [
 
 	ExternalWebBrowser openOnUrl: aUrl.
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 CwSoftware >> printOn: aStream [
 
 	aStream nextPutAll: self fullName. 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwSoftware >> setName: aString [ 
 
 	name := aString.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwSoftware >> unzipDownloadedFile [
 
 	ZipArchive new
@@ -164,7 +164,7 @@ CwSoftware >> unzipDownloadedFile [
 		extractAllTo: (FileDirectory on: self downloadPath).
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwSoftware >> waitForFileToBeginDownloading [
 
 	| downloadDirectory wasCreatedAfterPageOpened |
@@ -178,13 +178,13 @@ CwSoftware >> waitForFileToBeginDownloading [
 	
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwSoftware >> waitForFileToFinishDownloading [
 
 	[ downloadingFile isFinishedDownloading ] whileFalse.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwSoftware >> waitForFileToUnzip [
 
 	| downloadsFolder |
@@ -192,13 +192,13 @@ CwSoftware >> waitForFileToUnzip [
 	[ downloadsFolder includesKey: '1Password.app' ] whileFalse. 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftware >> webpage [
 
 	^ webpageUrl.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftware >> webpage: aUrlOrString [ 
 
 	webpageUrl := aUrlOrString asUrl.

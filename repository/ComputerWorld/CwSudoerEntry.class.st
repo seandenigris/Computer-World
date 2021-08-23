@@ -1,16 +1,16 @@
 Class {
-	#name : #CwSudoerEntry,
-	#superclass : #Object,
+	#name : 'CwSudoerEntry',
+	#superclass : 'Object',
 	#instVars : [
 		'user',
 		'host',
 		'usesNames',
 		'runAs'
 	],
-	#category : #'ComputerWorld-Unix'
+	#category : 'ComputerWorld-Unix'
 }
 
-{ #category : #example }
+{ #category : 'example' }
 CwSudoerEntry class >> example [
 	<sampleInstance>
 	| user |
@@ -20,17 +20,17 @@ CwSudoerEntry class >> example [
 			yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSudoerEntry >> host [
 	^ self maLazyInstVarUsing: self hostDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSudoerEntry >> host: aString [
 	host := aString
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 CwSudoerEntry >> hostDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -42,7 +42,7 @@ CwSudoerEntry >> hostDescription [
 		yourself
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 CwSudoerEntry >> printOn: aStream [
 
 	aStream
@@ -54,17 +54,17 @@ CwSudoerEntry >> printOn: aStream [
 		nextPutAll: ') ALL'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSudoerEntry >> runAs [
 	^ self maLazyInstVarUsing: self runAsDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSudoerEntry >> runAs: anObject [
 	runAs := anObject
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 CwSudoerEntry >> runAsDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -75,29 +75,29 @@ CwSudoerEntry >> runAsDescription [
 		yourself
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 CwSudoerEntry >> runAsString [
 	^ self stringForUserEntity: self runAs
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 CwSudoerEntry >> stringForUserEntity: aCwUnixUserEntity [
 	^ self usesNames
 			ifTrue: [ aCwUnixUserEntity sudoerNameString ]
 			ifFalse: [ aCwUnixUserEntity sudoerIDString ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSudoerEntry >> user [
 	^ self maLazyInstVarUsing: self userDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSudoerEntry >> user: aString [
 	user := aString
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 CwSudoerEntry >> userDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -107,22 +107,22 @@ CwSudoerEntry >> userDescription [
 		yourself
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 CwSudoerEntry >> userString [
 	^ self stringForUserEntity: self user
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSudoerEntry >> usesNames [
 	^ self maLazyInstVarUsing: self usesNamesDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSudoerEntry >> usesNames: aBoolean [
 	usesNames := aBoolean
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 CwSudoerEntry >> usesNamesDescription [
 	<magritteDescription>
 	^ MABooleanDescription new

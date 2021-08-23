@@ -1,10 +1,10 @@
 Class {
-	#name : #CwGfxCardStatus,
-	#superclass : #Object,
+	#name : 'CwGfxCardStatus',
+	#superclass : 'Object',
 	#category : 'ComputerWorld-Apps'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwGfxCardStatus class >> download [
 	"Zipped download URL is available over SSL"
 	<script>
@@ -12,7 +12,7 @@ CwGfxCardStatus class >> download [
 	^ self websiteURL open.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwGfxCardStatus class >> install [
 	<script>
 	
@@ -20,7 +20,7 @@ CwGfxCardStatus class >> install [
 	UIManager default confirm: 'Unzip and move into /Applications'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwGfxCardStatus class >> websiteURL [
 	^ 'https://gfx.io/' asUrl
 ]

@@ -1,10 +1,10 @@
 Class {
-	#name : #CwPrintersAndScanners,
-	#superclass : #Object,
+	#name : 'CwPrintersAndScanners',
+	#superclass : 'Object',
 	#category : 'ComputerWorld-Mac'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwPrintersAndScanners class >> deletePrinterNamed: aString [
 	"From http://smallbusiness.chron.com/delete-printer-command-line-mac-57868.html"
 

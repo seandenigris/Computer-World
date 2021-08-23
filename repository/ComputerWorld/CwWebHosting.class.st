@@ -1,5 +1,5 @@
 Class {
-	#name : #CwWebHosting,
-	#superclass : #Object,
+	#name : 'CwWebHosting',
+	#superclass : 'Object',
 	#category : 'ComputerWorld-Core'
 }

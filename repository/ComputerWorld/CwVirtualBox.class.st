@@ -1,21 +1,21 @@
 Class {
-	#name : #CwVirtualBox,
-	#superclass : #Object,
+	#name : 'CwVirtualBox',
+	#superclass : 'Object',
 	#category : 'ComputerWorld-Apps'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwVirtualBox class >> downloadPage [
 	^ 'https://www.virtualbox.org/wiki/Downloads' asUrl
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwVirtualBox class >> extPackDownloadFolder [
 	"Filename is of the format Oracle_VM_VirtualBox_Extension_Pack-5.1.10.vbox-extpack"
 	^ FileLocator home / 'Library' / 'VirtualBox'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwVirtualBox class >> fileReaderServicesForFile: fullName suffix: suffix [
 	<fileService>
 
@@ -25,7 +25,7 @@ CwVirtualBox class >> fileReaderServicesForFile: fullName suffix: suffix [
 
 ]
 
-{ #category : #installation }
+{ #category : 'installation' }
 CwVirtualBox class >> install [
 	<script>
 	self notify: 'Can be installed via cask (has checksum or https)'.
@@ -33,7 +33,7 @@ CwVirtualBox class >> install [
 	
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwVirtualBox class >> installGuestAdditionsLinuxServer [
 	"
 	**** Failed with mounted guest image following a few different guides. WORKED via:
@@ -65,7 +65,7 @@ CwVirtualBox class >> installGuestAdditionsLinuxServer [
 	**** Additional dependencies listed on https://virtualboxes.org/doc/installing-guest-additions-on-ubuntu/"
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwVirtualBox class >> serviceVerify [
 
 	^ (SimpleServiceEntry 
@@ -76,7 +76,7 @@ CwVirtualBox class >> serviceVerify [
 			yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwVirtualBox class >> verify: file [
 	| filenameTokens version shaUrl |
 	filenameTokens := file basenameWithoutExtension findTokens: '-'.
@@ -86,7 +86,7 @@ CwVirtualBox class >> verify: file [
 	UIManager default inform: 'VirtualBox file verified.'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwVirtualBox >> linuxMountSharedFolder [
 	"There is an auto-mount option that doesn't seem to work (as of 2/24/2018 w up-to-date VB and Ubuntu 16.04 LTS.
 	To automount, append to /etc/fstab (via [3]):
@@ -102,7 +102,7 @@ CwVirtualBox >> linuxMountSharedFolder [
 	3. https://askubuntu.com/a/123156"
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwVirtualBox >> linuxVmSwapCmdAndCtrl [
 	"
 First, change the host key to a key other than Left Cmd (e.g. Right Cmd)

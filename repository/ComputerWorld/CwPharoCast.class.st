@@ -1,6 +1,6 @@
 Class {
-	#name : #CwPharoCast,
-	#superclass : #Object,
+	#name : 'CwPharoCast',
+	#superclass : 'Object',
 	#instVars : [
 		'title',
 		'url'
@@ -11,13 +11,13 @@ Class {
 	#category : 'ComputerWorld-Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPharoCast class >> database [
 
 	^ database ifNil: [ database := OrderedCollection new ].
 ]
 
-{ #category : #'world menu' }
+{ #category : 'world menu' }
 CwPharoCast class >> menuCommandOn: aBuilder [ 
 
 	<worldMenu>
@@ -31,56 +31,56 @@ CwPharoCast class >> menuCommandOn: aBuilder [
 				help: 'Open this PharoCast in the default browser' ] ].
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwPharoCast class >> openMainPage [
 
 	ExternalWebBrowser open: 'http://www.pharocasts.com/'.
 ]
 
-{ #category : #persistence }
+{ #category : 'persistence' }
 CwPharoCast class >> restoreFrom: anObject [
 
 	database := anObject.
 ]
 
-{ #category : #persistence }
+{ #category : 'persistence' }
 CwPharoCast class >> spData [
 
 	^ database
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CwPharoCast class >> titled: aString [
 
 	^ self new setTitle: aString.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwPharoCast >> at: aUrlOrString [
 
 	url := aUrlOrString asUrl.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwPharoCast >> openInbrowser [
 
 	ExternalWebBrowser openOnUrl: url. 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwPharoCast >> printOn: aStream [
 
 	aStream nextPutAll: title surroundedByDoubleQuotes, ' PharoCast'.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwPharoCast >> setTitle: aString [ 
 
 	title := aString.
 	^ self.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwPharoCast >> title [
 
 	^ title.

@@ -7,16 +7,16 @@ self verify: 'ubuntu-12.04.4-desktop-amd64.iso' asFileReference.
 
 "
 Class {
-	#name : #CwUbuntuHash,
-	#superclass : #Object,
+	#name : 'CwUbuntuHash',
+	#superclass : 'Object',
 	#instVars : [
 		'filename',
 		'md5'
 	],
-	#category : #'ComputerWorld-Support'
+	#category : 'ComputerWorld-Support'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwUbuntuHash class >> all [
 
 	| soup hashRows |
@@ -31,7 +31,7 @@ CwUbuntuHash class >> all [
 			md5: cells first text trimBoth. ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CwUbuntuHash class >> filename: filename md5: hashString [ 
 
 	^ self new
@@ -40,7 +40,7 @@ CwUbuntuHash class >> filename: filename md5: hashString [
 		yourself.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwUbuntuHash class >> forFileNamed: basename [
 
 	^ self all 
@@ -48,7 +48,7 @@ CwUbuntuHash class >> forFileNamed: basename [
 		ifNone: [ self error: 'Ubuntu does not list a hash for ', basename, ' at ', self secureUrl asString ].
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CwUbuntuHash class >> verify: file [
 	| sumsFile filenameTokens version versionTokens majorMinor releaseUrl furtherInstructions |
 	filenameTokens := file basenameWithoutExtension findTokens: '-'.
@@ -70,29 +70,29 @@ gpg --verify SHA256SUMS.gpg SHA256SUMS'.
 	UIManager inform: file basename, ' verified'.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwUbuntuHash >> filename [
 	^ filename
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwUbuntuHash >> filename: aString [ 
 
 	filename := aString.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwUbuntuHash >> md5 [
 	^ md5
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwUbuntuHash >> md5: aString [ 
 
 	md5 := aString.
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 CwUbuntuHash >> printOn: aStream [
 
 	aStream
@@ -102,12 +102,12 @@ CwUbuntuHash >> printOn: aStream [
 		nextPutAll: md5.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwUbuntuHash >> secureUrl [
 	^ 'http://releases.ubuntu.com/14.04/SHA256SUMS' asUrl.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CwUbuntuHash >> verify: file [
 
 	"sumsUrl := self secureUrl, 'SHA256SUMS'."
@@ -117,7 +117,7 @@ CwUbuntuHash >> verify: file [
 	UIManager inform: file basename, ' verified'.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwUbuntuHash >> version [
 	^ self filename copyFrom: 8 to: 12
 ]

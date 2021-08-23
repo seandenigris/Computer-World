@@ -11,12 +11,12 @@ Checkout destination branch and `git cherry-pick <SHA of commit to cherry-pick>`
 
 "
 Class {
-	#name : #CwGit,
-	#superclass : #Object,
-	#category : #'ComputerWorld-Apps'
+	#name : 'CwGit',
+	#superclass : 'Object',
+	#category : 'ComputerWorld-Apps'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 CwGit class >> example1 [
 	| root gitRepos skipList potentials glRepos relevantRepos clone |
 	
@@ -46,7 +46,7 @@ CwGit class >> example1 [
 nonSrcRepos collect: #directories."
 ]
 
-{ #category : #installation }
+{ #category : 'installation' }
 CwGit class >> install [
 	"Use Homebrew because suggested install method is via Sourceforge and from unidentified developer"
 	<script>
@@ -63,12 +63,12 @@ end tell'.
 	Smalltalk tools shell command: command.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwGit >> localCloneAt: reference [
 	^ CwGitClone new location: reference; yourself
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 CwGit >> removeCommitFromGitHub [
 	"From https://stackoverflow.com/questions/448919/how-can-i-remove-a-commit-on-github
 	
@@ -76,7 +76,7 @@ CwGit >> removeCommitFromGitHub [
   git push origin +master"
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 CwGit >> squashCommitsSince: aString [
 	"aString examples
 		- short SHA for specific commit
@@ -85,7 +85,7 @@ CwGit >> squashCommitsSince: aString [
 	'git rebase -i ', aString
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 CwGit >> syncCurrentBranchWithMaster [
 	"
 	Motivation: WIP (e.g. issue) commits will remain on top of any changes merged in from master, enabling a clean merge back when the issue is ready
@@ -93,7 +93,7 @@ CwGit >> syncCurrentBranchWithMaster [
 	'git pull --rebase'
 ]
 
-{ #category : #commands }
+{ #category : 'commands' }
 CwGit >> update: remoteName remoteLocationTo: location [
 	"http://stackoverflow.com/questions/30443333/error-with-renamed-repo-in-github-remote-this-repository-moved-please-use-th"
 	
