@@ -1,15 +1,15 @@
 Class {
-	#name : 'CwFfmpeg',
-	#superclass : 'Object',
+	#name : #CwFfmpeg,
+	#superclass : #Object,
 	#category : 'ComputerWorld-Apps'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwFfmpeg >> reencodeForQT [
 	'ffmpeg -i input.mp4 -f mp4 -vcodec libx264 output.mp4'
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwFfmpeg >> rotateVideo [
 	"From https://stackoverflow.com/questions/3937387/rotating-videos-with-ffmpeg
 	
@@ -23,7 +23,7 @@ Use transpose=2,transpose=2 for 180 degrees."
 	'ffmpeg -i in.mov -vf "transpose=1" out.mov'
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwFfmpeg >> trim [
 	"From https://stackoverflow.com/questions/18444194/cutting-the-videos-based-on-start-and-end-time-using-ffmpeg"
 	

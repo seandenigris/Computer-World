@@ -2,12 +2,12 @@
 self new isVulnerableToHeartbleed.
 "
 Class {
-	#name : 'CwOpenSSL',
-	#superclass : 'Object',
+	#name : #CwOpenSSL,
+	#superclass : #Object,
 	#category : 'ComputerWorld-Apps'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwOpenSSL >> isVulnerableToHeartbleed [
 	"https://www.openssl.org/news/secadv_20140407.txt"
 	

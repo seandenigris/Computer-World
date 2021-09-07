@@ -1,17 +1,17 @@
 Class {
-	#name : 'CwGpgTools',
-	#superclass : 'Object',
+	#name : #CwGpgTools,
+	#superclass : #Object,
 	#category : 'ComputerWorld-Apps'
 }
 
-{ #category : 'documentation' }
+{ #category : #documentation }
 CwGpgTools class >> download [
 
 	UIManager inform: 'No permalink... download from project page...'.
 	self url open.
 ]
 
-{ #category : 'documentation' }
+{ #category : #documentation }
 CwGpgTools class >> shaLatestVersion [
 
 	| downloadPageSource shaLine matcher |
@@ -22,13 +22,13 @@ CwGpgTools class >> shaLatestVersion [
 	^ matcher subexpression: 2
 ]
 
-{ #category : 'documentation' }
+{ #category : #documentation }
 CwGpgTools class >> url [
 
 	^ 'https://gpgtools.org/' asUrl.
 ]
 
-{ #category : 'documentation' }
+{ #category : #documentation }
 CwGpgTools class >> verifyDownload [
 
 	| installer |
@@ -36,7 +36,7 @@ CwGpgTools class >> verifyDownload [
 	CwSoftware assertShaFor: installer equals: self shaLatestVersion.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwGpgTools >> importKey: hexString [
 	"Adapted from https://www.torproject.org/docs/verifying-signatures.html.en"
 
@@ -47,7 +47,7 @@ CwGpgTools >> importKey: hexString [
 	exitCode = 0 ifFalse: [ self error: 'Couldn''t import gpg key' ].
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwGpgTools >> verify: file with: key [
 	"Adapted from https://www.torproject.org/docs/verifying-signatures.html.en"
 

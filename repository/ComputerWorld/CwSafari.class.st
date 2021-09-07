@@ -4,23 +4,23 @@
 
 "
 Class {
-	#name : 'CwSafari',
-	#superclass : 'CwMacApplication',
+	#name : #CwSafari,
+	#superclass : #CwMacApplication,
 	#category : 'ComputerWorld-Mac'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwSafari class >> bundleBasename [
 	^ 'Safari.app'
 ]
 
-{ #category : 'examples' }
+{ #category : #examples }
 CwSafari class >> exampleVideoSpeedDouble [
 	<gtExample>
 	CwSafari new videoSpeed: 2.
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 CwSafari >> applescriptTell: aString [
 
 	| command |
@@ -35,7 +35,7 @@ EOD' withUnixLineEndings format: { aString }.
 	self shell runAndWait: command
 ]
 
-{ #category : 'scripting' }
+{ #category : #scripting }
 CwSafari >> doJavascript: aSuJSScript [
 	<apiDocumentation>
 	<description: 'Assumes Safari ''document 1'', which will be the topmost (in the current Mac Space if there is one)'>
@@ -46,13 +46,13 @@ CwSafari >> doJavascript: aSuJSScript [
 	^ Applescript doIt: script.
 ]
 
-{ #category : 'opening' }
+{ #category : #opening }
 CwSafari >> open: aUrl [
 
 	self shell open: aUrl
 ]
 
-{ #category : 'opening' }
+{ #category : #opening }
 CwSafari >> openInFront: aUrl [
 
 	| command |
@@ -63,7 +63,7 @@ set the URL of the front document to "{1}"' format: { aUrl asString }.
 	"Adapted from https://stackoverflow.com/a/7016686/424245"
 ]
 
-{ #category : 'opening' }
+{ #category : #opening }
 CwSafari >> openInNewWindow: aUrl [
 	"Window will open in the current space on top of any others"
 
@@ -74,13 +74,13 @@ make new document with properties \{URL:"{1}"\}' format: { aUrl asString }.
 	self applescriptTell: command
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 CwSafari >> shell [
 
 	^ Smalltalk tools shell new
 ]
 
-{ #category : 'video control' }
+{ #category : #'video control' }
 CwSafari >> videoSpeed: aNumber [
 	<apiDocumentation>
 	

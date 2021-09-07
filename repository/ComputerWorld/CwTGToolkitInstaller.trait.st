@@ -2,16 +2,16 @@
 I exist to share behavior between Lepiter and GT installer, while allowing each to inherit from unrelated ancestors. That's important because we want GT to recognize each as an RlResource so that the proper views are shown, but the way ResourcesLive determines what to show is a negotiation between a class and its subclasses. Thus, if GT installer was not a zip archive subclass, zip would be in a race condition with it.
 "
 Trait {
-	#name : 'CwTGToolkitInstaller',
+	#name : #CwTGToolkitInstaller,
 	#category : 'ComputerWorld-Mac'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwTGToolkitInstaller >> bundle [
 	^ self bundleParent / self bundleName
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwTGToolkitInstaller >> copy: source to: target [
 	SuGenericUnixCommand new
 		template: 'cp -R {source} {target}';
@@ -21,7 +21,7 @@ CwTGToolkitInstaller >> copy: source to: target [
 		run. 
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwTGToolkitInstaller >> install [
 	Tempfile do: [ :folder |
 		self decompressTo: folder.
@@ -29,7 +29,7 @@ CwTGToolkitInstaller >> install [
 		self installImageFrom: folder. ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwTGToolkitInstaller >> installImageFrom: folder [
 	| targetFolder installationName supportFolders |
 	installationName := self installationPrefix, ' ', self version.
@@ -43,18 +43,18 @@ CwTGToolkitInstaller >> installImageFrom: folder [
 	(targetFolder / 'pharo.version') ensureCreateFile writeStreamDo: [ :str | str nextPutAll: self versionID ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwTGToolkitInstaller >> installVMFrom: folder [
 	self installVMFilesFrom: folder.
 	(CwMacApplication fromBundle: self targetBundle) unquarantine.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwTGToolkitInstaller >> isInstalled [
 	^ self installationLocations anySatisfy: [ :e | (e / self bundleName) exists ].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwTGToolkitInstaller >> move: sourceFile to: targetFile [
 
 	| targetArgument sourceArgument |
@@ -77,28 +77,28 @@ CwTGToolkitInstaller >> move: sourceFile to: targetFile [
 		run.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwTGToolkitInstaller >> productAbbreviation [
 	^ self productName first: 2
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwTGToolkitInstaller >> targetBundle [
 	^ (FileLocator dynabookData parent / 'vms' / self targetVM_ParentName)
 		ensureCreateDirectory / self bundleName
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwTGToolkitInstaller >> targetVM_ParentName [
 	^ self versionID , '-x64'
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwTGToolkitInstaller >> version [
 	^ (self file base splitOn: $-) last allButFirst
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwTGToolkitInstaller >> versionID [
 	^ self productAbbreviation asLowercase , '-' , self version
 ]

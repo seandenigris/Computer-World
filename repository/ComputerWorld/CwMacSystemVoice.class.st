@@ -7,12 +7,12 @@ There are several ways to access voices:
 - Accessibility Preferences
 "
 Class {
-	#name : 'CwMacSystemVoice',
-	#superclass : 'Object',
+	#name : #CwMacSystemVoice,
+	#superclass : #Object,
 	#category : 'ComputerWorld-Mac'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwMacSystemVoice class >> allInstalled [
 	"You can also view/add voices in Preferences->Accessibility->Speech
 	"

@@ -1,15 +1,15 @@
 Class {
-	#name : 'CwKeePassX',
-	#superclass : 'Object',
+	#name : #CwKeePassX,
+	#superclass : #Object,
 	#category : 'ComputerWorld-Apps'
 }
 
-{ #category : 'documentation' }
+{ #category : #documentation }
 CwKeePassX class >> currentVersion [
 	^ '2.0.3'
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwKeePassX class >> download [
 
 	ZnClient new
@@ -17,7 +17,7 @@ CwKeePassX class >> download [
 		downloadTo: FileLocator home / 'Downloads'.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwKeePassX class >> download: url [
 
 	ZnClient new
@@ -25,18 +25,18 @@ CwKeePassX class >> download: url [
 		downloadTo: FileLocator home / 'Downloads'.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwKeePassX class >> downloadFilename [
 	^ 'KeePassX-', self currentVersion, '.dmg'
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwKeePassX class >> downloadSourceFolder [
 
 	^ 'https://www.keepassx.org/releases' asUrl / self currentVersion
 ]
 
-{ #category : 'documentation' }
+{ #category : #documentation }
 CwKeePassX class >> verifyDownload [
 	<script>
 	

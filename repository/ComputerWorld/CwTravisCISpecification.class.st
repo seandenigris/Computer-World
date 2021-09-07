@@ -1,10 +1,10 @@
 Class {
-	#name : 'CwTravisCISpecification',
-	#superclass : 'TestCase',
+	#name : #CwTravisCISpecification,
+	#superclass : #TestCase,
 	#category : 'ComputerWorld-Specification'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwTravisCISpecification >> testBadge [
 	| expected actual |
 	expected := '[![Build Status](https://travis-ci.org/seandenigris/Pharo-Shell.png?branch=master)](https://travis-ci.org/seandenigris/Pharo-Shell)'.
@@ -12,14 +12,14 @@ CwTravisCISpecification >> testBadge [
 	actual should equal: expected
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwTravisCISpecification >> testSetUpMissingRepository [
 	
 	Tempfile do: [ :tf |
 		[ CwTravisCI new setUp: tf ] should signal: Error ].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwTravisCISpecification >> testSetUpRepository [
 	
 	Tempfile do: [ :tf |
