@@ -23,7 +23,7 @@ Class {
 	#instVars : [
 		'bundle'
 	],
-	#category : 'ComputerWorld-Mac'
+	#category : #'ComputerWorld-Mac'
 }
 
 { #category : #accessing }
@@ -247,12 +247,11 @@ CwMacApplication >> tellGUITo: applescriptCommand [
 ]
 
 { #category : #actions }
-CwMacApplication >> unquarantine [
-	SuGenericUnixCommand new
+CwMacApplication >> unquarantineCommand [
+	^ SuGenericUnixCommand new
 		template: 'xattr -r -d com.apple.quarantine {bundle}';
 		argumentSource: { #bundle -> self bundle } asDictionary;
-		asRoot;
-		run.
+		asRoot.
 
 	"
 !References 

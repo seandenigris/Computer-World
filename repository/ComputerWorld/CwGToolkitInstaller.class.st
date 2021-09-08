@@ -3,7 +3,7 @@ Class {
 	#superclass : #RlZipArchive,
 	#traits : 'CwTGToolkitInstaller',
 	#classTraits : 'CwTGToolkitInstaller classTrait',
-	#category : 'ComputerWorld-Mac'
+	#category : #'ComputerWorld-Mac'
 }
 
 { #category : #accessing }
@@ -58,6 +58,12 @@ CwGToolkitInstaller >> installationLocations [
 { #category : #accessing }
 CwGToolkitInstaller >> installationPrefix [
 	^ self productAbbreviation
+]
+
+{ #category : #accessing }
+CwGToolkitInstaller >> macApplication [
+
+	^ CwMacApplication fromBundle: self targetBundle
 ]
 
 { #category : #accessing }

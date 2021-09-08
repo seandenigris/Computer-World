@@ -3,7 +3,7 @@ I exist to share behavior between Lepiter and GT installer, while allowing each 
 "
 Trait {
 	#name : #CwTGToolkitInstaller,
-	#category : 'ComputerWorld-Mac'
+	#category : #'ComputerWorld-Mac'
 }
 
 { #category : #accessing }
@@ -45,8 +45,9 @@ CwTGToolkitInstaller >> installImageFrom: folder [
 
 { #category : #accessing }
 CwTGToolkitInstaller >> installVMFrom: folder [
+
 	self installVMFilesFrom: folder.
-	(CwMacApplication fromBundle: self targetBundle) unquarantine.
+	self macApplication unquarantineCommand run
 ]
 
 { #category : #accessing }
