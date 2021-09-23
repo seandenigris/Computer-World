@@ -1,20 +1,20 @@
 Class {
-	#name : #CwGitClone,
-	#superclass : #Object,
+	#name : 'CwGitClone',
+	#superclass : 'Object',
 	#instVars : [
 		'location'
 	],
 	#category : 'ComputerWorld-Apps'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwGitClone >> commit: messageString [
 	self 
 		run: '{gitBinary} commit -m "{message}"' 
 		with: { #message -> messageString }
 ]
 
-{ #category : #'accessing-magritte' }
+{ #category : 'accessing-magritte' }
 CwGitClone >> descriptionLocation [
 	<magritteDescription>
 	^ MAFileDescription new
@@ -22,36 +22,36 @@ CwGitClone >> descriptionLocation [
 		yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwGitClone >> gitBinary [
 	^ '/usr/local/bin/git' asFileReference
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwGitClone >> location [
 	^ self maLazyFromDescriptionOf: #location
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwGitClone >> location: anObject [
 	location := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwGitClone >> move: sourceReference to: targetReference [
 	self 
 		run: '{gitBinary} mv "{sourceReference}" "{targetReference}"' 
 		with: { #sourceReference -> sourceReference. #targetReference -> targetReference }
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwGitClone >> push [
 	self 
 		run: '{gitBinary} push origin master' 
 		with: { }
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwGitClone >> run: template with: arguments [
 	| command exitCode fullTemplate |
 	fullTemplate := 'cd "{rootFolder}"; ', template.
@@ -60,7 +60,7 @@ CwGitClone >> run: template with: arguments [
 	self assert: exitCode = 0
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwGitClone >> stageAll [
 	self 
 		run: '{gitBinary} add -A' 

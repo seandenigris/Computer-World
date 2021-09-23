@@ -1,10 +1,10 @@
 Class {
-	#name : #CwPharoCastTests,
-	#superclass : #TestCase,
+	#name : 'CwPharoCastTests',
+	#superclass : 'TestCase',
 	#category : 'ComputerWorld-Specification'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPharoCastTests >> testCreation [
 
 	| pharoCast |

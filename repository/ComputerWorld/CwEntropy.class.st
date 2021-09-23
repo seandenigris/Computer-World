@@ -1,6 +1,6 @@
 Class {
-	#name : #CwEntropy,
-	#superclass : #Object,
+	#name : 'CwEntropy',
+	#superclass : 'Object',
 	#instVars : [
 		'bits',
 		'vulnerability',
@@ -9,7 +9,7 @@ Class {
 	#category : 'ComputerWorld-Security'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwEntropy class >> examples [
 	"From http://world.std.com/~reinhold/dicewarefaq.html 'How long should my passphrase be?'"
 	<sampleInstance>
@@ -48,7 +48,7 @@ You have taken precautions against TEMPEST attacks. See the chapter "Commonsense
 				yourself ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwEntropy class >> lenstraEstimates [
 	| html doc table |
 	html := ZnClient new
@@ -67,17 +67,17 @@ CwEntropy class >> lenstraEstimates [
 	^ table
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwEntropy >> bits [
 	^ self maLazyInstVarUsing: self bitsDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwEntropy >> bits: aNumber [
 	bits := aNumber
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 CwEntropy >> bitsDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -85,17 +85,17 @@ CwEntropy >> bitsDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwEntropy >> equivalent [
 	^ equivalent ifNil: [ self examplesNotStronger last equivalent ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwEntropy >> equivalent: anObject [
 	equivalent := anObject
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 CwEntropy >> equivalentDescription [
 	<magritteDescription>
 	^ MAMemoDescription new
@@ -104,12 +104,12 @@ CwEntropy >> equivalentDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwEntropy >> examplesNotStronger [ 
 	^ self class examples select: [ :e | e bits <= self bits ].
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 CwEntropy >> printOn: aStream [
 
 	aStream
@@ -117,17 +117,17 @@ CwEntropy >> printOn: aStream [
 		nextPutAll: ' bits'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwEntropy >> vulnerability [
 	^ vulnerability ifNil: [ self examplesNotStronger last vulnerability ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwEntropy >> vulnerability: anObject [
 	vulnerability := anObject
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 CwEntropy >> vulnerabilityDescription [
 	<magritteDescription>
 	^ MAMemoDescription new

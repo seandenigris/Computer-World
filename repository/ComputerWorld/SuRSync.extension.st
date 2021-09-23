@@ -1,6 +1,6 @@
-Extension { #name : #SuRSync }
+Extension { #name : 'SuRSync' }
 
-{ #category : #'*ComputerWorld' }
+{ #category : '*ComputerWorld' }
 SuRSync class >> exampleScript [
 	<sampleInstance>
 	| exclusions subfolder source destination options commandTemplate exclusionFlag command |

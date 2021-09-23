@@ -1,10 +1,10 @@
 Class {
-	#name : #CwLightroom,
-	#superclass : #Object,
+	#name : 'CwLightroom',
+	#superclass : 'Object',
 	#category : 'ComputerWorld-Apps'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwLightroom >> excludePreviewsFromTimeMachine [
 	"They can be huge and can be easily regenerated
 	Reference: http://macperformanceguide.com/Mac-TimeMachine-excluding.html"
@@ -12,7 +12,7 @@ CwLightroom >> excludePreviewsFromTimeMachine [
 	self assert: (CwTimeMachine new isExcluded: self new previewFile) runInTerminal = 0
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwLightroom >> movePhotosFrom: source ToExternalDrive: target [
 	
 	| moveTemplate moveCommand linkTemplate linkCommand |
@@ -28,7 +28,7 @@ CwLightroom >> movePhotosFrom: source ToExternalDrive: target [
 	LibC system: linkCommand
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwLightroom >> previewFile [
 	^ FileLocator home / 'Pictures' / 'Lightroom' / 'Lightroom Catalog Previews.lrdata'
 ]

@@ -1,10 +1,10 @@
 Class {
-	#name : #CwNetworkSpecification,
-	#superclass : #TestCase,
+	#name : 'CwNetworkSpecification',
+	#superclass : 'TestCase',
 	#category : 'ComputerWorld-Specification'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 CwNetworkSpecification >> testAvailableAddresses [
 	
 	| net subnetMasks |
@@ -19,12 +19,12 @@ CwNetworkSpecification >> testAvailableAddresses [
 		net availableAddresses should equal: e value ]
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CwNetworkSpecification >> testConvertToString [
 	CwIPAddress examplePrivate displayString should equal: '172.16.0.0'
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CwNetworkSpecification >> testCreating [
 	| n1 n2 |
 	n1 := CwIPAddressRange startingAt: '192.168.0.0' subnetMask: '255.255.0.0'.
@@ -32,7 +32,7 @@ CwNetworkSpecification >> testCreating [
 	n1 should equal: n2
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 CwNetworkSpecification >> testIsPrivate [
 	| privateAddresses nonPrivateAddresses |
 	privateAddresses := #( 

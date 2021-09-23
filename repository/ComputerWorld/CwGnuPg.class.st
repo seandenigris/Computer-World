@@ -1,10 +1,10 @@
 Class {
-	#name : #CwGnuPg,
-	#superclass : #Object,
+	#name : 'CwGnuPg',
+	#superclass : 'Object',
 	#category : 'ComputerWorld-Apps'
 }
 
-{ #category : #documentation }
+{ #category : 'documentation' }
 CwGnuPg class >> macVersion [
 
 	^ CwGpgTools.

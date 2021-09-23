@@ -8,12 +8,12 @@ Configuration Files:
 ~/Documents/Reference/Windows XP Shared/vim_config/seans_settings.vim
 "
 Class {
-	#name : #CwMacVim,
-	#superclass : #CwSoftware,
+	#name : 'CwMacVim',
+	#superclass : 'CwSoftware',
 	#category : 'ComputerWorld-Apps'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacVim class >> fixMacLineEndings [
 	<script>
 	
@@ -26,7 +26,7 @@ CwMacVim class >> fixMacLineEndings [
 	UIManager default inform: 'Paste into command mode'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacVim class >> install [
 	"From https://github.com/macvim-dev/homebrew-macvim README"
 	'brew tap macvim-dev/macvim' asSuCommand asRoot.

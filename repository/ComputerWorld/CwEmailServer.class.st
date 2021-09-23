@@ -1,18 +1,18 @@
 Class {
-	#name : #CwEmailServer,
-	#superclass : #CwServer,
+	#name : 'CwEmailServer',
+	#superclass : 'CwServer',
 	#instVars : [
 		'forwarders'
 	],
-	#category : #'ComputerWorld-NAS'
+	#category : 'ComputerWorld-NAS'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwEmailServer >> forwarders [
 	^ forwarders ifNil: [ forwarders := OrderedCollection new ]
 ]
 
-{ #category : #'forwarders - importing' }
+{ #category : 'forwarders - importing' }
 CwEmailServer >> importSitegroundForwardersFile: file [
 
 	"file - page source from Site Tool"

@@ -1,10 +1,10 @@
 Class {
-	#name : #CwEpsonScanSmart,
-	#superclass : #Object,
+	#name : 'CwEpsonScanSmart',
+	#superclass : 'Object',
 	#category : 'ComputerWorld-Apps'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwEpsonScanSmart class >> processNames [
 	^ #('Epson Scanner Monitor')
 ]

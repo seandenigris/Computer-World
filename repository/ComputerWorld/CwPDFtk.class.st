@@ -5,7 +5,7 @@ On Mac, it seems ([per SO](https://stackoverflow.com/a/39814799)) that ""the way
 
 "
 Class {
-	#name : #CwPDFtk,
-	#superclass : #Object,
+	#name : 'CwPDFtk',
+	#superclass : 'Object',
 	#category : 'ComputerWorld-Apps'
 }

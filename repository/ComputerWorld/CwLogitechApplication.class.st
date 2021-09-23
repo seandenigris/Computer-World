@@ -1,20 +1,20 @@
 Class {
-	#name : #CwLogitechApplication,
-	#superclass : #CwMacApplication,
+	#name : 'CwLogitechApplication',
+	#superclass : 'CwMacApplication',
 	#category : 'ComputerWorld-Apps'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 CwLogitechApplication class >> isAbstract [
 	^ true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwLogitechApplication >> productHome [
 	^ 'https://logitech.com' asUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwLogitechApplication >> supportHome [
 	^ 'https://support.logi.com' asUrl
 ]

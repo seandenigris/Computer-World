@@ -1,6 +1,6 @@
-Extension { #name : #False }
+Extension { #name : 'False' }
 
-{ #category : #'*ComputerWorld-Mac' }
+{ #category : '*ComputerWorld-Mac' }
 False >> asCwPlistString [
 	^ 'NO'
 ]

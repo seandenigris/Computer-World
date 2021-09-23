@@ -1,16 +1,16 @@
 Class {
-	#name : #CwFakespot,
-	#superclass : #Object,
+	#name : 'CwFakespot',
+	#superclass : 'Object',
 	#category : 'ComputerWorld-Core'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CwFakespot class >> openOn: aUrl [
 
 	self new openOn: aUrl
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CwFakespot >> openOn: aUrl [ 
 	
 	| url |

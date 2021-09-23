@@ -1,32 +1,32 @@
 Class {
-	#name : #CwIPAddress,
-	#superclass : #CwInternetAddress,
+	#name : 'CwIPAddress',
+	#superclass : 'CwInternetAddress',
 	#category : 'ComputerWorld-Core'
 }
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 CwIPAddress class >> byteToString: anInteger [
 	^ anInteger printString
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 CwIPAddress class >> displaySeparator [
 	^ $.
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CwIPAddress class >> example [
 	<gtExample>
 	^ CwIPAddress fromString: '169.254.0.1'
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CwIPAddress class >> exampleMask [
 	<sampleInstance>
 	^ CwIPAddress fromString: '255.255.0.0'
 ]
 
-{ #category : #example }
+{ #category : 'example' }
 CwIPAddress class >> exampleMasking [
 	<gtExample>
 	| result |
@@ -35,45 +35,45 @@ CwIPAddress class >> exampleMasking [
 	^ result
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CwIPAddress class >> examplePrivate [
 	<sampleInstance>
 	^ CwIPAddress fromString: '172.16.0.0'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwIPAddress class >> maxRawAddress [
 	^ 4294967295.	"#[ 255 255 255 255] asInteger."
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 CwIPAddress class >> rawAddressToStringExample [
 	<gtExample>
 	(CwIPAddress rawAddressToString: 2851995649) should equal: '169.254.0.1'.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwIPAddress class >> sizeInBytes [
 	^ 4
 ]
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 CwIPAddress class >> stringToByte: aString [
 	^ aString asInteger
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 CwIPAddress class >> stringToRawAddressExample [
 	<gtExample>
 	(CwIPAddress stringToRawAddress: '169.254.0.1') should equal: 2851995649.
 ]
 
-{ #category : #converting }
+{ #category : 'converting' }
 CwIPAddress >> asCwIPAddress [
 	^ self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CwIPAddress >> isPrivate [
 	| privateRanges |
 	privateRanges := { 
@@ -84,24 +84,24 @@ CwIPAddress >> isPrivate [
 	^ privateRanges anySatisfy: [ :e | e includes: self ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwIPAddress >> maskedWith: anAddress [
 	^ CwIPAddress fromInteger: (self rawAddress bitAnd: anAddress rawAddress)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwIPAddress >> open [
 	^ Smalltalk tools webBrowser new open: ('https://', self displayString) asZnUrl.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwIPAddress >> should [
 	^ CwIPAddressShouldSpec new
 		receiver: self;
 		yourself
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 CwIPAddress >> stringDescription [
 	"<magritteDescription>"
 	self flag: 'Part of experiment to describe types in multiple ways, one of which being a simple string equivalent. Doesn''t work if enabled at the same time as #rawAddressdescription, presumably because they both operate on the same datat'.

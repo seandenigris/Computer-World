@@ -1,31 +1,31 @@
 Class {
-	#name : #CwSoftwareMorph,
-	#superclass : #Object,
+	#name : 'CwSoftwareMorph',
+	#superclass : 'Object',
 	#instVars : [
 		'software'
 	],
 	#category : 'ComputerWorld-Core'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwSoftwareMorph class >> on: aSoftware [
 
 	^ self new setModel: aSoftware.
 ]
 
-{ #category : #callbacks }
+{ #category : 'callbacks' }
 CwSoftwareMorph >> download [
 
 	software download.
 ]
 
-{ #category : #callbacks }
+{ #category : 'callbacks' }
 CwSoftwareMorph >> goToWebPage [
 
 	software webpage open.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwSoftwareMorph >> open [
 	| builder content webPageText webPageButton downloadText downloadButton |
 	builder := UITheme builder.
@@ -60,7 +60,7 @@ CwSoftwareMorph >> open [
 	content openInWindowLabeled: software fullName
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwSoftwareMorph >> setModel: aSoftware [ 
 
 	software := aSoftware.

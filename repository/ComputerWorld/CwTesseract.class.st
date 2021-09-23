@@ -4,7 +4,7 @@
 
 "
 Class {
-	#name : #CwTesseract,
-	#superclass : #Object,
+	#name : 'CwTesseract',
+	#superclass : 'Object',
 	#category : 'ComputerWorld-Apps'
 }

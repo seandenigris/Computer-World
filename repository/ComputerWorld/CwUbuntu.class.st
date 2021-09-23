@@ -1,10 +1,10 @@
 Class {
-	#name : #CwUbuntu,
-	#superclass : #Object,
+	#name : 'CwUbuntu',
+	#superclass : 'Object',
 	#category : 'ComputerWorld-Apps'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwUbuntu class >> minimumSystemRequirements [
 	Smalltalk tools webBrowser open: 'https://help.ubuntu.com/community/Installation/SystemRequirements#Ubuntu_Desktop_Edition'.
 	
@@ -15,13 +15,13 @@ CwUbuntu class >> minimumSystemRequirements [
 '
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwUbuntu class >> verifyISO: file [
 
 	CwUbuntuHash verify: file.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwUbuntu >> fixFlash [
 	"https://gist.github.com/seandenigris/4505931fa5860d567f6c"
 ]

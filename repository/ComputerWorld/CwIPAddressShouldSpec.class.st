@@ -1,10 +1,10 @@
 Class {
-	#name : #CwIPAddressShouldSpec,
-	#superclass : #SpecOfShouldExpression,
+	#name : 'CwIPAddressShouldSpec',
+	#superclass : 'SpecOfShouldExpression',
 	#category : 'ComputerWorld'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwIPAddressShouldSpec >> equal: anObject [
 	^ super equal: anObject asCwIPAddress
 ]

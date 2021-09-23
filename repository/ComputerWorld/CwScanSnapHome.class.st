@@ -1,15 +1,15 @@
 Class {
-	#name : #CwScanSnapHome,
-	#superclass : #Object,
+	#name : 'CwScanSnapHome',
+	#superclass : 'Object',
 	#category : 'ComputerWorld-Apps'
 }
 
-{ #category : #acccessing }
+{ #category : 'acccessing' }
 CwScanSnapHome class >> database [
 	^ FileLocator home / 'Library'/'Application Support'/'PFU'/'ScanSnap Home'/'Managed'/'ScanSnapHome.sqlite'
 ]
 
-{ #category : #installing }
+{ #category : 'installing' }
 CwScanSnapHome class >> install [
 	"No secure download from Fujitsu [1], so Homebrew w. checksum seems to be best option 
 	

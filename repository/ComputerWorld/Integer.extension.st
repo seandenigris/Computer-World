@@ -1,6 +1,6 @@
-Extension { #name : #Integer }
+Extension { #name : 'Integer' }
 
-{ #category : #'*ComputerWorld' }
+{ #category : '*ComputerWorld' }
 Integer >> asCwIPAddress [
 	"This is a bit of a sacrilege for multiple reasons, the most glaring of which is that we're not actually representing an IP address (which is a suped up integer anyway) here, but a CIDR routing prefix"
 

@@ -1,10 +1,10 @@
 Class {
-	#name : #CwPasswordSpecification,
-	#superclass : #TestCase,
+	#name : 'CwPasswordSpecification',
+	#superclass : 'TestCase',
 	#category : 'ComputerWorld-Specification'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 CwPasswordSpecification >> testEntropy [
 	| pwd |
 	pwd := CwPassword new
