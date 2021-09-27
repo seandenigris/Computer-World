@@ -12,6 +12,17 @@ CwEmailServer >> forwarders [
 	^ forwarders ifNil: [ forwarders := OrderedCollection new ]
 ]
 
+{ #category : 'accessing' }
+CwEmailServer >> gtGtSpotterForwardersFor: aStep [
+	<gtSearch>
+	^ aStep listProcessor
+		priority: 5;
+		title: 'Forwarders';
+		allCandidates: [ self forwarders ];
+		filter: GtFilterSubstrings;
+		candidatesLimit: 7
+]
+
 { #category : 'forwarders - importing' }
 CwEmailServer >> importSitegroundForwardersFile: file [
 
