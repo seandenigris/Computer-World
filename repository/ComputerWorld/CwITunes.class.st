@@ -11,13 +11,14 @@ CwITunes class >> bundleBasename [
 
 { #category : #accessing }
 CwITunes class >> iPhoneBackupFolder [
-	^ FileLocator userApplicationSupport / 'MobileSync' / 'Backup'
+	self flag: 'Not sure what we want to do here. If it''s a link, do we want to return the target?'.
+	^ self iPhoneBackupFolderDefault
 ]
 
 { #category : #accessing }
 CwITunes class >> iPhoneBackupFolder: aFileReference [
 	"Argument can be a mounted remote location"
-	Su_ln new
+	SuLn new
 		original: aFileReference;
 		link: self iPhoneBackupFolderDefault;
 		runInTerminal.
