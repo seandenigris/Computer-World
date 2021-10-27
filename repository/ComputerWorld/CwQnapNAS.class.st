@@ -48,6 +48,12 @@ CwQnapNAS class >> exampleModel: aString [
 ]
 
 { #category : #accessing }
+CwQnapNAS class >> exampleTS231P [
+	<gtExample>
+	^ self exampleModel: 'TS-231P'
+]
+
+{ #category : #accessing }
 CwQnapNAS class >> modelParser [ 
 	^ ($T asParser, $V asParser optional, $S asParser) flatten, $- asParser, #digit asParser plus flatten, #any asParser plus optional.
 ]
