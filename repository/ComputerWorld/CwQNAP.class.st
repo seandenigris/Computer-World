@@ -9,6 +9,17 @@ Class {
 }
 
 { #category : #accessing }
+CwQNAP class >> downloadViaClippedUrlVerifyingMD5: aString [
+	| url resource |
+	self error: 'almost working except for two things: 1) must be unzipped before adding to library and 2) we should keep a record of available versions, although this perhaps could be reconstructed via the resource''s URL'.
+	url := Clipboard clipboardText asString asUrl.
+	url scheme = #https ifFalse: [ self error: 'insecure url' ].
+	resource := url asRlResource.
+	resource file md5 = aString ifFalse: [ self error: 'MD5 hash mismatch' ].
+	^ "RlResourceLibrary uniqueInstance import:" resource.
+]
+
+{ #category : #accessing }
 CwQNAP class >> downloadsForModel: aString [
 	"CwQNAP downloadsForModel: 'tvs-472xt' >>> self"
 	| url |
