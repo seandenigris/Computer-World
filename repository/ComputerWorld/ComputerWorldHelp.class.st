@@ -1,15 +1,15 @@
 Class {
-	#name : 'ComputerWorldHelp',
-	#superclass : 'CustomHelp',
+	#name : #ComputerWorldHelp,
+	#superclass : #CustomHelp,
 	#category : 'ComputerWorld-Help'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 ComputerWorldHelp class >> bookName [
 	^'Computer World'
 ]
 
-{ #category : 'pages' }
+{ #category : #pages }
 ComputerWorldHelp class >> introduction [
 	"This method was automatically generated. Edit it using:"
 	"AnnouncementsHelp edit: #introduction"
@@ -25,7 +25,7 @@ Features:
 	Then it should appear in my image'  
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 ComputerWorldHelp class >> pages [
 	^#(introduction)
 ]

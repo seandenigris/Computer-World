@@ -1,10 +1,10 @@
 Class {
-	#name : 'CwFirefox',
-	#superclass : 'Object',
+	#name : #CwFirefox,
+	#superclass : #Object,
 	#category : 'ComputerWorld-Apps'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwFirefox class >> install [
 	| dmgFile downloadCommand |
 	downloadCommand := 'open ', 'https://www.mozilla.org/firefox/new/?scene=2'.

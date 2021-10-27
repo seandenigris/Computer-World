@@ -1,6 +1,6 @@
 Class {
-	#name : 'CwEmailForwarder',
-	#superclass : 'Object',
+	#name : #CwEmailForwarder,
+	#superclass : #Object,
 	#instVars : [
 		'alias',
 		'destination'
@@ -8,22 +8,22 @@ Class {
 	#category : 'ComputerWorld-NAS'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwEmailForwarder >> alias [
 	^ alias
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwEmailForwarder >> alias: email [
 	alias := email
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwEmailForwarder >> destination: email [
 	destination := email
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwEmailForwarder >> printOn: aStream [
 	aStream
 		nextPutAll: alias;

@@ -13,8 +13,8 @@ Or, it is available in Coder via my ""Servers"" tab:
 
 "
 Class {
-	#name : 'CwServer',
-	#superclass : 'Object',
+	#name : #CwServer,
+	#superclass : #Object,
 	#instVars : [
 		'adapters',
 		'manufacturer',
@@ -31,17 +31,17 @@ Class {
 	#category : 'ComputerWorld-NAS'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwServer class >> db [
 	^ DB ifNil: [ DB := OrderedCollection new ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwServer class >> db: aCollection [
 	DB := aCollection
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwServer class >> exampleRouter [
 	^ CwServer new
 			name: 'Home Router';
@@ -49,42 +49,42 @@ CwServer class >> exampleRouter [
 			yourself.
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwServer class >> gtViewServersOn: aView [
 	<gtView>
 	<gtClassView>
 	^ aView columnedList
 		title: 'Servers' translated;
-		priority: 5;
+		priority: 50;
 		items: [ self db ];
 		column: 'Name' text: [ :serv | serv name ];
 		column: 'Manufacturer' text: [ :serv | serv manufacturer ];
 		column: 'Model' text: [ :serv | serv model ]
 ]
 
-{ #category : 'persistence' }
+{ #category : #persistence }
 CwServer class >> restoreFrom: aCollection [
 
 	self db: aCollection.
 ]
 
-{ #category : 'persistence' }
+{ #category : #persistence }
 CwServer class >> spData [
 
 	^ DB
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwServer >> adapters [
 	^ self maLazyInstVarUsing: self adaptersDescription
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwServer >> adapters: aCollection [
 	adapters := aCollection
 ]
 
-{ #category : 'magritte-accessing' }
+{ #category : #'magritte-accessing' }
 CwServer >> adaptersDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -98,17 +98,17 @@ CwServer >> adaptersDescription [
 		yourself
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwServer >> adminUser [
 	^ self maLazyInstVarUsing: self adminUserDescription
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwServer >> adminUser: aString [
 	adminUser := aString
 ]
 
-{ #category : 'magritte-accessing' }
+{ #category : #'magritte-accessing' }
 CwServer >> adminUserDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -118,7 +118,7 @@ CwServer >> adminUserDescription [
 		yourself
 ]
 
-{ #category : 'actions' }
+{ #category : #actions }
 CwServer >> connectAdHocTo: aNAS [
 
 	Smalltalk tools workspace openContents: 'Assign the TVS-1282 a static IP address on the 10G port to
@@ -126,33 +126,33 @@ CwServer >> connectAdHocTo: aNAS [
 Install Hybrid Backup Sync on both systems. The 670Pro is your backup unit, and the 1282 is the master. Enable backup on the 670 Pro Hybrid Backup Sync. On the Master run Hybrid Backup Sync - Backup, and do a REMOTE BACKUP - enter the name, password, and static IP address of the backup QNAP (192.168.2.4) - select the folders you want to backup, and it starts. (from https://www.reddit.com/r/qnap/comments/b82zi0/10_gbe_direct_connection_between_two_nas/ejvmx8y?utm_source=share&utm_medium=web2x)'
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwServer >> ipAddress [
 	| relevantAdapter |
 	relevantAdapter := self adapters detect: [ :e | e isSameNetworkAs: OSPlatform current ipAddress ].
 	^ relevantAdapter ipAddress
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwServer >> logIn [
 	self error: 'WIP - have to consider all devices, not just default network'.
 	^ self adapters detect: [ :e | e ipAddress ifNotNil: [ :a | CwMac current defaultNetwork includes: a ] ifNil: [ false ] ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwServer >> macAddress [
 	^ self adapters 
 			ifNotEmpty: [ :col | col first macAddress ]
 			ifEmpty: [ nil ]
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwServer >> macAddress: aString [
 	self adapters ifEmpty: [ self adapters add: CwNetworkAdapter new ].
 	self adapters first macAddress: aString
 ]
 
-{ #category : 'magritte-accessing' }
+{ #category : #'magritte-accessing' }
 CwServer >> macAddressDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -161,17 +161,17 @@ CwServer >> macAddressDescription [
 		yourself
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwServer >> manufacturer [
 	^ self maLazyInstVarUsing: self manufacturerDescription
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwServer >> manufacturer: aString [
 	manufacturer := aString
 ]
 
-{ #category : 'magritte-accessing' }
+{ #category : #'magritte-accessing' }
 CwServer >> manufacturerDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -180,17 +180,17 @@ CwServer >> manufacturerDescription [
 		yourself
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwServer >> model [
 	^ self maLazyInstVarUsing: self modelDescription
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwServer >> model: aString [
 	model := aString
 ]
 
-{ #category : 'magritte-accessing' }
+{ #category : #'magritte-accessing' }
 CwServer >> modelDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -199,17 +199,17 @@ CwServer >> modelDescription [
 		yourself
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwServer >> name [
 	^ self maLazyInstVarUsing: self nameDescription
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwServer >> name: aString [
 	name := aString
 ]
 
-{ #category : 'magritte-accessing' }
+{ #category : #'magritte-accessing' }
 CwServer >> nameDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -218,7 +218,7 @@ CwServer >> nameDescription [
 		yourself
 ]
 
-{ #category : 'printing' }
+{ #category : #printing }
 CwServer >> printOn: aStream [
 	aStream
 		nextPutAll: name;
@@ -230,17 +230,17 @@ CwServer >> printOn: aStream [
 		nextPut: $)
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwServer >> rootUser [
 	^ self maLazyInstVarUsing: self rootUserDescription
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwServer >> rootUser: anObject [
 	rootUser := anObject
 ]
 
-{ #category : 'magritte-accessing' }
+{ #category : #'magritte-accessing' }
 CwServer >> rootUserDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -252,17 +252,17 @@ CwServer >> rootUserDescription [
 		yourself
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwServer >> rsaKeyFingerprint [
 	^ self maLazyInstVarUsing: self rsaKeyFingerprintDescription
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwServer >> rsaKeyFingerprint: aString [
 	rsaKeyFingerprint := aString
 ]
 
-{ #category : 'magritte-accessing' }
+{ #category : #'magritte-accessing' }
 CwServer >> rsaKeyFingerprintDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -270,12 +270,12 @@ CwServer >> rsaKeyFingerprintDescription [
 		yourself
 ]
 
-{ #category : 'ssh' }
+{ #category : #ssh }
 CwServer >> sshAdmin [
 	self sshAs: self adminUser
 ]
 
-{ #category : 'ssh' }
+{ #category : #ssh }
 CwServer >> sshAs: user [
 	| adapter |
 	adapter := self adapters size = 1
@@ -284,17 +284,17 @@ CwServer >> sshAs: user [
 	CwTerminal new doScript: 'ssh ', user name, '@', adapter ipAddress asString.
 ]
 
-{ #category : 'ssh' }
+{ #category : #ssh }
 CwServer >> sshRoot [
 	self sshAs: self rootUser
 ]
 
-{ #category : 'misc' }
+{ #category : #misc }
 CwServer >> timeMachineDIYSetup [
 	Smalltalk tools webBrowser new open: 'https://netfuture.ch/2013/08/simple-versioned-timemachine-like-backup-using-rsync/' asUrl
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwServer >> wakeOnLAN [
 	| hexString packet |
 	self error: 'How do we figure out which adapter is on the same network? For now send this directly to the adapter'.

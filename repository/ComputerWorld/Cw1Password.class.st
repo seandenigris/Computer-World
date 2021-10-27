@@ -5,12 +5,12 @@ software downloadByOpening: 'http://agilebits.com/downloads/1Password/Mac' asUrl
 
 "
 Class {
-	#name : 'Cw1Password',
-	#superclass : 'CwSoftware',
+	#name : #Cw1Password,
+	#superclass : #CwSoftware,
 	#category : 'ComputerWorld-Apps'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 Cw1Password class >> transferDataFileFrom: fullPathString [
 
 	"# Create data file directory:

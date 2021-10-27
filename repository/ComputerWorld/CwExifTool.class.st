@@ -1,16 +1,16 @@
 Class {
-	#name : 'CwExifTool',
-	#superclass : 'Object',
+	#name : #CwExifTool,
+	#superclass : #Object,
 	#category : 'ComputerWorld-Apps'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwExifTool class >> url [
 
 	^ 'http://www.sno.phy.queensu.ca/~phil/exiftool/' asUrl.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwExifTool >> removeAllMetadataFrom: file [
 
 	| command exitCode |
@@ -19,7 +19,7 @@ CwExifTool >> removeAllMetadataFrom: file [
 	exitCode = 0 ifFalse: [ self error: 'exiftool failed to remove metadata' ].
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwExifTool >> restoreSafeMetadataTo: file [
 
 	| command exitCode backupFile commandTemplate |
@@ -30,7 +30,7 @@ CwExifTool >> restoreSafeMetadataTo: file [
 	exitCode = 0 ifFalse: [ self error: 'exiftool failed to restore metadata' ].
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwExifTool >> scrubMetadataFrom: file [
 
 	self removeAllMetadataFrom: file.

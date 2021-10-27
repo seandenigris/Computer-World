@@ -1,10 +1,10 @@
 Class {
-	#name : 'CwShaSum',
-	#superclass : 'Object',
+	#name : #CwShaSum,
+	#superclass : #Object,
 	#category : 'ComputerWorld-Mac'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwShaSum >> assertSha: algorithmNumber for: file equals: aString [
 	
 	| commandTemplate tmpOutputFile command computedSha |

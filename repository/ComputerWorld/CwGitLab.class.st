@@ -1,10 +1,10 @@
 Class {
-	#name : 'CwGitLab',
-	#superclass : 'Object',
+	#name : #CwGitLab,
+	#superclass : #Object,
 	#category : 'ComputerWorld-Apps'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwGitLab class >> verifyKeyFingerprint: aString [
 	"See https://about.gitlab.com/gitlab-com/settings/#ssh-host-keys-fingerprints if need to update"
 	

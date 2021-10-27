@@ -1,10 +1,10 @@
 Class {
-	#name : 'CwPList',
-	#superclass : 'Object',
+	#name : #CwPList,
+	#superclass : #Object,
 	#category : 'ComputerWorld-Core'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 CwPList class >> on: aFileReference [ 
 
 	^ self new
@@ -12,7 +12,7 @@ CwPList class >> on: aFileReference [
 		yourself.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwPList >> at: keySymbol [
 
 	| tmpFile commandTemplate command output |
@@ -25,12 +25,12 @@ CwPList >> at: keySymbol [
 	^ output trimRight.
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 CwPList >> file [
 	^ file
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 CwPList >> file: aFileReference [
 	
 	file := aFileReference.

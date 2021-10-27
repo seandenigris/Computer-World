@@ -1,6 +1,6 @@
 Class {
-	#name : 'CwSoftwareListMorph',
-	#superclass : 'Object',
+	#name : #CwSoftwareListMorph,
+	#superclass : #Object,
 	#instVars : [
 		'model',
 		'contactSelectedIndex'
@@ -8,13 +8,13 @@ Class {
 	#category : 'ComputerWorld-Core'
 }
 
-{ #category : 'private' }
+{ #category : #private }
 CwSoftwareListMorph >> contactSelectedIndex [
 
 	^ contactSelectedIndex.
 ]
 
-{ #category : 'private-accessing' }
+{ #category : #'private-accessing' }
 CwSoftwareListMorph >> contactSelectedIndex: aNumber [
 
 	contactSelectedIndex := aNumber.
@@ -23,31 +23,31 @@ CwSoftwareListMorph >> contactSelectedIndex: aNumber [
   		changed: #hasSelectedContact
 ]
 
-{ #category : 'callbacks' }
+{ #category : #callbacks }
 CwSoftwareListMorph >> downloadButtonClick [
 
 	self selectedSoftware download
 ]
 
-{ #category : 'private-testing' }
+{ #category : #'private-testing' }
 CwSoftwareListMorph >> hasSelectedContact [
 
 	^ self contactSelectedIndex > 0.
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 CwSoftwareListMorph >> initialize [
 
 	contactSelectedIndex := 0.
 ]
 
-{ #category : 'callbacks' }
+{ #category : #callbacks }
 CwSoftwareListMorph >> installButtonClick [
 
 	self selectedSoftware install.
 ]
 
-{ #category : 'opening' }
+{ #category : #opening }
 CwSoftwareListMorph >> open [
 	"self new open"
 
@@ -84,19 +84,19 @@ CwSoftwareListMorph >> open [
 	(content openInWindowLabeled: 'Contacts') extent: 400 @ 500
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 CwSoftwareListMorph >> selectedSoftware [
 
 	^ self software at: self contactSelectedIndex
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 CwSoftwareListMorph >> software [
 
 	^ ComputerWorld default software.
 ]
 
-{ #category : 'callbacks' }
+{ #category : #callbacks }
 CwSoftwareListMorph >> webPageButtonClick [
 
 	self selectedSoftware webpage open.

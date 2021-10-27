@@ -12,22 +12,22 @@ For a comprehensive overview of what other actions might be available, see [here
 
 "
 Class {
-	#name : 'CwMac',
-	#superclass : 'Object',
+	#name : #CwMac,
+	#superclass : #Object,
 	#category : 'ComputerWorld-Mac'
 }
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 CwMac class >> current [
 	^ self new
 ]
 
-{ #category : 'admin' }
+{ #category : #admin }
 CwMac >> addSSHKeysToKeychain [
 	CwSSH addKeysToKeychain
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwMac >> defaultIPAddress [
 	^ SuGenericUnixCommand new
 		template: 'ipconfig getifaddr {deviceName}'; "via OSX Daily https://osxdaily.com/2010/08/08/lan-ip-address-mac/#comment-110377"
@@ -36,12 +36,12 @@ CwMac >> defaultIPAddress [
 		output
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwMac >> defaultNetwork [
 	^ CwIPAddressRange including: self defaultIPAddress subnetMask: self defaultSubnetMask
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwMac >> defaultNetworkDeviceName [
 	^ SuGenericUnixCommand new
 		template: 'route -n get default|grep interface|awk ''\{ print $2 \}'''; "via OSX Daily https://osxdaily.com/2010/08/08/lan-ip-address-mac/#comment-110377"
@@ -49,7 +49,7 @@ CwMac >> defaultNetworkDeviceName [
 		output
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwMac >> defaultSubnetMask [
 	^ SuGenericUnixCommand new
 		template: 'ifconfig | grep -A 5 {deviceName}'; "via OSX Daily https://osxdaily.com/2010/08/08/lan-ip-address-mac/#comment-110377"
@@ -65,7 +65,7 @@ CwMac >> defaultSubnetMask [
 		output
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwMac >> openFilesByProcess [
 	SuGenericUnixCommand new
 		template: 'sudo lsof -n +c 0 | cut -f1 -d'' '' | uniq -c | sort | tail';
@@ -75,7 +75,7 @@ CwMac >> openFilesByProcess [
 		- without sudo, it doesn't show all processes"
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwMac >> openFilesLimit: aNumber [
 	"More background, see https://wilsonmar.github.io/maximum-limits/"
 	
@@ -86,13 +86,13 @@ CwMac >> openFilesLimit: aNumber [
 		run
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwMac >> openFilesLimitExample [
 	"<gtExample> Don't run automatically because requires interaction"
 	self openFilesLimit: 1000
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwMac >> privacyResetAutomationPermissions [
 	"Useful if '{{Application}} wants to control {{Target}} popups not appearing"
 	SuGenericUnixCommand new
@@ -100,7 +100,7 @@ CwMac >> privacyResetAutomationPermissions [
 		run
 ]
 
-{ #category : 'user' }
+{ #category : #user }
 CwMac >> saveScreenshotsAs: extensionString [
 	"
 	aString - e.g. 'jpeg' 'png' 'pdf'
@@ -111,7 +111,7 @@ CwMac >> saveScreenshotsAs: extensionString [
 		waitForCommand: 'killall SystemUIServer'
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwMac >> setUpForSmalltalk [
 	Su_ln new
 		link: FileLocator dynabookData parent / 'preferences';
@@ -119,13 +119,13 @@ CwMac >> setUpForSmalltalk [
 		run
 ]
 
-{ #category : 'admin' }
+{ #category : #admin }
 CwMac >> viewKernelPanicLogs [
 	"From https://www.macobserver.com/tmo/article/os-x-troubleshooting-kernel-panics"
 	Smalltalk tools shell new command: 'open /Library/Logs/DiagnosticReports/*.panic'
 ]
 
-{ #category : 'actions' }
+{ #category : #actions }
 CwMac >> wifiPower: aBoolean [
 	| statusString |
 	statusString := aBoolean

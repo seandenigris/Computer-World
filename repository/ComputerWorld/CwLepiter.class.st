@@ -1,10 +1,10 @@
 Class {
-	#name : 'CwLepiter',
-	#superclass : 'CwMacApplication',
+	#name : #CwLepiter,
+	#superclass : #CwMacApplication,
 	#category : 'ComputerWorld-Mac'
 }
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwLepiter class >> bundleBasename [
 	^ 'Lepiter.app'
 ]

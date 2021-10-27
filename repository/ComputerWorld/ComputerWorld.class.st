@@ -8,8 +8,8 @@ Instance Variables:
 	projects	<OrderedCollection> 
 "
 Class {
-	#name : 'ComputerWorld',
-	#superclass : 'Object',
+	#name : #ComputerWorld,
+	#superclass : #Object,
 	#instVars : [
 		'software',
 		'webHostingServices',
@@ -22,31 +22,31 @@ Class {
 	#category : 'ComputerWorld-Core'
 }
 
-{ #category : 'persistence' }
+{ #category : #persistence }
 ComputerWorld class >> restoreFrom: anObject [
 
 	uniqueInstance := anObject.
 ]
 
-{ #category : 'persistence' }
+{ #category : #persistence }
 ComputerWorld class >> spData [
 
 	^ uniqueInstance
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 ComputerWorld class >> uniqueInstance [
 
 	^ uniqueInstance ifNil: [ uniqueInstance := self new ].
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 ComputerWorld >> addWebHostingService: aWebHostingService [
 
 	webHostingServices add: aWebHostingService.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 ComputerWorld >> initialize [
 
 	software := OrderedCollection new.
@@ -55,7 +55,7 @@ ComputerWorld >> initialize [
 	projects := OrderedCollection new.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 ComputerWorld >> onlineFileAt: aUrlOfString [
 
 	^ onlineFiles
@@ -63,13 +63,13 @@ ComputerWorld >> onlineFileAt: aUrlOfString [
 		ifNone: [ onlineFiles add: (CwOnlineFile at: aUrlOfString asUrl) ].
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 ComputerWorld >> software [
 
 	^ software.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 ComputerWorld >> softwareNamed: aString [ 
 
 	^ software

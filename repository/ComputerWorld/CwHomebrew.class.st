@@ -7,25 +7,25 @@ There are two main choices for app installation target, each with different trad
 Whichever of the above you choose, you have to #makeUsrLocalWritable by either your normal user (for #2) or an administrator (for #1).
 "
 Class {
-	#name : 'CwHomebrew',
-	#superclass : 'Object',
+	#name : #CwHomebrew,
+	#superclass : #Object,
 	#classVars : [
 		'Admin'
 	],
 	#category : 'ComputerWorld-Homebrew'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwHomebrew class >> admin [
 	^ Admin
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwHomebrew class >> admin: aString [
 	Admin := aString
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwHomebrew class >> install [
 	<script>
 	
@@ -48,19 +48,19 @@ CwHomebrew class >> install [
 	LibC system: command.
 ]
 
-{ #category : 'persistence' }
+{ #category : #persistence }
 CwHomebrew class >> restoreFrom: anObject [
 
 	self admin: anObject.
 ]
 
-{ #category : 'persistence' }
+{ #category : #persistence }
 CwHomebrew class >> spData [
 
 	^ Admin
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwHomebrew >> applicationFolder: folder [
 	"Avoid permission errors when writing to /Applications (from https://github.com/caskroom/homebrew-cask/issues/27431#issuecomment-273127376)"
 	
@@ -68,7 +68,7 @@ CwHomebrew >> applicationFolder: folder [
 	'export HOMEBREW_CASK_OPTS="--appdir=~/Applications"'
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwHomebrew >> caskUpgrade [
 	"
 	- Must be run as administrator
@@ -77,7 +77,7 @@ CwHomebrew >> caskUpgrade [
 	Smalltalk tools shell runExternally: 'brew cask outdated | xargs brew cask reinstall'.
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwHomebrew >> doctor [
 	"#install outputs a message to do this"
 
@@ -86,7 +86,7 @@ CwHomebrew >> doctor [
 	exitCode = 0 ifFalse: [ self error: 'brew doctor failed' ].
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwHomebrew >> exampleInstallTesseract [
 	<gtExample>
 	^ CwHomebrew new installCommand
@@ -94,12 +94,12 @@ CwHomebrew >> exampleInstallTesseract [
 		yourself
 ]
 
-{ #category : 'accessing' }
+{ #category : #accessing }
 CwHomebrew >> installCommand [
 	^ CwHomebrewInstallCommand new
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : #'as yet unclassified' }
 CwHomebrew >> makeUsrLocalWritable [
 	"As of High Sierra, /usr/lib is no longer chown-able. The new procedure is:
 	mkdir /usr/local/include

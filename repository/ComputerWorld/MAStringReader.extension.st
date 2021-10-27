@@ -1,6 +1,6 @@
-Extension { #name : 'MAStringReader' }
+Extension { #name : #MAStringReader }
 
-{ #category : '*ComputerWorld' }
+{ #category : #'*ComputerWorld' }
 MAStringReader >> visitIPAddressDescription: aDescription [ 
 	| contents |
 	contents := self contents.

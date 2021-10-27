@@ -6,8 +6,8 @@ shell run: 'pwd'.
 shell output.
 "
 Class {
-	#name : 'CwSshShell',
-	#superclass : 'Object',
+	#name : #CwSshShell,
+	#superclass : #Object,
 	#instVars : [
 		'process',
 		'password',
@@ -18,7 +18,7 @@ Class {
 	#category : 'ComputerWorld-Core'
 }
 
-{ #category : 'private' }
+{ #category : #private }
 CwSshShell class >> downloadExpectScript [
 
 	| response |
@@ -27,20 +27,20 @@ CwSshShell class >> downloadExpectScript [
 	FileStream fileNamed: self expectFileReference do: [ :file | file nextPutAll: response contents ].
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 CwSshShell class >> expectFile [
 
 	self expectFileReference exists ifFalse: [ self downloadExpectScript ].
 	^ self expectFileReference.
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 CwSshShell class >> expectFileReference [
 
 	^ FileLocator imageDirectory / 'expect.exp'.
 ]
 
-{ #category : 'instance creation' }
+{ #category : #'instance creation' }
 CwSshShell class >> on: ipAddressString as: userString withPassword: passwordString [
 
 	^ self new
@@ -50,25 +50,25 @@ CwSshShell class >> on: ipAddressString as: userString withPassword: passwordStr
 			yourself.
 ]
 
-{ #category : 'private-accessing' }
+{ #category : #'private-accessing' }
 CwSshShell >> expectFile [
 
 	^ self class expectFile.
 ]
 
-{ #category : 'private-accessing' }
+{ #category : #'private-accessing' }
 CwSshShell >> ipAddress: aString [ 
 
 	ipAddress := aString.
 ]
 
-{ #category : 'private-accessing' }
+{ #category : #'private-accessing' }
 CwSshShell >> loginTimeout [
 
 	^ 5 seconds.
 ]
 
-{ #category : 'API' }
+{ #category : #API }
 CwSshShell >> output [
 
 	| output response |
@@ -83,13 +83,13 @@ CwSshShell >> output [
 	^ response copyAfter: Character lf.
 ]
 
-{ #category : 'private-accessing' }
+{ #category : #'private-accessing' }
 CwSshShell >> password: aString [ 
 
 	password := aString.
 ]
 
-{ #category : 'private' }
+{ #category : #private }
 CwSshShell >> prepareForCommands [
 
 	self run: 'PS1="', self prompt, '"'.
@@ -101,7 +101,7 @@ CwSshShell >> prepareForCommands [
 	] valueWithin: self loginTimeout onTimeout: [ self error: 'Never got shell prompt' ].
 ]
 
-{ #category : 'private-accessing' }
+{ #category : #'private-accessing' }
 CwSshShell >> process [
 
 	| escapedPassword expectCommandTemplate expectCommand |
@@ -124,13 +124,13 @@ CwSshShell >> process [
 	^ process.
 ]
 
-{ #category : 'private-accessing' }
+{ #category : #'private-accessing' }
 CwSshShell >> prompt [
 
 	^ prompt := 'UNIQUE_PROMPT$'.
 ]
 
-{ #category : 'API' }
+{ #category : #API }
 CwSshShell >> run: aString [ 
 
 	self process
@@ -138,7 +138,7 @@ CwSshShell >> run: aString [
 		nextPut: Character lf.
 ]
 
-{ #category : 'private-accessing' }
+{ #category : #'private-accessing' }
 CwSshShell >> username: aString [ 
 
 	username := aString.
