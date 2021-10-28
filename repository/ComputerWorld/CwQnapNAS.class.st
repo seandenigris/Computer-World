@@ -29,7 +29,10 @@ After [setting up](https://www.qnap.com/en/how-to/tutorial/article/using-time-ma
 Class {
 	#name : #CwQnapNAS,
 	#superclass : #CwServer,
-	#category : 'ComputerWorld-NAS'
+	#instVars : [
+		'osVersion'
+	],
+	#category : #'ComputerWorld-NAS'
 }
 
 { #category : #accessing }
@@ -65,7 +68,7 @@ CwQnapNAS >> browseAppCenter [
 		'TS-231P' -> 258.
 		'TVS-472XT' -> 355 } asDictionary.
 		
-	url := 'https://www.qnap.com/en/app_center/?os=qts&version=4.4.3' asUrl.
+	url := 'https://www.qnap.com/en/app_center/?os=qts' asUrl ? (#version -> self osVersion).
 	modelMap at: self model ifPresent: [ :code | url queryAt: 'II' put: code ].
 	url open
 ]
@@ -119,6 +122,18 @@ umount /tmp/config' ].
 CwQnapNAS >> isHAL [
 	"https://www.qnap.com/en/how-to/knowledge-base/article/how-to-check-if-your-qts-is-legacy-or-hal-type/"
 	^ (UIManager default request: 'Does the following return 0?' initialAnswer: 'ls /sbin/hal_app') isNotNil
+]
+
+{ #category : #accessing }
+CwQnapNAS >> osVersion [
+
+	^ osVersion
+]
+
+{ #category : #accessing }
+CwQnapNAS >> osVersion: anObject [
+
+	osVersion := anObject
 ]
 
 { #category : #misc }
