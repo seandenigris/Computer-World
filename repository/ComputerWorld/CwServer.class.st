@@ -56,7 +56,7 @@ CwServer class >> gtViewServersOn: aView [
 	^ aView columnedList
 		title: 'Servers' translated;
 		priority: 50;
-		items: [ self db ];
+		items: [ self db select: [ :serv | serv class = self ] ];
 		column: 'Name' text: [ :serv | serv name ];
 		column: 'Manufacturer' text: [ :serv | serv manufacturer ];
 		column: 'Model' text: [ :serv | serv model ]

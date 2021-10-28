@@ -11,6 +11,8 @@ Class {
 { #category : #testing }
 CwIPhone >> canBackUp [
 	^ CwITunes iPhoneBackupFolder exists
+	
+	"Implementation note: works even if the folder is remote (e.g. the default location is a link)"
 ]
 
 { #category : #accessing }
