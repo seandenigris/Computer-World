@@ -1,7 +1,7 @@
 Class {
 	#name : #CwIPAddress,
 	#superclass : #CwInternetAddress,
-	#category : 'ComputerWorld-Core'
+	#category : #'ComputerWorld-Networking'
 }
 
 { #category : #utilities }
@@ -20,18 +20,12 @@ CwIPAddress class >> example [
 	^ CwIPAddress fromString: '169.254.0.1'
 ]
 
-{ #category : #'instance creation' }
-CwIPAddress class >> exampleMask [
-	<sampleInstance>
-	^ CwIPAddress fromString: '255.255.0.0'
-]
-
-{ #category : #example }
+{ #category : #examples }
 CwIPAddress class >> exampleMasking [
 	<gtExample>
 	| result |
-	result := self example maskedWith: self exampleMask.
-	result should equal: '169.254.0.0'.
+	result := self example maskedWith: CwIPSubnetMask example16.
+	result should equalString: '169.254.0.0'.
 	^ result
 ]
 
@@ -43,7 +37,7 @@ CwIPAddress class >> examplePrivate [
 
 { #category : #accessing }
 CwIPAddress class >> maxRawAddress [
-	^ 4294967295.	"#[ 255 255 255 255] asInteger."
+	^ 4294967295.	"#[ 255 255 255 255 ] asInteger."
 ]
 
 { #category : #examples }
@@ -52,7 +46,7 @@ CwIPAddress class >> rawAddressToStringExample [
 	(CwIPAddress rawAddressToString: 2851995649) should equal: '169.254.0.1'.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 CwIPAddress class >> sizeInBytes [
 	^ 4
 ]
@@ -96,9 +90,7 @@ CwIPAddress >> open [
 
 { #category : #accessing }
 CwIPAddress >> should [
-	^ CwIPAddressShouldSpec new
-		receiver: self;
-		yourself
+	^ CwIPAddressShouldSpec withReceiver: self asShouldExpressionReceiver
 ]
 
 { #category : #'magritte-accessing' }

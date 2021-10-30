@@ -8,7 +8,7 @@ Class {
 		'speed',
 		'macAddress'
 	],
-	#category : 'ComputerWorld-NAS'
+	#category : #'ComputerWorld-Networking'
 }
 
 { #category : #accessing }
@@ -26,6 +26,7 @@ CwNetworkAdapter >> descriptionDescription [
 	<magritteDescription>
 	^ MAStringDescription new
 		accessor: #description;
+		default: 'Default';
 		yourself
 ]
 
@@ -75,9 +76,10 @@ CwNetworkAdapter >> macAddressDescription [
 
 { #category : #printing }
 CwNetworkAdapter >> printOn: aStream [
-	aStream
-		nextPutAll: self description;
-		nextPutAll: ' ('.
+	self description ifNotNil: [ :desc |
+		aStream
+			nextPutAll: desc;
+			nextPutAll: ' (' ].
 	self speed ifNotNil: [ :spd |
 		aStream 
 			print: spd;

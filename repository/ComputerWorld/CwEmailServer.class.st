@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'forwarders'
 	],
-	#category : 'ComputerWorld-NAS'
+	#category : #'ComputerWorld-Networking'
 }
 
 { #category : #accessing }

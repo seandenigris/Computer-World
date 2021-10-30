@@ -5,7 +5,7 @@ Class {
 		'alias',
 		'destination'
 	],
-	#category : 'ComputerWorld-NAS'
+	#category : #'ComputerWorld-Networking'
 }
 
 { #category : #accessing }

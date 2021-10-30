@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'rawAddress'
 	],
-	#category : 'ComputerWorld-Core'
+	#category : #'ComputerWorld-Networking'
 }
 
 { #category : #abstract }
@@ -74,9 +74,14 @@ CwInternetAddress >> hash [
 
 { #category : #printing }
 CwInternetAddress >> printOn: aStream [
+	self printOn: aStream separatedBy: self class displaySeparator
+]
+
+{ #category : #printing }
+CwInternetAddress >> printOn: aStream separatedBy: aCharacter [
 	self rawAddress asByteArray 
 		do: [ :byte | aStream nextPutAll: (self class byteToString: byte) ]
-		separatedBy: [ aStream nextPut: self class displaySeparator ]
+		separatedBy: [ aStream nextPut: aCharacter ]
 ]
 
 { #category : #accessing }

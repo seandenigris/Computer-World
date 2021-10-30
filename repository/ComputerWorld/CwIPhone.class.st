@@ -11,6 +11,11 @@ Class {
 	#category : #'ComputerWorld-Core'
 }
 
+{ #category : #accessing }
+CwIPhone class >> mountPoint [
+	^ '/Volumes/Apple iPhone' asFileReference
+]
+
 { #category : #testing }
 CwIPhone >> canBackUp [
 	^ CwITunes iPhoneBackupFolder exists

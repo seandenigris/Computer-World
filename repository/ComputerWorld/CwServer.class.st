@@ -14,32 +14,14 @@ Or, it is available in Coder via my ""Servers"" tab:
 "
 Class {
 	#name : #CwServer,
-	#superclass : #Object,
+	#superclass : #CwNetworkDevice,
 	#instVars : [
-		'adapters',
-		'manufacturer',
-		'model',
 		'adminUser',
 		'rootUser',
-		'macAddress',
-		'name',
 		'rsaKeyFingerprint'
 	],
-	#classVars : [
-		'DB'
-	],
-	#category : 'ComputerWorld-NAS'
+	#category : #'ComputerWorld-Networking'
 }
-
-{ #category : #accessing }
-CwServer class >> db [
-	^ DB ifNil: [ DB := OrderedCollection new ]
-]
-
-{ #category : #accessing }
-CwServer class >> db: aCollection [
-	DB := aCollection
-]
 
 { #category : #accessing }
 CwServer class >> exampleRouter [
@@ -47,55 +29,6 @@ CwServer class >> exampleRouter [
 			name: 'Home Router';
 			rootUser: SuUnixUser exampleAdmin;
 			yourself.
-]
-
-{ #category : #accessing }
-CwServer class >> gtViewServersOn: aView [
-	<gtView>
-	<gtClassView>
-	^ aView columnedList
-		title: 'Servers' translated;
-		priority: 50;
-		items: [ self db select: [ :serv | serv class = self ] ];
-		column: 'Name' text: [ :serv | serv name ];
-		column: 'Manufacturer' text: [ :serv | serv manufacturer ];
-		column: 'Model' text: [ :serv | serv model ]
-]
-
-{ #category : #persistence }
-CwServer class >> restoreFrom: aCollection [
-
-	self db: aCollection.
-]
-
-{ #category : #persistence }
-CwServer class >> spData [
-
-	^ DB
-]
-
-{ #category : #accessing }
-CwServer >> adapters [
-	^ self maLazyInstVarUsing: self adaptersDescription
-]
-
-{ #category : #accessing }
-CwServer >> adapters: aCollection [
-	adapters := aCollection
-]
-
-{ #category : #'magritte-accessing' }
-CwServer >> adaptersDescription [
-	<magritteDescription>
-	^ MAToManyRelationDescription new
-		accessor: #adapters;
-		default: OrderedCollection new;
-		classes:
-			(Set new
-				add: CwNetworkAdapter;
-				yourself);
-		priority: 300;
-		yourself
 ]
 
 { #category : #accessing }
@@ -127,107 +60,9 @@ Install Hybrid Backup Sync on both systems. The 670Pro is your backup unit, and 
 ]
 
 { #category : #accessing }
-CwServer >> ipAddress [
-	| relevantAdapter |
-	relevantAdapter := self adapters detect: [ :e | e isSameNetworkAs: OSPlatform current ipAddress ].
-	^ relevantAdapter ipAddress
-]
-
-{ #category : #accessing }
 CwServer >> logIn [
 	self error: 'WIP - have to consider all devices, not just default network'.
 	^ self adapters detect: [ :e | e ipAddress ifNotNil: [ :a | CwMac current defaultNetwork includes: a ] ifNil: [ false ] ]
-]
-
-{ #category : #accessing }
-CwServer >> macAddress [
-	^ self adapters 
-			ifNotEmpty: [ :col | col first macAddress ]
-			ifEmpty: [ nil ]
-]
-
-{ #category : #accessing }
-CwServer >> macAddress: aString [
-	self adapters ifEmpty: [ self adapters add: CwNetworkAdapter new ].
-	self adapters first macAddress: aString
-]
-
-{ #category : #'magritte-accessing' }
-CwServer >> macAddressDescription [
-	<magritteDescription>
-	^ MAStringDescription new
-		accessor: #macAddress;
-		comment: 'The medium access control (MAC) address that is printed on the enclosure is that of its first NIC Adapter';
-		yourself
-]
-
-{ #category : #accessing }
-CwServer >> manufacturer [
-	^ self maLazyInstVarUsing: self manufacturerDescription
-]
-
-{ #category : #accessing }
-CwServer >> manufacturer: aString [
-	manufacturer := aString
-]
-
-{ #category : #'magritte-accessing' }
-CwServer >> manufacturerDescription [
-	<magritteDescription>
-	^ MAStringDescription new
-		accessor: #manufacturer;
-		priority: 200;
-		yourself
-]
-
-{ #category : #accessing }
-CwServer >> model [
-	^ self maLazyInstVarUsing: self modelDescription
-]
-
-{ #category : #accessing }
-CwServer >> model: aString [
-	model := aString
-]
-
-{ #category : #'magritte-accessing' }
-CwServer >> modelDescription [
-	<magritteDescription>
-	^ MAStringDescription new
-		accessor: #model;
-		priority: 100;
-		yourself
-]
-
-{ #category : #accessing }
-CwServer >> name [
-	^ self maLazyInstVarUsing: self nameDescription
-]
-
-{ #category : #accessing }
-CwServer >> name: aString [
-	name := aString
-]
-
-{ #category : #'magritte-accessing' }
-CwServer >> nameDescription [
-	<magritteDescription>
-	^ MAStringDescription new
-		accessor: #name;
-		priority: 50;
-		yourself
-]
-
-{ #category : #printing }
-CwServer >> printOn: aStream [
-	aStream
-		nextPutAll: name;
-		space;
-		nextPutAll: ' (';
-		maPrint: self modelDescription for: self;
-		space;
-		maPrint: self manufacturerDescription for: self;
-		nextPut: $)
 ]
 
 { #category : #accessing }

@@ -4,10 +4,55 @@ Class {
 	#instVars : [
 		'start',
 		'subnetMask',
-		'availableAddresses'
+		'name'
 	],
-	#category : 'ComputerWorld-Core'
+	#classVars : [
+		'Networks'
+	],
+	#category : #'ComputerWorld-Networking'
 }
+
+{ #category : #examples }
+CwIPAddressRange class >> exampleIncluding [
+	<gtExample>
+	^ self 
+		given: [  ] 
+		when: [ self including: CwIPAddress example subnetMask: CwIPSubnetMask example16 ]
+		then: [ :net |
+			(net includes: '169.254.0.0' asCwIPAddress) should be: true.
+			(net includes: '169.254.255.255' asCwIPAddress) should be: true.
+			(net includes: '169.255.0.0' asCwIPAddress) should be: false ].
+]
+
+{ #category : #examples }
+CwIPAddressRange class >> examplePrivate10 [
+
+	<gtExample>
+	^ self given: [  ] when: [ self private10 ] then: [ :net | 
+		  (net includes: '10.0.0.0' asCwIPAddress) should be: true.
+		  (net includes: '10.255.255.255' asCwIPAddress) should be: true.
+		  (net includes: '11.0.0.0' asCwIPAddress) should be: false ]
+]
+
+{ #category : #examples }
+CwIPAddressRange class >> examplePrivate172 [
+
+	<gtExample>
+	^ self given: [  ] when: [ self private172 ] then: [ :net | 
+		  (net includes: '172.16.0.0' asCwIPAddress) should be: true.
+		  (net includes: '172.31.255.255' asCwIPAddress) should be: true.
+		  (net includes: '172.32.0.0' asCwIPAddress) should be: false ]
+]
+
+{ #category : #examples }
+CwIPAddressRange class >> examplePrivate192 [
+
+	<gtExample>
+	^ self given: [  ] when: [ self private192 ] then: [ :net | 
+		  (net includes: '192.168.0.0' asCwIPAddress) should be: true.
+		  (net includes: '192.168.255.255' asCwIPAddress) should be: true.
+		  (net includes: '192.169.0.0' asCwIPAddress) should be: false ]
+]
 
 { #category : #accessing }
 CwIPAddressRange class >> including: address subnetMask: maskAddress [
@@ -16,7 +61,7 @@ CwIPAddressRange class >> including: address subnetMask: maskAddress [
 	startAddress := address maskedWith: maskAddress.
 	^ self new
 			start: startAddress;
-			subnetMask: maskAddress asCwIPAddress;
+			subnetMask: maskAddress;
 			yourself
 ]
 
@@ -27,11 +72,59 @@ CwIPAddressRange class >> linkLocal [
 ]
 
 { #category : #accessing }
+CwIPAddressRange class >> networks [
+
+	^ Networks ifNil: [ Networks := SortedCollection sortUsing: #name ascending ]
+]
+
+{ #category : #accessing }
+CwIPAddressRange class >> networks: anObject [
+
+	Networks := anObject
+]
+
+{ #category : #examples }
+CwIPAddressRange class >> private10 [
+
+	^ self
+		  startingAt: '10.0.0.0' asCwIPAddress
+		  subnetMask: (CwIPSubnetMask reservedBits: 8)
+]
+
+{ #category : #examples }
+CwIPAddressRange class >> private172 [
+
+	^ self
+		  startingAt: '172.16.0.0' asCwIPAddress
+		  subnetMask: (CwIPSubnetMask reservedBits: 12)
+]
+
+{ #category : #examples }
+CwIPAddressRange class >> private192 [
+
+	^ self
+		  startingAt: '192.168.0.0' asCwIPAddress
+		  subnetMask: (CwIPSubnetMask reservedBits: 16)
+]
+
+{ #category : #accessing }
+CwIPAddressRange class >> restoreFrom: aCollection [
+
+	self networks: aCollection.
+]
+
+{ #category : #accessing }
+CwIPAddressRange class >> spData [
+
+	^ self networks
+]
+
+{ #category : #accessing }
 CwIPAddressRange class >> startingAt: address subnetMask: maskAddress [
-	"CwIPAddressRange startingAt: CwIPAddress example subnetMask: CwIPAddress exampleMask"
+	
 	^ self new
 			start: address asCwIPAddress;
-			subnetMask: maskAddress asCwIPAddress;
+			subnetMask: maskAddress;
 			yourself
 ]
 
@@ -66,6 +159,28 @@ CwIPAddressRange >> includes: address [
 	differentBits := self start rawAddress bitXor: address rawAddress.
 	differentNetworkBits := differentBits bitAnd: subnetMask rawAddress.
 	^ differentNetworkBits = 0
+]
+
+{ #category : #accessing }
+CwIPAddressRange >> name [
+
+	^ name
+]
+
+{ #category : #accessing }
+CwIPAddressRange >> name: anObject [
+
+	name := anObject
+]
+
+{ #category : #accessing }
+CwIPAddressRange >> printOn: aStream [
+	self name ifNotNil: [ :n |
+		aStream nextPutAll: n; space ].
+		
+	aStream 
+		print: self start;
+		nextPutAll: self subnetMask slashNotation.
 ]
 
 { #category : #accessing }

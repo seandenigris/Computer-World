@@ -19,7 +19,8 @@ ComputerWorldDB class >> schema [
 			CwBetterTouchTool.
 			CwEBook.
 			CwHomebrew.
-			CwServer.
+			CwIPAddressRange.
+			CwNetworkDevice.
 			CwPharoCast.
 			ResourcesLiveDB
 		}.

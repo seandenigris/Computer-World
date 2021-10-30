@@ -32,7 +32,7 @@ Class {
 	#instVars : [
 		'osVersion'
 	],
-	#category : #'ComputerWorld-NAS'
+	#category : #'ComputerWorld-Networking'
 }
 
 { #category : #accessing }
