@@ -60,6 +60,11 @@ Install Hybrid Backup Sync on both systems. The 670Pro is your backup unit, and 
 ]
 
 { #category : #accessing }
+CwServer >> fingerprintFromKnownPublicKey [
+	^ (SuSSHKeyGen knownPublicKeyFingerprintForHost: self adapters first ipAddress asString) output
+]
+
+{ #category : #accessing }
 CwServer >> logIn [
 	self error: 'WIP - have to consider all devices, not just default network'.
 	^ self adapters detect: [ :e | e ipAddress ifNotNil: [ :a | CwMac current defaultNetwork includes: a ] ifNil: [ false ] ]
