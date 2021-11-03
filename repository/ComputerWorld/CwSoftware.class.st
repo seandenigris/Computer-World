@@ -15,7 +15,7 @@ Class {
 		'webpageUrl',
 		'downloadUrl'
 	],
-	#category : 'ComputerWorld-Core'
+	#category : #'ComputerWorld-Core'
 }
 
 { #category : #'as yet unclassified' }
@@ -63,10 +63,10 @@ CwSoftware >> canBeDownloadedAt: aUrlOrString [
 	downloadUrl := aUrlOrString asUrl.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 CwSoftware >> closeTheBrowserWindow [
 
-	Safari reference closeWindow: 1. 
+	CwSafari reference closeWindow: 1. 
 ]
 
 { #category : #downloading }
@@ -168,7 +168,7 @@ CwSoftware >> unzipDownloadedFile [
 CwSoftware >> waitForFileToBeginDownloading [
 
 	| downloadDirectory wasCreatedAfterPageOpened |
-	downloadDirectory := FileDirectory on: '/Users/god/Downloads/'.
+	downloadDirectory := FileLocator home / 'Downloads'.
 	[ downloadingFile isNil ] whileTrue: [
 		downloadingFile := downloadDirectory entries
 			detect: [ :f | 
@@ -188,7 +188,7 @@ CwSoftware >> waitForFileToFinishDownloading [
 CwSoftware >> waitForFileToUnzip [
 
 	| downloadsFolder |
-	downloadsFolder := (FileDirectory on: '/Users/god/Downloads').
+	downloadsFolder := FileLocator home / 'Downloads'.
 	[ downloadsFolder includesKey: '1Password.app' ] whileFalse. 
 ]
 
