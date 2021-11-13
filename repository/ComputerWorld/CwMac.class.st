@@ -14,7 +14,7 @@ For a comprehensive overview of what other actions might be available, see [here
 Class {
 	#name : #CwMac,
 	#superclass : #Object,
-	#category : 'ComputerWorld-Mac'
+	#category : #'ComputerWorld-Mac'
 }
 
 { #category : #'instance creation' }
@@ -117,6 +117,11 @@ CwMac >> setUpForSmalltalk [
 		link: FileLocator dynabookData parent / 'preferences';
 		target: FileLocator preferences / 'pharo';
 		run
+]
+
+{ #category : #mounting }
+CwMac >> smbMounter [
+	^ SuSMBMount new
 ]
 
 { #category : #admin }
