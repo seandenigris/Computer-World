@@ -20,6 +20,7 @@ ComputerWorldDB class >> schema [
 			CwEBook.
 			CwHomebrew.
 			CwIPAddressRange.
+			CwMacApplication.
 			CwNetworkDevice.
 			CwPharoCast.
 			ResourcesLiveDB

@@ -23,7 +23,10 @@ Class {
 	#instVars : [
 		'bundle'
 	],
-	#category : 'ComputerWorld-Mac'
+	#classInstVars : [
+		'installers'
+	],
+	#category : #'ComputerWorld-Mac'
 }
 
 { #category : #accessing }
@@ -98,6 +101,18 @@ CwMacApplication class >> glamorousToolkit [
 	^ self fromBundle: '/Applications/GlamorousToolkit/GlamorousToolkit.app' asFileReference.
 ]
 
+{ #category : #accessing }
+CwMacApplication class >> installers [
+
+	^ installers ifNil: [ installers := Bag new ]
+]
+
+{ #category : #accessing }
+CwMacApplication class >> installers: anObject [
+
+	installers := anObject
+]
+
 { #category : #testing }
 CwMacApplication class >> isSystem [
 	"As of 10.5 Catalina, apps that are part of macOS and are located in the read-only /System/Applications/ as opposed to /Applications"
@@ -136,6 +151,26 @@ CwMacApplication class >> relaunch [
 	[ "Give enough time to shut down without freezing the image"
 		3 seconds wait.
 		self launch ] fork
+]
+
+{ #category : #persistence }
+CwMacApplication class >> restoreFrom: anObject [
+	self = CwMacApplication
+		ifTrue: [ self subclassesDo: [ :cls | cls restoreFrom: (anObject at: cls) ] ]
+		ifFalse: [ installers := anObject ]
+]
+
+{ #category : #persistence }
+CwMacApplication class >> spData [
+	^ self = CwMacApplication
+		ifTrue: [ 
+			self subclasses 
+				inject: Dictionary new 
+				into: [ :dict :cls |
+					dict 
+						at: cls put: cls spData;
+						yourself ] ]
+		ifFalse: [ installers ]
 ]
 
 { #category : #actions }
