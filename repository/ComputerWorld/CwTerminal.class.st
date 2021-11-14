@@ -1,7 +1,7 @@
 Class {
 	#name : #CwTerminal,
-	#superclass : #Object,
-	#category : 'ComputerWorld-Mac'
+	#superclass : #CwMacApplication,
+	#category : #'ComputerWorld-Mac'
 }
 
 { #category : #preferences }
