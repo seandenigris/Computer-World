@@ -1,7 +1,7 @@
 Class {
 	#name : #CwMacFinder,
-	#superclass : #Object,
-	#category : 'ComputerWorld-Mac'
+	#superclass : #CwMacApplication,
+	#category : #'ComputerWorld-Mac'
 }
 
 { #category : #'instance creation' }

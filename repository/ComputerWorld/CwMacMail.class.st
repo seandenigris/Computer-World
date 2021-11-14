@@ -1,7 +1,7 @@
 Class {
 	#name : #CwMacMail,
-	#superclass : #Object,
-	#category : 'ComputerWorld-Mac'
+	#superclass : #CwMacApplication,
+	#category : #'ComputerWorld-Mac'
 }
 
 { #category : #'as yet unclassified' }
