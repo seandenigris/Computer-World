@@ -6,7 +6,7 @@ This may be how most applications start out. There is no behavior yet to justify
 and we're able to do things that are universal to all applications.
 ## Application with Specific Behavior
 Once we begin to implement features unique to the app, a subclass is in order. Here are some already available:
-```language=smalltalk
+```smalltalk
 CwMacApplication allSubclasses
 ```
 
@@ -14,7 +14,7 @@ A subclass should declare where the app lives. For most apps, just implement cla
 
 # Features
 ## Quarantine on Mac
-In certain circumstances, MacOS places downloaded apps in ""quarantine"". One of the consequences that can cause confusion is that the app is then copied to a read-only DMG in another location and run from there.  This can stymie code that relies on the image or VM being in a particular place. I provide the ability to check via {{gtMethod:CwMacApplication>>#isQuarantined|label=isQuarantined}} and fix via {{gtMethod:CwMacApplication>>#unquarantine|label=unquarantine}}.
+In certain circumstances, MacOS places downloaded apps in ""quarantine"". One of the consequences that can cause confusion is that the app is then copied to a read-only DMG in another location and run from there.  This can stymie code that relies on the image or VM being in a particular place. I provide the ability to check via {{gtMethod:CwMacApplication>>#isQuarantined|label=isQuarantined}} and fix via `aCwMacApplication unquarantineCommand run`.
 
 "
 Class {

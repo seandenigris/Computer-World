@@ -1,4 +1,6 @@
 "
+This domain evokes that of library works, where there might be a series of sub-works, editions of a single work, and copies of works. Here we have software as colloquially thought of e.g. ""oh, 1Password, does that work on Android? iOS? Windows?"". Then there is a version that runs on (a) particular OS(es). Then there is the running instance. The need to distinguish ""software"" from platform-specific ""version"" is uncertain, but it seems clear to distinguish them from ""running instance"". Maybe start there and play. The minimum to connect the two would be one of either: 1) bundle name/location or 2) CwMacApplication subclass
+
 Keep track of preferences
 Maybe:
 	software usesPreferenceFiles: { '~/Library/Preferences/com.red-sweater.FastScripts.plist'.
