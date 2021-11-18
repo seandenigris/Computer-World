@@ -46,7 +46,8 @@ CwMacApplication class >> bundleParent [
 	"Override in subclass if location not listed. Return a resolveable FS artifact"
 	^ { 
 		'/System/Applications' asFileReference.
-		'/Applications' asFileReference } detect: [ :e | e directoryNames includes: self bundleBasename ]
+		'/Applications' asFileReference.
+		'/Applications/Utilities' asFileReference } detect: [ :e | e directoryNames includes: self bundleBasename ]
 ]
 
 { #category : #'instance creation' }

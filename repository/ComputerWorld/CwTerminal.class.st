@@ -4,6 +4,11 @@ Class {
 	#category : #'ComputerWorld-Mac'
 }
 
+{ #category : #accessing }
+CwTerminal class >> bundleBasename [
+	^ 'Terminal.app'
+]
+
 { #category : #preferences }
 CwTerminal class >> changeFontSize [
 	<script>

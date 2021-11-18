@@ -10,6 +10,11 @@ CwMacMail class >> browseSignatures [
 	self new signatures inspect
 ]
 
+{ #category : #accessing }
+CwMacMail class >> bundleBasename [
+	^ 'Mail.app'
+]
+
 { #category : #utilities }
 CwMacMail class >> openAllICloudSignatureFiles [
 	"most important step from http://matt.coneybeare.me/how-to-make-an-html-signature-in-apple-mail-for-mojave-os-x-10-dot-14/"

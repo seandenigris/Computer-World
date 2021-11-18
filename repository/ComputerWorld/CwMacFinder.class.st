@@ -4,6 +4,16 @@ Class {
 	#category : #'ComputerWorld-Mac'
 }
 
+{ #category : #accessing }
+CwMacFinder class >> bundleBasename [
+	^ 'Finder.app'
+]
+
+{ #category : #accessing }
+CwMacFinder class >> bundleParent [
+	^ '/System/Library/CoreServices/' asFileReference
+]
+
 { #category : #'instance creation' }
 CwMacFinder class >> uniqueInstance [
 	<gtExample>
