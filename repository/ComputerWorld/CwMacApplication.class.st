@@ -29,6 +29,13 @@ Class {
 	#category : #'ComputerWorld-Mac'
 }
 
+{ #category : #'instance creation' }
+CwMacApplication class >> automator [
+	| bundleFile |
+	bundleFile := '/Applications/Automator.app' asFileReference.
+	^ CwMacApplication fromBundle: bundleFile.
+]
+
 { #category : #accessing }
 CwMacApplication class >> bundle [
 	"Returns a resolveable FS artifact; this creates a little confusion in other code because sometimes you care about the full path (e.g. when connecting to an app that is known to be installed at a certain location) and sometimes you care about the filename only (e.g. is this bundle file for this particular app, regardless of where it is on disk"
@@ -59,9 +66,9 @@ CwMacApplication class >> calibre [
 CwMacApplication class >> exampleGeneric [
 	<gtExample>
 	| result |
-	result := self mail.
+	result := self automator.
 	self assert: result class equals: CwMacApplication.
-	self assert: result bundle equals: '/Applications/Mail.app' asFileReference.
+	self assert: result bundle equals: '/Applications/Automator.app' asFileReference.
 	^ result
 ]
 
@@ -69,8 +76,8 @@ CwMacApplication class >> exampleGeneric [
 CwMacApplication class >> exampleSubclassExists [
 	<gtExample>
 	| result |
-	result := CwMacApplication fromBundle: '/Applications/OBS.app' asFileReference.
-	self assert: result class equals: CwOBS.
+	result := CwMacApplication fromBundle: '/Applications/Mail.app' asFileReference.
+	self assert: result class equals: CwMacMail.
 	^ result
 ]
 
