@@ -1,7 +1,7 @@
 Class {
 	#name : #CwSoftwareTests,
 	#superclass : #TestCase,
-	#category : 'ComputerWorld-Specification'
+	#category : #'ComputerWorld-Specification'
 }
 
 { #category : #accessing }

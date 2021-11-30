@@ -15,7 +15,11 @@ Class {
 		'timePageOpened',
 		'downloadingFile',
 		'webpageUrl',
+		'homebrewName',
 		'downloadUrl'
+	],
+	#classVars : [
+		'DB'
 	],
 	#category : #'ComputerWorld-Core'
 }
@@ -41,10 +45,46 @@ CwSoftware class >> assertShaFor: file equals: aString [
 	
 ]
 
+{ #category : #accessing }
+CwSoftware class >> db [
+
+	^ DB ifNil: [ DB := SortedCollection sortBlock: #name ascending ]
+]
+
+{ #category : #accessing }
+CwSoftware class >> db: anObject [
+
+	DB := anObject
+]
+
+{ #category : #accessing }
+CwSoftware class >> gtDBFor: aView [
+	<gtView>
+	<gtClassView>
+	self db ifEmpty: [ ^ aView empty ].
+	^ aView forward 
+		title: 'DB';
+		priority: 50;
+		object: [ self db ];
+		view: #gtItemsFor:
+]
+
 { #category : #'instance creation' }
 CwSoftware class >> named: aString [ 
 
 	^ self new setName: aString.
+]
+
+{ #category : #persistence }
+CwSoftware class >> restoreFrom: anObject [
+
+	DB := anObject.
+]
+
+{ #category : #persistence }
+CwSoftware class >> spData [
+
+	^ DB.
 ]
 
 { #category : #private }
@@ -121,6 +161,31 @@ CwSoftware >> hasBeenDownloaded [
 CwSoftware >> hash [
 
 	^ self fullName hash.
+]
+
+{ #category : #accessing }
+CwSoftware >> homebrewFormulaUrl [
+	^ ('https://formulae.brew.sh/cask/', self homebrewName) asUrl
+]
+
+{ #category : #accessing }
+CwSoftware >> homebrewInstallCommand [
+	^ CwHomebrew new installCommand
+		project: self homebrewName;
+		isCask: true;
+		ensureDownloadedFrom: self downloadUrl;
+		yourself.
+]
+
+{ #category : #accessing }
+CwSoftware >> homebrewName [
+	^ homebrewName
+]
+
+{ #category : #accessing }
+CwSoftware >> homebrewName: aString [
+
+	homebrewName := aString
 ]
 
 { #category : #installing }

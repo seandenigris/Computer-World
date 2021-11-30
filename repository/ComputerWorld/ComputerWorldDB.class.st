@@ -13,16 +13,16 @@ ComputerWorldDB class >> backupDirectoryParent [
 { #category : #'loading/saving' }
 ComputerWorldDB class >> schema [
 
-	^ { 
+	^ {
 			ComputerWorld.
 			CPanelDB.
 			CwBetterTouchTool.
 			CwEBook.
-			CwHomebrew.
 			CwIPAddressRange.
 			CwMacApplication.
 			CwNetworkDevice.
 			CwPharoCast.
-			ResourcesLiveDB
+			CwSoftware.
+			ResourcesLiveDB.
 		}.
 ]

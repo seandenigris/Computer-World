@@ -16,16 +16,6 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-CwHomebrew class >> admin [
-	^ Admin
-]
-
-{ #category : #'as yet unclassified' }
-CwHomebrew class >> admin: aString [
-	Admin := aString
-]
-
-{ #category : #'as yet unclassified' }
 CwHomebrew class >> install [
 	<script>
 	
@@ -48,16 +38,9 @@ CwHomebrew class >> install [
 	LibC system: command.
 ]
 
-{ #category : #persistence }
-CwHomebrew class >> restoreFrom: anObject [
+{ #category : #accessing }
+CwHomebrew class >> restoreFrom: a [
 
-	self admin: anObject.
-]
-
-{ #category : #persistence }
-CwHomebrew class >> spData [
-
-	^ Admin
 ]
 
 { #category : #'as yet unclassified' }

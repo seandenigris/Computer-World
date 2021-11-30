@@ -1,20 +1,14 @@
 Class {
 	#name : #CwHomebrewInstallCommand,
-	#superclass : #Object,
+	#superclass : #SuGenericUnixCommand,
 	#instVars : [
 		'admin',
 		'project',
-		'isCask'
+		'isCask',
+		'downloadRootUrl'
 	],
-	#category : 'ComputerWorld-Homebrew'
+	#category : #'ComputerWorld-Homebrew'
 }
-
-{ #category : #accessing }
-CwHomebrewInstallCommand class >> assert: anObject equalsCommand: commandString asUser: userString [
-	<debuggerCompleteToSender>
-	"See #template for rationale"
-	self assert: anObject commandString equals: 'su ', userString, ' -c "', commandString, '"'
-]
 
 { #category : #accessing }
 CwHomebrewInstallCommand class >> example [
@@ -25,7 +19,7 @@ CwHomebrewInstallCommand class >> example [
 			CwHomebrewInstallCommand new
 				project: 'tesseract';
 				yourself ]
-		then: [ :it | self assert: it equalsCommand: 'brew install tesseract' asUser: CwHomebrew admin  ].
+		then: [ :it | self assert: it basicCommandString equals: 'brew install tesseract' ].
 ]
 
 { #category : #accessing }
@@ -39,50 +33,47 @@ CwHomebrewInstallCommand class >> exampleCask [
 			isCask: true;
 			yourself ]
 		then: [ :it |
-			self assert: it equalsCommand: 'brew cask install --no-quarantine --require-sha bettertouchtool' asUser: CwHomebrew admin ]
-]
-
-{ #category : #'as yet unclassified' }
-CwHomebrewInstallCommand >> admin [
-	^ CwHomebrew admin
+			self assert: it basicCommandString equals: 'brew install --cask --no-quarantine --require-sha bettertouchtool' ]
 ]
 
 { #category : #accessing }
-CwHomebrewInstallCommand >> admin: anObject [
-	admin := anObject
+CwHomebrewInstallCommand class >> exampleCaskUrlMismatch [
+	<gtExample>
+	^ self
+		given: []
+		when: [ 
+			CwSoftware exampleAnki homebrewInstallCommand ]
+		then: [ :it |
+			self assert: it basicCommandString equals: 'brew install --cask --no-quarantine --require-sha anki' ]
 ]
 
 { #category : #accessing }
-CwHomebrewInstallCommand >> commandString [
-	"Reference: https://unix.stackexchange.com/a/1088/104011"
+CwHomebrewInstallCommand >> argumentSource [
 
-	| caskString optionalArguments result |
-	self isCask
-		ifTrue: [ 
-			caskString := 'cask'.
-			optionalArguments := '--no-quarantine --require-sha' ]
-		ifFalse: [ caskString := optionalArguments := '' ].
-	result := self template
-		format:
-			{(#project -> self project).
-			(#admin -> self admin).
-			(#optionalCask -> caskString).
-			(#optionalArguments -> optionalArguments)} asDictionary.
-	^ result withBlanksCondensed
-]
-
-{ #category : #'as yet unclassified' }
-CwHomebrewInstallCommand >> execute [
-	Smalltalk tools shell new runExternally: self commandString
+	| caskFlags |
+	caskFlags := self isCask 
+		ifTrue: [ ' --cask --no-quarantine --require-sha ' ]
+		ifFalse: [ '' ].
+	^ {
+		#caskFlags -> caskFlags.
+		#project -> self project } asDictionary
 ]
 
 { #category : #accessing }
-CwHomebrewInstallCommand >> gtCommandStringFor: aView [
-	<gtView>
-	
-	^ aView text
-		title: 'Command';
-		text: [ self commandString ]
+CwHomebrewInstallCommand >> downloadRootUrl [
+	^ downloadRootUrl
+]
+
+{ #category : #accessing }
+CwHomebrewInstallCommand >> ensureDownloadedFrom: aUrl [
+	downloadRootUrl := aUrl
+]
+
+{ #category : #accessing }
+CwHomebrewInstallCommand >> initialize [
+	super initialize.
+	template := 'brew install {caskFlags} {project}'.
+	self asAdministrator.
 ]
 
 { #category : #accessing }
@@ -106,9 +97,9 @@ CwHomebrewInstallCommand >> project: anObject [
 ]
 
 { #category : #accessing }
-CwHomebrewInstallCommand >> template [
-	"--require-sha: abort installation of cask if no checksum is defined
-	--no-quarantine: Prevent Gatekeeper from enforcing its security restrictions on the Cask. This will let you run it straightaway.
-	'Run as user' part adapted from *https://unix.stackexchange.com/a/1088/104011*"
-	^ 'su {admin} -c "brew {optionalCask} install {optionalArguments} {project}"'
+CwHomebrewInstallCommand >> verifyUrl [
+	| formulaUrl formula |
+	formulaUrl := 'https://formulae.brew.sh/api/cask' asUrl / (self project, '.json').
+	formula := STONJSON fromString: formulaUrl retrieveContents.
+	self assert: ((formula at: #url) beginsWith: self downloadRootUrl asString)
 ]
