@@ -99,12 +99,6 @@ CwSoftware >> asMorph [
 	^ CwSoftwareMorph on: self.
 ]
 
-{ #category : #downloading }
-CwSoftware >> canBeDownloadedAt: aUrlOrString [ 
-
-	downloadUrl := aUrlOrString asUrl.
-]
-
 { #category : #accessing }
 CwSoftware >> closeTheBrowserWindow [
 
@@ -143,6 +137,12 @@ CwSoftware >> downloadPath [
 CwSoftware >> downloadUrl [
 
 	^ downloadUrl.
+]
+
+{ #category : #downloading }
+CwSoftware >> downloadUrl: aUrlOrString [ 
+
+	downloadUrl := aUrlOrString asUrl.
 ]
 
 { #category : #accessing }
@@ -203,6 +203,11 @@ CwSoftware >> moveFileToApplicationsFolder [
 	sourceFile := sourceFolder / '1Password.app'.
 	commandTemplate := 'mv "{1}" /Applications'.
 	"OSProcess command: (commandTemplate format: { sourceFile fullName })."
+]
+
+{ #category : #accessing }
+CwSoftware >> name [
+	^ name
 ]
 
 { #category : #private }
