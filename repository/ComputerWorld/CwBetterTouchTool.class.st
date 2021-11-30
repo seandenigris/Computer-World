@@ -1,4 +1,8 @@
 "
+#Installation
+See <https://www.folivora.ai>
+
+#Configuration
 The first thing to do is to set up a shared secret in BTT so that nefarious parties can't script it. Fill in your secret in the BTT settings and then in the snippet below:
 
 	CwBetterTouchTool sharedSecret: 'my secret'
@@ -15,7 +19,7 @@ Class {
 		'Actions',
 		'SharedSecret'
 	],
-	#category : 'ComputerWorld-Apps'
+	#category : #'ComputerWorld-Apps'
 }
 
 { #category : #accessing }

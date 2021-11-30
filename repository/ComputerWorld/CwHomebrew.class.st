@@ -9,10 +9,7 @@ Whichever of the above you choose, you have to #makeUsrLocalWritable by either y
 Class {
 	#name : #CwHomebrew,
 	#superclass : #Object,
-	#classVars : [
-		'Admin'
-	],
-	#category : 'ComputerWorld-Homebrew'
+	#category : #'ComputerWorld-Homebrew'
 }
 
 { #category : #'as yet unclassified' }

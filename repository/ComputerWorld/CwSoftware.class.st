@@ -57,6 +57,31 @@ CwSoftware class >> db: anObject [
 	DB := anObject
 ]
 
+{ #category : #examples }
+CwSoftware class >> exampleAnki [
+	^ self
+		given: []
+		when: [ 
+			(self named: 'Anki')
+				homebrewName: 'anki';
+				downloadUrl: 'https://github.com/ankitects/anki/releases/download/' asUrl;
+				yourself ]	
+		then: [ :r | ]
+]
+
+{ #category : #examples }
+CwSoftware class >> exampleZoom [
+	^ self
+		given: []
+		when: [ 
+			(self named: 'Zoom')
+				homebrewName: 'zoom';
+				downloadUrl: 'https://cdn.zoom.us/prod/' asUrl;
+				webpage: 'https://www.zoom.us' asUrl;
+				yourself ]	
+		then: [ :r | ]
+]
+
 { #category : #accessing }
 CwSoftware class >> gtDBFor: aView [
 	<gtView>
