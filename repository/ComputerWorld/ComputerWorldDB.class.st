@@ -22,7 +22,7 @@ ComputerWorldDB class >> schema [
 			CwMacApplication.
 			CwNetworkDevice.
 			CwPharoCast.
-			CwSoftware.
+			CwSoftwareCatalog.
 			ResourcesLiveDB.
 		}.
 ]

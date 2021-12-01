@@ -1,5 +1,5 @@
 "
-What if interfacing with computing artifacts felt like your  mental models had come alive?
+What if interfacing with computing artifacts felt like your mental models had come alive?
 
 Interacting programmatically with computing artifacts (e.g. servers, applications, windows, peripherals) can be like the proverbial blind men describing the elephant. To do XYZ in this app, was it a CLI util, applescript, JS? How do I install it? What was its arcane syntax? 
 

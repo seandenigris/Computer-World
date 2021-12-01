@@ -52,7 +52,7 @@ CwHomebrewInstallCommand >> argumentSource [
 
 	| caskFlags |
 	caskFlags := self isCask 
-		ifTrue: [ ' --cask --no-quarantine --require-sha ' ]
+		ifTrue: [ ' --cask --require-sha ' ] "maybe automatically --no-quarantine is too aggressive/risky"
 		ifFalse: [ '' ].
 	^ {
 		#caskFlags -> caskFlags.

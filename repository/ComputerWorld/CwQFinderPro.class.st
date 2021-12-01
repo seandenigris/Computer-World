@@ -6,5 +6,5 @@ Class {
 
 { #category : #accessing }
 CwQFinderPro class >> bundleBasename [
-	^ 'iTunes.app'
+	^ 'Qfinder Pro.app'
 ]
