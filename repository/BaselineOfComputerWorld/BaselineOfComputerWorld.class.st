@@ -1,22 +1,14 @@
 "
-Motivation: make computing objects like applications, servers, etc come alive. The primary strategy is to document common computing tasks and when possible wrap them in Smalltalk.
+What if interfacing with computing artifacts felt like your  mental models had come alive?
 
-# Installation
-In a GToolkit (preferably) or Pharo (v. 8 best supported at time of writing), do the following:
-```smalltalk
-[ EpMonitor current disable.
-	[ Metacello new
-		baseline: 'ComputerWorld';
-		repository: 'github://seandenigris/Computer-World';
-		onConflictUseLoaded;
-		load ] ensure: [ EpMonitor current enable ].
-	#SuperuserDB asClass restoreLastBackup.
-	#ComputerWorldDB asClass restoreLastBackup.
-] fork
-```
-N.B. you only have to do the outer fork if on GT and you want the UI to stay responsive during the load.
+Interacting programmatically with computing artifacts (e.g. servers, applications, windows, peripherals) can be like the proverbial blind men describing the elephant. To do XYZ in this app, was it a CLI util, applescript, JS? How do I install it? What was its arcane syntax? 
+
+But why?! These artifacts are experienced as objects in our minds. What if our interfaces brought them to life with the same tangibility and clarity?
+
+Rather than descend into the exising chaos of endless ""tips and tricks"" to hack in missing features, becoming the ""high priests of a low cult"" Alan Kay has warned us about, we choose to create a beautiful, sane model that matches our existing reality. Join us.
 
 # Features
+A very incomplete list...
 
 ## Mac Control
 The primary entry point is {{gtClass:CwMac}}.
@@ -33,6 +25,11 @@ Class {
 { #category : #configuration }
 BaselineOfComputerWorld class >> dataFolder [
 	^ FileLocator dynabookData / 'Computer World'
+]
+
+{ #category : #testing }
+BaselineOfComputerWorld class >> isDynabook [
+	^ true
 ]
 
 { #category : #baseline }
