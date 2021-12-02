@@ -4,7 +4,7 @@ Commands adapted from http://www.macworld.com/article/2033804/control-time-machi
 Class {
 	#name : #CwTimeMachine,
 	#superclass : #Object,
-	#category : 'ComputerWorld-Apps'
+	#category : #'ComputerWorld-Apps'
 }
 
 { #category : #'as yet unclassified' }
@@ -32,6 +32,19 @@ CwTimeMachine >> exclude: file [
 	
 	Reference: http://www.macworld.com/article/2033804/control-time-machine-from-the-command-line.html"
 	^ ('tmutil addexclusion', file) asSuCommand asRoot
+]
+
+{ #category : #accessing }
+CwTimeMachine >> inheritBackup: aFileReference [
+	"NB. the new Mac will still backup *its entire disk*, but you will have access to files/versions that were on the old machine but not the new machine.
+	
+	aFileReference - either a local Backups.backupdb or a mounted sparsebundle
+	
+	Reference: http://www.creativetechsupport.com/help/it/install/timemachine-inherit.html"
+	^ SuGenericUnixCommand new
+		asRoot;
+		template: 'tmutil inheritbackup {backup}';
+		argumentAt: #backup put: aFileReference
 ]
 
 { #category : #actions }
