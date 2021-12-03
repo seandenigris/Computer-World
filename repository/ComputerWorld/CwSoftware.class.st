@@ -112,6 +112,11 @@ CwSoftware class >> spData [
 	^ DB.
 ]
 
+{ #category : #accessing }
+CwSoftware >> <= rhs [
+	^ self name <= rhs name
+]
+
 { #category : #private }
 CwSoftware >> = rhs [
 
@@ -173,7 +178,7 @@ CwSoftware >> downloadUrl: aUrlOrString [
 { #category : #accessing }
 CwSoftware >> fullName [
 
-	^ name.
+	^ self name.
 ]
 
 { #category : #'private-testing' }
@@ -232,7 +237,7 @@ CwSoftware >> moveFileToApplicationsFolder [
 
 { #category : #accessing }
 CwSoftware >> name [
-	^ name
+	^ name ifNil: [ name := '' ].
 ]
 
 { #category : #private }

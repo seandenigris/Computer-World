@@ -36,7 +36,7 @@ CwSoftwareCatalog class >> spData [
 
 { #category : #accessing }
 CwSoftwareCatalog class >> uniqueInstance [
-	^ UniqueInstance ifNil: [  UniqueInstance := self new ]
+	^ UniqueInstance ifNil: [ UniqueInstance := self new ]
 ]
 
 { #category : #accessing }
