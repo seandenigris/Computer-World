@@ -117,12 +117,6 @@ CwSoftware >> <= rhs [
 	^ self name <= rhs name
 ]
 
-{ #category : #private }
-CwSoftware >> = rhs [
-
-	^ self fullName = rhs fullName.
-]
-
 { #category : #Morphic }
 CwSoftware >> asMorph [
 
@@ -185,12 +179,6 @@ CwSoftware >> fullName [
 CwSoftware >> hasBeenDownloaded [
 
 	^ self downloadPath hasChildren.
-]
-
-{ #category : #private }
-CwSoftware >> hash [
-
-	^ self fullName hash.
 ]
 
 { #category : #accessing }
