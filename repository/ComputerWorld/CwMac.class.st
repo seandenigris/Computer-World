@@ -3,6 +3,25 @@
 See {{gtClass:CwMacApplication}}.
 # Audio Output Control
 [audiodevice](http://whoshacks.blogspot.com/2009/01/change-audio-devices-via-shell-script.html) seems intriguing, but it's canonical download point is on an individual's blog. It is recommended on several threads including [here](https://apple.stackexchange.com/a/213047/9507) on SO. [Here](https://github.com/gerardmassey/audiodevice) is a mirror repo on GH.
+#Backups
+The canonical ways to back up a Mac seem to be iCloud and/or {{gtClass:CwTimeMachine|label=Time Machine}}. The complexity of Mac's disk format, while perhaps justifiable from other standpoints e.g. security, make more standard (i.e. non-proprietary) methods a challenge. 
+
+For exampe, {{gtClass:SuRSync|label=rsync}} is the go-to power user backup tool. Since NAS devices have been gaining popularity, one might think that backing up to a NAS via {{gtClass:SuRSync|label=rsync}} would be a great approach... Not so fast. One may quickly find out that Mac's ACLs and extended attributes are non supported by the NAS disk format (e.g. ext4). 
+
+There is also Mac's own Disk Utility, which should be able to clone a volume via its ""Restore"" feature. However, one may encounter an inexplicable error, like `seal broken`.
+
+So what are we to do?
+
+The best bet for NAS seems to be {{gtClass:CwTimeMachine|label=Time Machine}}, which is officially supprted e.g. by {{gtClass:CwQnapNAS|label=QNAP}}. Note, however that not everyone has had a smooth ride with this. One could still also  {{gtClass:SuRSync|label=rsync}} to a NAS, but there are likely to be many errors. Thus it may have value as a seconary strategy, but might be best not to rely on.
+
+{{gtClass:SuRSync|label=rsync}} does, however, seem to be better supported on Mac disk formats like HFS+ and APFS, which might be a better target, but being outside the officially Apple-supported methods, might still be best as a secondary strategy.
+
+So where does that leave us? 
+
+Here is a possible plan:
+1. Time machine on NAS (or two) as primary backup
+2. External HFS+/APFS disk via rsync as secondary
+
 # Command Line
 <http://osxdaily.com/2006/11/22/ten-os-x-command-line-utilities-you-might-not-know-about/>
 # Wi-Fi Control

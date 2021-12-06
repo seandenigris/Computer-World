@@ -1,5 +1,8 @@
 "
 Commands adapted from http://www.macworld.com/article/2033804/control-time-machine-from-the-command-line.html
+
+# Target
+You can have other files in the destination. TM will not disturb them, but will happily create a sparsebundle alongside them.
 "
 Class {
 	#name : #CwTimeMachine,
