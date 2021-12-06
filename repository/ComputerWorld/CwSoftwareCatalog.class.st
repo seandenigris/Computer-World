@@ -59,7 +59,7 @@ CwSoftwareCatalog >> gtSpotterFor: aStep [
 ]
 
 { #category : #accessing }
-CwSoftwareCatalog >> gtSpotterNewCatalogFor: aStep [
+CwSoftwareCatalog >> gtSpotterNewSoftwareFor: aStep [
 	<gtSearch>
 	aStep listProcessor
 		title: 'New Software';
