@@ -1,3 +1,6 @@
+"
+[Here](https://superuser.com/questions/1191136/why-are-subnet-masks-relevant-for-the-individual-computer-on-the-network) and [here](https://www.ni.com/en-us/support/documentation/supplemental/11/best-practices-for-using-multiple-network-interfaces--nics--with.html) are two great resources explaining what subnet masks are and why every ethernet adapter needs to know its subnet.
+"
 Class {
 	#name : #CwIPSubnetMask,
 	#superclass : #CwIPAddress,
