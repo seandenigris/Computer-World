@@ -2,7 +2,12 @@
 Commands adapted from http://www.macworld.com/article/2033804/control-time-machine-from-the-command-line.html
 
 # Target
+
+## Other files
 You can have other files in the destination. TM will not disturb them, but will happily create a sparsebundle alongside them.
+
+## IP Address changes
+Time Machine stores metainfo about the backup on the target, not the source, so you can just remove the target with the old IP and add a new one with the new IP. TM will recognize the backup and keep adding to it, preserving the history.
 "
 Class {
 	#name : #CwTimeMachine,
