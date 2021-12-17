@@ -4,6 +4,26 @@ Class {
 	#category : 'ComputerWorld-Apps'
 }
 
+{ #category : #accessing }
+CwGitHub class >> rawUrlExample [
+	<gtExample>
+	
+	^ self
+		given: []
+		when: [ self rawUrlFor: 'https://github.com/magritte-metamodel/magritte/blob/master/.project' asUrl ]
+		then: [ :url | url should equal: 'https://raw.githubusercontent.com/magritte-metamodel/magritte/master/.project' asUrl ]
+]
+
+{ #category : #accessing }
+CwGitHub class >> rawUrlFor: aUrl [
+
+	^ aUrl copy
+		host: 'raw.githubusercontent.com';
+		clearPath;
+		addPathSegments: (aUrl pathSegments copyWithoutIndex: 3);
+		yourself
+]
+
 { #category : #'as yet unclassified' }
 CwGitHub class >> verifyKeyFingerprint: aString [
 	| soup keyTags keys |
