@@ -6,7 +6,7 @@
 Class {
 	#name : #CwSafari,
 	#superclass : #CwMacApplication,
-	#category : 'ComputerWorld-Mac'
+	#category : #'ComputerWorld-Mac'
 }
 
 { #category : #accessing }
@@ -43,6 +43,27 @@ CwSafari >> doJavascript: aSuJSScript [
 	| script jsContents |
 	jsContents := aSuJSScript string  copyReplaceAll: '"' with: '\"'.
 	script := 'tell application "Safari" to do JavaScript "', jsContents, '" in document 1'.
+	^ Applescript doIt: script.
+]
+
+{ #category : #scripting }
+CwSafari >> doJavascriptReturningBoolean: aSuJSScript [
+	"This method is needed because, for some reason, bools do not seem to get returned in macOS 12.0.1"
+	
+	<apiDocumentation>
+	<description: 'Assumes Safari ''document 1'', which will be the topmost (in the current Mac Space if there is one)'>
+	
+	| script jsContents |
+	jsContents := aSuJSScript string  copyReplaceAll: '"' with: '\"'.
+	script := 'tell application "Safari"
+	do JavaScript "', jsContents, '" in document 1
+		set result to do JavaScript "if (', jsContents, ') {
+   1
+} else {
+   0
+}" in document 1
+	return result is 1
+end tell'.
 	^ Applescript doIt: script.
 ]
 
