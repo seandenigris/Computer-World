@@ -23,13 +23,13 @@ CwTimeMachine class >> optimumSpaceToBackupGB: aNumber [
 ]
 
 { #category : #actions }
-CwTimeMachine >> disableLocalSnapshots [
-	'tmutil enablelocal' asSuCommand asRoot
+CwTimeMachine >> disableLocalSnapshotsCommand [
+	^ 'tmutil disablelocal' asSuCommand asRoot
 ]
 
 { #category : #actions }
-CwTimeMachine >> enableLocalSnapshots [
-	'tmutil enablelocal' asSuCommand asRoot run
+CwTimeMachine >> enableLocalSnapshotsCommand [
+	^ 'tmutil enablelocal' asSuCommand asRoot
 ]
 
 { #category : #actions }
@@ -59,4 +59,25 @@ CwTimeMachine >> inheritBackup: aFileReference [
 CwTimeMachine >> isExcluded: file [
 	"From: http://www.macworld.com/article/2033804/control-time-machine-from-the-command-line.html"
 	^ 'tmutil isexcluded' asSuCommand, file
+]
+
+{ #category : #accessing }
+CwTimeMachine >> isRunning [
+	^ (self statusCommand output at: #Running) = 1
+]
+
+{ #category : #accessing }
+CwTimeMachine >> percentComplete [
+	"Seems to be only available when not running"
+	^ self statusCommand output at: #Percent
+]
+
+{ #category : #actions }
+CwTimeMachine >> statusCommand [
+	^ 'tmutil status' asSuCommand
+		outputDecoder: [ :str | 
+			| headerLine |
+			headerLine := #newline asPParser negate plus, #newline asPParser.
+			(headerLine, CwPList nextStepParser ==> #last) parse: str ];
+		yourself
 ]
