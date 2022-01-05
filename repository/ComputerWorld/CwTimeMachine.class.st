@@ -23,8 +23,18 @@ CwTimeMachine class >> optimumSpaceToBackupGB: aNumber [
 ]
 
 { #category : #actions }
+CwTimeMachine >> disableCommand [
+	^ 'tmutil disable' asSuCommand asRoot
+]
+
+{ #category : #actions }
 CwTimeMachine >> disableLocalSnapshotsCommand [
 	^ 'tmutil disablelocal' asSuCommand asRoot
+]
+
+{ #category : #actions }
+CwTimeMachine >> enableCommand [
+	^ 'tmutil enable' asSuCommand asRoot
 ]
 
 { #category : #actions }
