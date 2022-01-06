@@ -19,7 +19,6 @@ ComputerWorldDB class >> schema [
 			CwBetterTouchTool.
 			CwEBook.
 			CwIPAddressRange.
-			CwMacApplication.
 			CwNetworkDevice.
 			CwPharoCast.
 			CwSoftwareCatalog.

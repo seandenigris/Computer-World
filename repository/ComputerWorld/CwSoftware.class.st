@@ -16,7 +16,8 @@ Class {
 		'downloadingFile',
 		'webpageUrl',
 		'homebrewName',
-		'downloadUrl'
+		'downloadUrl',
+		'installers'
 	],
 	#classVars : [
 		'DB'
@@ -211,6 +212,18 @@ CwSoftware >> install [
 
 	self hasBeenDownloaded ifFalse: [ self download ].
 	self unzipDownloadedFile.
+]
+
+{ #category : #accessing }
+CwSoftware >> installers [
+
+	^ installers ifNil: [ installers := Bag new ]
+]
+
+{ #category : #accessing }
+CwSoftware >> installers: anObject [
+
+	installers := anObject
 ]
 
 { #category : #private }

@@ -161,26 +161,6 @@ CwMacApplication class >> relaunch [
 		self launch ] fork
 ]
 
-{ #category : #persistence }
-CwMacApplication class >> restoreFrom: anObject [
-	self = CwMacApplication
-		ifTrue: [ self subclassesDo: [ :cls | cls restoreFrom: (anObject at: cls) ] ]
-		ifFalse: [ installers := anObject ]
-]
-
-{ #category : #persistence }
-CwMacApplication class >> spData [
-	^ self = CwMacApplication
-		ifTrue: [ 
-			self subclasses 
-				inject: Dictionary new 
-				into: [ :dict :cls |
-					dict 
-						at: cls put: cls spData;
-						yourself ] ]
-		ifFalse: [ installers ]
-]
-
 { #category : #actions }
 CwMacApplication >> activate [
 
