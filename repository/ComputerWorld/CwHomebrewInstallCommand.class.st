@@ -70,6 +70,12 @@ CwHomebrewInstallCommand >> ensureDownloadedFrom: aUrl [
 ]
 
 { #category : #accessing }
+CwHomebrewInstallCommand >> execute [
+	self verifyUrl.
+	super execute
+]
+
+{ #category : #accessing }
 CwHomebrewInstallCommand >> initialize [
 	super initialize.
 	template := 'brew install {caskFlags} {project}'.
