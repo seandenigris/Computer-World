@@ -4,6 +4,36 @@ Class {
 	#category : 'ComputerWorld-Core'
 }
 
+{ #category : #examples }
+CwPList class >> exampleNeXTSTEPParser [
+	<gtExample>
+	^ self
+		given: [ '{
+    BackupPhase = Copying;
+    ClientID = "com.apple.backupd";
+    DateOfStateChange = "2022-01-05 17:32:43 +0000";
+    DestinationID = "12345AB6-CD78-9E01-F23A-4B5CD6E7F8A9";
+    DestinationMountPoint = "/Volumes/Backups of User\U2019s Laptop";
+    EventFractionOfTotalProgressBar = "0.1";
+    Progress =     {
+        Percent = "0.05282568974538102";
+        TimeRemaining = "7967.723014243437";
+        "_raw_Percent" = "0.05282568974538102";
+        "_raw_totalBytes" = 690289491968;
+        bytes = 3197747200;
+        files = 5034;
+        sizingFreePreflight = 1;
+        totalBytes = 690289491968;
+        totalFiles = 2631745;
+    };
+    Running = 1;
+    Stopping = 0;
+}' ]
+	when: [ :input | CwPList nextStepParser parse: input ]
+	then: [ :output | 
+		(output at: 'Running') should equal: 1 ]
+]
+
 { #category : #accessing }
 CwPList class >> nextStepParser [
 	"Partial implementation of syntax from https://en.wikipedia.org/wiki/Property_list#NeXTSTEP"
