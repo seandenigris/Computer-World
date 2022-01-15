@@ -12,14 +12,24 @@ Time Machine stores metainfo about the backup on the target, not the source, so 
 Class {
 	#name : #CwTimeMachine,
 	#superclass : #Object,
-	#category : #'ComputerWorld-Apps'
+	#category : #'ComputerWorld-TimeMachine'
 }
+
+{ #category : #accessing }
+CwTimeMachine class >> destinationInfoCommand [
+	^ 'tmutil destinationinfo -X' asSuCommand
+]
 
 { #category : #'as yet unclassified' }
 CwTimeMachine class >> optimumSpaceToBackupGB: aNumber [
 	"From http://apple.stackexchange.com/questions/100780/how-big-should-my-time-machine-backup-drive-be"
 	
 	^ 2 * aNumber to: 4 * aNumber
+]
+
+{ #category : #accessing }
+CwTimeMachine >> destinations [
+	^ CwTimeMachineDestination all
 ]
 
 { #category : #actions }
