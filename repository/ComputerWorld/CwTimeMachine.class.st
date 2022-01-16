@@ -20,6 +20,11 @@ CwTimeMachine class >> destinationInfoCommand [
 	^ 'tmutil destinationinfo -X' asSuCommand
 ]
 
+{ #category : #accessing }
+CwTimeMachine class >> destinations [
+	^ CwTimeMachineDestination all
+]
+
 { #category : #'as yet unclassified' }
 CwTimeMachine class >> optimumSpaceToBackupGB: aNumber [
 	"From http://apple.stackexchange.com/questions/100780/how-big-should-my-time-machine-backup-drive-be"
@@ -28,8 +33,8 @@ CwTimeMachine class >> optimumSpaceToBackupGB: aNumber [
 ]
 
 { #category : #accessing }
-CwTimeMachine >> destinations [
-	^ CwTimeMachineDestination all
+CwTimeMachine class >> startBackupToCommand [
+	^ 'tmutil startbackup --destination {destinationID}' asSuCommand
 ]
 
 { #category : #actions }

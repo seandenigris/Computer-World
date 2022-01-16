@@ -92,6 +92,13 @@ CwTimeMachineDestination >> rawData: aDictionary [
 ]
 
 { #category : #accessing }
+CwTimeMachineDestination >> startBackup [
+	^ CwTimeMachine startBackupToCommand
+		argumentAt: #destinationID put: self id;
+		run
+]
+
+{ #category : #accessing }
 CwTimeMachineDestination >> url [
 	
 	^ self rawData at: #url ifAbsent: [ nil ]
