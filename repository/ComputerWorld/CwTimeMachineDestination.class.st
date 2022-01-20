@@ -92,6 +92,13 @@ CwTimeMachineDestination >> rawData: aDictionary [
 ]
 
 { #category : #accessing }
+CwTimeMachineDestination >> server [
+	^ CwNetworkDevice db 
+		detect: [ :e | e adapters anySatisfy: [ :a | a ipAddress asString = self url host ] ]
+		ifNone: [ nil ]
+]
+
+{ #category : #accessing }
 CwTimeMachineDestination >> startBackup [
 	^ CwTimeMachine startBackupToCommand
 		argumentAt: #destinationID put: self id;
@@ -101,5 +108,8 @@ CwTimeMachineDestination >> startBackup [
 { #category : #accessing }
 CwTimeMachineDestination >> url [
 	
-	^ self rawData at: #url ifAbsent: [ nil ]
+	^ self rawData 
+		at: #url 
+		ifPresent: [ :str | str asUrl ]
+		ifAbsent: [ nil ]
 ]
