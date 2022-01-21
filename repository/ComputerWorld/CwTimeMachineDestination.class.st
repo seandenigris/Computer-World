@@ -77,7 +77,7 @@ CwTimeMachineDestination >> name [
 { #category : #accessing }
 CwTimeMachineDestination >> printOn: aStream [
 	self name ifNotNil: [ :str | aStream nextPutAll: str ].
-	self url ifNotNil: [ :str | aStream nextPutAll: ' @ '; nextPutAll: str ].
+	self url ifNotNil: [ :obj | aStream nextPutAll: ' @ '; print: obj ].
 	self kind = 'Local' ifTrue: [ aStream nextPutAll: ' (Local)' ].
 ]
 
