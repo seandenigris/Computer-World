@@ -33,7 +33,7 @@ CwHomebrewInstallCommand class >> exampleCask [
 			isCask: true;
 			yourself ]
 		then: [ :it |
-			self assert: it basicCommandString equals: 'brew install --cask --no-quarantine --require-sha bettertouchtool' ]
+			self assert: it basicCommandString equals: 'brew install --cask --require-sha bettertouchtool' ]
 ]
 
 { #category : #accessing }
@@ -44,7 +44,7 @@ CwHomebrewInstallCommand class >> exampleCaskUrlMismatch [
 		when: [ 
 			CwSoftware exampleAnki homebrewInstallCommand ]
 		then: [ :it |
-			self assert: it basicCommandString equals: 'brew install --cask --no-quarantine --require-sha anki' ]
+			self assert: it basicCommandString equals: 'brew install --cask --require-sha anki' ]
 ]
 
 { #category : #accessing }
@@ -56,7 +56,7 @@ CwHomebrewInstallCommand >> argumentSource [
 		ifFalse: [ '' ].
 	^ {
 		#caskFlags -> caskFlags.
-		#project -> self project } asDictionary
+		#project -> self project homebrewName } asDictionary
 ]
 
 { #category : #accessing }

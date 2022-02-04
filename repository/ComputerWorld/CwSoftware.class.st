@@ -189,11 +189,15 @@ CwSoftware >> homebrewFormulaUrl [
 
 { #category : #accessing }
 CwSoftware >> homebrewInstallCommand [
-	^ CwHomebrew new installCommand
-		project: self homebrewName;
-		isCask: true;
+	| result |
+	result := CwHomebrew new installCommand
+		project: self;
 		ensureDownloadedFrom: self downloadUrl;
 		yourself.
+		
+	self homebrewName first isUppercase ifTrue: [ result isCask: true ].
+	
+	^ result
 ]
 
 { #category : #accessing }

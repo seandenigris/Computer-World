@@ -88,3 +88,12 @@ CwHomebrew >> makeUsrLocalWritable [
 	From: https://github.com/Homebrew/brew/issues/3228"
 	self shouldBeImplemented
 ]
+
+{ #category : #accessing }
+CwHomebrew >> rootFolder [
+	^ OSPlatform current isARM
+		ifTrue: [ '/opt/homebrew' ]
+		ifFalse: [ '/usr/local' ]
+		
+	"Reference: https://docs.brew.sh/Installation"
+]

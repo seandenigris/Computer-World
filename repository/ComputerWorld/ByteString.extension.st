@@ -4,3 +4,8 @@ Extension { #name : #ByteString }
 ByteString >> asCwIPAddress [
 	^ CwIPAddress fromString: self
 ]
+
+{ #category : #'*ComputerWorld' }
+ByteString >> homebrewName [
+	^ self
+]
