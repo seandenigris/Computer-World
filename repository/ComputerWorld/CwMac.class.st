@@ -85,6 +85,20 @@ CwMac >> defaultSubnetMask [
 ]
 
 { #category : #accessing }
+CwMac >> defaultTextEditor: aString [
+	"aString - desired app e.g. com.vim.macvim, com.sublimetext.3, or com.microsoft.VSCode
+	
+	Requires a restart to take effect"
+
+	SuGenericUnixCommand new
+		template: 'defaults write com.apple.LaunchServices/com.apple.launchservices.secure LSHandlers -array-add ''\{LSHandlerContentType=public.plain-text;LSHandlerRoleAll={app};\}''';
+		argumentAt: #app put: aString;
+		run.
+		
+	"Adapted from several answers on https://apple.stackexchange.com/q/123833"
+]
+
+{ #category : #accessing }
 CwMac >> dock [
 	^ CwMacDock new
 ]
