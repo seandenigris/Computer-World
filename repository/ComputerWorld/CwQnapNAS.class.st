@@ -148,7 +148,8 @@ CwQnapNAS >> persistSudoerEntry: entry inFileNamed: aString [
 	- Apparently another solution is to install sudo via entware [2]
 	
 	1. https://forum.qnap.com/viewtopic.php?t=143966#p689236
-	2. https://forum.qnap.com/viewtopic.php?t=152969'.
+	2. https://forum.qnap.com/viewtopic.php?t=152969
+	3. https://superuser.com/a/1570245'.
 ]
 
 { #category : #'magritte-accessing' }
