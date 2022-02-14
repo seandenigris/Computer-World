@@ -1,6 +1,14 @@
 {
 	"__schema" : "4.1",
 	"__type" : "page",
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "ca6d0095-9580-0d00-af36-8a080b6c0cb8"
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Committing Lepiter"
+	},
 	"children" : {
 		"__type" : "snippets",
 		"items" : [
@@ -95,13 +103,5 @@
 			"__type" : "dateAndTime",
 			"dateAndTimeString" : "2021-06-07T17:41:54.922132-04:00"
 		}
-	},
-	"pageType" : {
-		"__type" : "namedPage",
-		"title" : "Committing Lepiter"
-	},
-	"uid" : {
-		"__type" : "uuid",
-		"uuid" : "ca6d0095-9580-0d00-af36-8a080b6c0cb8"
 	}
 }
