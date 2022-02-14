@@ -37,18 +37,10 @@ EOD' withUnixLineEndings format: { aString }.
 
 { #category : #scripting }
 CwSafari >> doJavascript: aSuJSScript [
-	<apiDocumentation>
-	<description: 'Assumes Safari ''document 1'', which will be the topmost (in the current Mac Space if there is one)'>
-	
-	| script jsContents |
-	jsContents := aSuJSScript string  copyReplaceAll: '"' with: '\"'.
-	script := 'tell application "Safari" to do JavaScript "', jsContents, '" in document 1'.
-	^ Applescript doIt: script.
-]
-
-{ #category : #scripting }
-CwSafari >> doJavascriptReturningBoolean: aSuJSScript [
-	"This method is needed because, for some reason, bools do not seem to get returned in macOS 12.0.1"
+	"
+	- script can only be one line. Possible workarounds would be to wrap in an anonymous function, but then you'd have to explicitly return to get a value back; if interested in implementing that, see https://www.geeksforgeeks.org/javascript-anonymous-functions/
+	- All the wrapper code is needed because, for some reason, bools do not seem to get returned in macOS 12.0.1 on M1; see https://stackoverflow.com/q/70425709
+	- AS errors don't return; maybe on stderr?"
 	
 	<apiDocumentation>
 	<description: 'Assumes Safari ''document 1'', which will be the topmost (in the current Mac Space if there is one)'>
@@ -56,13 +48,34 @@ CwSafari >> doJavascriptReturningBoolean: aSuJSScript [
 	| script jsContents |
 	jsContents := aSuJSScript string  copyReplaceAll: '"' with: '\"'.
 	script := 'tell application "Safari"
-	do JavaScript "', jsContents, '" in document 1
-		set result to do JavaScript "if (', jsContents, ') {
-   1
-} else {
-   0
+	
+	set result to do JavaScript "try {
+	var jsResult = ', jsContents, ';
+	
+		switch (jsResult) {
+	case true:
+		jsResult = ''js2as-true'';
+		break;
+	case false:
+		jsResult = ''js2as-false'';
+	}
+jsResult
+}
+catch(err) {
+''js2as-error'' + err.message
 }" in document 1
-	return result is 1
+
+	if (result = "js2as-true") then
+		return true
+	else if (result = "js2as-false") then
+		return false
+	else if (result starts with "js2as-error") then
+		set errMsg to text 12 thru -1 of result
+		error errMsg
+		--return result
+	else
+		return result
+	end if
 end tell'.
 	^ Applescript doIt: script.
 ]
