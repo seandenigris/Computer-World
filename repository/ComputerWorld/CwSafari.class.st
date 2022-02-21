@@ -80,6 +80,14 @@ end tell'.
 	^ Applescript doIt: script.
 ]
 
+{ #category : #accessing }
+CwSafari >> isJavaScriptFromAppleEventsEnabled [
+	^ SuGenericUnixCommand new
+		template: '/usr/bin/defaults read com.apple.Safari AllowJavaScriptFromAppleEvents';
+		"outputDecoder: [ :str | str trimBoth = '1' ];"
+		output
+]
+
 { #category : #opening }
 CwSafari >> open: aUrl [
 

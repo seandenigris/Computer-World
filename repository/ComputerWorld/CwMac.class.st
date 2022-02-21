@@ -47,6 +47,15 @@ CwMac >> addSSHKeysToKeychain [
 ]
 
 { #category : #accessing }
+CwMac >> applicationFileTypeMap [
+	^ SuGenericUnixCommand new
+		template: '/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -dump';
+		output
+		
+	"Reference: https://apple.stackexchange.com/a/276414"
+]
+
+{ #category : #accessing }
 CwMac >> defaultIPAddress [
 	^ SuGenericUnixCommand new
 		template: 'ipconfig getifaddr {deviceName}'; "via OSX Daily https://osxdaily.com/2010/08/08/lan-ip-address-mac/#comment-110377"
