@@ -40,6 +40,12 @@ CwMacDefaultsDomain >> printOn: aStream [
 
 { #category : #accessing }
 CwMacDefaultsDomain >> read [
+
+	| pyReadPList |
+	pyReadPList := 'import nextstep_plist
+nextstep_plist.loads(nspl)'.
+	"Documentation: https://python-nextstep-plist.readthedocs.io/en/latest/readme.html"
+
 	^ SuGenericUnixCommand new
 		template: 'defaults read {name}';
 		argumentAt: #name put: self name;
@@ -47,9 +53,10 @@ CwMacDefaultsDomain >> read [
 			nextStepPList isEmpty 
 				ifFalse: [
 					PBApplication uniqueInstance 
-						sendSource: 'import nextstep_plist
-nextstep_plist.loads(nspl)' 
+						sendSource: pyReadPList
 						withBindings: { #nspl -> nextStepPList } ]
 				ifTrue: [ Dictionary new ] ];
-		output
+		output.
+		
+	"Implementation note: this and two other options - reading preference files directly with `plutil` and accessing defaults directly those macOS libraries - are discussed at https://stackoverflow.com/questions/21511463/how-can-i-parse-the-output-of-defaults-read-on-os-x"
 ]
