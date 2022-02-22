@@ -22,7 +22,9 @@ CwITunes class >> iPhoneBackupFolder: aFileReference [
 		original: aFileReference;
 		link: self iPhoneBackupFolderDefault;
 		runInTerminal.
-	"Implementation note: if argument is an SMB share, #run seemed to return 256, so we use #runInTerminal"
+	"Implementation notes:
+	- if argument is an SMB share, #run seemed to return 256, so we use #runInTerminal
+	- adapted from https://www.imore.com/how-move-your-iphone-or-ipad-backups-external-hard-drive"
 ]
 
 { #category : #accessing }

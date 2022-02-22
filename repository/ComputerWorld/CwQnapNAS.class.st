@@ -183,6 +183,19 @@ CwQnapNAS >> sampleSudoersDotDFile [
 ]
 
 { #category : #accessing }
+CwQnapNAS >> smbMountHomeForUser: aString viaAdapterWhere: aBlock [
+
+	| adapter |
+	adapter := self adapters detect: aBlock.
+
+	^ CwMac current smbMounter
+		argumentAt: #user put: aString;
+		argumentAt: #server put: adapter ipAddress printString;
+		argumentAt: #share put: 'home';
+		run
+]
+
+{ #category : #accessing }
 CwQnapNAS >> sudoersFile [
 	"As of QTS 4.3.3. per https://superuser.com/a/1299662"
 	^ '/usr/etc/sudoers' asFileReference.
