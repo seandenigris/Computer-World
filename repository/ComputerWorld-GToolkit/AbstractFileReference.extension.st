@@ -1,12 +1,19 @@
 Extension { #name : #AbstractFileReference }
 
 { #category : #'*ComputerWorld-GToolkit' }
-AbstractFileReference >> gtCwMacApplicationFor: aView inContext: aContext [
+AbstractFileReference >> gtCwMacApplicationFor: aView [
 	<gtView>
 	| app |
+	
 	self extension = 'app' ifFalse: [ ^ aView empty ].
+	
 	app := CwMacApplication fromBundle: self.
-	^ aView composite
+	^ aView forward
 		title: app bundle base, ' for Mac';
-		views: (app gtViewsInContext: aContext)
+		object: [ app ];
+		priority: 1;
+		view: #gtMetaFor:;
+		actionButtonIcon: BrGlamorousVectorIcons inspect 
+			tooltip: 'Inspect App' 
+			action: [ :aButton | aButton phlow spawnObject: app ]
 ]
