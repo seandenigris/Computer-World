@@ -37,13 +37,19 @@ EOD' withUnixLineEndings format: { aString }.
 
 { #category : #scripting }
 CwSafari >> doJavascript: aSuJSScript [
+	<description: 'Assumes Safari ''document 1'', which will be the topmost (in the current Mac Space if there is one)'>
+	
+	^ self doJavascript: aSuJSScript in: 'document 1'
+]
+
+{ #category : #scripting }
+CwSafari >> doJavascript: aSuJSScript in: aDocumentOrTab [
 	"
 	- script can only be one line. Possible workarounds would be to wrap in an anonymous function, but then you'd have to explicitly return to get a value back; if interested in implementing that, see https://www.geeksforgeeks.org/javascript-anonymous-functions/
 	- All the wrapper code is needed because, for some reason, bools do not seem to get returned in macOS 12.0.1 on M1; see https://stackoverflow.com/q/70425709
 	- AS errors don't return; maybe on stderr?"
 	
 	<apiDocumentation>
-	<description: 'Assumes Safari ''document 1'', which will be the topmost (in the current Mac Space if there is one)'>
 	
 	| script jsContents |
 	jsContents := aSuJSScript string  copyReplaceAll: '"' with: '\"'.
@@ -63,7 +69,7 @@ jsResult
 }
 catch(err) {
 ''js2as-error'' + err.message
-}" in document 1
+}" in ', aDocumentOrTab, '
 
 	if (result = "js2as-true") then
 		return true
