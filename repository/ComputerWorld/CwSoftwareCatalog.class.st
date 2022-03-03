@@ -85,5 +85,6 @@ CwSoftwareCatalog >> gtViewCollectionOn: aView [
 		title: 'Software' translated;
 		priority: 5;
 		items: [ self collection ];
+		actionUpdateButton;
 		yourself.
 ]

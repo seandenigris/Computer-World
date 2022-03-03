@@ -12,6 +12,11 @@ Class {
 	#category : #'ComputerWorld-Homebrew'
 }
 
+{ #category : #accessing }
+CwHomebrew class >> binary [
+	^ self rootFolder / 'bin' / 'brew'
+]
+
 { #category : #'as yet unclassified' }
 CwHomebrew class >> install [
 	<script>
@@ -36,8 +41,12 @@ CwHomebrew class >> install [
 ]
 
 { #category : #accessing }
-CwHomebrew class >> restoreFrom: a [
-
+CwHomebrew class >> rootFolder [
+	^ OSPlatform current isARM
+		ifTrue: [ '/opt/homebrew' asFileReference ]
+		ifFalse: [ '/usr/local' asFileReference ]
+		
+	"Reference: https://docs.brew.sh/Installation"
 ]
 
 { #category : #'as yet unclassified' }
@@ -90,10 +99,32 @@ CwHomebrew >> makeUsrLocalWritable [
 ]
 
 { #category : #accessing }
-CwHomebrew >> rootFolder [
-	^ OSPlatform current isARM
-		ifTrue: [ '/opt/homebrew' ]
-		ifFalse: [ '/usr/local' ]
+CwHomebrew >> searchFor: regexString [
+	
+	| tokenLineToObjects stringToObjects |
+	tokenLineToObjects := [ :line :factory |
+		| names |
+		names := line splitOn: #isSeparator.
+		names collect: [ :name |
+			factory new
+				name: name;
+				yourself ] ].
+				
+	stringToObjects := [ :outStr |
+		| lines factory |
 		
-	"Reference: https://docs.brew.sh/Installation"
+		"We throw out empty lines to avoid a possible bug in splitting empty strings, which don't return an empty collection. Asked on Discord"
+		lines := outStr lines reject: #isEmpty.
+		
+		lines flatCollect: [ :line |
+			{ CwHomebrewFormula. CwHomebrewCask }
+				detect: [ :cls | cls searchHeader = line ]
+				ifFound: [ :cls | factory := cls. #() ]
+				ifNone: [ tokenLineToObjects value: line value: factory ] ] ].
+			
+	^ '{binary} search {regex}' asSuCommand
+		argumentAt: #binary put: self class binary;
+		argumentAt: #regex put: regexString;
+		outputDecoder: [ :outStr | stringToObjects value: outStr ];
+		output.
 ]

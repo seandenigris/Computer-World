@@ -195,7 +195,7 @@ CwSoftware >> homebrewInstallCommand [
 		ensureDownloadedFrom: self downloadUrl;
 		yourself.
 		
-	self homebrewName first isUppercase ifTrue: [ result isCask: true ].
+	self name first isUppercase ifTrue: [ result isCask: true ].
 	
 	^ result
 ]
