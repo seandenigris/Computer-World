@@ -1,7 +1,11 @@
+"
+# Conversion
+- Choose tablet input device to keep images at full scale ([via reddit](https://www.reddit.com/r/Calibre/comments/ji6nkn/best_settings_for_converting_azw3_to_epub/))
+"
 Class {
 	#name : #CwCalibre,
 	#superclass : #Object,
-	#category : 'ComputerWorld-Apps'
+	#category : #'ComputerWorld-Apps'
 }
 
 { #category : #'as yet unclassified' }
