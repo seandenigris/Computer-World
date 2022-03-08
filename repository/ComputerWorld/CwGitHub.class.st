@@ -1,7 +1,11 @@
+"
+# Commit Messages
+- Can contain links, but no markdown (as of 3/8/2022)
+"
 Class {
 	#name : #CwGitHub,
 	#superclass : #Object,
-	#category : 'ComputerWorld-Apps'
+	#category : #'ComputerWorld-Apps'
 }
 
 { #category : #accessing }
