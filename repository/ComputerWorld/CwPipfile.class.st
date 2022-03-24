@@ -118,12 +118,20 @@ CwPipfile >> sources [
 { #category : #accessing }
 CwPipfile >> write [
 
+	"Cache state before modifying file"
+	
+	| srcs devPkgs pkgs req |
+	srcs := self sources.
+	devPkgs := self devPackages.
+	pkgs := self packages.
+	req := self requirement.
+	
 	self file exists ifTrue: [ self file delete ].
 	self file ensureCreateFile.
 	
 	self file writeStreamDo: [ :str |
 	
-		self sources do: [ :src |
+		srcs do: [ :src |
 			str << '[[source]]'.
 			src keysAndValuesDo: [ :k :v |
 				str lf.
@@ -133,9 +141,21 @@ CwPipfile >> write [
 					print: v ].
 			str lf; lf ].
 			
-		str << '[[packages]]'.
-		self packages keysAndValuesDo: [ :k :v |
-				str lf.
-				str << k << ' = ' << v ].
-			str lf; lf  ]           
+		str << '[dev-packages]'.
+		devPkgs keysAndValuesDo: [ :k :v |
+			str lf.
+			str << k << ' = '.
+			str print: v ].
+		str lf; lf.
+			
+		str << '[packages]'.
+		pkgs keysAndValuesDo: [ :k :v |
+			str lf.
+			str << k << ' = '.
+			str print: v ].
+		str lf; lf.
+		
+		req ifNotNil: [	
+			str << '[requires]'.
+			str lf; << 'python_version = '; print: req dottedMajorMinor ] ].
 ]
