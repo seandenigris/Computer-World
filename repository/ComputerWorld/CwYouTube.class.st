@@ -1,7 +1,11 @@
+"
+# Section Markers
+See instructions [here](https://mikemurphyco.medium.com/322-youtube-how-to-add-chapter-markers-be4df2473885)
+"
 Class {
 	#name : #CwYouTube,
 	#superclass : #Object,
-	#category : 'ComputerWorld-Apps'
+	#category : #'ComputerWorld-Apps'
 }
 
 { #category : #'as yet unclassified' }
