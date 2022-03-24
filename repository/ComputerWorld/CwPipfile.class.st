@@ -76,6 +76,7 @@ CwPipfile >> packages [
 { #category : #accessing }
 CwPipfile >> refresh [
 	self file ifNil: [ ^ self ].
+	self file exists ifFalse: [ ^ self ].
 	self file modificationTime > self lastUpdateTimestamp ifFalse: [ ^ self ].
 	self lastUpdateTimestamp: DateAndTime now.
 	[
@@ -126,13 +127,15 @@ CwPipfile >> write [
 			str << '[[source]]'.
 			src keysAndValuesDo: [ :k :v |
 				str lf.
-				str << k << ' = ' << v ].
+				str
+					print: k;
+					nextPutAll: ' = ';
+					print: v ].
 			str lf; lf ].
 			
 		str << '[[packages]]'.
-		self packages do: [ :pkg |
-			pkg keysAndValuesDo: [ :k :v |
+		self packages keysAndValuesDo: [ :k :v |
 				str lf.
 				str << k << ' = ' << v ].
-			str lf; lf  ]  ]           
+			str lf; lf  ]           
 ]
