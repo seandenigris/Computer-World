@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'location'
 	],
-	#category : 'ComputerWorld-Apps'
+	#category : #'ComputerWorld-Apps'
 }
 
 { #category : #accessing }
@@ -12,14 +12,6 @@ CwGitClone >> commit: messageString [
 	self 
 		run: '{gitBinary} commit -m "{message}"' 
 		with: { #message -> messageString }
-]
-
-{ #category : #'accessing-magritte' }
-CwGitClone >> descriptionLocation [
-	<magritteDescription>
-	^ MAFileDescription new
-		accessor: #location;
-		yourself
 ]
 
 { #category : #'as yet unclassified' }
@@ -35,6 +27,14 @@ CwGitClone >> location [
 { #category : #accessing }
 CwGitClone >> location: anObject [
 	location := anObject
+]
+
+{ #category : #'accessing-magritte' }
+CwGitClone >> locationDescription [
+	<magritteDescription>
+	^ MAFileDescription new
+		accessor: #location;
+		yourself
 ]
 
 { #category : #'as yet unclassified' }
