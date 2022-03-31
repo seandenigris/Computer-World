@@ -6,3 +6,9 @@ AbstractFileReference >> compareDirectoryTo: rhs [
 
 	^ 'diff -rq ', self fullName surroundedByDoubleQuotes, ' ', rhs fullName surroundedByDoubleQuotes
 ]
+
+{ #category : #'*ComputerWorld' }
+AbstractFileReference >> cwExtendedAttributes [
+
+	^ CwExtendedAttributes for: self
+]
