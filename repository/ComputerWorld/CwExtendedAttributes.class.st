@@ -90,3 +90,8 @@ CwExtendedAttributes >> list [
 		outputDecoder: #lines;
 		output
 ]
+
+{ #category : #accessing }
+CwExtendedAttributes >> whereFroms [
+	^ (self at: 'com.apple.metadata:kMDItemWhereFroms') ifNil: [ #() ]
+]
