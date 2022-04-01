@@ -31,6 +31,9 @@ CwExtendedAttributes >> at: aString [
 CwExtendedAttributes >> decode: hexString [
 
 	| isBinaryPlist hex |
+	
+	hexString ifEmpty: [ ^ nil ].
+	
 	hex := ByteArray readHexFrom: (hexString select: #isAlphaNumeric).
 	
 	isBinaryPlist := (hex first: 6) asString = 'bplist'. "per https://medium.com/@karaiskc/understanding-apples-binary-property-list-format-281e6da00dbd"
