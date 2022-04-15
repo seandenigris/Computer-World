@@ -19,6 +19,21 @@ CwEmailForwarder >> alias: email [
 ]
 
 { #category : #accessing }
+CwEmailForwarder >> clipAlias [
+	Clipboard clipboardText: self alias
+]
+
+{ #category : #accessing }
+CwEmailForwarder >> clipAliasDescription [
+
+	<magritteActionDescription>
+	^ MAActionDescription new
+		  action: #clipAlias;
+		  gtIcon: BrGlamorousVectorIcons clipboard;
+		  yourself
+]
+
+{ #category : #accessing }
 CwEmailForwarder >> destination: email [
 	destination := email
 ]
