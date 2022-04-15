@@ -234,6 +234,16 @@ CwMacApplication >> open: aFileOrResource [
 	aFileOrResource suOpenWith: self
 ]
 
+{ #category : #accessing }
+CwMacApplication >> printOn: aStream [
+
+	aStream
+		nextPutAll: self applicationName;
+		nextPutAll: ' ('.
+	super printOn: aStream.
+	aStream nextPut: $).
+]
+
 { #category : #actions }
 CwMacApplication >> saveAsPdfAt: aFileReference [
 	"Saves the current document"
