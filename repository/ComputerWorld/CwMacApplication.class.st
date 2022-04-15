@@ -29,6 +29,18 @@ Class {
 	#category : #'ComputerWorld-Mac'
 }
 
+{ #category : #accessing }
+CwMacApplication class >> all [
+	| bundles cls |
+	bundles := self bundleFolders flatCollect: [ :dir |
+		dir directories select: [ :e | e extension = 'app' ] ].
+	^ bundles collect: [ :b |
+		cls := self allSubclasses
+			detect: [ :c | c isAbstract not and: [ c bundleBasename = b ] ]
+			ifNone: [ self ].
+		cls fromBundle: b ].
+]
+
 { #category : #'instance creation' }
 CwMacApplication class >> automator [
 	| bundleFile |
@@ -49,12 +61,21 @@ CwMacApplication class >> bundleBasename [
 ]
 
 { #category : #accessing }
-CwMacApplication class >> bundleParent [
-	"Override in subclass if location not listed. Return a resolveable FS artifact"
+CwMacApplication class >> bundleFolders [
+
 	^ { 
-		'/System/Applications' asFileReference.
-		'/Applications' asFileReference.
-		'/Applications/Utilities' asFileReference } detect: [ :e | e directoryNames includes: self bundleBasename ]
+		  '/System/Applications' asFileReference.
+		  '/Applications' asFileReference.
+		  '/Applications/Utilities' asFileReference }
+]
+
+{ #category : #accessing }
+CwMacApplication class >> bundleParent [
+
+	"Override in subclass if location not listed. Return a resolveable FS artifact"
+
+	^ self bundleFolders detect: [ :e | 
+		  e directoryNames includes: self bundleBasename ]
 ]
 
 { #category : #'instance creation' }
