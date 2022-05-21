@@ -9,6 +9,8 @@ Maybe:
 Class {
 	#name : #CwSoftware,
 	#superclass : #Object,
+	#traits : 'MATPropertyOwner',
+	#classTraits : 'MATPropertyOwner classTrait',
 	#instVars : [
 		'name',
 		'urlDownloadsOnOpen',
