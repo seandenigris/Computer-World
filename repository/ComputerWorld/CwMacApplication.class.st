@@ -213,6 +213,13 @@ CwMacApplication >> bundle: aFileReference [
 	bundle := aFileReference
 ]
 
+{ #category : #'as yet unclassified' }
+CwMacApplication >> bundleIdentifier [
+	^ 'mdls -name kMDItemCFBundleIdentifier -raw {bundle}' asSuCommand
+		argumentAt: #bundle put: self bundle;
+		output.
+]
+
 { #category : #actions }
 CwMacApplication >> delay: aDuration [ 
 

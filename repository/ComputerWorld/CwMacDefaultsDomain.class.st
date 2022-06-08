@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'name'
 	],
-	#category : #'ComputerWorld-Core'
+	#category : #'ComputerWorld-Mac'
 }
 
 { #category : #accessing }
