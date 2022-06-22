@@ -1,7 +1,7 @@
 Class {
 	#name : #ComputerWorldTests,
 	#superclass : #TestCase,
-	#category : 'ComputerWorld-Specification'
+	#category : #'ComputerWorld-Specification'
 }
 
 { #category : #'as yet unclassified' }
@@ -31,5 +31,5 @@ ComputerWorldTests >> testLearnAboutSoftware [
 	| cw |
 	cw := ComputerWorld new.
 	cw softwareNamed: '1Password'.
-	cw software should include: (CwSoftware named: '1Password').
+	cw software should be anySatisfy: [ :e | e name = '1Password' ].
 ]
