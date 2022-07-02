@@ -1,13 +1,13 @@
 Class {
 	#name : #CwOBSRemote,
-	#superclass : #ComposablePresenter,
+	#superclass : #SpPresenter,
 	#instVars : [
 		'phoneButton',
 		'screenButton',
 		'titleButton',
 		'transitionButton'
 	],
-	#category : 'ComputerWorld-Apps'
+	#category : #'ComputerWorld-Apps'
 }
 
 { #category : #specs }
