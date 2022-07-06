@@ -9,7 +9,7 @@ Class {
 
 { #category : #accessing }
 CwTimeMachineDestination class >> all [
-	| xmlString xml container destinations rawData keyString |
+	| xmlString xml container |
 	xmlString := CwTimeMachine destinationInfoCommand output.
 	xml := XMLDOMParser parse: xmlString.
 	xml removeAllFormattingNodes.
