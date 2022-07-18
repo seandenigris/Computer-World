@@ -120,6 +120,11 @@ CwSoftware >> <= rhs [
 	^ self name <= rhs name
 ]
 
+{ #category : #accessing }
+CwSoftware >> addToCatalog [
+	CwSoftwareCatalog uniqueInstance collection add: self
+]
+
 { #category : #Morphic }
 CwSoftware >> asMorph [
 
