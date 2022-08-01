@@ -128,3 +128,13 @@ CwHomebrew >> searchFor: regexString [
 		outputDecoder: [ :outStr | stringToObjects value: outStr ];
 		output.
 ]
+
+{ #category : #accessing }
+CwHomebrew >> untrack: anInstallable [
+	| source targetFolder |
+	source := self class rootFolder / 'Caskroom' / anInstallable name.
+	targetFolder := (FileLocator home / 'Casks, Untracked') ensureCreateDirectory.
+	source moveTo: targetFolder / anInstallable name.
+	
+	"Inspired by https://apple.stackexchange.com/q/435901"
+]

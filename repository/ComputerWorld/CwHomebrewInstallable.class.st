@@ -59,3 +59,9 @@ CwHomebrewInstallable >> name: anObject [
 
 	name := anObject
 ]
+
+{ #category : #accessing }
+CwHomebrewInstallable >> untrack [
+
+	CwHomebrew new untrack: self
+]
