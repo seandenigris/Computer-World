@@ -106,6 +106,12 @@ CwTimeMachineDestination >> startBackup [
 ]
 
 { #category : #accessing }
+CwTimeMachineDestination >> stopBackup [
+	"Stop whatever backup is currently running (even if to another destination). There really is no command to stop a specific backup, apparently because there would only ever be one running. This is here for convenience only as it seems natural to look for it here"
+	^ CwTimeMachine stopBackupCommand run
+]
+
+{ #category : #accessing }
 CwTimeMachineDestination >> url [
 	
 	^ self rawData 

@@ -37,6 +37,11 @@ CwTimeMachine class >> startBackupToCommand [
 	^ 'tmutil startbackup --destination {destinationID}' asSuCommand
 ]
 
+{ #category : #accessing }
+CwTimeMachine class >> stopBackupCommand [
+	^ 'tmutil stopbackup' asSuCommand
+]
+
 { #category : #actions }
 CwTimeMachine >> disableCommand [
 	^ 'tmutil disable' asSuCommand asRoot
