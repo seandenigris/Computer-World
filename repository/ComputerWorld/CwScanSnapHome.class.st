@@ -1,7 +1,7 @@
 Class {
 	#name : #CwScanSnapHome,
 	#superclass : #Object,
-	#category : 'ComputerWorld-Apps'
+	#category : #'ComputerWorld-Apps'
 }
 
 { #category : #acccessing }
@@ -15,4 +15,9 @@ CwScanSnapHome class >> install [
 	
 	[1] https://www.fujitsu.com/global/support/products/computing/peripheral/scanners/scansnap/software/s1100m-setup.html"
 	'brew cask install scansnap-manager-s1100'
+]
+
+{ #category : #accessing }
+CwScanSnapHome >> fileFolder [
+	^ FileLocator documents / 'ScanSnapHome.localized'
 ]
