@@ -214,6 +214,7 @@ CwSoftware >> homebrewName [
 
 { #category : #accessing }
 CwSoftware >> homebrewName: aString [
+	"aString - make uppercase if it's a cask"
 
 	homebrewName := aString
 ]
