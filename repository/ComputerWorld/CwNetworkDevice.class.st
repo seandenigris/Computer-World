@@ -1,6 +1,8 @@
 Class {
 	#name : #CwNetworkDevice,
 	#superclass : #Object,
+	#traits : 'MATPropertyOwner',
+	#classTraits : 'MATPropertyOwner classTrait',
 	#instVars : [
 		'adapters',
 		'macAddress',
