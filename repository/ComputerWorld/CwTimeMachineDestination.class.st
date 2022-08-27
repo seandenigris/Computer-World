@@ -98,14 +98,14 @@ CwTimeMachineDestination >> server [
 		ifNone: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : #'starting/stopping' }
 CwTimeMachineDestination >> startBackup [
 	^ CwTimeMachine startBackupToCommand
 		argumentAt: #destinationID put: self id;
 		run
 ]
 
-{ #category : #accessing }
+{ #category : #'starting/stopping' }
 CwTimeMachineDestination >> stopBackup [
 	"Stop whatever backup is currently running (even if to another destination). There really is no command to stop a specific backup, apparently because there would only ever be one running. This is here for convenience only as it seems natural to look for it here"
 	^ CwTimeMachine stopBackupCommand run
