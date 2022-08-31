@@ -113,6 +113,13 @@ CwMac >> dock [
 ]
 
 { #category : #accessing }
+CwMac >> hostname [
+
+	^ 'hostname' asSuCommand output
+	"There is also scutil on Mac that can get/set variations of host name"
+]
+
+{ #category : #accessing }
 CwMac >> openFilesByProcess [
 	SuGenericUnixCommand new
 		template: 'sudo lsof -n +c 0 | cut -f1 -d'' '' | uniq -c | sort | tail';
