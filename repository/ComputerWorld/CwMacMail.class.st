@@ -32,6 +32,28 @@ CwMacMail class >> signatureFolder [
 	^ vFolders first / 'MailData' / 'Signatures'
 ]
 
+{ #category : #accessing }
+CwMacMail >> newMessageTo: nameString at: addressString re: subjectString asFollows: contentString [
+	
+	| template |
+	template := 'set newMessage to make new outgoing message with properties \{subject:"{subject}", content:"{content}"\}
+    tell newMessage
+        set visible to true
+        make new to recipient at end of to recipients with properties \{name:"{recipientName}", address:"{recipientAddress}"\}
+    end tell
+    activate'.
+    "Script adapted from https://stackoverflow.com/q/9209385"
+
+	Applescript new
+		targetApplication: 'Mail';
+		template: template;
+		argumentAt: #subject put: subjectString;
+		argumentAt: #content put: contentString;
+		argumentAt: #recipientName put: nameString;
+		argumentAt: #recipientAddress put: addressString;
+		run.
+]
+
 { #category : #'as yet unclassified' }
 CwMacMail >> signatureList [
 
