@@ -21,9 +21,23 @@ CwSafari class >> exampleVideoSpeedDouble [
 ]
 
 { #category : #private }
-CwSafari >> applescriptTell: aString [
+CwSafari >> applescriptTellTo: aString [
 
-	^ Applescript tell: 'Safari' to: aString
+	^ self applescriptTellTo: aString do: []
+]
+
+{ #category : #private }
+CwSafari >> applescriptTellTo: aString do: aBlock [
+
+	| as |
+	as := Applescript new
+		targetApplication: 'Safari';
+		template: aString;
+		yourself.
+		
+	aBlock cull: as.
+	
+	^ as output
 ]
 
 { #category : #scripting }
@@ -42,11 +56,10 @@ CwSafari >> doJavascript: aSuJSScript in: aDocumentOrTab [
 	
 	<apiDocumentation>
 	
-	| script jsContents |
+	| applescriptTemplate jsContents wrappedJS |
 	jsContents := aSuJSScript string  copyReplaceAll: '"' with: '\"'.
-	script := 'tell application "Safari"
 	
-	set result to do JavaScript "try {
+	wrappedJS := 'try {
 	var jsResult = ', jsContents, ';
 	
 		switch (jsResult) {
@@ -60,7 +73,9 @@ jsResult
 }
 catch(err) {
 ''js2as-error'' + err.message
-}" in ', aDocumentOrTab, '
+}'.
+
+	applescriptTemplate := 'set result to do JavaScript "{js}" in {documentOrTab}
 
 	if (result = "js2as-true") then
 		return true
@@ -72,9 +87,14 @@ catch(err) {
 		--return result
 	else
 		return result
-	end if
-end tell'.
-	^ Applescript doIt: script.
+	end if'.
+
+	^ Applescript new
+		tell: 'Safari';
+		template: applescriptTemplate;
+		argumentAt: #js put: wrappedJS;
+		argumentAt: #documentOrTab put: aDocumentOrTab;
+		output.
 ]
 
 { #category : #accessing }
@@ -97,7 +117,7 @@ CwSafari >> openInFront: aUrl [
 	| command |
 	command := 'activate
 set the URL of the front document to "{1}"' format: { aUrl asString }.
-	self applescriptTell: command.
+	self applescriptTellTo: command.
 	
 	"Adapted from https://stackoverflow.com/a/7016686/424245"
 ]
@@ -109,8 +129,10 @@ CwSafari >> openInNewWindow: aUrl [
 	| command |
 	"Adapted from https://apple.stackexchange.com/a/141721/9507"
 	command := 'activate
-make new document with properties \{URL:"{1}"\}' format: { aUrl asString }.
-	self applescriptTell: command
+make new document with properties \{URL:"{url}"\}'.
+	self 
+		applescriptTellTo: command 
+		do: [ :as | as argumentAt: #url put: aUrl asString ]
 ]
 
 { #category : #private }
