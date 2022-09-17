@@ -47,14 +47,14 @@
 											"__type" : "time",
 											"time" : {
 												"__type" : "dateAndTime",
-												"dateAndTimeString" : "2022-09-16T18:52:00.172515-04:00"
+												"dateAndTimeString" : "2022-09-17T08:54:22.245366-04:00"
 											}
 										},
 										"uid" : {
 											"__type" : "uid",
 											"uidString" : "K37toTSlDQCMyR6xD9aSpw=="
 										},
-										"code" : "from getpass import getpass\npassword = getpass()\r\rserver = 'mail.servername.com'\ruser = 'sean@servername.com'\n\nmb = MailBox(server).login(user, password)\nmsgs = mb.fetch(limit=5)\n\nfor msg in msgs:\n  msg.subject"
+										"code" : "# From https://stackoverflow.com/a/9202236\rfrom getpass import getpass\npassword = getpass()\r\r# From imap-tools docs\rserver = 'mail.servername.com'\ruser = 'sean@servername.com'\n\nmb = MailBox(server).login(user, password)\nmsgs = mb.fetch(limit=5)\n\nfor msg in msgs:\n  msg.subject"
 									}
 								]
 							},

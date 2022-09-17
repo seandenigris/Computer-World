@@ -21,7 +21,42 @@
 							"__type" : "textSnippet",
 							"children" : {
 								"__type" : "snippets",
-								"items" : [ ]
+								"items" : [
+									{
+										"__type" : "pythonSnippet",
+										"children" : {
+											"__type" : "snippets",
+											"items" : [ ]
+										},
+										"createEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"createTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2022-09-16T18:29:30.817005-04:00"
+											}
+										},
+										"editEmail" : {
+											"__type" : "email",
+											"emailString" : "<unknown>"
+										},
+										"editTime" : {
+											"__type" : "time",
+											"time" : {
+												"__type" : "dateAndTime",
+												"dateAndTimeString" : "2022-09-17T08:54:02.341767-04:00"
+											}
+										},
+										"uid" : {
+											"__type" : "uid",
+											"uidString" : "K37toTSlDQCMyR6xD9aSpw=="
+										},
+										"code" : "# From https://stackoverflow.com/a/9202236\rfrom getpass import getpass\npassword = getpass()\r\rserver = 'mail.servername.com'\ruser = 'sean@servername.com'\n\nmb = MailBox(server).login(user, password)\nmsgs = mb.fetch(limit=5)\n\nfor msg in msgs:\n  msg.subject"
+									}
+								]
 							},
 							"createEmail" : {
 								"__type" : "email",
@@ -127,40 +162,6 @@
 								"__type" : "textStyle"
 							},
 							"string" : "[imaplib](https://docs.python.org/3/library/imaplib.html)  - built-in, but perhaps more complicated to use"
-						},
-						{
-							"__type" : "pythonSnippet",
-							"children" : {
-								"__type" : "snippets",
-								"items" : [ ]
-							},
-							"createEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"createTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-09-16T18:29:30.817005-04:00"
-								}
-							},
-							"editEmail" : {
-								"__type" : "email",
-								"emailString" : "<unknown>"
-							},
-							"editTime" : {
-								"__type" : "time",
-								"time" : {
-									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2022-09-16T18:51:53.966163-04:00"
-								}
-							},
-							"uid" : {
-								"__type" : "uid",
-								"uidString" : "K37toTSlDQCMyR6xD9aSpw=="
-							},
-							"code" : "from getpass import getpass\npassword = getpass()\r\rserver = 'mail.server.com'\ruser = 'sean@server.com'\n\nmb = MailBox(server).login(user, password)\nmsgs = mb.fetch(limit=5)\n\nfor msg in msgs:\n  msg.subject"
 						}
 					]
 				},
