@@ -11,15 +11,14 @@ Class {
 }
 
 { #category : #accessing }
-CwSoftwareCatalog class >> gtSpotterOn: candidatesSource priority: aNumber for: aStep [
+CwSoftwareCatalog class >> gtSpotterOn: candidatesSource priority: aNumber for: aSearch [
 	"Helper to make available both from global and instance Spotters. See senders"
 
-	^ aStep listProcessor
+	^ aSearch list
 		priority: aNumber;
 		title: 'Software';
-		allCandidates: [ candidatesSource collection ];
-		filter: GtFilterSubstrings;
-		candidatesLimit: 7;
+		items: [ candidatesSource collection ];
+		matchSubstrings;
 		itemName: #name
 ]
 
@@ -59,9 +58,10 @@ CwSoftwareCatalog >> gtSpotterFor: aStep [
 ]
 
 { #category : #accessing }
-CwSoftwareCatalog >> gtSpotterNewSoftwareFor: aStep [
+CwSoftwareCatalog >> gtSpotterNewSoftwareFor: aSearch [
 	<gtSearch>
-	aStep listProcessor
+	
+	^ aSearch list
 		title: 'New Software';
 		priority: 50;
 		itemName: [ :input | 'Catalog new software: ', input ];
