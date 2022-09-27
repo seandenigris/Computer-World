@@ -13,14 +13,13 @@ CwEmailServer >> forwarders [
 ]
 
 { #category : #accessing }
-CwEmailServer >> gtGtSpotterForwardersFor: aStep [
+CwEmailServer >> gtGtSpotterForwardersFor: aSearch [
 	<gtSearch>
-	^ aStep listProcessor
+	^ aSearch list
 		priority: 5;
 		title: 'Forwarders';
-		allCandidates: [ self forwarders ];
-		filter: GtFilterSubstrings;
-		candidatesLimit: 7
+		items: [ self forwarders ];
+		matchSubstrings
 ]
 
 { #category : #'forwarders - importing' }
