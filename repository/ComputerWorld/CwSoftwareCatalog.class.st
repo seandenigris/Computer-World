@@ -60,21 +60,12 @@ CwSoftwareCatalog >> gtSpotterFor: aStep [
 { #category : #accessing }
 CwSoftwareCatalog >> gtSpotterNewSoftwareFor: aSearch [
 	<gtSearch>
-	
-	^ aSearch list
+	^ aSearch explicit
 		title: 'New Software';
 		priority: 50;
-		itemName: [ :input | 'Catalog new software: ', input ];
-		previewObject: [ :input | CwSoftware named: input ];
-		wantsToDisplayOnEmptyQuery: false;
-		filter: GtNullFilter
-			item: [ :filter :context | 
-				| isExisting |
-				isExisting := self collection anySatisfy: [ :e | 
-					e name = context textTrimmed ].
-				isExisting ifFalse: [ 
-					filter value: context textTrimmed ] ];
-		send: [ :newName :spotterStep | self collection add: (CwSoftware named: newName) ]
+		itemName: [ :result | '+ ' , result gtDisplayText ];
+		search: [ :context | { CwSoftware named: context searchQuery trimmed } ];
+		itemSpawnAfter: [ :result | self collection add: result ]
 ]
 
 { #category : #accessing }
