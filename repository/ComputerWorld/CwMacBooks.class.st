@@ -4,7 +4,12 @@ Class {
 	#category : #'ComputerWorld-Mac'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
+CwMacBooks class >> bundleBasename [
+	^ 'Books.app'
+]
+
+{ #category : #accessing }
 CwMacBooks >> iCloudFolder [
 
 	^ FileLocator home / 'Library' / 'Mobile Documents' / 'iCloud~com~apple~iBooks' / 'Documents'
@@ -12,7 +17,7 @@ CwMacBooks >> iCloudFolder [
 	"Reference: https://discussions.apple.com/thread/7292866?answerId=30253944022#30253944022"
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 CwMacBooks >> localFolder [
 
 	^ FileLocator home / 'Library' / 'Containers' / 'com.apple.BKAgentService' / 'Data' / 'Documents' / 'iBooks' / 'Books'
