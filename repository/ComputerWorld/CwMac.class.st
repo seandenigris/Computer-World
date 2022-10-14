@@ -6,7 +6,7 @@ See {{gtClass:CwMacApplication}}.
 #Backups
 The canonical ways to back up a Mac seem to be iCloud and/or {{gtClass:CwTimeMachine|label=Time Machine}}. The complexity of Mac's disk format, while perhaps justifiable from other standpoints e.g. security, make more standard (i.e. non-proprietary) methods a challenge. 
 
-For example, {{gtClass:SuRSync|label=rsync}} is the go-to power user backup tool. Since NAS devices have been gaining popularity, one might think that backing up to a NAS via {{gtClass:SuRSync|label=rsync}} would be a great approach... Not so fast. One may quickly find out that Mac's ACLs and extended attributes are non supported by the NAS disk format (e.g. ext4). 
+For example, {{gtClass:SuRSync|label=rsync}} is the go-to power user backup tool. Since NAS devices have been gaining popularity, one might think that backing up to a NAS via {{gtClass:SuRSync|label=rsync}} would be a great approach... Not so fast. One may quickly find out that Mac's ACLs and extended attributes are non supported by the NAS disk format (e.g. ext4). Rsync could probably be used to back up ""common"" documents (e.g. excluding proprietary Apple libraries like iTunes, Photos). See [this SO thread](https://apple.stackexchange.com/questions/425268/which-files-should-be-excluded-in-an-rsync-backup-with-macos-big-sur-version) for more details.
 
 There is also Mac's own Disk Utility, which should be able to clone a volume via its ""Restore"" feature. However, one may encounter an inexplicable error, like `seal broken`.
 
