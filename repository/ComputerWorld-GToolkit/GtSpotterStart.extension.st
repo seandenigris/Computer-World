@@ -4,7 +4,7 @@ Extension { #name : #GtSpotterStart }
 GtSpotterStart >> cwGtSoftwareSpotterFor: aStep [
 	<gtSearch>
 	^ CwSoftwareCatalog
-		gtSpotterOn: CwSoftwareCatalog uniqueInstance
+		itemsSearchOn: CwSoftwareCatalog uniqueInstance
 		priority: 90
 		for: aStep
 ]

@@ -11,7 +11,7 @@ Class {
 }
 
 { #category : #accessing }
-CwSoftwareCatalog class >> gtSpotterOn: candidatesSource priority: aNumber for: aSearch [
+CwSoftwareCatalog class >> itemsSearchOn: candidatesSource priority: aNumber for: aSearch [
 	"Helper to make available both from global and instance Spotters. See senders"
 
 	^ aSearch list
@@ -49,16 +49,16 @@ CwSoftwareCatalog >> collection: aCollection [
 ]
 
 { #category : #accessing }
-CwSoftwareCatalog >> gtSpotterFor: aStep [
+CwSoftwareCatalog >> collectionSearchFor: aStep [
 	<gtSearch>
 	^ self class
-		gtSpotterOn: self
+		itemsSearchOn: self
 		priority: 5 
 		for: aStep
 ]
 
 { #category : #accessing }
-CwSoftwareCatalog >> gtSpotterNewSoftwareFor: aSearch [
+CwSoftwareCatalog >> collectionSearchNewSoftwareFor: aSearch [
 	<gtSearch>
 	^ aSearch explicit
 		title: 'New Software';
@@ -69,7 +69,7 @@ CwSoftwareCatalog >> gtSpotterNewSoftwareFor: aSearch [
 ]
 
 { #category : #accessing }
-CwSoftwareCatalog >> gtViewCollectionOn: aView [
+CwSoftwareCatalog >> collectionViewOn: aView [
 	<gtView>
 	
 	^ aView list
