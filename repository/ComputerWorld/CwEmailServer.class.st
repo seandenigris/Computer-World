@@ -23,7 +23,21 @@ CwEmailServer >> gtGtSpotterForwardersFor: aSearch [
 ]
 
 { #category : #'forwarders - importing' }
-CwEmailServer >> importSitegroundForwardersFile: file [
+CwEmailServer >> sitegroundForwardersImportClippedHTML [
+	"Precondition: clipoard contains HTML from Site Tool e.g. via a browser dev tool"
+
+	| soup fCol |
+	soup := Soup fromString: Clipboard clipboardText asString.
+	fCol := (soup // #tr) allButFirst asOrderedCollection collect: [ :e |
+		CwEmailForwarder new
+			alias: e children first div p string;
+			destination: e children second a string;
+			yourself ].
+	self forwarders addAllFirst: fCol
+]
+
+{ #category : #'forwarders - importing' }
+CwEmailServer >> sitegroundForwardersImportFile: file [
 
 	"file - page source from Site Tool"
 

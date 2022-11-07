@@ -9,11 +9,17 @@ Class {
 }
 
 { #category : #accessing }
+CwEmailForwarder >> = rhs [
+
+	^ self alias = rhs alias and: [ self destination = rhs destination ]
+]
+
+{ #category : #accessing }
 CwEmailForwarder >> alias [
 	^ alias
 ]
 
-{ #category : #accessing }
+{ #category : #private }
 CwEmailForwarder >> alias: email [
 	alias := email
 ]
@@ -33,9 +39,20 @@ CwEmailForwarder >> clipAliasDescription [
 		  yourself
 ]
 
-{ #category : #accessing }
+{ #category : #private }
+CwEmailForwarder >> destination [
+	^ destination
+]
+
+{ #category : #private }
 CwEmailForwarder >> destination: email [
 	destination := email
+]
+
+{ #category : #accessing }
+CwEmailForwarder >> hash [
+
+	^ self alias hash bitXor: self destination hash
 ]
 
 { #category : #accessing }
