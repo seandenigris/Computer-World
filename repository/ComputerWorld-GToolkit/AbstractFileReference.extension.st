@@ -13,7 +13,5 @@ AbstractFileReference >> gtCwMacApplicationFor: aView [
 		object: [ app ];
 		priority: 1;
 		view: #gtMetaFor:;
-		actionButtonIcon: BrGlamorousVectorIcons inspect 
-			tooltip: 'Inspect App' 
-			action: [ :aButton | aButton phlow spawnObject: app ]
+		inspectButtonFor: app
 ]
