@@ -16,6 +16,13 @@ CwMACAddress class >> displaySeparator [
 ]
 
 { #category : #examples }
+CwMACAddress class >> example [
+	<gtExample>
+	
+	^ self fromString: '12:34:56:78:9A:BC'
+]
+
+{ #category : #examples }
 CwMACAddress class >> rawAddressToStringExample [
 	<gtExample>
 	self assert: (CwMACAddress rawAddressToString: #[0 0 0 0 255 0] asInteger) equals: '00:00:00:00:FF:00'.

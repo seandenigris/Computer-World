@@ -23,12 +23,43 @@ Class {
 	#category : #'ComputerWorld-Networking'
 }
 
-{ #category : #accessing }
+{ #category : #examples }
+CwServer class >> exampleConfigureServer: aCwServer [
+	
+	aCwServer adapters add: CwNetworkAdapter example.
+	
+	^ aCwServer
+		rsaKeyFingerprint: 'abc123XYZ';
+		macAddress: CwMACAddress example;
+		name: 'My Server';
+		propertyAt: 'pin code' put: 1234;
+		adminUser: SuUnixUser exampleAdmin;
+		yourself
+]
+
+{ #category : #examples }
 CwServer class >> exampleRouter [
 	^ CwServer new
 			name: 'Home Router';
 			rootUser: SuUnixUser exampleAdmin;
 			yourself.
+]
+
+{ #category : #examples }
+CwServer class >> exampleServer [
+	<gtExample>
+	
+	| result |
+	result := self new.
+	result adapters add: CwNetworkAdapter example.
+	
+	^ result
+		rsaKeyFingerprint: 'abc123XYZ';
+		macAddress: CwMACAddress example;
+		name: 'My Server';
+		propertyAt: 'pin code' put: 1234;
+		adminUser: SuUnixUser exampleAdmin;
+		yourself
 ]
 
 { #category : #accessing }

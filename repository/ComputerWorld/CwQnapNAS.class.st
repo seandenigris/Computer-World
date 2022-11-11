@@ -51,9 +51,12 @@ CwQnapNAS class >> exampleModel: aString [
 ]
 
 { #category : #accessing }
-CwQnapNAS class >> exampleTS231P [
+CwQnapNAS class >> exampleTS262 [
 	<gtExample>
-	^ self exampleModel: 'TS-231P'
+	
+	| result |
+	result := self exampleModel: 'TS-262'.
+	^ self exampleConfigureServer: result
 ]
 
 { #category : #accessing }
@@ -66,7 +69,8 @@ CwQnapNAS >> browseAppCenter [
 	| modelMap url |
 	modelMap := { 
 		'TS-231P' -> 258.
-		'TVS-472XT' -> 355 } asDictionary.
+		'TVS-472XT' -> 355.
+		'TS-262' -> 597 } asDictionary.
 		
 	url := 'https://www.qnap.com/en/app_center/?os=qts' asUrl ? (#version -> self osVersion).
 	modelMap at: self model ifPresent: [ :code | url queryAt: 'II' put: code ].

@@ -12,6 +12,18 @@ Class {
 }
 
 { #category : #accessing }
+CwNetworkAdapter class >> example [
+	<gtExample>
+	
+	^ self new
+		 description: 'Ethernet';
+		 macAddress: CwMACAddress example;
+		 ipAddress: CwIPAddressRange private172 start;
+		 usage: 'File server - Static IP'
+		 yourself
+]
+
+{ #category : #accessing }
 CwNetworkAdapter >> description [
 	^ self maLazyInstVarUsing: self descriptionDescription
 ]

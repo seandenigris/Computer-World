@@ -45,7 +45,7 @@ CwQNAP class >> qfinder [
 	| model |
 	model := CwServer db 
 		detect: [ :e | e manufacturer = 'QNAP' ]
-		ifNone: [ CwQnapNAS exampleTS231P "Qfinder is generic, so the exact model doesn't seem to matter" ].
+		ifNone: [ CwQnapNAS exampleTS262 "Qfinder is generic, so the exact model doesn't seem to matter" ].
 	 
 	Clipboard clipboardText: 'Qfinder Pro'.
 	model browseDownloadCenter
