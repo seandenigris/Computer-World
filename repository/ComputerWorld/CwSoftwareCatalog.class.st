@@ -65,7 +65,7 @@ CwSoftwareCatalog >> collectionSearchNewSoftwareFor: aSearch [
 		priority: 50;
 		itemName: [ :result | '+ ' , result gtDisplayText ];
 		search: [ :context | { CwSoftware named: context searchQuery trimmed } ];
-		itemSpawnAfter: [ :result | self collection add: result ]
+		send: [ :result | self collection add: result ]
 ]
 
 { #category : #accessing }
