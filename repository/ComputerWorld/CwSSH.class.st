@@ -1,7 +1,10 @@
 Class {
 	#name : #CwSSH,
 	#superclass : #Object,
-	#category : 'ComputerWorld-Apps'
+	#classVars : [
+		'PrivateKeyFileName'
+	],
+	#category : #'ComputerWorld-Apps'
 }
 
 { #category : #'key management' }
@@ -13,7 +16,19 @@ CwSSH class >> addKeysToKeychain [
 
 { #category : #'key management' }
 CwSSH class >> privateKeyFile [
-	^ FileLocator home / '.ssh' / 'id_rsa'
+	^ FileLocator home / '.ssh' / self privateKeyFilename
+]
+
+{ #category : #'key management' }
+CwSSH class >> privateKeyFilename [
+
+	^ PrivateKeyFileName ifNil: [ 'id_rsa' ]
+]
+
+{ #category : #'key management' }
+CwSSH class >> privateKeyFilename: aString [
+
+	PrivateKeyFileName := aString
 ]
 
 { #category : #'key management' }
