@@ -219,6 +219,12 @@ CwSoftware >> homebrewName: aString [
 	homebrewName := aString
 ]
 
+{ #category : #accessing }
+CwSoftware >> initialize [
+	super initialize.
+	self ensureUUID
+]
+
 { #category : #installing }
 CwSoftware >> install [
 
