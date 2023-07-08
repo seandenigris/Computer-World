@@ -120,6 +120,18 @@ CwMac >> hostname [
 ]
 
 { #category : #accessing }
+CwMac >> logoutCommandFor: username [
+
+	^ SuGenericUnixCommand new
+		template: 'launchctl bootout user/$(id -u {username})';
+		argumentAt: #username put: username;
+		asRoot;
+		yourself.
+		
+	"Adapted from https://apple.stackexchange.com/a/230972"
+]
+
+{ #category : #accessing }
 CwMac >> openFilesByProcess [
 	SuGenericUnixCommand new
 		template: 'sudo lsof -n +c 0 | cut -f1 -d'' '' | uniq -c | sort | tail';
