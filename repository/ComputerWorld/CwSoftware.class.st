@@ -259,6 +259,12 @@ CwSoftware >> name [
 	^ name ifNil: [ name := '' ].
 ]
 
+{ #category : #accessing }
+CwSoftware >> nameForAlphabetization [
+	
+	^ self name asUppercase
+]
+
 { #category : #private }
 CwSoftware >> openInBrowser: aUrl [
 

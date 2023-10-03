@@ -40,7 +40,7 @@ CwSoftwareCatalog class >> uniqueInstance [
 
 { #category : #accessing }
 CwSoftwareCatalog >> collection [
-	^ collection ifNil: [ collection := SortedCollection sortBlock: #name ascending ]
+	^ collection ifNil: [ collection := SortedCollection sortBlock: #nameForAlphabetization ascending undefinedFirst ]
 ]
 
 { #category : #accessing }
