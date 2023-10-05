@@ -42,6 +42,8 @@ BaselineOfComputerWorld >> baseline: spec [
 				spec repository: 'github://pharo-containers/Containers-OrderedSet' ];
 			baseline: 'CPanel' with: [
 				spec repository: 'github://seandenigris/cPanel-Live' ];
+			baseline: 'DynabookFoundation' with: [
+				spec repository: 'github://seandenigris/Dynabook-Foundation' ];
 			baseline: 'ExternalWebBrowser' with: [
 				spec repository: 'github://seandenigris/Pharo-Web-Browser' ];
 			baseline: 'Magritte' with: [
@@ -62,7 +64,7 @@ BaselineOfComputerWorld >> baseline: spec [
 				spec repository: 'github://seandenigris/Superuser' ];
 			baseline: 'Tempfile' with: [
 				spec repository: 'github://seandenigris/TempfileSt' ].
-		spec package: 'ComputerWorld' with: [ spec requires: #(ContainersOrderedSet CPanel ExternalWebBrowser Magritte Mocketry OSShell PharoEnhancements ResourcesLive SimpleApplescript SimplePersistence Superuser Tempfile) ] ].
+		spec package: 'ComputerWorld' with: [ spec requires: #(ContainersOrderedSet CPanel DynabookFoundation ExternalWebBrowser Magritte Mocketry OSShell PharoEnhancements ResourcesLive SimpleApplescript SimplePersistence Superuser Tempfile) ] ].
 		
 	spec for: #notGToolkit do: [ 
 		spec baseline: 'NeoJSON' with: [
