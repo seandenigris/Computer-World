@@ -154,7 +154,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2023-01-29T12:39:31.697087-05:00"
+									"dateAndTimeString" : "2023-01-29T12:40:51.325082-05:00"
 								}
 							},
 							"uid" : {
@@ -164,7 +164,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "Safer way? Manually copy the files from Mail's Library folder"
+							"string" : "Safer way? Manually copy the files from Mail's Library folder (via [SO](https://apple.stackexchange.com/a/209571))"
 						},
 						{
 							"__type" : "textSnippet",

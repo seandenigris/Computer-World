@@ -1,4 +1,6 @@
 "
+Find more topics in the Lepiter Docs. We would like to link to them from here, but Lepiter remote references do not seem to be supported in class comments ([asked on Discord](https://discord.com/channels/729445214812504107/755319168504692778/1177780007918125066))
+
 # Application Control
 See {{gtClass:CwMacApplication}}.
 # Audio Output Control

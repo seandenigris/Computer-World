@@ -3,11 +3,11 @@
 	"__type" : "page",
 	"uid" : {
 		"__type" : "uuid",
-		"uuid" : "ca6d0095-9580-0d00-af36-8a080b6c0cb8"
+		"uuid" : "d827bf42-50c7-0d00-867b-2d4103e6c36f"
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Lepiter, Committing"
+		"title" : "TOC"
 	},
 	"children" : {
 		"__type" : "snippets",
@@ -26,7 +26,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-11-24T18:47:21.665925-05:00"
+						"dateAndTimeString" : "2023-11-24T18:46:35.205535-05:00"
 					}
 				},
 				"editEmail" : {
@@ -37,20 +37,20 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-11-24T18:47:44.898863-05:00"
+						"dateAndTimeString" : "2023-11-24T18:46:35.214588-05:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "Urh1T1DHDQCKEtfqA+bDbw=="
+					"uidString" : "ubTgS1DHDQCJ57WlA+bDbw=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "This is now supported directly from GT's git tool, but can be done prog"
+				"string" : "[[IMAP]]"
 			},
 			{
-				"__type" : "pharoSnippet",
+				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
 					"items" : [ ]
@@ -63,7 +63,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-06-07T17:42:02.719136-04:00"
+						"dateAndTimeString" : "2023-11-24T18:46:08.885728-05:00"
 					}
 				},
 				"editEmail" : {
@@ -74,17 +74,20 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-06-07T17:42:03.985475-04:00"
+						"dateAndTimeString" : "2023-11-24T18:46:08.894532-05:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "1DceppWADQCvOCZdC2wMuA=="
+					"uidString" : "q8+iSlDHDQCJksxoA+bDbw=="
 				},
-				"code" : "LibC system: 'cd \"', BaselineOfComputerWorld iceRepository location fullName, '\"; git add lepiter/*; git commit -m lepiter-sync'."
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "[[Mac Mail - Exporting]]"
 			},
 			{
-				"__type" : "pharoSnippet",
+				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
 					"items" : [ ]
@@ -97,7 +100,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-06-07T17:42:10.789813-04:00"
+						"dateAndTimeString" : "2023-11-24T18:43:48.424062-05:00"
 					}
 				},
 				"editEmail" : {
@@ -108,14 +111,54 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2021-06-07T17:44:09.7738-04:00"
+						"dateAndTimeString" : "2023-11-24T18:44:51.559978-05:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "9V2ZppWADQCvOaeTC2wMuA=="
+					"uidString" : "o+2/QlDHDQCGfDKAA+bDbw=="
 				},
-				"code" : "\"How do we programmatically 'repair discarding image changes without checkout'? Have to explore from a vanilla Pharo image because no Morphic halos in GT...\""
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "[[Mac Migration]] - How/when to use the built-in assistant, as well as alternatives and options."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-11-24T18:49:36.771783-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-11-24T18:49:41.692137-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "XEODV1DHDQCMkiCzA+bDbw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "README"
 			}
 		]
 	},
@@ -127,7 +170,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2021-06-07T17:37:15.554438-04:00"
+			"dateAndTimeString" : "2023-11-24T18:43:48.373747-05:00"
 		}
 	},
 	"editEmail" : {
@@ -138,7 +181,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-11-24T18:47:19.345578-05:00"
+			"dateAndTimeString" : "2023-11-24T18:43:54.51464-05:00"
 		}
 	}
 }
