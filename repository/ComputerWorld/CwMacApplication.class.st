@@ -309,6 +309,8 @@ CwMacApplication >> tellGUITo: applescriptCommand [
 
 { #category : #actions }
 CwMacApplication >> unquarantineCommand [
+	"This has to be done before the app is placed in /Applications or you may get 'Operation not permitted'"
+
 	^ SuGenericUnixCommand new
 		template: 'xattr -r -d com.apple.quarantine {bundle}';
 		argumentSource: { #bundle -> self bundle } asDictionary;
