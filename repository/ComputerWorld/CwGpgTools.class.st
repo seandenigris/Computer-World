@@ -1,7 +1,11 @@
+"
+1. Download from the website. See {{gtMethod:CwGpgTools class>>#url}}.
+2. Check the checksum (also on the website) with {{gtMethod:AbstractFileReference>>#sha256}}.
+"
 Class {
 	#name : #CwGpgTools,
 	#superclass : #Object,
-	#category : 'ComputerWorld-Apps'
+	#category : #'ComputerWorld-Apps'
 }
 
 { #category : #documentation }
