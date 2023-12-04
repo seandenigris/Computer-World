@@ -17,19 +17,16 @@ CwHomebrew class >> binary [
 	^ self rootFolder / 'bin' / 'brew'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 CwHomebrew class >> install [
 	<script>
 	
-	"From http://brew.sh/, which is insecure. A few notes:
-		- GitHub changed `raw.github.com` -> `raw.githubusercontent.com` (see https://developer.github.com/changes/2014-04-25-user-content-security/)
-		- I manually followed url from the secure GitHub web client, and pasted it in
-		- I also added a flag to ensure SSL
+	"From https://brew.sh/
 	
 	Run #doctor immediately after and respond to output"
 
 	| installCommand scriptSafeUnixCommand scriptTemplate script command |
-	installCommand := 'ruby -e "$(curl -fsSL --ssl-reqd https://raw.githubusercontent.com/Homebrew/install/master/install)"'.
+	installCommand := '/bin/bash -c "$(curl -fsSL --ssl-reqd https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'.
 	scriptSafeUnixCommand := installCommand copyReplaceAll: '"' with: '\"'.
 	scriptTemplate := 'tell application "Terminal"
 	do script "{installCommand}"
