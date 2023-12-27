@@ -8,6 +8,9 @@ You can have other files in the destination. TM will not disturb them, but will 
 
 ## IP Address changes
 Time Machine stores metainfo about the backup on the target, not the source, so you can just remove the target with the old IP and add a new one with the new IP. TM will recognize the backup and keep adding to it, preserving the history.
+
+## NAS Backups
+You can encrypt NAS backups ([per 9to5mac](https://9to5mac.com/2020/08/20/how-to-easily-back-up-your-mac-with-time-machine-and-a-synology-nas-video/)). Learn a bit more about what that means on [this stack exchange thread](https://apple.stackexchange.com/questions/378394/how-does-time-machine-encrypt-backups-to-network-disk)
 "
 Class {
 	#name : #CwTimeMachine,
@@ -30,6 +33,11 @@ CwTimeMachine class >> optimumSpaceToBackupGB: aNumber [
 	"From http://apple.stackexchange.com/questions/100780/how-big-should-my-time-machine-backup-drive-be"
 	
 	^ 2 * aNumber to: 4 * aNumber
+]
+
+{ #category : #accessing }
+CwTimeMachine class >> setQuotaCommand [
+	^ 'tmutil setquota {destinationID} {quotaGB}' asSuCommand asRoot
 ]
 
 { #category : #accessing }

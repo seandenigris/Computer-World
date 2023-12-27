@@ -81,6 +81,14 @@ CwTimeMachineDestination >> printOn: aStream [
 	self kind = 'Local' ifTrue: [ aStream nextPutAll: ' (Local)' ].
 ]
 
+{ #category : #'starting/stopping' }
+CwTimeMachineDestination >> quotaGB: anInteger [
+	^ CwTimeMachine setQuotaCommand
+		argumentAt: #destinationID put: self id;
+		argumentAt: #quotaGB put: anInteger;
+		yourself
+]
+
 { #category : #private }
 CwTimeMachineDestination >> rawData [
 	^ rawData
