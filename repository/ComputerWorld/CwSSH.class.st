@@ -22,7 +22,7 @@ CwSSH class >> privateKeyFile [
 { #category : #'key management' }
 CwSSH class >> privateKeyFilename [
 
-	^ PrivateKeyFileName ifNil: [ 'id_rsa' ]
+	^ PrivateKeyFileName ifNil: [ 'id_ed25519' ]
 ]
 
 { #category : #'key management' }
