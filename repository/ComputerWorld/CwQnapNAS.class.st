@@ -19,11 +19,15 @@ Let's list the possible sources of problems:
 - NAS
 - rsync - e.g. flags, initiated from NAS or externally; although this wouldn't explain the HBS failure...
 - HBS settings
-
+The following topics are covered in the Lepiter DB (unfortunately Lepiter links do not work here):
+- Shared Folders
 # Time Machine
-After [setting up](https://www.qnap.com/en/how-to/tutorial/article/using-time-machine-to-back-up-your-mac-to-a-qnap-nas-via-smb), it's pretty much seemless. On reconnecting via Thunderbolt, do one of the following to make the disk available to TM:
+For TM to ""see"" the shared folder as a destination, you must mount it e.g. via QFinder or `mount` from the command line.
+After [setting up](https://www.qnap.com/en/how-to/tutorial/article/using-time-machine-to-back-up-your-mac-to-a-qnap-nas-via-smb), it's pretty much seemless. There is alot of noise on the web about TM on NAS not being reliable, but that seems to have only been the case pre-SMB. 
+
+On reconnecting via Thunderbolt, do one of the following to make the disk available to TM:
 - Map Network Drives (e.g. from QFinder)
-- Login via the web interfact (will this work?)
+- Login via the web interface (will this work?)
 
 "
 Class {
