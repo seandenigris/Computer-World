@@ -86,7 +86,7 @@ CwTimeMachineDestination >> quotaGB: anInteger [
 	^ CwTimeMachine setQuotaCommand
 		argumentAt: #destinationID put: self id;
 		argumentAt: #quotaGB put: anInteger;
-		yourself
+		run
 ]
 
 { #category : #private }
