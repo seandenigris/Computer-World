@@ -6,7 +6,8 @@ Class {
 		'description',
 		'usage',
 		'speed',
-		'macAddress'
+		'macAddress',
+		'subnetMask'
 	],
 	#category : #'ComputerWorld-Networking'
 }
@@ -120,6 +121,16 @@ CwNetworkAdapter >> speedDescription [
 		accessor: #speed;
 		comment: 'Gb/s';
 		yourself
+]
+
+{ #category : #accessing }
+CwNetworkAdapter >> subnetMask [
+	^ subnetMask
+]
+
+{ #category : #accessing }
+CwNetworkAdapter >> subnetMask: anObject [
+	subnetMask := anObject
 ]
 
 { #category : #accessing }

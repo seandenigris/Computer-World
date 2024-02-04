@@ -67,6 +67,16 @@ CwIPAddress >> asCwIPAddress [
 	^ self
 ]
 
+{ #category : #accessing }
+CwIPAddress >> isOnSubnet: aSubnetMask with: anIPAddress [
+
+	| mockNetwork |
+	mockNetwork := CwIPAddressRange
+		including: self
+		subnetMask: aSubnetMask.
+	^ mockNetwork includes: anIPAddress
+]
+
 { #category : #testing }
 CwIPAddress >> isPrivate [
 	| privateRanges |

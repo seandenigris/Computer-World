@@ -102,6 +102,17 @@ CwServer >> logIn [
 ]
 
 { #category : #accessing }
+CwServer >> reachableAdapter [
+	| activeOsAdapters |
+	^ self adapters
+		detect: [ :myAdapter | 
+			activeOsAdapters := OSPlatform current networkAdapters
+					select: [ :osAdapter | osAdapter ipAddress isNotNil ].
+			activeOsAdapters
+				anySatisfy: [ :osAdapter | myAdapter ipAddress isOnSubnet: myAdapter subnetMask with: osAdapter ipAddress ] ]
+]
+
+{ #category : #accessing }
 CwServer >> rootUser [
 	^ self maLazyInstVarUsing: self rootUserDescription
 ]
@@ -148,11 +159,8 @@ CwServer >> sshAdmin [
 
 { #category : #ssh }
 CwServer >> sshAs: user [
-	| adapter |
-	adapter := self adapters size = 1
-		ifTrue: [ self adapters first ]
-		ifFalse: [ self adapters detect: [ :e | e usage includesSubstring: 'MBP' ] ].
-	self sshAs: user on: adapter
+	
+	self sshAs: user on: self reachableAdapter
 ]
 
 { #category : #ssh }

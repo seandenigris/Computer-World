@@ -11,14 +11,12 @@ You theoretically should be able to use Hybrid Backup Sync by just specifying th
 
 No matter what method you try, the first annoyance is that each time the phone mounts, the only user with access will be root (which you disabled, right?!). If you administer from a non-root user, you'll have to add that user **every time you plug the phone in**.
 
-Now, you may think, ""I'm a superuser. I'll just use `rsync`"" to create my own backup system. Not quite. The version of rsync on your box is likely to be well behind the current version. It also seems to throw lots of random errors (e.g. `rsync: read errors mapping... No data available`) for which there doesn't seem to be any good explanation via google. I could've sworn that I successfully used rsync on my Mac by using mounted SMB shares for the source and destination, but I spent a day trying to reproduce that and could not. I could barely get a file or two to copy and the shares kept unmounting. WTH.
-### Experiments
-Let's list the possible sources of problems:
-- phone - try with a different phone; iOS version, free space, etc.; Works with iOS 13.5.1 w. 30GB available and QTS 4.5.1.1456
-- permissions
-- NAS
-- rsync - e.g. flags, initiated from NAS or externally; although this wouldn't explain the HBS failure...
-- HBS settings
+Now, you may think, ""I'm a superuser. I'll just use `rsync`"" to create my own backup system. Not quite. The version of rsync on your box is likely to be well behind the current version. If you still feel like you want to do this, please note one essential prerequisite: In your iPhone settings, go to ""Photos"" -> ""Transfer to Mac or PC"" and set it to ""Keep Originals"". Otherwise, you might lose a night or two of sleep...
+
+Here's what happens if you don't ensure the ""Keep Originals"" setting. It seems to throw lots of random errors (e.g. `rsync: read errors mapping... No data available`) for which there doesn't seem to be any good explanation via google. You might start doubting your own reality, knowing that you successfully used rsync on a Mac by using mounted SMB shares for the source and destination, but have now spent a day trying to reproduce that and could not. Barely a file or two would copy and then the share kept unmounting. WTH. 
+
+Good thing you avoided that!
+## Lepiter Documentation
 The following topics are covered in the Lepiter DB (unfortunately Lepiter links do not work here):
 - Shared Folders
 # Time Machine
