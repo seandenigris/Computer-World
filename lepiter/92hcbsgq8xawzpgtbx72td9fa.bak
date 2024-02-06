@@ -37,7 +37,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-01-20T23:57:28.793424-05:00"
+						"dateAndTimeString" : "2024-01-22T20:35:13.437203-05:00"
 					}
 				},
 				"uid" : {
@@ -47,7 +47,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "**Location** - `/share` links to all the shared folders by name, but they are actually under `/share/CE_CACHEDEV2_DATA`"
+				"string" : "**Location** - `/share` links to all the shared folders by name, but they are actually under a subfolder with a name like `/share/CE_CACHEDEV2_DATA`"
 			},
 			{
 				"__type" : "textSnippet",
@@ -74,7 +74,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-01-20T23:59:17.275311-05:00"
+						"dateAndTimeString" : "2024-02-04T00:33:16.519629-05:00"
 					}
 				},
 				"uid" : {
@@ -84,7 +84,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "**Moving** - Not sure what happens if you change the path to a non-existant location in the property editor, but what does work is to move the folder via SSH and then change the properties to point to it. However, it seems you have to have the property editor open before you do the move, because if the folder doesn't exist, editing properties seems to be disabled."
+				"string" : "**Moving** - one known way is to move the folder via SSH and then change the properties to point to it. However, it seems you have to have the property editor open before you do the move, because if the folder doesn't exist, editing properties seems to be disabled."
 			}
 		]
 	},
