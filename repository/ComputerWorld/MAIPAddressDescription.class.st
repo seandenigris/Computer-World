@@ -1,7 +1,7 @@
 Class {
 	#name : #MAIPAddressDescription,
 	#superclass : #MAElementDescription,
-	#category : 'ComputerWorld-Magritte'
+	#category : #'ComputerWorld-Magritte'
 }
 
 { #category : #'accessing-defaults' }
@@ -22,5 +22,5 @@ MAIPAddressDescription >> initialize [
 
 { #category : #'validation-private' }
 MAIPAddressDescription >> validateSpecific: anObject [
-	anObject rawAddress > self kind maxRawAddress ifTrue: [ MAError signal ]
+	anObject rawAddress <= self kind maxRawAddress ifFalse: [ MAError signal ]
 ]
