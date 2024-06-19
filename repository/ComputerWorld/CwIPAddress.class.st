@@ -106,7 +106,7 @@ CwIPAddress >> should [
 { #category : #'magritte-accessing' }
 CwIPAddress >> stringDescription [
 	"<magritteDescription>"
-	self flag: 'Part of experiment to describe types in multiple ways, one of which being a simple string equivalent. Doesn''t work if enabled at the same time as #rawAddressdescription, presumably because they both operate on the same datat'.
+	self flag: 'Part of experiment to describe types in multiple ways, one of which being a simple string equivalent. Doesn''t work if enabled at the same time as #rawAddressdescription, presumably because they both operate on the same data'.
 	^ MAIPAddressDescription new
 		label: 'IP Address';
 		accessor: (MASelectorAccessor read: #displayString write: #copySameFrom:);
