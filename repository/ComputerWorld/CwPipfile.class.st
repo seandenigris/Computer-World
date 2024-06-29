@@ -27,8 +27,16 @@ CwPipfile >> + rhs [
 
 { #category : #accessing }
 CwPipfile >> devPackages [
+
+	^ devPackages ifNil: [ devPackages := Dictionary new ].
+]
+
+{ #category : #accessing }
+CwPipfile >> file: aFile [
+
+	super file: aFile.
 	self refresh.
-	^ devPackages ifNil: [ devPackages := Dictionary new ]
+	^ self
 ]
 
 { #category : #accessing }
@@ -69,8 +77,8 @@ CwPipfile >> mergeRequirementsFrom: aCollection [
 
 { #category : #accessing }
 CwPipfile >> packages [
-	self refresh.
-	^ packages ifNil: [ packages := Dictionary new ]
+
+	^ packages ifNil: [ packages := Dictionary new ].
 ]
 
 { #category : #accessing }
@@ -93,26 +101,26 @@ CwPipfile >> refresh [
 
 { #category : #accessing }
 CwPipfile >> requirement [
-	^ self requires 
-		ifNotEmpty: [ :reqs | 
-			| tokens |
-			tokens := (reqs atRandom value splitOn: $.) collect: #asInteger.
-			CwPythonVersion 
-				perform: #major:minor:patch:
-				withEnoughArguments: tokens ] 
-		ifEmpty: [ nil ].
+
+	| tokens |
+	self requires ifEmpty: [ ^ nil ].
+		
+	tokens := (self requires atRandom value splitOn: $.) collect: #asInteger.
+	^ CwPythonVersion 
+		perform: #major:minor:patch:
+		withEnoughArguments: tokens.
 ]
 
 { #category : #accessing }
 CwPipfile >> requires [
-	self refresh.
+
 	^ requires ifNil: [ requires := Dictionary new ]
 ]
 
 { #category : #accessing }
 CwPipfile >> sources [
-	self refresh.
-	^ sources ifNil: [ sources := OrderedCollection new ]
+	
+	^ sources ifNil: [ sources := OrderedCollection new ].
 ]
 
 { #category : #accessing }
