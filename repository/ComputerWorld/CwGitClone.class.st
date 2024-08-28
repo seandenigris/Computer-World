@@ -21,7 +21,7 @@ CwGitClone >> gitBinary [
 
 { #category : #accessing }
 CwGitClone >> location [
-	^ self maLazyFromDescriptionOf: #location
+	^ self maLazyInstVarUsing: self locationDescription
 ]
 
 { #category : #accessing }
