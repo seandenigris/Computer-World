@@ -16,7 +16,7 @@ CwGitClone >> commit: messageString [
 
 { #category : #'as yet unclassified' }
 CwGitClone >> gitBinary [
-	^ '/usr/local/bin/git' asFileReference
+	^ '/usr/bin/git' asFileReference
 ]
 
 { #category : #accessing }
