@@ -38,41 +38,41 @@ BaselineOfComputerWorld >> baseline: spec [
 
 	spec for: #'common' do: [
 		spec
-			baseline: 'ContainersOrderedSet' with: [ 
+			baseline: #'ContainersOrderedSet' with: [ 
 				spec repository: 'github://pharo-containers/Containers-OrderedSet' ];
-			baseline: 'CPanel' with: [
+			baseline: #'CPanel' with: [
 				spec repository: 'github://seandenigris/cPanel-Live' ];
-			baseline: 'DynabookFoundation' with: [
+			baseline: #'DynabookFoundation' with: [
 				spec repository: 'github://seandenigris/Dynabook-Foundation' ];
-			baseline: 'ExternalWebBrowser' with: [
+			baseline: #'ExternalWebBrowser' with: [
 				spec repository: 'github://seandenigris/Pharo-Web-Browser' ];
-			baseline: 'Magritte' with: [
+			baseline: #'Magritte' with: [
 				spec repository: 'github://seandenigris/Magritte' ];
-			baseline: 'OSShell' with: [
+			baseline: #'OSShell' with: [
 				spec repository: 'github://seandenigris/Pharo-Shell' ];
-			baseline: 'PharoEnhancements' with: [
+			baseline: #'PharoEnhancements' with: [
 				spec repository: 'github://seandenigris/Pharo-Enhancements' ];
-			baseline: 'ResourcesLive' with: [
+			baseline: #'ResourcesLive' with: [
 				spec repository: 'github://seandenigris/Resources-Live' ];
-			baseline: 'SimpleApplescript' with: [
+			baseline: #'SimpleApplescript' with: [
 				spec repository: 'github://seandenigris/Applescript-St' ];
-			baseline: 'SimplePersistence' with: [
+			baseline: #'SimplePersistence' with: [
 				spec repository: 'github://seandenigris/Simple-Persistence' ];
-			baseline: 'Mocketry' with: [
+			baseline: #'Mocketry' with: [
 				spec repository: 'github://seandenigris/Mocketry' ];
-			baseline: 'Superuser' with: [
+			baseline: #'Superuser' with: [
 				spec repository: 'github://seandenigris/Superuser' ];
-			baseline: 'Tempfile' with: [
+			baseline: #'Tempfile' with: [
 				spec repository: 'github://seandenigris/TempfileSt' ].
-		spec package: 'ComputerWorld' with: [ spec requires: #(ContainersOrderedSet CPanel DynabookFoundation ExternalWebBrowser Magritte Mocketry OSShell PharoEnhancements ResourcesLive SimpleApplescript SimplePersistence Superuser Tempfile) ] ].
+		spec package: #'ComputerWorld' with: [ spec requires: #(ContainersOrderedSet CPanel DynabookFoundation ExternalWebBrowser Magritte Mocketry OSShell PharoEnhancements ResourcesLive SimpleApplescript SimplePersistence Superuser Tempfile) ] ].
 		
 	spec for: #notGToolkit do: [ 
-		spec baseline: 'NeoJSON' with: [
+		spec baseline: #'NeoJSON' with: [
 				spec repository: 'github://svenvc/NeoJSON' ].
-		spec package: 'ComputerWorld' with: [ spec requires: #(NeoJSON "for BTT") ] ].
+		spec package: #'ComputerWorld' with: [ spec requires: #(NeoJSON "for BTT") ] ].
 	
 	spec for: #GToolkit do: [ 
-		spec package: 'ComputerWorld-GToolkit' with: [ spec requires: #(ComputerWorld) ] ]
+		spec package: #'ComputerWorld-GToolkit' with: [ spec requires: #(ComputerWorld) ] ]
 
 ]
 
