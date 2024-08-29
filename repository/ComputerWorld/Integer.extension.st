@@ -16,3 +16,9 @@ Integer >> asCwIPAddress [
 	((max bitShift: shift) rem: max + 1) asByteArray.
 	(max << shift) asByteArray last: 4"
 ]
+
+{ #category : #'*ComputerWorld' }
+Integer >> asCwIPSubnetMask [
+
+	^ CwIPSubnetMask reservedBits: self
+]

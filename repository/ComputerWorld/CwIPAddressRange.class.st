@@ -121,10 +121,10 @@ CwIPAddressRange class >> spData [
 
 { #category : #accessing }
 CwIPAddressRange class >> startingAt: address subnetMask: maskAddress [
-	
+
 	^ self new
 			start: address asCwIPAddress;
-			subnetMask: maskAddress;
+			subnetMask: maskAddress asCwIPSubnetMask;
 			yourself
 ]
 

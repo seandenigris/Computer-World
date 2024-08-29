@@ -34,6 +34,12 @@ CwIPSubnetMask class >> reservedBits: anInteger [
 	^ self fromInteger: integerValue
 ]
 
+{ #category : #'as yet unclassified' }
+CwIPSubnetMask >> asCwIPSubnetMask [
+
+	^ self
+]
+
 { #category : #accessing }
 CwIPSubnetMask >> printOn: aStream [
 	super printOn: aStream.

@@ -6,6 +6,11 @@ ByteString >> asCwIPAddress [
 ]
 
 { #category : #'*ComputerWorld' }
+ByteString >> asCwIPSubnetMask [
+	^ CwIPSubnetMask fromString: self
+]
+
+{ #category : #'*ComputerWorld' }
 ByteString >> homebrewName [
 	^ self
 ]
