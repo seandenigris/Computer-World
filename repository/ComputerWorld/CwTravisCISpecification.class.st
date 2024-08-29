@@ -1,7 +1,7 @@
 Class {
 	#name : #CwTravisCISpecification,
 	#superclass : #TestCase,
-	#category : 'ComputerWorld-Specification'
+	#category : #'ComputerWorld-Specification'
 }
 
 { #category : #'as yet unclassified' }
@@ -16,7 +16,7 @@ CwTravisCISpecification >> testBadge [
 CwTravisCISpecification >> testSetUpMissingRepository [
 	
 	Tempfile do: [ :tf |
-		[ CwTravisCI new setUp: tf ] should signal: Error ].
+		[ CwTravisCI new setUp: tf ] should raise: Error ].
 ]
 
 { #category : #accessing }
