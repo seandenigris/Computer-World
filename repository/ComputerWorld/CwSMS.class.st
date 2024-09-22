@@ -7,23 +7,71 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
+CwSMS >> body [
+
+	^ self 
+		rawDataAt: 'body' 
+		ifAbsent: [ nil ]
+]
+
+{ #category : #'as yet unclassified' }
+CwSMS >> bodyDescription [
+	<magritteDescription>
+	
+	^ MAMemoDescription new 
+		accessor: #body;
+		priority: 300;
+		yourself
+]
+
+{ #category : #'as yet unclassified' }
+CwSMS >> contactName [
+
+	^ self 
+		rawDataAt: 'contact_name' 
+		ifAbsent: [ nil ].
+]
+
+{ #category : #'as yet unclassified' }
+CwSMS >> contactNameDescription [
+	<magritteDescription>
+	
+	^ MAStringDescription new 
+		accessor: #contactName;
+		priority: 200;
+		yourself
+]
+
+{ #category : #'as yet unclassified' }
+CwSMS >> dateReadable [
+
+	^ self 
+		rawDataAt: 'readable_date' 
+		ifAbsent: [ nil ].
+]
+
+{ #category : #'as yet unclassified' }
+CwSMS >> dateReadableDescription [
+	<magritteDescription>
+	
+	^ MAStringDescription new 
+		accessor: #dateReadable;
+		priority: 100;
+		yourself
+]
+
+{ #category : #'as yet unclassified' }
 CwSMS >> displayStringOn: aStream [
 
-	self rawDataAt: 'readable_date' 
-		reader: [ :str | aStream << str ]
-		ifAbsent: [].
+	self dateReadable ifNotNil: [ :str | aStream << str ].
 		
 	self isInbox
 		ifTrue: [ aStream << ' from ' ]
 		ifFalse: [ aStream << ' to ' ].
 		
-	self rawDataAt: 'contact_name' 
-		reader: [ :str | aStream space; << str; << $: ]
-		ifAbsent: [].
+	self contactName ifNotNil: [ :str | aStream space; << str; << $: ].
 		
-	self rawDataAt: 'body' 
-		reader: [ :str | aStream space; << str; << $: ]
-		ifAbsent: []
+	self body ifNotNil: [ :str | aStream space; << str; << $: ]
 ]
 
 { #category : #'as yet unclassified' }
