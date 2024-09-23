@@ -7,6 +7,23 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
+CwSMS class >> allFromXML: aFileReference [
+	"With my return value, try `smses groupedBy: #contactName`"
+
+	| result parser |
+	self flag: 'MMSes will be ignored'.
+	parser := XMLDOMParser onFileNamed: aFileReference fullName.
+	result := parser
+		documentReadLimit: aFileReference size * 5; "trial and error"
+		parseDocument.
+	^ result // 'sms'
+			collect: [ :smsNode | self fromDictionary: smsNode attributes ]
+			as: OrderedCollection.
+			
+	"Implementation note: SMSes seem to all be attributes only, but MMSes `hasStringNodes`, `hasContentNodes` and `elements isNotEmpty`"
+]
+
+{ #category : #'as yet unclassified' }
 CwSMS >> body [
 
 	^ self 
