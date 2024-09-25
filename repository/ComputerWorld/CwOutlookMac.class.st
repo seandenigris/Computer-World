@@ -1,8 +1,21 @@
 Class {
 	#name : #CwOutlookMac,
 	#superclass : #CwMacApplication,
+	#classVars : [
+		'ArchiveAccount'
+	],
 	#category : #'ComputerWorld-Mac'
 }
+
+{ #category : #accessing }
+CwOutlookMac class >> archiveAccount [
+	^ ArchiveAccount
+]
+
+{ #category : #accessing }
+CwOutlookMac class >> archiveAccount: anObject [
+	ArchiveAccount := anObject
+]
 
 { #category : #accessing }
 CwOutlookMac class >> bundleBasename [
@@ -15,6 +28,12 @@ CwOutlookMac >> applescriptFolder [
 ]
 
 { #category : #'as yet unclassified' }
+CwOutlookMac >> archiveSelectedMessages [
+	
+	self archiveSelectedMessagesToAccount: self class archiveAccount.
+]
+
+{ #category : #'as yet unclassified' }
 CwOutlookMac >> archiveSelectedMessagesToAccount: aString [
 
 	| archiveScript |
@@ -23,7 +42,7 @@ CwOutlookMac >> archiveSelectedMessagesToAccount: aString [
 ]
 
 { #category : #'as yet unclassified' }
-CwOutlookMac >> exportSelectedMessages [
+CwOutlookMac >> selectedMessagesExport [
 	| folder files exportScript |
 	folder := Tempfile new.
 	exportScript := self applescriptFolder / 'outlook_export_emails.applescript'.
@@ -37,4 +56,14 @@ CwOutlookMac >> exportSelectedMessages [
 		tfile := Tempfile named: file basename.
 		file copyTo: tfile.
 		tfile asRlResource ]
+]
+
+{ #category : #'as yet unclassified' }
+CwOutlookMac >> selectedMessagesImport [
+
+	| messages |
+	messages := self selectedMessagesExport.
+	messages do: [ :msg | msg import ].
+	self archiveSelectedMessages.
+	^ messages
 ]

@@ -32,6 +32,13 @@ CwMacMail class >> signatureFolder [
 	^ vFolders first / 'MailData' / 'Signatures'
 ]
 
+{ #category : #'as yet unclassified' }
+CwMacMail >> applescriptFolder [
+
+	self flag: 'copy pasted from CwOutlookMac'.
+	^ self class package peIceRepository repositoryDirectory / 'applescript'
+]
+
 { #category : #accessing }
 CwMacMail >> newMessageTo: nameString at: addressString re: subjectString asFollows: contentString [
 	
@@ -52,6 +59,44 @@ CwMacMail >> newMessageTo: nameString at: addressString re: subjectString asFoll
 		argumentAt: #recipientName put: nameString;
 		argumentAt: #recipientAddress put: addressString;
 		run.
+]
+
+{ #category : #'as yet unclassified' }
+CwMacMail >> selectedMessagesArchive [
+
+	| archiveScript |
+	archiveScript := self applescriptFolder / 'mail_app_archive_selection.applescript'.
+	LibC system: 'osascript ', archiveScript fullName surroundedByDoubleQuotes
+]
+
+{ #category : #'as yet unclassified' }
+CwMacMail >> selectedMessagesExport [
+
+	| folder files exportScript |
+	self flag: 'copy pasted from CwOutlookMac'.
+	
+	folder := Tempfile new.
+	exportScript := self applescriptFolder / 'mail_app_export_selection.applescript'.
+	LibC
+		system: 'osascript ' , exportScript fullName surroundedByDoubleQuotes , ' '
+				, folder ensureCreateDirectory fullName surroundedByDoubleQuotes.
+	files := folder filesMatching: '*.eml'.
+	^ files collect: [ :file | 
+		| tfile |
+		"Copy the eml files elsewhere because the tmp folder will be deleted when no longer referenced - probably as soon as this method returns!"
+		tfile := Tempfile named: file basename.
+		file copyTo: tfile.
+		tfile asRlResource ]
+]
+
+{ #category : #'as yet unclassified' }
+CwMacMail >> selectedMessagesImport [
+
+	| messages |
+	messages := self selectedMessagesExport.
+	messages do: [ :msg | msg import ].
+	self selectedMessagesArchive.
+	^ messages
 ]
 
 { #category : #'as yet unclassified' }
