@@ -14,6 +14,7 @@ CwOutlookMac class >> archiveAccount [
 
 { #category : #accessing }
 CwOutlookMac class >> archiveAccount: anObject [
+	"anObject - the user name of an exchange account. For delegated accounts (i.e. shared mailboxes), the user name is just the part of the email address before the @"
 	ArchiveAccount := anObject
 ]
 
