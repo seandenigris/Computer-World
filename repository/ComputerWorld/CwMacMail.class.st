@@ -40,6 +40,34 @@ CwMacMail >> applescriptFolder [
 ]
 
 { #category : #'as yet unclassified' }
+CwMacMail >> importEmlFilesIn: aFileReference [
+	
+	| emlFiles unixMbox |
+	emlFiles := aFileReference filesMatching: '*.eml'.
+	unixMbox := Tempfile withExtension: 'mbox'.
+	
+	PBApplication uniqueInstance newCommandStringFactory
+	    addAllBindings: { 
+	        #emlPaths -> (emlFiles asArray collect: #fullName).
+	        #unixMbox -> unixMbox fullName } asDictionary;
+	    script: 'import mailbox
+from email import policy
+from email.parser import BytesParser
+destination = mailbox.mbox(unixMbox)
+destination.lock()
+for eml_file in emlPaths:
+    with open(eml_file, ''rb'') as f:
+        msg = BytesParser(policy=policy.default).parse(f)
+        destination.add(mailbox.MHMessage(msg))
+
+destination.flush()
+destination.unlock()';
+	    sendAndWait.
+	    
+	self importUnixMbox: unixMbox
+]
+
+{ #category : #'as yet unclassified' }
 CwMacMail >> importMailboxAt: aFileReference [
 	"aFileReference - a post-Panther or pre-Tiger mailbox. See `importUnixMbox: comment for more information or send that message to pass a real Unix mbox"
 
