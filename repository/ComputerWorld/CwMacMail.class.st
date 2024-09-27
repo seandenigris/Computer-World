@@ -39,6 +39,28 @@ CwMacMail >> applescriptFolder [
 	^ self class package peIceRepository repositoryDirectory / 'applescript'
 ]
 
+{ #category : #'as yet unclassified' }
+CwMacMail >> importMailboxAt: aFileReference [
+	"aFileReference - a post-Panther or pre-Tiger mailbox. See `importUnixMbox: comment for more information or send that message to pass a real Unix mbox"
+
+	self tellApplicationTo: 'import Mail mailbox at POSIX file ', aFileReference fullName surroundedByDoubleQuotes
+]
+
+{ #category : #'as yet unclassified' }
+CwMacMail >> importUnixMbox: aFileReference [
+	
+	| preTigerMbox |
+	preTigerMbox := Tempfile withExtension: 'mbox'.
+	preTigerMbox ensureCreateDirectory.
+	aFileReference copyTo: preTigerMbox / 'mbox'.
+	
+	self importMailboxAt: preTigerMbox.
+
+	"Apparently, `import Mail mailbox` can't accept a real Unix mbox (it fails silently), but instead needs a post-Panther or pre-Tiger mailbox. Pre-tiger is easy to create because it's an ordinary directory with an mbox extension, and then the real (i.e. Unix) mbox is a file inside it named 'mbox'
+	
+	Reference: https://lists.apple.com/archives/applescript-users/2010/May/msg00287.html"
+]
+
 { #category : #accessing }
 CwMacMail >> newMessageTo: nameString at: addressString re: subjectString asFollows: contentString [
 	
