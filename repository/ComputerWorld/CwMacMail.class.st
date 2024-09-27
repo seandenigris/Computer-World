@@ -46,6 +46,7 @@ CwMacMail >> importEmlFilesIn: aFileReference [
 	emlFiles := aFileReference filesMatching: '*.eml'.
 	unixMbox := Tempfile withExtension: 'mbox'.
 	
+	"Adapted from https://gist.github.com/markushuber/1a8cc1edf8353e5471eb7c51ea453536"
 	PBApplication uniqueInstance newCommandStringFactory
 	    addAllBindings: { 
 	        #emlPaths -> (emlFiles asArray collect: #fullName).
