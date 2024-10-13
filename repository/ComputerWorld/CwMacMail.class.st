@@ -151,6 +151,12 @@ CwMacMail >> selectedMessagesImport [
 ]
 
 { #category : #'as yet unclassified' }
+CwMacMail >> selection [
+
+	^ OsaJavaScript do: 'Application("Mail").selection()'
+]
+
+{ #category : #'as yet unclassified' }
 CwMacMail >> signatureList [
 
 	| signatureListFile doc |
