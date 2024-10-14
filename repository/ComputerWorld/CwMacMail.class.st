@@ -1,7 +1,7 @@
 Class {
 	#name : #CwMacMail,
 	#superclass : #CwMacApplication,
-	#category : #'ComputerWorld-Mac'
+	#category : #'ComputerWorld-Mac-Mail'
 }
 
 { #category : #'as yet unclassified' }
@@ -123,21 +123,9 @@ CwMacMail >> selectedMessagesArchive [
 { #category : #'as yet unclassified' }
 CwMacMail >> selectedMessagesExport [
 
-	| folder files exportScript |
-	self flag: 'copy pasted from CwOutlookMac'.
+	self flag: 'adapted from CwOutlookMac'.
 	
-	folder := Tempfile new.
-	exportScript := self applescriptFolder / 'mail_app_export_selection.applescript'.
-	LibC
-		system: 'osascript ' , exportScript fullName surroundedByDoubleQuotes , ' '
-				, folder ensureCreateDirectory fullName surroundedByDoubleQuotes.
-	files := folder filesMatching: '*.eml'.
-	^ files collect: [ :file | 
-		| tfile |
-		"Copy the eml files elsewhere because the tmp folder will be deleted when no longer referenced - probably as soon as this method returns!"
-		tfile := Tempfile named: file basename.
-		file copyTo: tfile.
-		tfile asRlResource ]
+	^ self selection collect: [ :msg | msg exported ].
 ]
 
 { #category : #'as yet unclassified' }

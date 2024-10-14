@@ -5,7 +5,7 @@ Class {
 		'name',
 		'id'
 	],
-	#category : 'ComputerWorld-Mac'
+	#category : #'ComputerWorld-Mac-Mail'
 }
 
 { #category : #'instance creation' }
