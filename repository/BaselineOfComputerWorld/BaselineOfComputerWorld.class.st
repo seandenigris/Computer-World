@@ -55,7 +55,7 @@ BaselineOfComputerWorld >> baseline: spec [
 			baseline: #'ResourcesLive' with: [
 				spec repository: 'github://seandenigris/Resources-Live' ];
 			baseline: #'SimpleApplescript' with: [
-				spec repository: 'github://seandenigris/Applescript-St' ];
+				spec repository: 'github://seandenigris/Mac-OSA-Smalltalk' ];
 			baseline: #'SimplePersistence' with: [
 				spec repository: 'github://seandenigris/Simple-Persistence' ];
 			baseline: #'Mocketry' with: [
