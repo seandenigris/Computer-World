@@ -280,6 +280,16 @@ CwMacApplication >> saveAsPdfAt: aFileReference [
 	click button "Save"  of window "Save"'.
 ]
 
+{ #category : #'as yet unclassified' }
+CwMacApplication >> scriptingDictionary [
+
+	^ SuGenericUnixCommand new
+		template: 'sdef {bundle}';
+		argumentAt: #bundle put: self bundle;
+		outputDecoder: [ :str | XMLDOMParser parse: str ];
+		output.
+]
+
 { #category : #actions }
 CwMacApplication >> tellApplicationTo: applescriptCommand [
 
