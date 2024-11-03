@@ -1,0 +1,155 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "55d44d49-66e2-0d00-87d1-1d96077f32ec"
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Automation"
+	},
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-11-03T11:20:41.649013-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-11-03T11:21:12.912516-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "kU9OSWbiDQCH0pX6B38y7A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "OSA (Mac) - seems to be dying"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "quCitedTextSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-11-03T11:21:55.515708-05:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-11-03T11:22:31.153723-05:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "0Wu1TWbiDQCI+hdoB38y7A=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Possibly \"massive\" and will make OSA obsolete",
+							"sourceID" : {
+								"__type" : "uuid",
+								"uuid" : "50131e2a-66e2-0d00-8403-933f077f32ec"
+							}
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-11-03T11:21:13.599598-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-11-03T11:22:04.37582-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "NMg1S2biDQCItbeYB38y7A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Adobe UXP JavaScript engine"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2024-11-03T11:20:41.617732-05:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2024-11-03T11:20:46.981727-05:00"
+		}
+	}
+}
