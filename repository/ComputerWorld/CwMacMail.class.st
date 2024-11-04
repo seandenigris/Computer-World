@@ -141,6 +141,19 @@ CwMacMail >> selectedMessagesImport [
 { #category : #'as yet unclassified' }
 CwMacMail >> selection [
 
+	| result |
+	result := PBApplication uniqueInstance newCommandStringFactory
+		script: 'from appscript import *';
+	    resultExpression: 'app("Mail").selection.get()';
+	    sendAndWait.
+	    
+	^ result collect: [ :e |
+		OsaMacMailMessage fromPythonInstance: e ]
+]
+
+{ #category : #'as yet unclassified' }
+CwMacMail >> selectionViaJXA [
+
 	^ OsaJavaScript do: 'Application("Mail").selection()'
 ]
 

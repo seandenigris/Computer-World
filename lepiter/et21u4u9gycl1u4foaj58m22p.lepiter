@@ -7,11 +7,122 @@
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Emails - Exporting when subject has special characters"
+		"title" : "[Dev note]: Emails - Exporting when subject has special characters"
 	},
 	"children" : {
 		"__type" : "snippets",
 		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-11-03T22:16:46.430051-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-11-03T22:16:46.430051-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "qyyhc2/iDQCutHlVBIdc5A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Use case: Email subject contains an emoji. Writing to file via Applescript fails if we naively include the subject in the filename, but how to strip illegal characters?"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-11-03T22:16:49.019348-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-11-03T22:18:08.488372-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "GrDIc2/iDQCuupDDBIdc5A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "tl;dr: `py-appscript` is alive and well! This meant we can implement the behavior sanely, ditching Apple's basket of absurd \"official\" bridges as well as the poor man's osascript method."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-11-03T22:18:13.673687-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-11-03T22:18:28.280298-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "Q2zUeG/iDQCy2M/YBIdc5A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Here is the process as it unfolded for the record..."
+			},
 			{
 				"__type" : "textSnippet",
 				"children" : {
@@ -37,7 +148,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-13T21:02:17.69254-04:00"
+						"dateAndTimeString" : "2024-11-03T22:16:47.093154-05:00"
 					}
 				},
 				"uid" : {
@@ -47,7 +158,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Use case: Email subject contains an emoji. Writing to file via Applescript fails if we naively include the subject in the filename, but how to strip illegal characters? We don't want to work in Applescript any longer than we have to, so let's try returning the selection as a collection of resources and then get the source to write to a file outside of Applescript:"
+				"string" : "We don't want to work in Applescript any longer than we have to, so let's try returning the selection as a collection of resources and then get the source to write to a file outside of Applescript:"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -329,7 +440,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-13T22:03:56.391643-04:00"
+						"dateAndTimeString" : "2024-11-03T22:19:50.829585-05:00"
 					}
 				},
 				"uid" : {
@@ -339,7 +450,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "I asked why this more convoluted form is needed [on StackOverflow](https://stackoverflow.com/q/79084511)"
+				"string" : "I asked why this more convoluted form is needed [on StackOverflow](https://stackoverflow.com/q/79084511). It turns out AppleScript's human readability created an ambiguity because \"message id\" is also a type in the dictionary."
 			},
 			{
 				"__type" : "textSnippet",
@@ -377,6 +488,182 @@
 					"__type" : "textStyle"
 				},
 				"string" : "Also, by the time this was discovered, implementation had already shifted from AppleScript to JXA, resulting in {{gtClass:OsaMacMailMessage}}. {{gtMethod:CwMacMail>>selectedMessagesExport}} was reimplemented using it."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-11-03T12:27:57.378903-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-11-03T22:20:01.774703-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "ZKTaOWfiDQCYqukTCChI6w=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "However, this is also unsatisfying because JXA returns the message contents littered with printed \"\\n\". In researching further, it turns out that py-appscript is still alive and well, so that seems to be the best solution at the moment. However, more long term, it would be cool to create a layer where the bridge could be swapped out."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-11-03T12:31:44.585592-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-11-03T12:33:11.855556-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "R4llR2fiDQCh+ylBCChI6w=="
+				},
+				"code" : "PBApplication uniqueInstance installModule: 'appscript'"
+			},
+			{
+				"__type" : "pythonSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-11-03T12:33:44.786773-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-11-03T22:21:05.908786-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "y5iPTmfiDQCifSgpCChI6w=="
+				},
+				"code" : "from appscript import *\rapp(\"Mail\").selection.get()[0].source()"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-11-03T22:21:12.231039-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-11-03T22:21:46.263116-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "ufx4g2/iDQC4drLpBIdc5A=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Which is now the implementation behind this Smalltalk version:"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-11-03T13:06:37.482004-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-11-03T22:20:35.795211-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "op0kxGfiDQCphdKMCChI6w=="
+				},
+				"code" : "CwMacMail new selection first source"
 			}
 		]
 	},
@@ -399,7 +686,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2024-10-11T08:45:58.322917-04:00"
+			"dateAndTimeString" : "2024-11-03T22:37:34.812777-05:00"
 		}
 	}
 }
