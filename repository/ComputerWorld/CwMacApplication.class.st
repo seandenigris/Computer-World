@@ -182,6 +182,16 @@ CwMacApplication class >> relaunch [
 		self launch ] fork
 ]
 
+{ #category : #'as yet unclassified' }
+CwMacApplication class >> scriptingDictionary [
+
+	^ SuGenericUnixCommand new
+		template: 'sdef {bundle}';
+		argumentAt: #bundle put: self bundle;
+		outputDecoder: [ :str | XMLDOMParser parse: str ];
+		output.
+]
+
 { #category : #actions }
 CwMacApplication >> activate [
 
@@ -278,16 +288,6 @@ CwMacApplication >> saveAsPdfAt: aFileReference [
 	self tellGUITo: 'key code 9 using {command down} -- v key
 	click button "Go"  of sheet 1 of window "Save"
 	click button "Save"  of window "Save"'.
-]
-
-{ #category : #'as yet unclassified' }
-CwMacApplication >> scriptingDictionary [
-
-	^ SuGenericUnixCommand new
-		template: 'sdef {bundle}';
-		argumentAt: #bundle put: self bundle;
-		outputDecoder: [ :str | XMLDOMParser parse: str ];
-		output.
 ]
 
 { #category : #actions }
