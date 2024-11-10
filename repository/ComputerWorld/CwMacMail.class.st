@@ -1,6 +1,8 @@
 Class {
 	#name : #CwMacMail,
 	#superclass : #CwMacApplication,
+	#traits : 'PeTPythonWrapper',
+	#classTraits : 'PeTPythonWrapper classTrait',
 	#category : #'ComputerWorld-Mac-Mail'
 }
 
@@ -90,6 +92,22 @@ CwMacMail >> importUnixMbox: aFileReference [
 	Reference: https://lists.apple.com/archives/applescript-users/2010/May/msg00287.html"
 ]
 
+{ #category : #'as yet unclassified' }
+CwMacMail >> inbox [
+
+	^ self pythonInstance inbox
+]
+
+{ #category : #'as yet unclassified' }
+CwMacMail >> inboxMessages [
+
+	| result |
+	result := self inbox messages callMethod: #get.
+	
+	^ result collect: [ :e |
+		OsaMacMailMessage fromPythonInstance: e ]
+]
+
 { #category : #accessing }
 CwMacMail >> newMessageTo: nameString at: addressString re: subjectString asFollows: contentString [
 	
@@ -110,6 +128,17 @@ CwMacMail >> newMessageTo: nameString at: addressString re: subjectString asFoll
 		argumentAt: #recipientName put: nameString;
 		argumentAt: #recipientAddress put: addressString;
 		run.
+]
+
+{ #category : #accessing }
+CwMacMail >> pythonInstance [
+
+	pythonInstance ifNotNil: [ ^ pythonInstance ].
+	
+	pythonInstance := PBApplication uniqueInstance newCommandStringFactory
+		script: 'from appscript import *';
+	    resultExpression: 'app("Mail")';
+	    sendAndWait.
 ]
 
 { #category : #'as yet unclassified' }
@@ -142,13 +171,24 @@ CwMacMail >> selectedMessagesImport [
 CwMacMail >> selection [
 
 	| result |
-	result := PBApplication uniqueInstance newCommandStringFactory
-		script: 'from appscript import *';
-	    resultExpression: 'app("Mail").selection.get()';
-	    sendAndWait.
+	result := self pythonInstance selection callMethod: #get.
 	    
 	^ result collect: [ :e |
 		OsaMacMailMessage fromPythonInstance: e ]
+]
+
+{ #category : #'as yet unclassified' }
+CwMacMail >> selectionGtViewOn: aView [
+	<gtView>
+	
+	^ aView columnedList
+		title: 'Selection';
+		items: [ self selection ];
+		column: 'Subject' text: #subject weight: 2;
+		column: 'Sender' text: #sender;
+		column: 'Date' text: [ :msg | msg dateReceived printUS ];
+		priority: 20;
+		actionUpdateButton
 ]
 
 { #category : #'as yet unclassified' }
