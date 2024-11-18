@@ -135,7 +135,7 @@ CwMacMail >> pythonInstance [
 
 	pythonInstance ifNotNil: [ ^ pythonInstance ].
 	
-	pythonInstance := PBApplication uniqueInstance newCommandStringFactory
+	^ pythonInstance := PBApplication uniqueInstance newCommandStringFactory
 		script: 'from appscript import *';
 	    resultExpression: 'app("Mail")';
 	    sendAndWait.
