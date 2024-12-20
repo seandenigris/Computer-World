@@ -1,7 +1,7 @@
 Class {
 	#name : #CwPList,
 	#superclass : #Object,
-	#category : 'ComputerWorld-Core'
+	#category : #'ComputerWorld-Core'
 }
 
 { #category : #examples }
@@ -48,7 +48,7 @@ CwPList class >> nextStepParser [
 	value := PP2UnresolvedNode new.
 	association := token, #space asPParser plus, $= asPParser, #space asPParser plus, value, $; asPParser ==> [ :n | n first -> n fifth ].
 	dictionary := ${ asPParser, #space asPParser plus, (association, #space asPParser plus ==> #first) plus, $} asPParser ==> [ :n |
-		Dictionary newFromAssociations: n third ].
+		Dictionary newFrom: n third ].
 	value def: token / dictionary.
 	^ dictionary
 ]
