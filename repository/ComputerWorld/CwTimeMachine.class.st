@@ -101,7 +101,10 @@ CwTimeMachine >> isExcluded: file [
 
 { #category : #accessing }
 CwTimeMachine >> isRunning [
-	^ (self statusCommand output at: #Running) = 1
+	| outDict |
+	outDict := self statusCommand output.
+	outDict at: #lastReport ifPresent: [ ^ false ].
+	^ (outDict at: #Running) = 1
 ]
 
 { #category : #accessing }
