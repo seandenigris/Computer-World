@@ -114,6 +114,23 @@ CwTimeMachineDestination >> startBackup [
 ]
 
 { #category : #'starting/stopping' }
+CwTimeMachineDestination >> startBackupPreventingSleep [
+
+	| awakeBlock backgroundBlock |
+	awakeBlock := [ [ CwTimeMachine new isRunning ] whileTrue: [ 1 second wait ] ].
+	
+	backgroundBlock := [ 
+		CwAmphetamine new stayAwakeDuring: awakeBlock.
+		Transcript crShow: 'Backup/Amphetamine session ended at ', DateAndTime now printUS
+	].
+
+	self startBackup.
+	backgroundBlock 
+		forkAt: Processor userBackgroundPriority 
+		named: 'TM No Sleep'
+]
+
+{ #category : #'starting/stopping' }
 CwTimeMachineDestination >> stopBackup [
 	"Stop whatever backup is currently running (even if to another destination). There really is no command to stop a specific backup, apparently because there would only ever be one running. This is here for convenience only as it seems natural to look for it here"
 	^ CwTimeMachine stopBackupCommand run
