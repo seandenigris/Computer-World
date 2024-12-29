@@ -9,7 +9,7 @@ Class {
 		'fingerprint',
 		'id'
 	],
-	#category : 'ComputerWorld-Apps'
+	#category : #'ComputerWorld-Apps'
 }
 
 { #category : #accessing }
@@ -20,16 +20,16 @@ CwDebianKey class >> all [
 	soup := Soup fromUrl: 'https://www.debian.org/CD/verify'.
 	keyContainer := soup findTag: 'pre'.
 	keysString := keyContainer string trimBoth.
-	lineEnding := Character lf asParser.
-	length := $/ asParser negate plus flatten.
-	id := #space asParser negate plus flatten.
+	lineEnding := Character lf asPParser.
+	length := $/ asPParser negate plus flatten.
+	id := #space asPParser negate plus flatten.
 	creationDate := lineEnding negate plus flatten.
-	headerLine := 'pub' asParser, Character space asParser plus, length, $/ asParser, id, #space asParser, creationDate, lineEnding ==> [ :nodes |
+	headerLine := 'pub' asPParser, Character space asPParser plus, length, $/ asPParser, id, #space asPParser, creationDate, lineEnding ==> [ :nodes |
 		{ nodes third. nodes fifth. nodes seventh } ].
-	fingerprintLine := Character space asParser plus, 'Key fingerprint = ' asParser, lineEnding negate plus flatten, lineEnding ==> #third.
-	email := '&lt;' asParser, '&gt;' asParser negate plus flatten, '&gt;' asParser ==> #second.
+	fingerprintLine := Character space asPParser plus, 'Key fingerprint = ' asPParser, lineEnding negate plus flatten, lineEnding ==> #third.
+	email := '&lt;' asPParser, '&gt;' asPParser negate plus flatten, '&gt;' asPParser ==> #second.
 	ownerName := email negate plus flatten.
-	ownerLine := 'uid' asParser, #space asParser plus, ownerName, email, lineEnding ==> [ :nodes | { nodes third trimRight. nodes fourth } ].
+	ownerLine := 'uid' asPParser, #space asPParser plus, ownerName, email, lineEnding ==> [ :nodes | { nodes third trimRight. nodes fourth } ].
 	lastLine := lineEnding negate plus, lineEnding.
 	key := headerLine, fingerprintLine, ownerLine, lastLine optional ==> [ :nodes |
 			CwDebianKey new

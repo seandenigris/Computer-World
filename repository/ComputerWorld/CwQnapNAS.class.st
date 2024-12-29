@@ -63,7 +63,7 @@ CwQnapNAS class >> exampleTS262 [
 
 { #category : #accessing }
 CwQnapNAS class >> modelParser [ 
-	^ ($T asParser, $V asParser optional, $S asParser) flatten, $- asParser, #digit asParser plus flatten, #any asParser plus optional.
+	^ ($T asPParser, $V asPParser optional, $S asPParser) flatten, $- asPParser, #digit asPParser plus flatten, #any asPParser plus optional.
 ]
 
 { #category : #misc }

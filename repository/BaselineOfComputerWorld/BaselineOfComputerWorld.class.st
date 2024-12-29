@@ -46,10 +46,12 @@ BaselineOfComputerWorld >> baseline: spec [
 				spec repository: 'github://seandenigris/Dynabook-Foundation' ];
 			baseline: #'ExternalWebBrowser' with: [
 				spec repository: 'github://seandenigris/Pharo-Web-Browser' ];
-			baseline: #MacOSA with: [
+			baseline: #'MacOSA' with: [
 				spec repository: 'github://seandenigris/Mac-OSA-Smalltalk' ];
 			baseline: #'Magritte' with: [
 				spec repository: 'github://seandenigris/Magritte' ];
+			baseline: #'Mocketry' with: [
+				spec repository: 'github://seandenigris/Mocketry' ];
 			baseline: #'OSShell' with: [
 				spec repository: 'github://seandenigris/Pharo-Shell' ];
 			baseline: #'PharoEnhancements' with: [
@@ -58,8 +60,6 @@ BaselineOfComputerWorld >> baseline: spec [
 				spec repository: 'github://seandenigris/Resources-Live' ];
 			baseline: #'SimplePersistence' with: [
 				spec repository: 'github://seandenigris/Simple-Persistence' ];
-			baseline: #'Mocketry' with: [
-				spec repository: 'github://seandenigris/Mocketry' ];
 			baseline: #'Superuser' with: [
 				spec repository: 'github://seandenigris/Superuser' ];
 			baseline: #'Tempfile' with: [
@@ -67,9 +67,12 @@ BaselineOfComputerWorld >> baseline: spec [
 		spec package: #'ComputerWorld' with: [ spec requires: #(ContainersOrderedSet CPanel DynabookFoundation ExternalWebBrowser Magritte Mocketry OSShell PharoEnhancements ResourcesLive #MacOSA SimplePersistence Superuser Tempfile) ] ].
 		
 	spec for: #notGToolkit do: [ 
-		spec baseline: #'NeoJSON' with: [
-				spec repository: 'github://svenvc/NeoJSON' ].
-		spec package: #'ComputerWorld' with: [ spec requires: #(NeoJSON "for BTT") ] ].
+		spec 
+			baseline: #'NeoJSON' with: [
+				spec repository: 'github://svenvc/NeoJSON' ];
+			baseline: #'PetitParser2' with: [
+				spec repository: 'github://seandenigris/PetitParser2' ].
+		spec package: #'ComputerWorld' with: [ spec requires: #(#'NeoJSON' "for BTT" #'PetitParser2') ] ].
 	
 	spec for: #GToolkit do: [ 
 		spec package: #'ComputerWorld-GToolkit' with: [ spec requires: #(ComputerWorld) ] ]
