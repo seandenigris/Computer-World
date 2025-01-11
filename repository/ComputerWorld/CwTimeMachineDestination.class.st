@@ -125,7 +125,7 @@ CwTimeMachineDestination >> startBackupPreventingSleep [
 	].
 
 	self startBackup.
-	backgroundBlock 
+	^ backgroundBlock 
 		forkAt: Processor userBackgroundPriority 
 		named: 'TM No Sleep'
 ]
