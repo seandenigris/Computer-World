@@ -120,6 +120,7 @@ CwTimeMachineDestination >> startBackupPreventingSleep [
 	awakeBlock := [ [ CwTimeMachine new isRunning ] whileTrue: [ 1 second wait ] ].
 	
 	backgroundBlock := [ 
+		3 seconds wait.
 		CwAmphetamine new stayAwakeDuring: awakeBlock.
 		Transcript crShow: 'Backup/Amphetamine session ended at ', DateAndTime now printUS
 	].
