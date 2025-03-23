@@ -36,6 +36,17 @@ GisShape >> containsPoint: aPoint [
 ]
 
 { #category : #'as yet unclassified' }
+GisShape >> googleMapsGtActionFor: anAction [
+    <gtAction>
+    ^ anAction explicit stencil: [
+        BrButton new
+            aptitude: BrGlamorousButtonWithIconAptitude;
+            action:  [ WebBrowser openOn: self googleMapsUrl ];
+            icon: BrGlamorousVectorIcons link;
+            label: 'Open in Web Browser' translated ]
+]
+
+{ #category : #'as yet unclassified' }
 GisShape >> googleMapsUrl [
 
 
