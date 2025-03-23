@@ -4,8 +4,7 @@ Class {
 	#traits : 'PeTRawDataHolder',
 	#classTraits : 'PeTRawDataHolder classTrait',
 	#instVars : [
-		'server',
-		'queryData'
+		'server'
 	],
 	#category : #'ComputerWorld-GIS'
 }
@@ -17,6 +16,30 @@ GisLayer class >> onServer: aGisServer fromDictionary: aDictioanry [
 		server: aGisServer;
 		rawData: aDictioanry;
 		yourself
+]
+
+{ #category : #'as yet unclassified' }
+GisLayer >> client [
+	| client |
+	client := ZnClient new
+			contentReader: [ :str | STONJSON fromString: str ];
+			yourself.
+	^ client
+]
+
+{ #category : #'as yet unclassified' }
+GisLayer >> count [
+
+	| aUrl jsonResponse |
+	aUrl := self queryUrl
+			queryAt: #returnCountOnly put: true;
+			yourself.
+
+	jsonResponse := self client
+		url: aUrl;
+		get.
+
+	^ jsonResponse at: #count
 ]
 
 { #category : #'as yet unclassified' }
@@ -51,6 +74,12 @@ GisLayer >> name [
 ]
 
 { #category : #'as yet unclassified' }
+GisLayer >> objectIDs [
+
+
+]
+
+{ #category : #'as yet unclassified' }
 GisLayer >> printOn: aStream [
 
 	self printFromDisplayStringOn: aStream
@@ -58,24 +87,48 @@ GisLayer >> printOn: aStream [
 
 { #category : #'as yet unclassified' }
 GisLayer >> queryData [
+	| queryResponse aUrl jsonResponse |
+	self rawData at: #queryResponse ifPresent: [ :resp | ^ resp ].
 
-	| queryResponse aUrl |
+	self queryDataReset.
+
+	0 to: self count by: 1000 do: [ :offset | 
+		| existingFeatures newFeatures |
+		aUrl := self queryUrl
+				queryAt: #resultOffset put: offset;
+				yourself.
+
+		jsonResponse := self client
+				url: aUrl;
+				get.
+
+		self rawData
+			at: #queryResponse
+			ifPresent: [ :aDict | 
+				existingFeatures := aDict at: #features.
+				newFeatures := jsonResponse at: #features.
+				existingFeatures addAll: newFeatures ]
+			ifAbsentPut: [ existingFeatures := jsonResponse at: #features.
+				jsonResponse at: #features put: existingFeatures asOrderedCollection.
+				jsonResponse ] ].
+
+	^ self rawData at: #queryResponse
+]
+
+{ #category : #'as yet unclassified' }
+GisLayer >> queryDataReset [
 	
-	self rawData 
-		at: #queryResponse
-		ifPresent: [ :resp | ^ resp ].
-	
-	aUrl := self url / 'query'
+	self rawData removeKey: #queryResponse ifAbsent: []
+]
+
+{ #category : #'as yet unclassified' }
+GisLayer >> queryUrl [
+
+	^ self url / 'query'
 		queryAt: 'where' put:'1=1';
+		queryAt: 'outFields' put:'*';
 		queryAt: 'outSR' put: '4326';
 		queryAt: 'f' put: 'json'.
-		
-	queryResponse := ZnClient new
-		url: aUrl;
-		contentReader: [ :str | STONJSON fromString: str ];
-		get.
-		
-	^ self rawData at: #queryResponse put: queryResponse
 ]
 
 { #category : #accessing }
