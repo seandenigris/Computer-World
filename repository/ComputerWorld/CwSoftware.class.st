@@ -260,6 +260,21 @@ CwSoftware >> name [
 ]
 
 { #category : #accessing }
+CwSoftware >> name: aString [
+	name := aString
+]
+
+{ #category : #'as yet unclassified' }
+CwSoftware >> nameDescription [
+	<magritteDescription>
+	
+	^ MAStringDescription new
+		accessor: #name;
+		priority: 100;
+		yourself
+]
+
+{ #category : #accessing }
 CwSoftware >> nameForAlphabetization [
 	
 	^ self name asUppercase
