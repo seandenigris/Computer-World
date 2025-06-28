@@ -246,6 +246,19 @@ CwMacApplication >> isQuarantined [
 		- https://derflounder.wordpress.com/2012/11/20/clearing-the-quarantine-extended-attribute-from-downloaded-applications/"
 ]
 
+{ #category : #'as yet unclassified' }
+CwMacApplication >> isRunning [
+
+	| output |
+	output := SuGenericUnixCommand new
+			template: 'ps x  -o comm | grep {binary}';
+			argumentAt: #binary put: self bundle;
+			output.
+
+	^ output lines
+		anySatisfy: [ :line | line trimmed beginsWith: self bundle fullName ]
+]
+
 { #category : #accessing }
 CwMacApplication >> open: aFileOrResource [
 	aFileOrResource suOpenWith: self
@@ -293,7 +306,7 @@ CwMacApplication >> saveAsPdfAt: aFileReference [
 { #category : #actions }
 CwMacApplication >> tellApplicationTo: applescriptCommand [
 
-	| scriptTemplate script isList |
+	| scriptTemplate script |
 	scriptTemplate := '
 		tell application "{1}"
 			{2}

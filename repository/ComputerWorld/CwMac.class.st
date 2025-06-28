@@ -114,6 +114,17 @@ CwMac >> dock [
 	^ CwMacDock new
 ]
 
+{ #category : #'as yet unclassified' }
+CwMac >> effectiveUser [
+
+	^ SuGenericUnixCommand new
+			template: 'id -un';
+			outputDecoder: #trimmed;
+			output.
+			
+	"Adapted from https://stackoverflow.com/a/1105078"
+]
+
 { #category : #accessing }
 CwMac >> hostname [
 
