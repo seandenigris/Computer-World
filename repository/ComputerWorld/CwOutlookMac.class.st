@@ -44,6 +44,8 @@ CwOutlookMac >> archiveSelectedMessagesToAccount: aString [
 
 { #category : #'as yet unclassified' }
 CwOutlookMac >> selectedMessagesExport [
+	"Copy the messages to plain text eml files"
+
 	| folder files exportScript |
 	folder := Tempfile new.
 	exportScript := self applescriptFolder / 'outlook_export_emails.applescript'.
