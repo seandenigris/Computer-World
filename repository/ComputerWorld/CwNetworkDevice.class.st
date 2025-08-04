@@ -75,6 +75,14 @@ CwNetworkDevice >> adaptersDescription [
 		yourself
 ]
 
+{ #category : #'as yet unclassified' }
+CwNetworkDevice >> initialize [
+
+	super initialize.
+	
+	self ensureUUID
+]
+
 { #category : #accessing }
 CwNetworkDevice >> ipAddress [
 	| relevantAdapter |
