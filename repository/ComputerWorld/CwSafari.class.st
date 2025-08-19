@@ -6,6 +6,8 @@
 Class {
 	#name : #CwSafari,
 	#superclass : #CwMacApplication,
+	#traits : 'PeTPythonWrapper',
+	#classTraits : 'PeTPythonWrapper classTrait',
 	#category : #'ComputerWorld-Mac'
 }
 
@@ -133,6 +135,17 @@ make new document with properties \{URL:"{url}"\}'.
 	self 
 		applescriptTellTo: command 
 		do: [ :as | as argumentAt: #url put: aUrl asString ]
+]
+
+{ #category : #accessing }
+CwSafari >> pythonInstance [
+
+	pythonInstance ifNotNil: [ ^ pythonInstance ].
+	
+	^ pythonInstance := PBApplication start newCommandStringFactory
+		script: 'from appscript import *';
+	    resultExpression: 'app("Safari")';
+	    sendAndWait.
 ]
 
 { #category : #private }
