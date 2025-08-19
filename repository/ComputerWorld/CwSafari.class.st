@@ -52,51 +52,24 @@ CwSafari >> doJavascript: aSuJSScript [
 { #category : #scripting }
 CwSafari >> doJavascript: aSuJSScript in: aDocumentOrTab [
 	"
-	- script can only be one line. Possible workarounds would be to wrap in an anonymous function, but then you'd have to explicitly return to get a value back; if interested in implementing that, see https://www.geeksforgeeks.org/javascript-anonymous-functions/
-	- All the wrapper code is needed because, for some reason, bools do not seem to get returned in macOS 12.0.1 on M1; see https://stackoverflow.com/q/70425709
+	- script can only be one line (i.e. no newlines, but you can do multiple statements on the same line). Possible workarounds would be to wrap in an anonymous function, but then you'd have to explicitly return to get a value back; if interested in implementing that, see https://www.geeksforgeeks.org/javascript-anonymous-functions/
 	- AS errors don't return; maybe on stderr?"
 	
 	<apiDocumentation>
 	
-	| applescriptTemplate jsContents wrappedJS |
+	| applescriptTemplate jsContents |
 	jsContents := aSuJSScript string  copyReplaceAll: '"' with: '\"'.
-	
-	wrappedJS := 'try {
-	var jsResult = ', jsContents, ';
-	
-		switch (jsResult) {
-	case true:
-		jsResult = ''js2as-true'';
-		break;
-	case false:
-		jsResult = ''js2as-false'';
-	}
-jsResult
-}
-catch(err) {
-''js2as-error'' + err.message
-}'.
 
-	applescriptTemplate := 'set result to do JavaScript "{js}" in {documentOrTab}
-
-	if (result = "js2as-true") then
-		return true
-	else if (result = "js2as-false") then
-		return false
-	else if (result starts with "js2as-error") then
-		set errMsg to text 12 thru -1 of result
-		error errMsg
-		--return result
-	else
-		return result
-	end if'.
+	applescriptTemplate := 'do JavaScript "{js}" in {documentOrTab}'.
 
 	^ Applescript new
 		tell: 'Safari';
 		template: applescriptTemplate;
-		argumentAt: #js put: wrappedJS;
+		argumentAt: #js put: jsContents;
 		argumentAt: #documentOrTab put: aDocumentOrTab;
 		output.
+		
+	"Implementation note: for a while, we were wrapping the script in a convoluted try catch to deal with a bug preventing boolean values from returning from JS. As of macOS 15.5 on an M3, this bug seems to be fixed, and the wrapper is being removed on 8/19/2025"
 ]
 
 { #category : #accessing }
