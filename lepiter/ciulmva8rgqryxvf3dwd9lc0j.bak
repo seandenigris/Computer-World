@@ -1,0 +1,76 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "136d0a31-5df9-0d00-bc02-73c80bf289d3"
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Spotlight, Mac"
+	},
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-22T18:09:24.481161-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-08-22T18:12:21.982596-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "v+QQMl35DQC8A2/PC/KJ0w=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Remove specific apps from search - \"Spotlight Privacy\" setting (via \"System Settings\" -> \"Siri & Spotlight\") but you have todrag the app in from Finder because apps will be grayed out in list ([via softtuts](https://softtuts.com/remove-specific-app-from-spotlight-mac/))"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-08-22T18:09:24.481137-04:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-08-22T18:09:24.481137-04:00"
+		}
+	}
+}
