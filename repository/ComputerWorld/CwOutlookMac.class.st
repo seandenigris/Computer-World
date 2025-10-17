@@ -8,7 +8,7 @@ Class {
 }
 
 { #category : #accessing }
-CwOutlookMac class >> archiveAccount [
+CwOutlookMac class >> archiveAccountUserName [
 	^ ArchiveAccount
 ]
 
@@ -31,7 +31,7 @@ CwOutlookMac >> applescriptFolder [
 { #category : #'as yet unclassified' }
 CwOutlookMac >> archiveSelectedMessages [
 	
-	self archiveSelectedMessagesToAccount: self class archiveAccount.
+	self archiveSelectedMessagesToAccount: self class archiveAccountUserName.
 ]
 
 { #category : #'as yet unclassified' }
