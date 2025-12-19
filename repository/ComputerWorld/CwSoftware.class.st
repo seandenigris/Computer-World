@@ -7,8 +7,8 @@ Maybe:
 '~/Library/Preferences/com.red-sweater.FastScripts.plist.JaqYaCy' }.
 "
 Class {
-	#name : #CwSoftware,
-	#superclass : #Object,
+	#name : 'CwSoftware',
+	#superclass : 'Object',
 	#traits : 'DbTDomainObject',
 	#classTraits : 'DbTDomainObject classTrait',
 	#instVars : [
@@ -24,17 +24,19 @@ Class {
 	#classVars : [
 		'DB'
 	],
-	#category : #'ComputerWorld-Core'
+	#category : 'ComputerWorld-Core',
+	#package : 'ComputerWorld',
+	#tag : 'Core'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwSoftware class >> assertSha: algorithmNumber for: file equals: aString [
 	"This should obviously be better integrated i.e. on the instance side, etc."
 	
 	CwShaSum assertSha: algorithmNumber for: file equals: aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwSoftware class >> assertShaFor: file equals: aString [
 	"This should obviously be better integrated i.e. on the instance side, etc."
 	
@@ -48,19 +50,19 @@ CwSoftware class >> assertShaFor: file equals: aString [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftware class >> db [
 
 	^ DB ifNil: [ DB := SortedCollection sortBlock: #name ascending ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftware class >> db: anObject [
 
 	DB := anObject
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 CwSoftware class >> exampleAnki [
 	^ self
 		given: []
@@ -72,7 +74,7 @@ CwSoftware class >> exampleAnki [
 		then: [ :r | ]
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 CwSoftware class >> exampleZoom [
 	^ self
 		given: []
@@ -85,7 +87,7 @@ CwSoftware class >> exampleZoom [
 		then: [ :r | ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftware class >> gtDBFor: aView [
 	<gtView>
 	<gtClassView>
@@ -97,47 +99,47 @@ CwSoftware class >> gtDBFor: aView [
 		view: #gtItemsFor:
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CwSoftware class >> named: aString [ 
 
 	^ self new setName: aString.
 ]
 
-{ #category : #persistence }
+{ #category : 'persistence' }
 CwSoftware class >> restoreFrom: anObject [
 
 	DB := anObject.
 ]
 
-{ #category : #persistence }
+{ #category : 'persistence' }
 CwSoftware class >> spData [
 
 	^ DB.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftware >> <= rhs [
 	^ self name <= rhs name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftware >> addToCatalog [
 	CwSoftwareCatalog uniqueInstance collection add: self
 ]
 
-{ #category : #Morphic }
+{ #category : 'Morphic' }
 CwSoftware >> asMorph [
 
 	^ CwSoftwareMorph on: self.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftware >> closeTheBrowserWindow [
 
 	CwSafari reference closeWindow: 1. 
 ]
 
-{ #category : #downloading }
+{ #category : 'downloading' }
 CwSoftware >> download [
 
 	| commandTemplate |
@@ -146,7 +148,7 @@ CwSoftware >> download [
 	Smalltalk tools shell new run: (commandTemplate format: { self downloadPath. downloadUrl }).
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwSoftware >> downloadByOpening: aUrl [
 
 	urlDownloadsOnOpen := aUrl.
@@ -159,42 +161,42 @@ CwSoftware >> downloadByOpening: aUrl [
 	self moveFileToApplicationsFolder.
 ]
 
-{ #category : #downloading }
+{ #category : 'downloading' }
 CwSoftware >> downloadPath [
 
 	^ FileLocator home / 'Documents/Squeak Library/Software' / self fullName / 'Download'.
 ]
 
-{ #category : #downloading }
+{ #category : 'downloading' }
 CwSoftware >> downloadUrl [
 
 	^ downloadUrl.
 ]
 
-{ #category : #downloading }
+{ #category : 'downloading' }
 CwSoftware >> downloadUrl: aUrlOrString [ 
 
 	downloadUrl := aUrlOrString asUrl.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftware >> fullName [
 
 	^ self name.
 ]
 
-{ #category : #'private-testing' }
+{ #category : 'private-testing' }
 CwSoftware >> hasBeenDownloaded [
 
 	^ self downloadPath hasChildren.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftware >> homebrewFormulaUrl [
 	^ ('https://formulae.brew.sh/cask/', self homebrewName) asUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftware >> homebrewInstallCommand [
 	| result |
 	result := CwHomebrew new installCommand
@@ -207,44 +209,44 @@ CwSoftware >> homebrewInstallCommand [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftware >> homebrewName [
 	^ homebrewName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftware >> homebrewName: aString [
 	"aString - make uppercase if it's a cask"
 
 	homebrewName := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftware >> initialize [
 	super initialize.
 	self ensureUUID
 ]
 
-{ #category : #installing }
+{ #category : 'installing' }
 CwSoftware >> install [
 
 	self hasBeenDownloaded ifFalse: [ self download ].
 	self unzipDownloadedFile.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftware >> installers [
 
 	^ installers ifNil: [ installers := Bag new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftware >> installers: anObject [
 
 	installers := anObject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwSoftware >> moveFileToApplicationsFolder [
 
 	| commandTemplate sourceFolder sourceFile |
@@ -254,17 +256,17 @@ CwSoftware >> moveFileToApplicationsFolder [
 	"OSProcess command: (commandTemplate format: { sourceFile fullName })."
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftware >> name [
 	^ name ifNil: [ name := '' ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftware >> name: aString [
 	name := aString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwSoftware >> nameDescription [
 	<magritteDescription>
 	
@@ -274,31 +276,31 @@ CwSoftware >> nameDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftware >> nameForAlphabetization [
 	
 	^ self name asUppercase
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwSoftware >> openInBrowser: aUrl [
 
 	ExternalWebBrowser openOnUrl: aUrl.
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 CwSoftware >> printOn: aStream [
 
 	aStream nextPutAll: self fullName. 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwSoftware >> setName: aString [ 
 
 	name := aString.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwSoftware >> unzipDownloadedFile [
 
 	ZipArchive new
@@ -306,7 +308,7 @@ CwSoftware >> unzipDownloadedFile [
 		extractAllTo: (FileDirectory on: self downloadPath).
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwSoftware >> waitForFileToBeginDownloading [
 
 	| downloadDirectory wasCreatedAfterPageOpened |
@@ -320,13 +322,13 @@ CwSoftware >> waitForFileToBeginDownloading [
 	
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwSoftware >> waitForFileToFinishDownloading [
 
 	[ downloadingFile isFinishedDownloading ] whileFalse.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwSoftware >> waitForFileToUnzip [
 
 	| downloadsFolder |
@@ -334,13 +336,13 @@ CwSoftware >> waitForFileToUnzip [
 	[ downloadsFolder includesKey: '1Password.app' ] whileFalse. 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftware >> webpage [
 
 	^ webpageUrl.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftware >> webpage: aUrlOrString [ 
 
 	webpageUrl := aUrlOrString asUrl.

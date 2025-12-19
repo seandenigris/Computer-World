@@ -1,16 +1,18 @@
 Class {
-	#name : #ComputerWorldDB,
-	#superclass : #SpFileDatabase,
-	#category : 'ComputerWorld-Persistence'
+	#name : 'ComputerWorldDB',
+	#superclass : 'SpFileDatabase',
+	#category : 'ComputerWorld-Persistence',
+	#package : 'ComputerWorld',
+	#tag : 'Persistence'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 ComputerWorldDB class >> backupDirectoryParent [
 	
 	^ FileLocator dynabookData / 'Computer World'
 ]
 
-{ #category : #'loading/saving' }
+{ #category : 'loading/saving' }
 ComputerWorldDB class >> schema [
 
 	^ {

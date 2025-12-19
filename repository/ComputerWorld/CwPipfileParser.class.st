@@ -1,15 +1,17 @@
 Class {
-	#name : #CwPipfileParser,
-	#superclass : #PeTomlParseNodeVisitor,
+	#name : 'CwPipfileParser',
+	#superclass : 'PeTomlParseNodeVisitor',
 	#instVars : [
 		'sources',
 		'currentDictionary',
 		'object'
 	],
-	#category : #'ComputerWorld-Python'
+	#category : 'ComputerWorld-Python',
+	#package : 'ComputerWorld',
+	#tag : 'Python'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPipfileParser class >> parseFile: file [
 	| parseTree |
 	parseTree := PeTOMLParser parse: file contents.
@@ -18,7 +20,7 @@ CwPipfileParser class >> parseFile: file [
 		object.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPipfileParser class >> parseFile: file to: aPePipFile [
 	| parseTree |
 	parseTree := PeTOMLParser parse: file contents.
@@ -27,27 +29,27 @@ CwPipfileParser class >> parseFile: file to: aPePipFile [
 		accept: parseTree.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPipfileParser >> currentDictionary [
 	^ currentDictionary
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPipfileParser >> object [
 	^ object ifNil: [ object := CwPipfile new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPipfileParser >> object: aPePipfile [
 	object := aPePipfile
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPipfileParser >> sources [
 	^ sources ifNil: [ OrderedCollection new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPipfileParser >> visitArrayTable: anArrayTable [
 	anArrayTable key = 'source' ifFalse: [ self error: 'source is the only known valid array table' ].
 	
@@ -55,13 +57,13 @@ CwPipfileParser >> visitArrayTable: anArrayTable [
 	self object sources add: currentDictionary.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPipfileParser >> visitKeyValue: aKeyValue [
 
 	self currentDictionary at: aKeyValue key put: aKeyValue value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPipfileParser >> visitStandardTable: aStandardTable [
 	| knownTables selector |
 	knownTables := #('dev-packages' 'packages' 'requires').

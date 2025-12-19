@@ -1,15 +1,17 @@
 Class {
-	#name : #CwAnki,
-	#superclass : #Object,
-	#category : 'ComputerWorld-Apps'
+	#name : 'CwAnki',
+	#superclass : 'Object',
+	#category : 'ComputerWorld-Apps',
+	#package : 'ComputerWorld',
+	#tag : 'Apps'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwAnki >> gitHubRepo [
 	^ 'https://github.com/dae/anki/' asUrl
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwAnki >> installPrerequisites [
 
 	'sudo brew install sip
@@ -19,7 +21,7 @@ CwAnki >> installPrerequisites [
 	./tools/build_ui.sh'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwAnki >> website [
 	^ 'http://ankisrs.net' asUrl
 ]

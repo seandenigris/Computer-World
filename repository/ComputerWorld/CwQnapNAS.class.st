@@ -29,22 +29,24 @@ On reconnecting via Thunderbolt, do one of the following to make the disk availa
 
 "
 Class {
-	#name : #CwQnapNAS,
-	#superclass : #CwServer,
+	#name : 'CwQnapNAS',
+	#superclass : 'CwServer',
 	#instVars : [
 		'osVersion'
 	],
-	#category : #'ComputerWorld-Networking'
+	#category : 'ComputerWorld-Networking',
+	#package : 'ComputerWorld',
+	#tag : 'Networking'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwQnapNAS class >> endOfLifeList [
 	<script>
 
 	^ 'https://www.qnap.com/th-th/product/eol.php' asUrl open.
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 CwQnapNAS class >> exampleModel: aString [
 	^ self new
 			model: aString;
@@ -52,7 +54,7 @@ CwQnapNAS class >> exampleModel: aString [
 			yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwQnapNAS class >> exampleTS262 [
 	<gtExample>
 	
@@ -61,12 +63,12 @@ CwQnapNAS class >> exampleTS262 [
 	^ self exampleConfigureServer: result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwQnapNAS class >> modelParser [ 
 	^ ($T asPParser, $V asPParser optional, $S asPParser) flatten, $- asPParser, #digit asPParser plus flatten, #any asPParser plus optional.
 ]
 
-{ #category : #misc }
+{ #category : 'misc' }
 CwQnapNAS >> browseAppCenter [
 	| modelMap url |
 	modelMap := { 
@@ -79,25 +81,25 @@ CwQnapNAS >> browseAppCenter [
 	url open
 ]
 
-{ #category : #misc }
+{ #category : 'misc' }
 CwQnapNAS >> browseDownloadCenter [
 	self flag: 'This may go away. We are experimenting with more open-ended, general API coupled with GT e.g. `aServer downloadCenter open` instead of `aServer downloadCenter`, because it''s just one more token *or* presumably, you''d already have a common task like `#open` in the next miller column'.
 	self downloadCenter open
 ]
 
-{ #category : #misc }
+{ #category : 'misc' }
 CwQnapNAS >> defaultRootPassword [
 	^ self macAddress copyWithout: $:
 ]
 
-{ #category : #misc }
+{ #category : 'misc' }
 CwQnapNAS >> downloadCenter [
 	^ 'https://www.qnap.com/en-us/download' asUrl
 		queryAt: 'model' put: self model;
 		yourself.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwQnapNAS >> editAutorunDotSh [
 	"Reference: https://wiki.qnap.com/wiki/Running_Your_Own_Application_at_Startup"
 	
@@ -124,25 +126,25 @@ umount /tmp/config' ].
 	Smalltalk tools workspace openContents: contents
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CwQnapNAS >> isHAL [
 	"https://www.qnap.com/en/how-to/knowledge-base/article/how-to-check-if-your-qts-is-legacy-or-hal-type/"
 	^ (UIManager default request: 'Does the following return 0?' initialAnswer: 'ls /sbin/hal_app') isNotNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwQnapNAS >> osVersion [
 
 	^ osVersion
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwQnapNAS >> osVersion: anObject [
 
 	osVersion := anObject
 ]
 
-{ #category : #misc }
+{ #category : 'misc' }
 CwQnapNAS >> persistSudoerEntry: entry inFileNamed: aString [
 	| template command |
 	template := 'echo "{entry}" > /usr/etc/sudoers.d/{filename}'.
@@ -158,21 +160,21 @@ CwQnapNAS >> persistSudoerEntry: entry inFileNamed: aString [
 	3. https://superuser.com/a/1570245'.
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 CwQnapNAS >> rootUserDescription [
 	^ super rootUserDescription
 			default: SuUnixUser exampleAdmin;
 			yourself
 ]
 
-{ #category : #misc }
+{ #category : 'misc' }
 CwQnapNAS >> sampleAutorunDotSh [
 
 	'mkdir -p /usr/etc/sudoers.d
 echo "%administrators ALL=(ALL) ALL" > /usr/etc/sudoers.d/administrators' withUnixLineEndings.
 ]
 
-{ #category : #misc }
+{ #category : 'misc' }
 CwQnapNAS >> sampleAutorunDotShUnencryptedDisk [
 
 	'#!/bin/sh
@@ -182,13 +184,13 @@ CwQnapNAS >> sampleAutorunDotShUnencryptedDisk [
 source /share/homes/admin/autorun.sh' withUnixLineEndings.
 ]
 
-{ #category : #misc }
+{ #category : 'misc' }
 CwQnapNAS >> sampleSudoersDotDFile [
 
 	'%administrators ALL=(ALL) ALL' withUnixLineEndings.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwQnapNAS >> smbMountHomeForUser: aString viaAdapterWhere: aBlock [
 
 	| adapter |
@@ -201,13 +203,13 @@ CwQnapNAS >> smbMountHomeForUser: aString viaAdapterWhere: aBlock [
 		run
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwQnapNAS >> sudoersFile [
 	"As of QTS 4.3.3. per https://superuser.com/a/1299662"
 	^ '/usr/etc/sudoers' asFileReference.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CwQnapNAS >> supportsDirectConnection [
 	"E.g. via USB-B (look for a port on the lower left front) or Thunberbolt. TS-x51A series allow direct connection via USB from the NAS to your workstation. Our Thunderbolt series including the TVS-871T (https://www.qnap.com/static/landing/perfect_combo/index.html)
 	

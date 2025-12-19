@@ -10,8 +10,8 @@ The first thing to do is to set up a shared secret in BTT so that nefarious part
 You may have to quit and relauch BTT for the setting to take effect.
 "
 Class {
-	#name : #CwBetterTouchTool,
-	#superclass : #Object,
+	#name : 'CwBetterTouchTool',
+	#superclass : 'Object',
 	#instVars : [
 		'isTestMode'
 	],
@@ -19,69 +19,71 @@ Class {
 		'Actions',
 		'SharedSecret'
 	],
-	#category : #'ComputerWorld-Apps'
+	#category : 'ComputerWorld-Apps',
+	#package : 'ComputerWorld',
+	#tag : 'Apps'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwBetterTouchTool class >> actions [
 	^ Actions ifNil: [ Actions := OrderedCollection new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwBetterTouchTool class >> actions: anObject [
 	Actions := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwBetterTouchTool class >> addAction: aString [ 
 	| action |
 	action := NeoJSONReader fromString: aString.
 	^ self actions add: action
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwBetterTouchTool class >> detectActionNamed: aString [
 	^ self actions detect: [ :e | (e at: 'BTTPredefinedActionName') = aString ]
 ]
 
-{ #category : #persistence }
+{ #category : 'persistence' }
 CwBetterTouchTool class >> restoreFrom: aCollection [
 
 	self actions: aCollection first.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwBetterTouchTool class >> sharedSecret [
 	^ SharedSecret
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwBetterTouchTool class >> sharedSecret: aString [
 	SharedSecret := aString
 ]
 
-{ #category : #persistence }
+{ #category : 'persistence' }
 CwBetterTouchTool class >> spData [
 
 	^ { Actions }
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwBetterTouchTool >> isTestMode [
 	^ isTestMode ifNil: [ false ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwBetterTouchTool >> isTestMode: anObject [
 	isTestMode := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwBetterTouchTool >> namedTriggers [
 	^ #('Play_Music')
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwBetterTouchTool >> pullTriggerNamed: aString [
 	"Example:
 		CwBetterTouchTool new pullTriggerNamed: 'Play_Music'
@@ -94,7 +96,7 @@ CwBetterTouchTool >> pullTriggerNamed: aString [
 	self request: url
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwBetterTouchTool >> request: url [
 	| command |
 	self class sharedSecret ifNotNil: [ :secret | url queryAt: 'shared_secret' put: secret ].
@@ -103,7 +105,7 @@ CwBetterTouchTool >> request: url [
 	Smalltalk tools shell new run: command.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwBetterTouchTool >> triggerAction: json [
 	"Example:
 		CwBetterTouchTool new triggerAction: 

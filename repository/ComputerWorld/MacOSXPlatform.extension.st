@@ -1,6 +1,6 @@
-Extension { #name : #MacOSXPlatform }
+Extension { #name : 'MacOSXPlatform' }
 
-{ #category : #'*ComputerWorld' }
+{ #category : '*ComputerWorld' }
 MacOSXPlatform >> iPAddressForInterfaceNamed: aString [
 	
 	^ SuGenericUnixCommand new
@@ -13,7 +13,7 @@ MacOSXPlatform >> iPAddressForInterfaceNamed: aString [
 		output
 ]
 
-{ #category : #'*ComputerWorld' }
+{ #category : '*ComputerWorld' }
 MacOSXPlatform >> ipAddresses [
 	"Default wifi adapter; `NetNameResolver localHostAddress` is buggy on Mac per its method comment"
 	| ipString |
@@ -22,7 +22,7 @@ MacOSXPlatform >> ipAddresses [
 	^ CwIPAddress fromString: ipString 
 ]
 
-{ #category : #'*ComputerWorld' }
+{ #category : '*ComputerWorld' }
 MacOSXPlatform >> networkAdapters [
 
 	| output adapters |

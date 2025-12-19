@@ -1,12 +1,12 @@
-Extension { #name : #PharoCommonTools }
+Extension { #name : 'PharoCommonTools' }
 
-{ #category : #'*ComputerWorld' }
+{ #category : '*ComputerWorld' }
 PharoCommonTools >> mailClient [
 
 	^ self toolNamed: #mailClient
 ]
 
-{ #category : #'*ComputerWorld' }
+{ #category : '*ComputerWorld' }
 PharoCommonTools >> mailClient: aTool [
 
 	self register: aTool as: #mailClient

@@ -1,10 +1,12 @@
 Class {
-	#name : #CwPList,
-	#superclass : #Object,
-	#category : #'ComputerWorld-Core'
+	#name : 'CwPList',
+	#superclass : 'Object',
+	#category : 'ComputerWorld-Core',
+	#package : 'ComputerWorld',
+	#tag : 'Core'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 CwPList class >> exampleNeXTSTEPParser [
 	<gtExample>
 	^ self
@@ -34,7 +36,7 @@ CwPList class >> exampleNeXTSTEPParser [
 		(output at: 'Running') should equal: 1 ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPList class >> nextStepParser [
 	"Partial implementation of syntax from https://en.wikipedia.org/wiki/Property_list#NeXTSTEP"
 
@@ -53,7 +55,7 @@ CwPList class >> nextStepParser [
 	^ dictionary
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CwPList class >> on: aFileReference [ 
 
 	^ self new
@@ -61,7 +63,7 @@ CwPList class >> on: aFileReference [
 		yourself.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwPList >> at: keySymbol [
 
 	| tmpFile commandTemplate command output |
@@ -74,12 +76,12 @@ CwPList >> at: keySymbol [
 	^ output trimRight.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwPList >> file [
 	^ file
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwPList >> file: aFileReference [
 	
 	file := aFileReference.

@@ -1,15 +1,17 @@
 Class {
-	#name : #CwMacPreview,
-	#superclass : #CwMacApplication,
-	#category : #'ComputerWorld-Mac'
+	#name : 'CwMacPreview',
+	#superclass : 'CwMacApplication',
+	#category : 'ComputerWorld-Mac',
+	#package : 'ComputerWorld',
+	#tag : 'Mac'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacPreview class >> bundleBasename [
 	^ 'Preview.app'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacPreview >> goToPage: anInteger [
 
 	Applescript new

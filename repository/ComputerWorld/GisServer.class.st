@@ -1,15 +1,17 @@
 Class {
-	#name : #GisServer,
-	#superclass : #Object,
+	#name : 'GisServer',
+	#superclass : 'Object',
 	#traits : 'PeTRawDataHolder',
 	#classTraits : 'PeTRawDataHolder classTrait',
 	#instVars : [
 		'url'
 	],
-	#category : #'ComputerWorld-GIS'
+	#category : 'ComputerWorld-GIS',
+	#package : 'ComputerWorld',
+	#tag : 'GIS'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GisServer class >> fromUrl: aUrl [ 
 		
 	^ self new
@@ -17,7 +19,7 @@ GisServer class >> fromUrl: aUrl [
 		yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GisServer >> layers [
 
 	^ self 
@@ -28,13 +30,13 @@ GisServer >> layers [
 				fromDictionary: aDict ] ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GisServer >> nrParcelLayer [
 
 	^ self layers detect: [ :layer | layer name = 'Parcels' ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GisServer >> spatialReferenceID [
 	
 	^ (self rawData at: 'spatialReference') at: 'latestWkid'
@@ -42,12 +44,12 @@ GisServer >> spatialReferenceID [
 	"Implementation note: there is also wkid"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GisServer >> url [
 	^ url
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GisServer >> url: anObject [
 
 	| json |

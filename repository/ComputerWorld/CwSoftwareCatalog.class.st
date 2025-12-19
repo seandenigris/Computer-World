@@ -1,16 +1,18 @@
 Class {
-	#name : #CwSoftwareCatalog,
-	#superclass : #Object,
+	#name : 'CwSoftwareCatalog',
+	#superclass : 'Object',
 	#instVars : [
 		'collection'
 	],
 	#classVars : [
 		'UniqueInstance'
 	],
-	#category : #'ComputerWorld-Core'
+	#category : 'ComputerWorld-Core',
+	#package : 'ComputerWorld',
+	#tag : 'Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftwareCatalog class >> itemsSearchOn: candidatesSource priority: aNumber for: aSearch [
 	"Helper to make available both from global and instance Spotters. See senders"
 
@@ -22,33 +24,33 @@ CwSoftwareCatalog class >> itemsSearchOn: candidatesSource priority: aNumber for
 		itemName: #name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftwareCatalog class >> restoreFrom: anObject [
 
 	UniqueInstance := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftwareCatalog class >> spData [
 	^ UniqueInstance
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftwareCatalog class >> uniqueInstance [
 	^ UniqueInstance ifNil: [ UniqueInstance := self new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftwareCatalog >> collection [
 	^ collection ifNil: [ collection := SortedCollection sortBlock: #nameForAlphabetization ascending undefinedFirst ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftwareCatalog >> collection: aCollection [
 	collection := aCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftwareCatalog >> collectionSearchFor: aStep [
 	<gtSearch>
 	^ self class
@@ -57,7 +59,7 @@ CwSoftwareCatalog >> collectionSearchFor: aStep [
 		for: aStep
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftwareCatalog >> collectionSearchNewSoftwareFor: aSearch [
 	<gtSearch>
 	^ aSearch explicit
@@ -68,7 +70,7 @@ CwSoftwareCatalog >> collectionSearchNewSoftwareFor: aSearch [
 		send: [ :result | self collection add: result ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSoftwareCatalog >> collectionViewOn: aView [
 	<gtView>
 	

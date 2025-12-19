@@ -1,16 +1,18 @@
 Class {
-	#name : #CwHomebrewInstallCommand,
-	#superclass : #SuGenericUnixCommand,
+	#name : 'CwHomebrewInstallCommand',
+	#superclass : 'SuGenericUnixCommand',
 	#instVars : [
 		'admin',
 		'project',
 		'isCask',
 		'downloadRootUrl'
 	],
-	#category : #'ComputerWorld-Homebrew'
+	#category : 'ComputerWorld-Homebrew',
+	#package : 'ComputerWorld',
+	#tag : 'Homebrew'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallCommand class >> example [
 	<gtExample>
 	^ self
@@ -22,7 +24,7 @@ CwHomebrewInstallCommand class >> example [
 		then: [ :it | self assert: it basicCommandString equals: 'brew install tesseract' ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallCommand class >> exampleCask [
 	<gtExample>
 	^ self
@@ -36,7 +38,7 @@ CwHomebrewInstallCommand class >> exampleCask [
 			self assert: it basicCommandString equals: 'brew install --cask --require-sha bettertouchtool' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallCommand class >> exampleCaskUrlMismatch [
 	<gtExample>
 	^ self
@@ -47,7 +49,7 @@ CwHomebrewInstallCommand class >> exampleCaskUrlMismatch [
 			self assert: it basicCommandString equals: 'brew install --cask --require-sha anki' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallCommand >> argumentSource [
 
 	| caskFlags |
@@ -59,50 +61,50 @@ CwHomebrewInstallCommand >> argumentSource [
 		#project -> self project homebrewName } asDictionary
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallCommand >> downloadRootUrl [
 	^ downloadRootUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallCommand >> ensureDownloadedFrom: aUrl [
 	downloadRootUrl := aUrl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallCommand >> execute [
 	self verifyUrl.
 	super execute
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallCommand >> initialize [
 	super initialize.
 	template := 'brew install {caskFlags} {project}'.
 	self asAdministrator.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallCommand >> isCask [
 	^ isCask ifNil: [ false ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallCommand >> isCask: aBoolean [
 	isCask := aBoolean
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallCommand >> project [
 	^ project
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallCommand >> project: anObject [
 	project := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallCommand >> verifyUrl [
 	| formulaUrl formula |
 	formulaUrl := 'https://formulae.brew.sh/api/cask' asUrl / (self project, '.json').

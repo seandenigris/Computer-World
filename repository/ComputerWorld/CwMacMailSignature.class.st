@@ -1,14 +1,16 @@
 Class {
-	#name : #CwMacMailSignature,
-	#superclass : #Object,
+	#name : 'CwMacMailSignature',
+	#superclass : 'Object',
 	#instVars : [
 		'name',
 		'id'
 	],
-	#category : #'ComputerWorld-Mac-Mail'
+	#category : 'ComputerWorld-Mac-Mail',
+	#package : 'ComputerWorld',
+	#tag : 'Mac-Mail'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CwMacMailSignature class >> fromXML: aXMLElement [
 
 	aXMLElement assert: (aXMLElement nodes at: 6) contentString = 'SignatureName'.
@@ -22,7 +24,7 @@ CwMacMailSignature class >> fromXML: aXMLElement [
 			yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacMailSignature >> contents [
 	"Strip headers"
 	| contentLines |
@@ -33,7 +35,7 @@ CwMacMailSignature >> contents [
 				separatedBy: [ s lf ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacMailSignature >> editFile [
 	self unlock.
 	self file open.
@@ -41,37 +43,37 @@ CwMacMailSignature >> editFile [
 	self lock.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacMailSignature >> file [
 	^ CwMacMail new signatureFolder / self id, 'mailsignature'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacMailSignature >> id [
 	^ id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacMailSignature >> id: anObject [
 	id := anObject
 ]
 
-{ #category : #'actions api' }
+{ #category : 'actions api' }
 CwMacMailSignature >> lock [
 	self file macLock: true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacMailSignature >> name [
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacMailSignature >> name: anObject [
 	name := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 CwMacMailSignature >> printOn: aStream [
 
 	aStream
@@ -81,12 +83,12 @@ CwMacMailSignature >> printOn: aStream [
 		nextPut: $)
 ]
 
-{ #category : #'actions api' }
+{ #category : 'actions api' }
 CwMacMailSignature >> unlock [
 	self file macLock: false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacMailSignature >> xmlContents [
 	^ XMLDOMParser parse: self contents.
 ]

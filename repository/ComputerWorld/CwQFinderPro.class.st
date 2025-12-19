@@ -1,10 +1,12 @@
 Class {
-	#name : #CwQFinderPro,
-	#superclass : #CwMacApplication,
-	#category : #'ComputerWorld-Mac'
+	#name : 'CwQFinderPro',
+	#superclass : 'CwMacApplication',
+	#category : 'ComputerWorld-Mac',
+	#package : 'ComputerWorld',
+	#tag : 'Mac'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwQFinderPro class >> bundleBasename [
 	^ 'Qfinder Pro.app'
 ]

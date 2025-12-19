@@ -1,10 +1,12 @@
 Class {
-	#name : #CwGnuCash,
-	#superclass : #Object,
-	#category : #'ComputerWorld-Apps'
+	#name : 'CwGnuCash',
+	#superclass : 'Object',
+	#category : 'ComputerWorld-Apps',
+	#package : 'ComputerWorld',
+	#tag : 'Apps'
 }
 
-{ #category : #'file compression' }
+{ #category : 'file compression' }
 CwGnuCash class >> compressDataFile: source to: targetFolder [
 	| commandTemplate command |
 	commandTemplate := '/usr/bin/gzip -c "{source}" > "{target}"'.

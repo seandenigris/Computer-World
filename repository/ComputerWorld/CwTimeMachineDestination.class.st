@@ -1,13 +1,15 @@
 Class {
-	#name : #CwTimeMachineDestination,
-	#superclass : #Object,
+	#name : 'CwTimeMachineDestination',
+	#superclass : 'Object',
 	#instVars : [
 		'rawData'
 	],
-	#category : #'ComputerWorld-TimeMachine'
+	#category : 'ComputerWorld-TimeMachine',
+	#package : 'ComputerWorld',
+	#tag : 'TimeMachine'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwTimeMachineDestination class >> all [
 	| xmlString xml container |
 	xmlString := CwTimeMachine destinationInfoCommand output.
@@ -19,7 +21,7 @@ CwTimeMachineDestination class >> all [
 		as: Bag.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwTimeMachineDestination class >> fromXml: destDict [
 	| rawData keyString |
 	rawData := Dictionary new.
@@ -32,14 +34,14 @@ CwTimeMachineDestination class >> fromXml: destDict [
 	^ self onRawData: rawData
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwTimeMachineDestination class >> onRawData: aDictionary [
 	^ self new
 		rawData: aDictionary;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwTimeMachineDestination >> gtViewRawDataOn: aView [
 	<gtView>
 	
@@ -50,38 +52,38 @@ CwTimeMachineDestination >> gtViewRawDataOn: aView [
 		view: #gtItemsFor:
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwTimeMachineDestination >> id [
 	
 	^ self rawData at: #id ifAbsent: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwTimeMachineDestination >> kind [
 	
 	^ self rawData at: #kind ifAbsent: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwTimeMachineDestination >> lastDestination [
 	
 	^ self rawData at: #lastDestination ifAbsent: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwTimeMachineDestination >> name [
 	
 	^ self rawData at: #name ifAbsent: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwTimeMachineDestination >> printOn: aStream [
 	self name ifNotNil: [ :str | aStream nextPutAll: str ].
 	self url ifNotNil: [ :obj | aStream nextPutAll: ' @ '; print: obj ].
 	self kind = 'Local' ifTrue: [ aStream nextPutAll: ' (Local)' ].
 ]
 
-{ #category : #'starting/stopping' }
+{ #category : 'starting/stopping' }
 CwTimeMachineDestination >> quotaGB: anInteger [
 	^ CwTimeMachine setQuotaCommand
 		argumentAt: #destinationID put: self id;
@@ -89,31 +91,31 @@ CwTimeMachineDestination >> quotaGB: anInteger [
 		run
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwTimeMachineDestination >> rawData [
 	^ rawData
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwTimeMachineDestination >> rawData: aDictionary [
 	rawData := aDictionary
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwTimeMachineDestination >> server [
 	^ CwNetworkDevice db 
 		detect: [ :e | e adapters anySatisfy: [ :a | a ipAddress asString = self url host ] ]
 		ifNone: [ nil ]
 ]
 
-{ #category : #'starting/stopping' }
+{ #category : 'starting/stopping' }
 CwTimeMachineDestination >> startBackup [
 	^ CwTimeMachine startBackupToCommand
 		argumentAt: #destinationID put: self id;
 		run
 ]
 
-{ #category : #'starting/stopping' }
+{ #category : 'starting/stopping' }
 CwTimeMachineDestination >> startBackupPreventingSleep [
 
 	| awakeBlock backgroundBlock |
@@ -131,13 +133,13 @@ CwTimeMachineDestination >> startBackupPreventingSleep [
 		named: 'TM No Sleep'
 ]
 
-{ #category : #'starting/stopping' }
+{ #category : 'starting/stopping' }
 CwTimeMachineDestination >> stopBackup [
 	"Stop whatever backup is currently running (even if to another destination). There really is no command to stop a specific backup, apparently because there would only ever be one running. This is here for convenience only as it seems natural to look for it here"
 	^ CwTimeMachine stopBackupCommand run
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwTimeMachineDestination >> url [
 	
 	^ self rawData 

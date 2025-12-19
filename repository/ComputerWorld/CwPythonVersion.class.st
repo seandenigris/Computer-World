@@ -1,10 +1,12 @@
 Class {
-	#name : #CwPythonVersion,
-	#superclass : #SystemVersion,
-	#category : #'ComputerWorld-Python'
+	#name : 'CwPythonVersion',
+	#superclass : 'SystemVersion',
+	#category : 'ComputerWorld-Python',
+	#package : 'ComputerWorld',
+	#tag : 'Python'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPythonVersion >> max: rhs [
 	self major > rhs major ifTrue: [ ^ self ].
 	self major < rhs major ifTrue: [ ^ rhs ].
@@ -19,7 +21,7 @@ CwPythonVersion >> max: rhs [
 	^ self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPythonVersion >> printOn: aStream [
 
 	aStream print: self major.

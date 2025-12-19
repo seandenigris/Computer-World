@@ -1,17 +1,19 @@
 Class {
-	#name : #CwTravisCI,
-	#superclass : #CwSoftware,
-	#category : 'ComputerWorld-Apps'
+	#name : 'CwTravisCI',
+	#superclass : 'CwSoftware',
+	#category : 'ComputerWorld-Apps',
+	#package : 'ComputerWorld',
+	#tag : 'Apps'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwTravisCI class >> browseTemplateDoc [
 	<script>
 	
 	'https://github.com/hpi-swa/smalltalkCI#templates' asZnUrl open
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwTravisCI >> addBadgeToReadmeIn: repositoryFolder for: projectName by: user [ 
 	"It was tempting to retrieve the project name and user from the command line via `git remote get-url origin`, but at the moment doesn't seem worth the effort or dependency on a shell-support library"
 	| reference originalContents |
@@ -24,7 +26,7 @@ CwTravisCI >> addBadgeToReadmeIn: repositoryFolder for: projectName by: user [
 			nextPutAll: originalContents ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwTravisCI >> addStonFileFor: repositoryFolder [
 
 	| contentsTemplate reference contents baselineName |
@@ -46,7 +48,7 @@ CwTravisCI >> addStonFileFor: repositoryFolder [
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwTravisCI >> addYmlFileFor: repositoryFolder [
 
 	| reference contents |
@@ -68,7 +70,7 @@ smalltalk:
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwTravisCI >> badgeMarkupForProject: project byUser: user [
 
 	| template |
@@ -78,7 +80,7 @@ CwTravisCI >> badgeMarkupForProject: project byUser: user [
 			#user -> user } asDictionary
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwTravisCI >> setUp: folder [
 	folder exists ifFalse: [ self error: 'No repo at ', folder fullName ].
 	self

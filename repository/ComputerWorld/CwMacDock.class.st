@@ -1,10 +1,12 @@
 Class {
-	#name : #CwMacDock,
-	#superclass : #Object,
-	#category : 'ComputerWorld-Mac'
+	#name : 'CwMacDock',
+	#superclass : 'Object',
+	#category : 'ComputerWorld-Mac',
+	#package : 'ComputerWorld',
+	#tag : 'Mac'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacDock >> add: appBundle [
 	| commandTemplate command |
 	commandTemplate := '/usr/bin/defaults write com.apple.dock persistent-apps -array-add ''<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>{appBundle}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'''.
@@ -12,7 +14,7 @@ CwMacDock >> add: appBundle [
 	self restartAfterRunning: command
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacDock >> autoHideDelay: aNumber [
 	| commandTemplate command |
 	commandTemplate := 'defaults write com.apple.dock autohide-time-modifier -float {delay}'.
@@ -20,7 +22,7 @@ CwMacDock >> autoHideDelay: aNumber [
 	self restartAfterRunning: command
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacDock >> autoHideViaDefaults [
 	"We'll use Applescript instead, which doesn't require 'killing' the Dock"
 
@@ -30,7 +32,7 @@ CwMacDock >> autoHideViaDefaults [
 	self restartAfterRunning: command
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacDock >> magnification: factor [
 	"From https://www.tekrevue.com/tip/the-complete-guide-to-customizing-mac-os-xs-dock-with-terminal/"
 	"Default = 128; Usual largest = 256"
@@ -41,25 +43,25 @@ CwMacDock >> magnification: factor [
 	self restartAfterRunning: command
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacDock >> restart [
 	self run: 'killall Dock'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacDock >> restartAfterRunning: commandString [
 
 	self run: commandString.
 	self restart
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacDock >> run: commandString [
 
 	LibC system: commandString
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacDock >> toggleAutoHide [
 	"From https://discussions.apple.com/message/21990325#message21990325"
 

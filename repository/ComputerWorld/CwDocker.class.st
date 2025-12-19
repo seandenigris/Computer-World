@@ -1,10 +1,12 @@
 Class {
-	#name : #CwDocker,
-	#superclass : #Object,
-	#category : 'ComputerWorld-Apps'
+	#name : 'CwDocker',
+	#superclass : 'Object',
+	#category : 'ComputerWorld-Apps',
+	#package : 'ComputerWorld',
+	#tag : 'Apps'
 }
 
-{ #category : #installation }
+{ #category : 'installation' }
 CwDocker class >> install [
 	<script>
 	Smalltalk tools webBrowser open: 'https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04'

@@ -1,6 +1,6 @@
 Class {
-	#name : #CwNetworkDevice,
-	#superclass : #Object,
+	#name : 'CwNetworkDevice',
+	#superclass : 'Object',
 	#traits : 'DbTDomainObject',
 	#classTraits : 'DbTDomainObject classTrait',
 	#instVars : [
@@ -13,20 +13,22 @@ Class {
 	#classVars : [
 		'DB'
 	],
-	#category : #'ComputerWorld-Networking'
+	#category : 'ComputerWorld-Networking',
+	#package : 'ComputerWorld',
+	#tag : 'Networking'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkDevice class >> db [
 	^ DB ifNil: [ DB := OrderedCollection new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkDevice class >> db: aCollection [
 	DB := aCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkDevice class >> gtViewServersOn: aView [
 	<gtView>
 	<gtClassView>
@@ -39,29 +41,29 @@ CwNetworkDevice class >> gtViewServersOn: aView [
 		column: 'Model' text: [ :serv | serv model ]
 ]
 
-{ #category : #persistence }
+{ #category : 'persistence' }
 CwNetworkDevice class >> restoreFrom: aCollection [
 
 	self db: aCollection.
 ]
 
-{ #category : #persistence }
+{ #category : 'persistence' }
 CwNetworkDevice class >> spData [
 
 	^ DB
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkDevice >> adapters [
 	^ self maLazyInstVarUsing: self adaptersDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkDevice >> adapters: aCollection [
 	adapters := aCollection
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 CwNetworkDevice >> adaptersDescription [
 	<magritteDescription>
 	^ MAToManyRelationDescription new
@@ -75,7 +77,7 @@ CwNetworkDevice >> adaptersDescription [
 		yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwNetworkDevice >> initialize [
 
 	super initialize.
@@ -83,27 +85,27 @@ CwNetworkDevice >> initialize [
 	self ensureUUID
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkDevice >> ipAddress [
 	| relevantAdapter |
 	relevantAdapter := self adapters detect: [ :e | e isSameNetworkAs: OSPlatform current ipAddress ].
 	^ relevantAdapter ipAddress
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkDevice >> macAddress [
 	^ self adapters 
 			ifNotEmpty: [ :col | col first macAddress ]
 			ifEmpty: [ nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkDevice >> macAddress: aString [
 	self adapters ifEmpty: [ self adapters add: CwNetworkAdapter new ].
 	self adapters first macAddress: aString
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 CwNetworkDevice >> macAddressDescription [
 	<magritteDescription>
 	^ MAToOneRelationDescription new
@@ -114,17 +116,17 @@ CwNetworkDevice >> macAddressDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkDevice >> manufacturer [
 	^ self maLazyInstVarUsing: self manufacturerDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkDevice >> manufacturer: aString [
 	manufacturer := aString
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 CwNetworkDevice >> manufacturerDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -133,17 +135,17 @@ CwNetworkDevice >> manufacturerDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkDevice >> model [
 	^ self maLazyInstVarUsing: self modelDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkDevice >> model: aString [
 	model := aString
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 CwNetworkDevice >> modelDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -152,17 +154,17 @@ CwNetworkDevice >> modelDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkDevice >> name [
 	^ self maLazyInstVarUsing: self nameDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkDevice >> name: aString [
 	name := aString
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 CwNetworkDevice >> nameDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -171,7 +173,7 @@ CwNetworkDevice >> nameDescription [
 		yourself
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 CwNetworkDevice >> printOn: aStream [
 	aStream
 		nextPutAll: name;

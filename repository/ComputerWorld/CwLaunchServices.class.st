@@ -1,10 +1,12 @@
 Class {
-	#name : #CwLaunchServices,
-	#superclass : #Object,
-	#category : #'ComputerWorld-Mac'
+	#name : 'CwLaunchServices',
+	#superclass : 'Object',
+	#category : 'ComputerWorld-Mac',
+	#package : 'ComputerWorld',
+	#tag : 'Mac'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwLaunchServices >> openAll: file with: application [
 	"Doesn't handle case where there is already an entry in the preferences plist"
 

@@ -1,6 +1,6 @@
-Extension { #name : #OSPlatform }
+Extension { #name : 'OSPlatform' }
 
-{ #category : #'*ComputerWorld' }
+{ #category : '*ComputerWorld' }
 OSPlatform >> networkAdapters [
 
 	^ self subclassResponsibility

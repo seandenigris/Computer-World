@@ -3,16 +3,18 @@ self all.
 self verify: 'SHA512SUMS' asFileReference.
 "
 Class {
-	#name : #CwDebianKey,
-	#superclass : #Object,
+	#name : 'CwDebianKey',
+	#superclass : 'Object',
 	#instVars : [
 		'fingerprint',
 		'id'
 	],
-	#category : #'ComputerWorld-Apps'
+	#category : 'ComputerWorld-Apps',
+	#package : 'ComputerWorld',
+	#tag : 'Apps'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwDebianKey class >> all [
 	"Another possibility would be to use the secure web form at https://db.debian.org/search.cgi"
 
@@ -41,7 +43,7 @@ CwDebianKey class >> all [
 	^ (key, lineEnding ==> #first) plus parse: keysString.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwDebianKey class >> verify: checksumFile [
 	"Verify checksum file with the signature, and the signature against Debians keys. You must then use the keys in the checksum file to verify the iso. #inform: success or signal an error"
 
@@ -59,29 +61,29 @@ CwDebianKey class >> verify: checksumFile [
 		ifFalse: [ self error: 'The signature of ', checksumFile basename, ' does not match ', 'https://www.debian.org/CD/verify' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwDebianKey >> fingerprint [
 	^ fingerprint
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwDebianKey >> fingerprint: aString [ 
 
 	fingerprint := aString.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwDebianKey >> id [
 	^ id
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwDebianKey >> id: aString [ 
 
 	id := aString.
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 CwDebianKey >> printOn: aStream [
 
 	aStream

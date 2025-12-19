@@ -1,10 +1,12 @@
 Class {
-	#name : #CwBitBucket,
-	#superclass : #Object,
-	#category : 'ComputerWorld-Apps'
+	#name : 'CwBitBucket',
+	#superclass : 'Object',
+	#category : 'ComputerWorld-Apps',
+	#package : 'ComputerWorld',
+	#tag : 'Apps'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwBitBucket class >> verifyRsaFingerprint: aString [
 	"See https://confluence.atlassian.com/bitbucket/use-the-ssh-protocol-with-bitbucket-221449711.html"
 

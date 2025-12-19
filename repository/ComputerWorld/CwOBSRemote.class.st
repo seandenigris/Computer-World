@@ -1,16 +1,18 @@
 Class {
-	#name : #CwOBSRemote,
-	#superclass : #SpPresenter,
+	#name : 'CwOBSRemote',
+	#superclass : 'SpPresenter',
 	#instVars : [
 		'phoneButton',
 		'screenButton',
 		'titleButton',
 		'transitionButton'
 	],
-	#category : #'ComputerWorld-Apps'
+	#category : 'ComputerWorld-Apps',
+	#package : 'ComputerWorld',
+	#tag : 'Apps'
 }
 
-{ #category : #specs }
+{ #category : 'specs' }
 CwOBSRemote class >> defaultSpec [
 
 	<spec: #default>
@@ -33,14 +35,14 @@ CwOBSRemote class >> defaultSpec [
 		yourself.	
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 CwOBSRemote >> iconNamed: aSymbol [
 	| form |
 	form := Form fromFileNamed: FileLocator dynabookData / 'Computer World' / 'Icons' / aSymbol, 'png'.
 	^ form scaledToSize: 512 @ 512
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 CwOBSRemote >> initializePresenter [
 
 	phoneButton action: [ CwOBS new sendHotkey: 'p' ].
@@ -49,7 +51,7 @@ CwOBSRemote >> initializePresenter [
 	transitionButton action: [ CwOBS new sendHotkey: ' ' ].
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 CwOBSRemote >> initializeWidgets [
 
 	phoneButton := self newButton 
@@ -70,22 +72,22 @@ CwOBSRemote >> initializeWidgets [
 		yourself.	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwOBSRemote >> phoneButton [
 	^ phoneButton
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwOBSRemote >> screenButton [
 	^ screenButton
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwOBSRemote >> titleButton [
 	^ titleButton
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwOBSRemote >> transitionButton [
 	^ transitionButton
 ]

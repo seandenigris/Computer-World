@@ -1,10 +1,12 @@
 Class {
-	#name : #ComputerWorldTests,
-	#superclass : #TestCase,
-	#category : #'ComputerWorld-Specification'
+	#name : 'ComputerWorldTests',
+	#superclass : 'TestCase',
+	#category : 'ComputerWorld-Specification',
+	#package : 'ComputerWorld',
+	#tag : 'Specification'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 ComputerWorldTests >> testDownloading [
 
 	| cw software |
@@ -14,7 +16,7 @@ ComputerWorldTests >> testDownloading [
 	self flag: #pending.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 ComputerWorldTests >> testDownloadingOnPageLoad [
 	"When 1Password's download link is clicked, a page is loaded, and the file is simultaneously downloaded (I guess via JS). So we need to open the page in a browser to start the file downloading"
 
@@ -25,7 +27,7 @@ ComputerWorldTests >> testDownloadingOnPageLoad [
 	self flag: #pending.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 ComputerWorldTests >> testLearnAboutSoftware [
 
 	| cw |

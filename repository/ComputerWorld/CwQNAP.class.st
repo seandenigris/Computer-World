@@ -11,12 +11,14 @@ Trying to download all the photos and videos off an iPhone via rsync on a QNAP N
 **Maybe do it however and then use rsync to verify?**
 "
 Class {
-	#name : #CwQNAP,
-	#superclass : #Object,
-	#category : #'ComputerWorld-Networking'
+	#name : 'CwQNAP',
+	#superclass : 'Object',
+	#category : 'ComputerWorld-Networking',
+	#package : 'ComputerWorld',
+	#tag : 'Networking'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwQNAP class >> downloadViaClippedUrlVerifyingMD5: aString [
 	| url resource |
 	self error: 'almost working except for two things: 1) must be unzipped before adding to library and 2) we should keep a record of available versions, although this perhaps could be reconstructed via the resource''s URL'.
@@ -27,7 +29,7 @@ CwQNAP class >> downloadViaClippedUrlVerifyingMD5: aString [
 	^ "RlResourceLibrary uniqueInstance import:" resource.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwQNAP class >> downloadsForModel: aString [
 	"CwQNAP downloadsForModel: 'tvs-472xt' >>> self"
 	| url |
@@ -38,7 +40,7 @@ CwQNAP class >> downloadsForModel: aString [
 	Smalltalk tools webBrowser new open: url
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwQNAP class >> qfinder [
 	"Opens the download center and places the app name on the clipboard so you can paste it into the browser page search. You have to manually select 'Utilities' on the web page. It would be great to parse the result for programmatic access, but maybe not worth the effort. To that end, an example download link: https://us1.qnap.com/Storage/Utility/QNAPQfinderProMac-7.6.0.0913.dmg"
 

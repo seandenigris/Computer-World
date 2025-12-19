@@ -1,18 +1,20 @@
 Class {
-	#name : #CwEmailServer,
-	#superclass : #CwServer,
+	#name : 'CwEmailServer',
+	#superclass : 'CwServer',
 	#instVars : [
 		'forwarders'
 	],
-	#category : #'ComputerWorld-Networking'
+	#category : 'ComputerWorld-Networking',
+	#package : 'ComputerWorld',
+	#tag : 'Networking'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwEmailServer >> forwarders [
 	^ forwarders ifNil: [ forwarders := OrderedCollection new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwEmailServer >> gtGtSpotterForwardersFor: aSearch [
 	<gtSearch>
 	^ aSearch list
@@ -22,7 +24,7 @@ CwEmailServer >> gtGtSpotterForwardersFor: aSearch [
 		matchSubstrings
 ]
 
-{ #category : #'forwarders - importing' }
+{ #category : 'forwarders - importing' }
 CwEmailServer >> sitegroundForwardersFromClippedHTML [
 	"Precondition: clipoard contains <tbody> HTML from Site Tool e.g. via a browser dev tool"
 
@@ -35,7 +37,7 @@ CwEmailServer >> sitegroundForwardersFromClippedHTML [
 			yourself ].
 ]
 
-{ #category : #'forwarders - importing' }
+{ #category : 'forwarders - importing' }
 CwEmailServer >> sitegroundForwardersImport [
 
 	self sitegroundForwardersFromClippedHTML reverse do: [ :new |

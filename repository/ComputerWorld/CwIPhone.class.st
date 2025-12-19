@@ -21,24 +21,26 @@ See [here](https://itectec.com/askdifferent/iphone-how-to-automatically-mount-ne
 
 "
 Class {
-	#name : #CwIPhone,
-	#superclass : #Object,
-	#category : #'ComputerWorld-Core'
+	#name : 'CwIPhone',
+	#superclass : 'Object',
+	#category : 'ComputerWorld-Core',
+	#package : 'ComputerWorld',
+	#tag : 'Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwIPhone class >> mountPoint [
 	^ '/Volumes/Apple iPhone' asFileReference
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CwIPhone >> canBackUp [
 	^ CwITunes iPhoneBackupFolder exists
 	
 	"Implementation note: works even if the folder is remote (e.g. the default location is a link)"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwIPhone >> multimediaRootPath [
 	"Contains multiple subfolders of the form ###APPLE (e.g. 103APPLE) with the actual photos and videos"
 	^ Path from: 'Internal Storage/DCIM'

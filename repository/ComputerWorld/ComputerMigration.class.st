@@ -10,12 +10,14 @@
 - Install Xcode. See CwXcode class.
 "
 Class {
-	#name : #ComputerMigration,
-	#superclass : #Object,
-	#category : 'ComputerWorld-Mac'
+	#name : 'ComputerMigration',
+	#superclass : 'Object',
+	#category : 'ComputerWorld-Mac',
+	#package : 'ComputerWorld',
+	#tag : 'Mac'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 ComputerMigration class >> menuCommandOn: aBuilder [ 
 
 	<worldMenu>
@@ -23,7 +25,7 @@ ComputerMigration class >> menuCommandOn: aBuilder [
 		action:[ self new loadOldLoginKeychain. ].
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 ComputerMigration class >> todo [
 	"
 	- Clone old mac drive - Carbon Copy Cloner?
@@ -33,7 +35,7 @@ ComputerMigration class >> todo [
 	- VIM"
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 ComputerMigration >> loadLoginKeychainFromHomeFolder: fileReference [
 	"If you have your old disk mounted, supply the url to its home folder. Assumes same account name on new computer"
 

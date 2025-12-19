@@ -1,10 +1,12 @@
 Class {
-	#name : #CwFolderActions,
-	#superclass : #Object,
-	#category : 'ComputerWorld-Mac'
+	#name : 'CwFolderActions',
+	#superclass : 'Object',
+	#category : 'ComputerWorld-Mac',
+	#package : 'ComputerWorld',
+	#tag : 'Mac'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 CwFolderActions class >> attach: handlerScriptFile to: monitoredFile [
 	"Both arguments are FileReference instances"
 
@@ -20,7 +22,7 @@ end tell'.
 	Applescript doIt: attachScriptSource.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwFolderActions class >> compile: applescriptString to: aFileReference [
 
 	| commandTemplate commandString p |
@@ -34,37 +36,37 @@ END_S'.
 	p succeeded ifFalse: [ self error: p errorUpToEndOfFile ].
 ]
 
-{ #category : #API }
+{ #category : 'API' }
 CwFolderActions class >> disable [
 
 	self enabled: false.
 ]
 
-{ #category : #API }
+{ #category : 'API' }
 CwFolderActions class >> enable [
 
 	self enabled: true.
 ]
 
-{ #category : #'turning on/off' }
+{ #category : 'turning on/off' }
 CwFolderActions class >> enableViaDefaults [
 
 	self shouldBeImplemented. 'defaults write com.apple.FolderActions folderActionsEnabled -bool true'.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwFolderActions class >> enabled: aBoolean [
 
 	Applescript doIt: 'tell application "System Events" to set folder actions enabled to ', aBoolean asString.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwFolderActions class >> ensureEnabled [
 
 	self isEnabled ifFalse: [ self enable ].
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwFolderActions class >> install: aString asHandlerFor: aFileReference [
 
 	| handlerScriptFile handlerTemplate handlerSource |
@@ -77,13 +79,13 @@ end adding folder items to'.
 	^ handlerScriptFile.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwFolderActions class >> isEnabled [
 
 	^ Applescript doIt: 'tell application "System Events" to get folder actions enabled'.
 ]
 
-{ #category : #API }
+{ #category : 'API' }
 CwFolderActions class >> onFileAddedTo: aFileReference run: aString [ 
 
 	| handlerScriptFile |

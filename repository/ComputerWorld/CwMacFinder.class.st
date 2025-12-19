@@ -1,56 +1,58 @@
 Class {
-	#name : #CwMacFinder,
-	#superclass : #CwMacApplication,
-	#category : #'ComputerWorld-Mac'
+	#name : 'CwMacFinder',
+	#superclass : 'CwMacApplication',
+	#category : 'ComputerWorld-Mac',
+	#package : 'ComputerWorld',
+	#tag : 'Mac'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacFinder class >> bundleBasename [
 	^ 'Finder.app'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacFinder class >> bundleParent [
 	^ '/System/Library/CoreServices/' asFileReference
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CwMacFinder class >> uniqueInstance [
 	<gtExample>
 	^ self new
 ]
 
-{ #category : #'system settings' }
+{ #category : 'system settings' }
 CwMacFinder >> hideHiddenFiles [
 
 	self showHiddenFiles: false
 ]
 
-{ #category : #shell }
+{ #category : 'shell' }
 CwMacFinder >> restart [
 	self run: 'killall Finder'
 ]
 
-{ #category : #shell }
+{ #category : 'shell' }
 CwMacFinder >> restartAfterRunning: commandString [
 
 	self run: commandString.
 	self restart
 ]
 
-{ #category : #shell }
+{ #category : 'shell' }
 CwMacFinder >> run: commandString [
 
 	LibC system: commandString
 ]
 
-{ #category : #'system settings' }
+{ #category : 'system settings' }
 CwMacFinder >> showHiddenFiles [
 
 	self showHiddenFiles: true
 ]
 
-{ #category : #'system settings' }
+{ #category : 'system settings' }
 CwMacFinder >> showHiddenFiles: aBoolean [
 	
 	self restartAfterRunning: 'defaults write com.apple.finder AppleShowAllFiles -bool ', aBoolean asCwPlistString

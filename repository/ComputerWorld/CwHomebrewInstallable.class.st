@@ -1,35 +1,37 @@
 Class {
-	#name : #CwHomebrewInstallable,
-	#superclass : #Object,
+	#name : 'CwHomebrewInstallable',
+	#superclass : 'Object',
 	#instVars : [
 		'name'
 	],
-	#category : #'ComputerWorld-Homebrew'
+	#category : 'ComputerWorld-Homebrew',
+	#package : 'ComputerWorld',
+	#tag : 'Homebrew'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallable class >> pluralName [
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallable class >> searchHeader [
 	^ '==> ', self pluralName capitalized
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallable >> addToCwSoftwareCatalog [
 	^ CwSoftwareCatalog uniqueInstance collection add: self asCwSoftware
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallable >> asCwSoftware [
 	^ (CwSoftware named: self cwSoftwareName)
 		homebrewName: self name;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallable >> info [
 			
 	^ '{binary} info --json=v2 {extraFlags} {name}' asSuCommand
@@ -43,24 +45,24 @@ CwHomebrewInstallable >> info [
 		output.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallable >> infoExtraFlags [
 		^ ''
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallable >> name [
 
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallable >> name: anObject [
 
 	name := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewInstallable >> untrack [
 
 	CwHomebrew new untrack: self

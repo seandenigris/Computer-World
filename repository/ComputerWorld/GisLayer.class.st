@@ -1,15 +1,17 @@
 Class {
-	#name : #GisLayer,
-	#superclass : #Object,
+	#name : 'GisLayer',
+	#superclass : 'Object',
 	#traits : 'PeTRawDataHolder',
 	#classTraits : 'PeTRawDataHolder classTrait',
 	#instVars : [
 		'server'
 	],
-	#category : #'ComputerWorld-GIS'
+	#category : 'ComputerWorld-GIS',
+	#package : 'ComputerWorld',
+	#tag : 'GIS'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GisLayer class >> onServer: aGisServer fromDictionary: aDictioanry [ 
 	
 	^ self new
@@ -18,7 +20,7 @@ GisLayer class >> onServer: aGisServer fromDictionary: aDictioanry [
 		yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GisLayer >> client [
 	| client |
 	client := ZnClient new
@@ -27,7 +29,7 @@ GisLayer >> client [
 	^ client
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GisLayer >> count [
 
 	| aUrl jsonResponse |
@@ -42,50 +44,50 @@ GisLayer >> count [
 	^ jsonResponse at: #count
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GisLayer >> displayStringOn: aStream [
 
 	aStream
 		nextPutAll: self name
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GisLayer >> features [
 
 	^ (self queryData at: #features)
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GisLayer >> featuresAs: aClass [ 
 	
 	^ self features collect: [ :aDict | aClass fromDictionary: aDict ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GisLayer >> id [
 
 	^ self rawDataAt: #id
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GisLayer >> name [
 
 	^ self rawDataAt: #name
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GisLayer >> objectIDs [
 
 
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GisLayer >> printOn: aStream [
 
 	self printFromDisplayStringOn: aStream
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GisLayer >> queryData [
 	| queryResponse aUrl jsonResponse |
 	self rawData at: #queryResponse ifPresent: [ :resp | ^ resp ].
@@ -115,13 +117,13 @@ GisLayer >> queryData [
 	^ self rawData at: #queryResponse
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GisLayer >> queryDataReset [
 	
 	self rawData removeKey: #queryResponse ifAbsent: []
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GisLayer >> queryUrl [
 
 	^ self url / 'query'
@@ -131,17 +133,17 @@ GisLayer >> queryUrl [
 		queryAt: 'f' put: 'json'.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GisLayer >> server [
 	^ server
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GisLayer >> server: anObject [
 	server := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GisLayer >> url [
 
 	^ self server url / self id asString

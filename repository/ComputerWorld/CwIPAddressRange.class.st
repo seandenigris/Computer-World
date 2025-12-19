@@ -1,6 +1,6 @@
 Class {
-	#name : #CwIPAddressRange,
-	#superclass : #Object,
+	#name : 'CwIPAddressRange',
+	#superclass : 'Object',
 	#instVars : [
 		'start',
 		'subnetMask',
@@ -9,10 +9,12 @@ Class {
 	#classVars : [
 		'Networks'
 	],
-	#category : #'ComputerWorld-Networking'
+	#category : 'ComputerWorld-Networking',
+	#package : 'ComputerWorld',
+	#tag : 'Networking'
 }
 
-{ #category : #examples }
+{ #category : 'examples' }
 CwIPAddressRange class >> exampleIncluding [
 	<gtExample>
 	^ self 
@@ -24,7 +26,7 @@ CwIPAddressRange class >> exampleIncluding [
 			(net includes: '169.255.0.0' asCwIPAddress) should be: false ].
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 CwIPAddressRange class >> examplePrivate10 [
 
 	<gtExample>
@@ -34,7 +36,7 @@ CwIPAddressRange class >> examplePrivate10 [
 		  (net includes: '11.0.0.0' asCwIPAddress) should be: false ]
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 CwIPAddressRange class >> examplePrivate172 [
 
 	<gtExample>
@@ -44,7 +46,7 @@ CwIPAddressRange class >> examplePrivate172 [
 		  (net includes: '172.32.0.0' asCwIPAddress) should be: false ]
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 CwIPAddressRange class >> examplePrivate192 [
 
 	<gtExample>
@@ -54,7 +56,7 @@ CwIPAddressRange class >> examplePrivate192 [
 		  (net includes: '192.169.0.0' asCwIPAddress) should be: false ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwIPAddressRange class >> including: address subnetMask: maskAddress [
 	"CwIPAddressRange startingAt: CwIPAddress example subnetMask: CwIPAddress exampleMask"
 	| startAddress |
@@ -65,25 +67,25 @@ CwIPAddressRange class >> including: address subnetMask: maskAddress [
 			yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwIPAddressRange class >> linkLocal [
 	"If no DHCP server is found, then it is common practice for OSs to assign an IP address in this range (per https://www.ni.com/en-us/support/documentation/supplemental/11/best-practices-for-using-multiple-network-interfaces--nics--with.html)"
 	^ self startingAt: '169.254.0.0' subnetMask: '255.255.0.0'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwIPAddressRange class >> networks [
 
 	^ Networks ifNil: [ Networks := SortedCollection sortUsing: #name ascending ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwIPAddressRange class >> networks: anObject [
 
 	Networks := anObject
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 CwIPAddressRange class >> private10 [
 
 	^ self
@@ -91,7 +93,7 @@ CwIPAddressRange class >> private10 [
 		  subnetMask: (CwIPSubnetMask reservedBits: 8)
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 CwIPAddressRange class >> private172 [
 
 	^ self
@@ -99,7 +101,7 @@ CwIPAddressRange class >> private172 [
 		  subnetMask: (CwIPSubnetMask reservedBits: 12)
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 CwIPAddressRange class >> private192 [
 
 	^ self
@@ -107,19 +109,19 @@ CwIPAddressRange class >> private192 [
 		  subnetMask: (CwIPSubnetMask reservedBits: 16)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwIPAddressRange class >> restoreFrom: aCollection [
 
 	self networks: aCollection.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwIPAddressRange class >> spData [
 
 	^ self networks
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwIPAddressRange class >> startingAt: address subnetMask: maskAddress [
 
 	^ self new
@@ -128,17 +130,17 @@ CwIPAddressRange class >> startingAt: address subnetMask: maskAddress [
 			yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 CwIPAddressRange >> = rhs [
 	^ self start = rhs start and: [ self subnetMask = rhs subnetMask ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwIPAddressRange >> availableAddresses [
 	^ self subnetMask rawAddress bitInvert32 + 1
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 CwIPAddressRange >> availableAddressesDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -147,12 +149,12 @@ CwIPAddressRange >> availableAddressesDescription [
 		yourself
 ]
 
-{ #category : #comparing }
+{ #category : 'comparing' }
 CwIPAddressRange >> hash [
 	^ self start hash bitXor: self subnetMask hash
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CwIPAddressRange >> includes: address [
 	"Reference: https://www.ni.com/en-us/support/documentation/supplemental/11/best-practices-for-using-multiple-network-interfaces--nics--with.html"
 	| differentBits differentNetworkBits |
@@ -161,19 +163,19 @@ CwIPAddressRange >> includes: address [
 	^ differentNetworkBits = 0
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwIPAddressRange >> name [
 
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwIPAddressRange >> name: anObject [
 
 	name := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwIPAddressRange >> printOn: aStream [
 	self name ifNotNil: [ :n |
 		aStream nextPutAll: n; space ].
@@ -183,22 +185,22 @@ CwIPAddressRange >> printOn: aStream [
 		nextPutAll: self subnetMask slashNotation.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwIPAddressRange >> start [
 	^ start
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwIPAddressRange >> start: anObject [
 	start := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwIPAddressRange >> subnetMask [
 	^ subnetMask
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwIPAddressRange >> subnetMask: anObject [
 	subnetMask := anObject
 ]

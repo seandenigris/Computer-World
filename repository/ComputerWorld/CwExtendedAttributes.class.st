@@ -1,20 +1,21 @@
 Class {
-	#name : #CwExtendedAttributes,
-	#superclass : #Object,
+	#name : 'CwExtendedAttributes',
+	#superclass : 'Object',
 	#instVars : [
 		'file'
 	],
-	#category : #ComputerWorld
+	#category : 'ComputerWorld',
+	#package : 'ComputerWorld'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwExtendedAttributes class >> for: aFileReference [ 
 	^ self new
 		file: aFileReference;
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwExtendedAttributes >> at: aString [
 
 	^ SuGenericUnixCommand new
@@ -27,7 +28,7 @@ CwExtendedAttributes >> at: aString [
 	"Adapted https://stackoverflow.com/a/70446742"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwExtendedAttributes >> decode: hexString [
 
 	| isBinaryPlist hex |
@@ -54,19 +55,19 @@ CwExtendedAttributes >> decode: hexString [
 		- xxd magic trick from https://scriptingosx.com/2017/08/parse-binary-property-lists-in-finder-metadata/"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwExtendedAttributes >> file [
 
 	^ file
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwExtendedAttributes >> file: anObject [
 
 	file := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwExtendedAttributes >> gtViewAllFor: aView [
 	<gtView>
 	
@@ -81,7 +82,7 @@ CwExtendedAttributes >> gtViewAllFor: aView [
 		send: [ :e | self at: e ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwExtendedAttributes >> list [
 
 	^ SuGenericUnixCommand new
@@ -91,7 +92,7 @@ CwExtendedAttributes >> list [
 		output
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwExtendedAttributes >> whereFroms [
 	^ (self at: 'com.apple.metadata:kMDItemWhereFroms') ifNil: [ #() ]
 ]

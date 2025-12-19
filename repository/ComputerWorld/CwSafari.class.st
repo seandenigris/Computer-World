@@ -4,31 +4,33 @@
 
 "
 Class {
-	#name : #CwSafari,
-	#superclass : #CwMacApplication,
+	#name : 'CwSafari',
+	#superclass : 'CwMacApplication',
 	#traits : 'PeTPythonWrapper',
 	#classTraits : 'PeTPythonWrapper classTrait',
-	#category : #'ComputerWorld-Mac'
+	#category : 'ComputerWorld-Mac',
+	#package : 'ComputerWorld',
+	#tag : 'Mac'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSafari class >> bundleBasename [
 	^ 'Safari.app'
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 CwSafari class >> exampleVideoSpeedDouble [
 	<gtExample>
 	CwSafari new videoSpeed: 2.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwSafari >> applescriptTellTo: aString [
 
 	^ self applescriptTellTo: aString do: []
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwSafari >> applescriptTellTo: aString do: aBlock [
 
 	| as |
@@ -42,14 +44,14 @@ CwSafari >> applescriptTellTo: aString do: aBlock [
 	^ as output
 ]
 
-{ #category : #scripting }
+{ #category : 'scripting' }
 CwSafari >> doJavascript: aSuJSScript [
 	<description: 'Assumes Safari ''document 1'', which will be the topmost (in the current Mac Space if there is one)'>
 	
 	^ self doJavascript: aSuJSScript in: 'document 1'
 ]
 
-{ #category : #scripting }
+{ #category : 'scripting' }
 CwSafari >> doJavascript: aSuJSScript in: aDocumentOrTab [
 	"
 	- script can only be one line (i.e. no newlines, but you can do multiple statements on the same line). Possible workarounds would be to wrap in an anonymous function, but then you'd have to explicitly return to get a value back; if interested in implementing that, see https://www.geeksforgeeks.org/javascript-anonymous-functions/
@@ -72,7 +74,7 @@ CwSafari >> doJavascript: aSuJSScript in: aDocumentOrTab [
 	"Implementation note: for a while, we were wrapping the script in a convoluted try catch to deal with a bug preventing boolean values from returning from JS. As of macOS 15.5 on an M3, this bug seems to be fixed, and the wrapper is being removed on 8/19/2025"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSafari >> isJavaScriptFromAppleEventsEnabled [
 	^ SuGenericUnixCommand new
 		template: '/usr/bin/defaults read com.apple.Safari AllowJavaScriptFromAppleEvents';
@@ -80,13 +82,13 @@ CwSafari >> isJavaScriptFromAppleEventsEnabled [
 		output
 ]
 
-{ #category : #opening }
+{ #category : 'opening' }
 CwSafari >> open: aUrl [
 
 	self shell open: aUrl
 ]
 
-{ #category : #opening }
+{ #category : 'opening' }
 CwSafari >> openInFront: aUrl [
 
 	| command |
@@ -97,7 +99,7 @@ set the URL of the front document to "{1}"' format: { aUrl asString }.
 	"Adapted from https://stackoverflow.com/a/7016686/424245"
 ]
 
-{ #category : #opening }
+{ #category : 'opening' }
 CwSafari >> openInNewWindow: aUrl [
 	"Window will open in the current space on top of any others"
 
@@ -110,7 +112,7 @@ make new document with properties \{URL:"{url}"\}'.
 		do: [ :as | as argumentAt: #url put: aUrl asString ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwSafari >> pythonInstance [
 
 	pythonInstance ifNotNil: [ ^ pythonInstance ].
@@ -121,13 +123,13 @@ CwSafari >> pythonInstance [
 	    sendAndWait.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwSafari >> shell [
 
 	^ Smalltalk tools shell new
 ]
 
-{ #category : #'video control' }
+{ #category : 'video control' }
 CwSafari >> videoSpeed: aNumber [
 	<apiDocumentation>
 	

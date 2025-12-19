@@ -1,13 +1,15 @@
 Class {
-	#name : #CwMacDefaultsDomain,
-	#superclass : #Object,
+	#name : 'CwMacDefaultsDomain',
+	#superclass : 'Object',
 	#instVars : [
 		'name'
 	],
-	#category : #'ComputerWorld-Mac'
+	#category : 'ComputerWorld-Mac',
+	#package : 'ComputerWorld',
+	#tag : 'Mac'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacDefaultsDomain class >> all [
 
 	| names |
@@ -19,26 +21,26 @@ CwMacDefaultsDomain class >> all [
 	^ names collect: [ :e | self new name: e; yourself ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacDefaultsDomain >> name [
 
 	^ name
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacDefaultsDomain >> name: anObject [
 
 	name := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacDefaultsDomain >> printOn: aStream [
 	aStream
 		nextPutAll: self name;
 		nextPutAll: ' domain'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacDefaultsDomain >> read [
 
 	| pyReadPList |

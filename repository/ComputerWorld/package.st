@@ -1,1 +1,1 @@
-Package { #name : #ComputerWorld }
+Package { #name : 'ComputerWorld' }

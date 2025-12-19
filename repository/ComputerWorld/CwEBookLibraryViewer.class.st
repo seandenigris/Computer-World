@@ -1,17 +1,19 @@
 Class {
-	#name : #CwEBookLibraryViewer,
-	#superclass : #Object,
-	#category : 'ComputerWorld-EBooks'
+	#name : 'CwEBookLibraryViewer',
+	#superclass : 'Object',
+	#category : 'ComputerWorld-EBooks',
+	#package : 'ComputerWorld',
+	#tag : 'EBooks'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwEBookLibraryViewer class >> open [
 	"self open"
 
 	^ self new open.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwEBookLibraryViewer >> open [
 
 	| builder books content |

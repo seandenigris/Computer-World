@@ -1,21 +1,23 @@
 Class {
-	#name : #CwITunes,
-	#superclass : #CwMacApplication,
-	#category : 'ComputerWorld-Mac'
+	#name : 'CwITunes',
+	#superclass : 'CwMacApplication',
+	#category : 'ComputerWorld-Mac',
+	#package : 'ComputerWorld',
+	#tag : 'Mac'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwITunes class >> bundleBasename [
 	^ 'iTunes.app'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwITunes class >> iPhoneBackupFolder [
 	self flag: 'Not sure what we want to do here. If it''s a link, do we want to return the target?'.
 	^ self iPhoneBackupFolderDefault
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwITunes class >> iPhoneBackupFolder: aFileReference [
 	"Argument can be a mounted remote location"
 	SuLn new
@@ -27,7 +29,7 @@ CwITunes class >> iPhoneBackupFolder: aFileReference [
 	- adapted from https://www.imore.com/how-move-your-iphone-or-ipad-backups-external-hard-drive"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwITunes class >> iPhoneBackupFolderDefault [
 	^ FileLocator userApplicationSupport / 'MobileSync' / 'Backup'
 ]

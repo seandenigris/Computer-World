@@ -1,15 +1,17 @@
 Class {
-	#name : #RlZipArchive,
-	#superclass : #RlResource,
-	#category : 'ComputerWorld-Mac'
+	#name : 'RlZipArchive',
+	#superclass : 'RlResource',
+	#category : 'ComputerWorld-Mac',
+	#package : 'ComputerWorld',
+	#tag : 'Mac'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 RlZipArchive class >> fileExtensions [
 	^ #('zip')
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 RlZipArchive >> decompressTo: folder [
 	SuUnzip new source: self file; target: folder; run.
 ]

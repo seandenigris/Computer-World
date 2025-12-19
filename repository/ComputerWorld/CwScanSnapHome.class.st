@@ -1,15 +1,17 @@
 Class {
-	#name : #CwScanSnapHome,
-	#superclass : #Object,
-	#category : #'ComputerWorld-Apps'
+	#name : 'CwScanSnapHome',
+	#superclass : 'Object',
+	#category : 'ComputerWorld-Apps',
+	#package : 'ComputerWorld',
+	#tag : 'Apps'
 }
 
-{ #category : #acccessing }
+{ #category : 'acccessing' }
 CwScanSnapHome class >> database [
 	^ FileLocator home / 'Library'/'Application Support'/'PFU'/'ScanSnap Home'/'Managed'/'ScanSnapHome.sqlite'
 ]
 
-{ #category : #installing }
+{ #category : 'installing' }
 CwScanSnapHome class >> install [
 	"No secure download from Fujitsu [1], so Homebrew w. checksum seems to be best option 
 	
@@ -17,7 +19,7 @@ CwScanSnapHome class >> install [
 	'brew cask install scansnap-manager-s1100'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwScanSnapHome >> fileFolder [
 	^ FileLocator documents / 'ScanSnapHome.localized'
 ]

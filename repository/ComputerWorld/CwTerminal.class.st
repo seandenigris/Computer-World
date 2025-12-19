@@ -1,15 +1,17 @@
 Class {
-	#name : #CwTerminal,
-	#superclass : #CwMacApplication,
-	#category : #'ComputerWorld-Mac'
+	#name : 'CwTerminal',
+	#superclass : 'CwMacApplication',
+	#category : 'ComputerWorld-Mac',
+	#package : 'ComputerWorld',
+	#tag : 'Mac'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwTerminal class >> bundleBasename [
 	^ 'Terminal.app'
 ]
 
-{ #category : #preferences }
+{ #category : 'preferences' }
 CwTerminal class >> changeFontSize [
 	<script>
 	Smalltalk tools webBrowser new open: 'https://apple.stackexchange.com/a/246281/9507' asUrl
@@ -17,7 +19,7 @@ CwTerminal class >> changeFontSize [
 	
 ]
 
-{ #category : #API }
+{ #category : 'API' }
 CwTerminal >> doScript: aCommand [
 
 	| scriptTemplate tellScript safeCommand |

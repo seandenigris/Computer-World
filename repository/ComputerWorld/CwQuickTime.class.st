@@ -1,45 +1,47 @@
 Class {
-	#name : #CwQuickTime,
-	#superclass : #CwMacApplication,
-	#category : 'ComputerWorld-Mac'
+	#name : 'CwQuickTime',
+	#superclass : 'CwMacApplication',
+	#category : 'ComputerWorld-Mac',
+	#package : 'ComputerWorld',
+	#tag : 'Mac'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwQuickTime class >> bundleBasename [
 	^ 'QuickTime Player.app'
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwQuickTime >> applicationName [
 
 	^ 'QuickTime Player'.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwQuickTime >> currentCD [
 	self shouldBeImplemented
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CwQuickTime >> isPlaying: aPlayable [
 
 	"If conflices arise because of multiple files with the same file name, a better check would be POSIX path of file of document, but we may have to loop manually to find it (I don't think you can use the condition clause)"
 	^ self tellApplicationTo: 'get playing of first document whose name is ', aPlayable file basename surroundedByDoubleQuotes.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwQuickTime >> isPlayingDocument: anIndex [
 
 	^ (self tellApplicationTo: 'get playing of document ', anIndex asString).
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CwQuickTime >> nameOfFirstDocument [
 
 	^ self tellApplicationTo: 'get name of first document'.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CwQuickTime >> open: aFileReference [
 
 	super open: aFileReference.
@@ -52,7 +54,7 @@ CwQuickTime >> open: aFileReference [
 			which can take either a POSIX or HFS path."
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CwQuickTime >> openFirstTrackOfCurrentlyInsertedCD [
 	"Implementation rationale: QuickTime Player's Applescript support for finding out info about media in drives is non-existant, so we lean on iTunes here"
 
@@ -68,24 +70,24 @@ CwQuickTime >> openFirstTrackOfCurrentlyInsertedCD [
 	self open: trackFile.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CwQuickTime >> pause [
 
 	self tellApplicationTo: 'pause document 1'.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CwQuickTime >> play [
 
 	self tellApplicationTo: 'play document 1'.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CwQuickTime >> play: aCD [ 
 	self shouldBeImplemented
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CwQuickTime >> playCD [
 
 	self openFirstTrackOfCurrentlyInsertedCD. "This is only necessary the first time, but it's working, and I have more important things to do, so f**k it'"
@@ -93,43 +95,43 @@ CwQuickTime >> playCD [
 	[ self isPlayingDocument: 1 ] whileFalse: [ self play ].
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwQuickTime >> playSpeedFactor [
 
 	^ (self tellApplicationTo: 'get rate of document 1') asNumber.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwQuickTime >> playSpeedFactor: aNumber [
 
 	^ self tellApplicationTo: 'set rate of document 1 to ',  aNumber asString.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CwQuickTime >> position [
 
 	^ Duration seconds: (self tellApplicationTo: 'get current time of document 1') asNumber.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CwQuickTime >> position: aDuration [
 
 	self tellApplicationTo: 'set current time of document 1 to ', aDuration asSeconds asString, '.', aDuration nanoSeconds asString.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CwQuickTime >> skipAhead: aNumberOfSeconds [ 
 
 	self skipBy: aNumberOfSeconds.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CwQuickTime >> skipBack: aNumberOfSeconds [
 
 	self skipBy: -1 * aNumberOfSeconds.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwQuickTime >> skipBy: aNumberOfSeconds [ 
 
 	| command position commandTemplate |
@@ -141,7 +143,7 @@ CwQuickTime >> skipBy: aNumberOfSeconds [
 	self tellApplicationTo: command.
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CwQuickTime >> waitUntilLoaded: aFileReference [
 	"Files opened in QT often take several seconds to load. Sending an event to a document before it is fully loaded causes an error"
 

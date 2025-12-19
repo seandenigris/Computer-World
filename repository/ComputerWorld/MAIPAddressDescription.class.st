@@ -1,26 +1,28 @@
 Class {
-	#name : #MAIPAddressDescription,
-	#superclass : #MAElementDescription,
-	#category : #'ComputerWorld-Magritte'
+	#name : 'MAIPAddressDescription',
+	#superclass : 'MAElementDescription',
+	#category : 'ComputerWorld-Magritte',
+	#package : 'ComputerWorld',
+	#tag : 'Magritte'
 }
 
-{ #category : #'accessing-defaults' }
+{ #category : 'accessing-defaults' }
 MAIPAddressDescription class >> defaultKind [
 	^ CwIPAddress
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MAIPAddressDescription >> acceptMagritte: aVisitor [
 	aVisitor visitIPAddressDescription: self
 ]
 
-{ #category : #visiting }
+{ #category : 'visiting' }
 MAIPAddressDescription >> initialize [
 	super initialize.
 	self addCondition: [ :e | e rawAddress <= self kind maxRawAddress ].
 ]
 
-{ #category : #'validation-private' }
+{ #category : 'validation-private' }
 MAIPAddressDescription >> validateSpecific: anObject [
 	anObject rawAddress <= self kind maxRawAddress ifFalse: [ MAError signal ]
 ]

@@ -1,12 +1,13 @@
 Class {
-	#name : #CwSMS,
-	#superclass : #Object,
+	#name : 'CwSMS',
+	#superclass : 'Object',
 	#traits : 'PeTRawDataHolder',
 	#classTraits : 'PeTRawDataHolder classTrait',
-	#category : #ComputerWorld
+	#category : 'ComputerWorld',
+	#package : 'ComputerWorld'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwSMS class >> allFromXML: aFileReference [
 	"With my return value, try `smses groupedBy: #contactName`"
 
@@ -23,7 +24,7 @@ CwSMS class >> allFromXML: aFileReference [
 	"Implementation note: SMSes seem to all be attributes only, but MMSes `hasStringNodes`, `hasContentNodes` and `elements isNotEmpty`"
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwSMS >> body [
 
 	^ self 
@@ -31,7 +32,7 @@ CwSMS >> body [
 		ifAbsent: [ nil ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwSMS >> bodyDescription [
 	<magritteDescription>
 	
@@ -41,7 +42,7 @@ CwSMS >> bodyDescription [
 		yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwSMS >> contactName [
 
 	^ self 
@@ -49,7 +50,7 @@ CwSMS >> contactName [
 		ifAbsent: [ nil ].
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwSMS >> contactNameDescription [
 	<magritteDescription>
 	
@@ -59,7 +60,7 @@ CwSMS >> contactNameDescription [
 		yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwSMS >> dateReadable [
 
 	^ self 
@@ -67,7 +68,7 @@ CwSMS >> dateReadable [
 		ifAbsent: [ nil ].
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwSMS >> dateReadableDescription [
 	<magritteDescription>
 	
@@ -77,7 +78,7 @@ CwSMS >> dateReadableDescription [
 		yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwSMS >> displayStringOn: aStream [
 
 	self dateReadable ifNotNil: [ :str | aStream << str ].
@@ -91,25 +92,25 @@ CwSMS >> displayStringOn: aStream [
 	self body ifNotNil: [ :str | aStream space; << str; << $: ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwSMS >> isInbox [
 
 	^ self type = 1
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwSMS >> isSent [
 
 	^ self type = 2
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwSMS >> printOn: aStream [
 
 	self printFromDisplayStringOn: aStream
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwSMS >> type [
 	
 	^ self rawDataAt: 'type' 

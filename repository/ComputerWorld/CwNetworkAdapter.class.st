@@ -1,6 +1,6 @@
 Class {
-	#name : #CwNetworkAdapter,
-	#superclass : #Object,
+	#name : 'CwNetworkAdapter',
+	#superclass : 'Object',
 	#instVars : [
 		'ipAddress',
 		'description',
@@ -9,10 +9,12 @@ Class {
 		'macAddress',
 		'subnetMask'
 	],
-	#category : #'ComputerWorld-Networking'
+	#category : 'ComputerWorld-Networking',
+	#package : 'ComputerWorld',
+	#tag : 'Networking'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkAdapter class >> example [
 	<gtExample>
 	
@@ -24,17 +26,17 @@ CwNetworkAdapter class >> example [
 		 yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkAdapter >> description [
 	^ self maLazyInstVarUsing: self descriptionDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkAdapter >> description: aString [
 	description := aString
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 CwNetworkAdapter >> descriptionDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -43,17 +45,17 @@ CwNetworkAdapter >> descriptionDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkAdapter >> ipAddress [
 	^ self maLazyInstVarUsing: self ipAddressDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkAdapter >> ipAddress: aString [
 	ipAddress := aString
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 CwNetworkAdapter >> ipAddressDescription [
 	<magritteDescription>
 	^ MAIPAddressDescription new
@@ -61,7 +63,7 @@ CwNetworkAdapter >> ipAddressDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkAdapter >> isSameNetworkAs: aCwIPAddress [ 
 	self error: 'Incomplete implementation: need to find *all* our ipAddresses and both subnet masks'.
 	self ipAddress ifNil: [ ^ false ].
@@ -69,17 +71,17 @@ CwNetworkAdapter >> isSameNetworkAs: aCwIPAddress [
 	^ (self ipAddress asByteArray first: 2) = (aCwIPAddress asByteArray first: 2)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkAdapter >> macAddress [
 	^ self maLazyInstVarUsing: self macAddressDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkAdapter >> macAddress: aString [
 	macAddress := aString
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 CwNetworkAdapter >> macAddressDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -87,7 +89,7 @@ CwNetworkAdapter >> macAddressDescription [
 		yourself
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 CwNetworkAdapter >> printOn: aStream [
 	self description ifNotNil: [ :desc |
 		aStream
@@ -104,17 +106,17 @@ CwNetworkAdapter >> printOn: aStream [
 	
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkAdapter >> speed [
 	^ self maLazyInstVarUsing: self speedDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkAdapter >> speed: aNumber [
 	speed := aNumber
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 CwNetworkAdapter >> speedDescription [
 	<magritteDescription>
 	^ MANumberDescription new
@@ -123,27 +125,27 @@ CwNetworkAdapter >> speedDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkAdapter >> subnetMask [
 	^ subnetMask
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkAdapter >> subnetMask: anObject [
 	subnetMask := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkAdapter >> usage [
 	^ self maLazyInstVarUsing: self usageDescription
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkAdapter >> usage: aString [
 	usage := aString
 ]
 
-{ #category : #'magritte-accessing' }
+{ #category : 'magritte-accessing' }
 CwNetworkAdapter >> usageDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -152,7 +154,7 @@ CwNetworkAdapter >> usageDescription [
 		yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwNetworkAdapter >> wakeOnLAN [
 	| packet socket |
 	"Adapted from description at https://www.tweaking4all.com/network-internet/miniwol-wake-on-lan/"

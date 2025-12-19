@@ -1,6 +1,6 @@
-Extension { #name : #MAVisitor }
+Extension { #name : 'MAVisitor' }
 
-{ #category : #'*ComputerWorld' }
+{ #category : '*ComputerWorld' }
 MAVisitor >> visitIPAddressDescription: aDescription [ 
 	self visitElementDescription: aDescription
 ]

@@ -1,26 +1,28 @@
 Class {
-	#name : #CwHomebrewCask,
-	#superclass : #CwHomebrewInstallable,
-	#category : #'ComputerWorld-Homebrew'
+	#name : 'CwHomebrewCask',
+	#superclass : 'CwHomebrewInstallable',
+	#category : 'ComputerWorld-Homebrew',
+	#package : 'ComputerWorld',
+	#tag : 'Homebrew'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewCask class >> pluralName [
 	^ 'casks'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwHomebrewCask >> cwSoftwareName [
 	^ self name capitalized
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewCask >> infoExtraFlags [
 			
 	^ ' --cask'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwHomebrewCask >> printOn: aStream [
 	aStream
 		nextPutAll: name;

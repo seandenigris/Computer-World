@@ -1,6 +1,6 @@
 Class {
-	#name : #CwPipfile,
-	#superclass : #RlResource,
+	#name : 'CwPipfile',
+	#superclass : 'RlResource',
 	#instVars : [
 		'sources',
 		'devPackages',
@@ -8,15 +8,17 @@ Class {
 		'requires',
 		'lastUpdateTimestamp'
 	],
-	#category : #'ComputerWorld-Python'
+	#category : 'ComputerWorld-Python',
+	#package : 'ComputerWorld',
+	#tag : 'Python'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 CwPipfile class >> isClassFor: file [
 	^ file basename = 'Pipfile'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPipfile >> + rhs [
 	
 	^ self class new
@@ -25,13 +27,13 @@ CwPipfile >> + rhs [
 		yourself.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPipfile >> devPackages [
 
 	^ devPackages ifNil: [ devPackages := Dictionary new ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPipfile >> file: aFile [
 
 	super file: aFile.
@@ -39,17 +41,17 @@ CwPipfile >> file: aFile [
 	^ self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPipfile >> lastUpdateTimestamp [
 	^ lastUpdateTimestamp ifNil: [ lastUpdateTimestamp := DateAndTime unixEpoch ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPipfile >> lastUpdateTimestamp: aDateAndTime [
 	lastUpdateTimestamp := aDateAndTime
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPipfile >> mergeIn: rhs [
 	
 	rhs sources do: [ :rs | 
@@ -62,7 +64,7 @@ CwPipfile >> mergeIn: rhs [
 	self mergeRequirementsFrom: { rhs }.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPipfile >> mergeRequirementsFrom: aCollection [
 
 	| candidates |
@@ -75,13 +77,13 @@ CwPipfile >> mergeRequirementsFrom: aCollection [
 		put: candidates max printString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPipfile >> packages [
 
 	^ packages ifNil: [ packages := Dictionary new ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPipfile >> refresh [
 	self file ifNil: [ ^ self ].
 	self file exists ifFalse: [ ^ self ].
@@ -99,31 +101,31 @@ CwPipfile >> refresh [
 					self lastUpdateTimestamp: DateAndTime unixEpoch ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPipfile >> requirement [
-
 	| tokens |
 	self requires ifEmpty: [ ^ nil ].
-		
+
 	tokens := (self requires atRandom value splitOn: $.) collect: #asInteger.
-	^ CwPythonVersion 
-		perform: #major:minor:patch:
-		withEnoughArguments: tokens.
+	tokens size < 3 ifTrue: [ tokens add: 0 ].
+	^ CwPythonVersion
+			perform: #major:minor:patch:
+			withEnoughArguments: tokens.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPipfile >> requires [
 
 	^ requires ifNil: [ requires := Dictionary new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPipfile >> sources [
 	
 	^ sources ifNil: [ sources := OrderedCollection new ].
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwPipfile >> write [
 
 	"Cache state before modifying file"

@@ -18,18 +18,20 @@ In certain circumstances, MacOS places downloaded apps in ""quarantine"". One of
 
 "
 Class {
-	#name : #CwMacApplication,
-	#superclass : #Object,
+	#name : 'CwMacApplication',
+	#superclass : 'Object',
 	#instVars : [
 		'bundle'
 	],
 	#classInstVars : [
 		'installers'
 	],
-	#category : #'ComputerWorld-Mac'
+	#category : 'ComputerWorld-Mac',
+	#package : 'ComputerWorld',
+	#tag : 'Mac'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacApplication class >> all [
 	| bundles cls |
 	bundles := self bundleFolders flatCollect: [ :dir |
@@ -41,26 +43,26 @@ CwMacApplication class >> all [
 		cls fromBundle: b ].
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CwMacApplication class >> automator [
 	| bundleFile |
 	bundleFile := '/Applications/Automator.app' asFileReference.
 	^ CwMacApplication fromBundle: bundleFile.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacApplication class >> bundle [
 	"Returns a resolveable FS artifact; this creates a little confusion in other code because sometimes you care about the full path (e.g. when connecting to an app that is known to be installed at a certain location) and sometimes you care about the filename only (e.g. is this bundle file for this particular app, regardless of where it is on disk"
 	^ self bundleParent / self bundleBasename
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacApplication class >> bundleBasename [
 	"Subclasses should override to e.g. allow matching a bundle file to the correct (sub)class."
 	self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacApplication class >> bundleFolders [
 
 	^ { 
@@ -69,7 +71,7 @@ CwMacApplication class >> bundleFolders [
 		  '/Applications/Utilities' asFileReference }
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacApplication class >> bundleParent [
 
 	"Override in subclass if location not listed. Return a resolveable FS artifact"
@@ -78,12 +80,12 @@ CwMacApplication class >> bundleParent [
 		  e directoryNames includes: self bundleBasename ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CwMacApplication class >> calibre [
 	^ CwMacApplication fromBundle: '/Applications/calibre.app' asFileReference.
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 CwMacApplication class >> exampleGeneric [
 	<gtExample>
 	| result |
@@ -93,7 +95,7 @@ CwMacApplication class >> exampleGeneric [
 	^ result
 ]
 
-{ #category : #examples }
+{ #category : 'examples' }
 CwMacApplication class >> exampleSubclassExists [
 	<gtExample>
 	| result |
@@ -102,7 +104,7 @@ CwMacApplication class >> exampleSubclassExists [
 	^ result
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacApplication class >> executable [
 	| folder files |
 	folder := self bundle / 'Contents' / 'MacOS'.
@@ -111,7 +113,7 @@ CwMacApplication class >> executable [
 	^ files first.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacApplication class >> fromBundle: aFileReference [
 	^ self allSubclasses
 		detect: [ :cls | cls isAbstract not and: [ cls bundleBasename = aFileReference basename ] ]
@@ -125,30 +127,30 @@ CwMacApplication class >> fromBundle: aFileReference [
 				yourself ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CwMacApplication class >> glamorousToolkit [
 	^ self fromBundle: '/Applications/GlamorousToolkit/GlamorousToolkit.app' asFileReference.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacApplication class >> installers [
 
 	^ installers ifNil: [ installers := Bag new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacApplication class >> installers: anObject [
 
 	installers := anObject
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CwMacApplication class >> isSystem [
 	"As of 10.5 Catalina, apps that are part of macOS and are located in the read-only /System/Applications/ as opposed to /Applications"
 	^ self isAbstract not and: [ '/System/Applications/' asFileReference directoryNames includes: self bundle basename ]
 ]
 
-{ #category : #'process management' }
+{ #category : 'process management' }
 CwMacApplication class >> killAll [
 	SuGenericUnixCommand new
 		template: 'killall {processName}';
@@ -156,25 +158,25 @@ CwMacApplication class >> killAll [
 		run.
 ]
 
-{ #category : #'process management' }
+{ #category : 'process management' }
 CwMacApplication class >> launch [
 	self bundle open.
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CwMacApplication class >> mail [
 	| bundleFile |
 	bundleFile := '/Applications/Mail.app' asFileReference.
 	^ CwMacApplication fromBundle: bundleFile.
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 CwMacApplication class >> reference [
 
 	^ self new.
 ]
 
-{ #category : #'process management' }
+{ #category : 'process management' }
 CwMacApplication class >> relaunch [
 	self killAll.
 	[ "Give enough time to shut down without freezing the image"
@@ -182,7 +184,7 @@ CwMacApplication class >> relaunch [
 		self launch ] fork
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacApplication class >> scriptingDictionary [
 
 	^ SuGenericUnixCommand new
@@ -192,19 +194,19 @@ CwMacApplication class >> scriptingDictionary [
 		output.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CwMacApplication >> activate [
 
 	self tellApplicationTo: 'activate'.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacApplication >> applicationName [
 
 	^ self bundle base.
 ]
 
-{ #category : #'Magritte-accessing' }
+{ #category : 'Magritte-accessing' }
 CwMacApplication >> applicationNameDescription [
 	<magritteDescription>
 	^ MAStringDescription new
@@ -213,30 +215,30 @@ CwMacApplication >> applicationNameDescription [
 		yourself.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacApplication >> bundle [
 	^ bundle ifNil: [ bundle := self class bundle ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacApplication >> bundle: aFileReference [ 
 	bundle := aFileReference
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacApplication >> bundleIdentifier [
 	^ 'mdls -name kMDItemCFBundleIdentifier -raw {bundle}' asSuCommand
 		argumentAt: #bundle put: self bundle;
 		output.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CwMacApplication >> delay: aDuration [ 
 
 	self tellApplicationTo: 'delay ', aDuration seconds asString.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CwMacApplication >> isQuarantined [
 	"For some of the implications of quarantine, see https://www.synack.com/blog/untranslocating-apps/"
 
@@ -246,7 +248,7 @@ CwMacApplication >> isQuarantined [
 		- https://derflounder.wordpress.com/2012/11/20/clearing-the-quarantine-extended-attribute-from-downloaded-applications/"
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacApplication >> isRunning [
 
 	| output |
@@ -259,12 +261,12 @@ CwMacApplication >> isRunning [
 		anySatisfy: [ :line | line trimmed beginsWith: self bundle fullName ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacApplication >> open: aFileOrResource [
 	aFileOrResource suOpenWith: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacApplication >> printOn: aStream [
 
 	aStream
@@ -274,7 +276,7 @@ CwMacApplication >> printOn: aStream [
 	aStream nextPut: $).
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CwMacApplication >> saveAsPdfAt: aFileReference [
 	"Saves the current document"
 
@@ -303,7 +305,7 @@ CwMacApplication >> saveAsPdfAt: aFileReference [
 	click button "Save"  of window "Save"'.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CwMacApplication >> tellApplicationTo: applescriptCommand [
 
 	| scriptTemplate script |
@@ -315,7 +317,7 @@ CwMacApplication >> tellApplicationTo: applescriptCommand [
 	^ Applescript doIt: script.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CwMacApplication >> tellGUITo: applescriptCommand [
 
 	| scriptTemplate script |
@@ -330,7 +332,7 @@ CwMacApplication >> tellGUITo: applescriptCommand [
 	^ Applescript doIt: script.
 ]
 
-{ #category : #actions }
+{ #category : 'actions' }
 CwMacApplication >> unquarantineCommand [
 	"This has to be done before the app is placed in /Applications or you may get 'Operation not permitted'"
 

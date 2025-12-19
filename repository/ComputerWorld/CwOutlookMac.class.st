@@ -1,40 +1,42 @@
 Class {
-	#name : #CwOutlookMac,
-	#superclass : #CwMacApplication,
+	#name : 'CwOutlookMac',
+	#superclass : 'CwMacApplication',
 	#classVars : [
 		'ArchiveAccount'
 	],
-	#category : #'ComputerWorld-Mac'
+	#category : 'ComputerWorld-Mac',
+	#package : 'ComputerWorld',
+	#tag : 'Mac'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwOutlookMac class >> archiveAccountUserName [
 	^ ArchiveAccount
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwOutlookMac class >> archiveAccountUserName: anObject [
 	"anObject - the user name of an exchange account. For delegated accounts (i.e. shared mailboxes), the user name is just the part of the email address before the @"
 	ArchiveAccount := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwOutlookMac class >> bundleBasename [
 	^ 'Outlook.app'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwOutlookMac >> applescriptFolder [
 	^ self class package peIceRepository repositoryDirectory / 'applescript'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwOutlookMac >> archiveSelectedMessages [
 	
 	self archiveSelectedMessagesToAccount: self class archiveAccountUserName.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwOutlookMac >> archiveSelectedMessagesToAccount: aString [
 
 	| archiveScript |
@@ -42,7 +44,7 @@ CwOutlookMac >> archiveSelectedMessagesToAccount: aString [
 	LibC system: 'osascript ', archiveScript fullName surroundedByDoubleQuotes, ' ', aString surroundedByDoubleQuotes
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwOutlookMac >> selectedMessagesExport [
 	"Copy the messages to plain text eml files"
 
@@ -61,7 +63,7 @@ CwOutlookMac >> selectedMessagesExport [
 		tfile asRlResource ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwOutlookMac >> selectedMessagesImport [
 
 	| messages |

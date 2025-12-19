@@ -1,21 +1,23 @@
 Class {
-	#name : #CwOBS,
-	#superclass : #CwMacApplication,
-	#category : 'ComputerWorld-Apps'
+	#name : 'CwOBS',
+	#superclass : 'CwMacApplication',
+	#category : 'ComputerWorld-Apps',
+	#package : 'ComputerWorld',
+	#tag : 'Apps'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwOBS class >> bundleBasename [
 	^ 'OBS.app'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwOBS class >> viewRemote [
 	<script>
 	CwOBSRemote new openWithSpec maximize.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwOBS >> sendHotkey: aString [
 
 	| template command |

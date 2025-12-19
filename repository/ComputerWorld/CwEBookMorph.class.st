@@ -1,10 +1,12 @@
 Class {
-	#name : #CwEBookMorph,
-	#superclass : #ImageMorph,
-	#category : 'ComputerWorld-EBooks'
+	#name : 'CwEBookMorph',
+	#superclass : 'ImageMorph',
+	#category : 'ComputerWorld-EBooks',
+	#package : 'ComputerWorld',
+	#tag : 'EBooks'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwEBookMorph class >> on: anEBook [
 
 	| instance |

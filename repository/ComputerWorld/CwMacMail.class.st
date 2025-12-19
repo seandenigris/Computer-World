@@ -1,29 +1,31 @@
 Class {
-	#name : #CwMacMail,
-	#superclass : #CwMacApplication,
+	#name : 'CwMacMail',
+	#superclass : 'CwMacApplication',
 	#traits : 'PeTPythonWrapper',
 	#classTraits : 'PeTPythonWrapper classTrait',
-	#category : #'ComputerWorld-Mac-Mail'
+	#category : 'ComputerWorld-Mac-Mail',
+	#package : 'ComputerWorld',
+	#tag : 'Mac-Mail'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacMail class >> browseSignatures [
 	<script>
 	self new signatures inspect
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacMail class >> bundleBasename [
 	^ 'Mail.app'
 ]
 
-{ #category : #utilities }
+{ #category : 'utilities' }
 CwMacMail class >> openAllICloudSignatureFiles [
 	"most important step from http://matt.coneybeare.me/how-to-make-an-html-signature-in-apple-mail-for-mojave-os-x-10-dot-14/"
 	LibC system: 'open -a TextEdit ~/Library/Mobile\ Documents/com\~apple\~mail/Data/V4/Signatures/*.mailsignature'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacMail class >> signatureFolder [
 
 	| libraryMailFolder vFolders |
@@ -34,14 +36,14 @@ CwMacMail class >> signatureFolder [
 	^ vFolders first / 'MailData' / 'Signatures'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacMail >> applescriptFolder [
 
 	self flag: 'copy pasted from CwOutlookMac'.
 	^ self class package peIceRepository repositoryDirectory / 'applescript'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacMail >> importEmlFilesIn: aFileReference [
 	
 	| emlFiles unixMbox |
@@ -70,14 +72,14 @@ destination.unlock()';
 	self importUnixMbox: unixMbox
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacMail >> importMailboxAt: aFileReference [
 	"aFileReference - a post-Panther or pre-Tiger mailbox. See `importUnixMbox: comment for more information or send that message to pass a real Unix mbox"
 
 	self tellApplicationTo: 'import Mail mailbox at POSIX file ', aFileReference fullName surroundedByDoubleQuotes
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacMail >> importUnixMbox: aFileReference [
 	
 	| preTigerMbox |
@@ -92,13 +94,13 @@ CwMacMail >> importUnixMbox: aFileReference [
 	Reference: https://lists.apple.com/archives/applescript-users/2010/May/msg00287.html"
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacMail >> inbox [
 
 	^ self pythonInstance inbox
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacMail >> inboxMessages [
 
 	| result |
@@ -108,7 +110,7 @@ CwMacMail >> inboxMessages [
 		OsaMacMailMessage fromPythonInstance: e ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacMail >> newMessageTo: nameString at: addressString re: subjectString asFollows: contentString [
 	
 	| template |
@@ -130,7 +132,7 @@ CwMacMail >> newMessageTo: nameString at: addressString re: subjectString asFoll
 		run.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CwMacMail >> pythonInstance [
 
 	pythonInstance ifNotNil: [ ^ pythonInstance ].
@@ -141,7 +143,7 @@ CwMacMail >> pythonInstance [
 	    sendAndWait.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacMail >> selectedMessagesArchive [
 
 	| archiveScript |
@@ -149,7 +151,7 @@ CwMacMail >> selectedMessagesArchive [
 	LibC system: 'osascript ', archiveScript fullName surroundedByDoubleQuotes
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacMail >> selectedMessagesExport [
 
 	self flag: 'adapted from CwOutlookMac'.
@@ -157,7 +159,7 @@ CwMacMail >> selectedMessagesExport [
 	^ self selection collect: [ :msg | msg exported ].
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacMail >> selectedMessagesImport [
 
 	| messages |
@@ -167,7 +169,7 @@ CwMacMail >> selectedMessagesImport [
 	^ messages
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacMail >> selection [
 
 	| result |
@@ -177,7 +179,7 @@ CwMacMail >> selection [
 		OsaMacMailMessage fromPythonInstance: e ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacMail >> selectionGtViewOn: aView [
 	<gtView>
 	
@@ -191,13 +193,13 @@ CwMacMail >> selectionGtViewOn: aView [
 		actionUpdateButton
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacMail >> selectionViaJXA [
 
 	^ OsaJavaScript do: 'Application("Mail").selection()'
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacMail >> signatureList [
 
 	| signatureListFile doc |
@@ -206,7 +208,7 @@ CwMacMail >> signatureList [
 	^ doc allElementsNamed: #dict.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CwMacMail >> signatures [
 
 	^ self signatureList collect: [ :e | CwMacMailSignature fromXML: e ] as: OrderedCollection
