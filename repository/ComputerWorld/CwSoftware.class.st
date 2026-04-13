@@ -139,6 +139,12 @@ CwSoftware >> closeTheBrowserWindow [
 	CwSafari reference closeWindow: 1. 
 ]
 
+{ #category : 'printing' }
+CwSoftware >> displayStringOn: aStream [
+
+	aStream nextPutAll: self fullName. 
+]
+
 { #category : 'downloading' }
 CwSoftware >> download [
 
@@ -291,7 +297,7 @@ CwSoftware >> openInBrowser: aUrl [
 { #category : 'printing' }
 CwSoftware >> printOn: aStream [
 
-	aStream nextPutAll: self fullName. 
+	self printFromDisplayStringOn: aStream
 ]
 
 { #category : 'private' }
