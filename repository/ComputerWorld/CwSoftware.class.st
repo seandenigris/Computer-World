@@ -47,16 +47,16 @@ CwSoftware class >> assertShaFor: file equals: aString [
 	
 ]
 
-{ #category : 'accessing' }
-CwSoftware class >> db [
-
-	^ DB ifNil: [ DB := SortedCollection sortBlock: #name ascending ]
-]
-
-{ #category : 'accessing' }
-CwSoftware class >> db: anObject [
-
-	DB := anObject
+{ #category : 'GT Views' }
+CwSoftware class >> catalogGtViewFor: aView [
+	<gtView>
+	<gtClassView>
+	CwSoftwareCatalog uniqueInstance collection ifEmpty: [ ^ aView empty ].
+	^ aView forward 
+		title: 'Catalog';
+		priority: 50;
+		object: [ CwSoftwareCatalog uniqueInstance ];
+		view: #collectionViewOn:
 ]
 
 { #category : 'examples' }
@@ -91,34 +91,10 @@ CwSoftware class >> fromCatalog [
 		soft class = self ]
 ]
 
-{ #category : 'accessing' }
-CwSoftware class >> gtDBFor: aView [
-	<gtView>
-	<gtClassView>
-	self db ifEmpty: [ ^ aView empty ].
-	^ aView forward 
-		title: 'DB';
-		priority: 50;
-		object: [ self db ];
-		view: #gtItemsFor:
-]
-
 { #category : 'instance creation' }
 CwSoftware class >> named: aString [ 
 
 	^ self new setName: aString.
-]
-
-{ #category : 'persistence' }
-CwSoftware class >> restoreFrom: anObject [
-
-	DB := anObject.
-]
-
-{ #category : 'persistence' }
-CwSoftware class >> spData [
-
-	^ DB.
 ]
 
 { #category : 'accessing' }
