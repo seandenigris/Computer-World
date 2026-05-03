@@ -348,3 +348,13 @@ CwSoftware >> webpage: aUrlOrString [
 
 	webpageUrl := aUrlOrString asUrl.
 ]
+
+{ #category : 'as yet unclassified' }
+CwSoftware >> webpageDescription [
+	<magritteDescription>
+	
+	^ MAUrlDescription new
+		accessor: #webpage;
+		priority: 200;
+		yourself
+]

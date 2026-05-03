@@ -74,7 +74,10 @@ CwSoftwareCatalog >> collectionSearchNewSoftwareFor: aSearch [
 CwSoftwareCatalog >> collectionViewOn: aView [
 	<gtView>
 	
-	^ aView list
+	^ (aView 
+			maColumnedListOf: CwSoftware
+			descriptionsSelect: [ :desc |
+				desc definingContext compiledMethod isFromTrait not ])
 		title: 'Software' translated;
 		priority: 5;
 		items: [ self collection ];
