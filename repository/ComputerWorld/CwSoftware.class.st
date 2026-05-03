@@ -21,9 +21,6 @@ Class {
 		'downloadUrl',
 		'installers'
 	],
-	#classVars : [
-		'DB'
-	],
 	#category : 'ComputerWorld-Core',
 	#package : 'ComputerWorld',
 	#tag : 'Core'
@@ -87,6 +84,13 @@ CwSoftware class >> exampleZoom [
 		then: [ :r | ]
 ]
 
+{ #category : 'instance creation' }
+CwSoftware class >> fromCatalog [
+
+	^ CwSoftwareCatalog uniqueInstance collection detect: [ :soft |
+		soft class = self ]
+]
+
 { #category : 'accessing' }
 CwSoftware class >> gtDBFor: aView [
 	<gtView>
@@ -131,6 +135,21 @@ CwSoftware >> addToCatalog [
 CwSoftware >> asMorph [
 
 	^ CwSoftwareMorph on: self.
+]
+
+{ #category : 'as yet unclassified' }
+CwSoftware >> classPromoteToNamed: aSymbol [
+
+	| newCls |
+	
+	aSymbol asClassIfPresent: [ :cls | ^ self error: 'only use to create a new class because not safe if class shape has changed e.g. if state added' ].
+	
+	newCls := self class << aSymbol
+	    tag: self class packageTag name;
+	    package: self class package name;
+	    install.
+    
+    newCls adoptInstance: self
 ]
 
 { #category : 'accessing' }
