@@ -84,3 +84,9 @@ CwSoftwareCatalog >> collectionViewOn: aView [
 		actionUpdateButton;
 		yourself.
 ]
+
+{ #category : 'as yet unclassified' }
+CwSoftwareCatalog >> remove: aCwSoftware [
+
+	self collection remove: aCwSoftware
+]

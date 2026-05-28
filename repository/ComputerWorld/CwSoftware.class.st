@@ -104,13 +104,18 @@ CwSoftware >> <= rhs [
 
 { #category : 'accessing' }
 CwSoftware >> addToCatalog [
-	CwSoftwareCatalog uniqueInstance collection add: self
+	self catalog collection add: self
 ]
 
 { #category : 'Morphic' }
 CwSoftware >> asMorph [
 
 	^ CwSoftwareMorph on: self.
+]
+
+{ #category : 'accessing' }
+CwSoftware >> catalog [
+	^ CwSoftwareCatalog uniqueInstance
 ]
 
 { #category : 'as yet unclassified' }
@@ -132,6 +137,13 @@ CwSoftware >> classPromoteToNamed: aSymbol [
 CwSoftware >> closeTheBrowserWindow [
 
 	CwSafari reference closeWindow: 1. 
+]
+
+{ #category : 'as yet unclassified' }
+CwSoftware >> delete [
+
+	self catalog remove: self.
+	self lepiterPageEnsureRemoved
 ]
 
 { #category : 'printing' }
