@@ -24,3 +24,19 @@ tell application "System Events" to key code 36';
 		
 	"Adapted from https://apple.stackexchange.com/questions/233945/opening-a-specific-page-on-mac-preview-from-terminal"
 ]
+
+{ #category : 'as yet unclassified' }
+CwMacPreview >> pageCurrent [
+
+	| title locationString tokens |
+	title := PBApplication start newCommandStringFactory
+		script: 'system_events = app("System Events")
+preview = system_events.processes["Preview"]
+front_window = preview.windows[1]';
+	resultExpression: 'front_window.name.get()';
+	sendAndWait.
+	
+	locationString := title copyAfterLast: $–.
+	tokens := locationString splitOn: Character space.
+	^ tokens third asNumber
+]
