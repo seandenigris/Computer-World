@@ -21,6 +21,12 @@ CwTimeMachineDestination class >> all [
 		as: Bag.
 ]
 
+{ #category : 'as yet unclassified' }
+CwTimeMachineDestination class >> fromServer: aServer [
+
+	^ self all detect: [ :e | e serverMatches: aServer ]
+]
+
 { #category : 'accessing' }
 CwTimeMachineDestination class >> fromXml: destDict [
 	| rawData keyString |
@@ -103,9 +109,16 @@ CwTimeMachineDestination >> rawData: aDictionary [
 
 { #category : 'accessing' }
 CwTimeMachineDestination >> server [
-	^ CwNetworkDevice db 
-		detect: [ :e | e adapters anySatisfy: [ :a | a ipAddress asString = self url host ] ]
-		ifNone: [ nil ]
+
+  ^ CwNetworkDevice db 
+  	detect: [ :e | self serverMatches: e ] 
+  	ifNone: [ nil ]
+]
+
+{ #category : 'accessing' }
+CwTimeMachineDestination >> serverMatches: aServer [
+
+  ^ aServer adapters anySatisfy: [ :a | a ipAddress asString = self url host ]
 ]
 
 { #category : 'starting/stopping' }

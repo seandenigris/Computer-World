@@ -68,6 +68,12 @@ CwQnapNAS class >> modelParser [
 	^ ($T asPParser, $V asPParser optional, $S asPParser) flatten, $- asPParser, #digit asPParser plus flatten, #any asPParser plus optional.
 ]
 
+{ #category : 'as yet unclassified' }
+CwQnapNAS >> asTimeMachineDestination [
+
+	^ CwTimeMachineDestination fromServer: self
+]
+
 { #category : 'misc' }
 CwQnapNAS >> browseAppCenter [
 	| modelMap url |
