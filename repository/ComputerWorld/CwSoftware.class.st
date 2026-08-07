@@ -9,8 +9,8 @@ Maybe:
 Class {
 	#name : 'CwSoftware',
 	#superclass : 'Object',
-	#traits : 'DbTDomainObject',
-	#classTraits : 'DbTDomainObject classTrait',
+	#traits : 'DbTDomainObject + DbTProjectProperty',
+	#classTraits : 'DbTDomainObject classTrait + DbTProjectProperty classTrait',
 	#instVars : [
 		'name',
 		'urlDownloadsOnOpen',
@@ -299,6 +299,15 @@ CwSoftware >> nameForAlphabetization [
 CwSoftware >> openInBrowser: aUrl [
 
 	ExternalWebBrowser openOnUrl: aUrl.
+]
+
+{ #category : 'as yet unclassified' }
+CwSoftware >> ppIsValuedObject [
+	"The-Project-Project integration"
+
+	^ true
+	
+	"Perhaps should be packaged with the Dynabook as an extension, but seems more effort than it's worth"
 ]
 
 { #category : 'printing' }
