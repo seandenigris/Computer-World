@@ -144,6 +144,39 @@ CwMacMail >> pythonInstance [
 ]
 
 { #category : 'as yet unclassified' }
+CwMacMail >> searchGuiFor: aString [
+	"Simulate 'Mailbox Search' (i.e. search box in upper right corner of app) via Apple Events"
+
+	^ PBApplication start newCommandStringFactory
+	    addAllBindings: { 
+	        #search_string -> aString } asDictionary;
+	    script: 'import time
+from appscript import app, k
+
+mail = app("Mail")
+system_events = app("System Events")
+
+mail.activate()
+time.sleep(0.2)
+
+# Focus Mail search field.
+system_events.keystroke(
+   "f",
+   using=[k.option_down, k.command_down])
+
+time.sleep(0.1)
+
+# Replace any existing search.
+system_events.keystroke(
+    "a",
+    using=k.command_down)
+
+system_events.keystroke(search_string)
+system_events.key_code(36)  # Return';
+	    sendAndWait.
+]
+
+{ #category : 'as yet unclassified' }
 CwMacMail >> selectedMessagesArchive [
 
 	| archiveScript |
