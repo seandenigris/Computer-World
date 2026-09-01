@@ -7,7 +7,7 @@
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Mac Mail Scripting"
+		"title" : "Mac Mail"
 	},
 	"children" : {
 		"__type" : "snippets",
@@ -26,7 +26,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-14T22:48:27.642535-04:00"
+						"dateAndTimeString" : "2026-08-30T12:47:55.609863-04:00"
 					}
 				},
 				"editEmail" : {
@@ -37,17 +37,92 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-14T22:49:50.619054-04:00"
+						"dateAndTimeString" : "2026-08-30T12:49:59.345886-04:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "uUKMudzgDQCfAmIIBBXDTw=="
+					"uidString" : "j+YRCGeMQe2JYWbkryO3mQ=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Ultimately, Apple events need to be sent, but via what librar(ies)? And at what level of dynamism - same library for each class? Method? Scenario? User?"
+				"string" : "Search queries: the search bar is has smart Spotlight-like text-to-object feature. For example, to search for messages with attachments, start typing \"attach\" and several options will appear."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2024-10-14T22:48:27.642535-04:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2026-08-30T12:47:47.333617-04:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "uUKMudzgDQCfAmIIBBXDTw=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "Ultimately, Apple events need to be sent, but via what librar(ies)? And at what level of dynamism - same library for each class? Method? Scenario? User?"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-30T12:47:47.332055-04:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2026-08-30T12:47:49.93255-04:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "TuCzvPQSRZKBSXR7beTTLA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "#Scripting"
 			},
 			{
 				"__type" : "textSnippet",
@@ -144,7 +219,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2024-10-14T22:48:27.6171-04:00"
+			"dateAndTimeString" : "2026-08-30T12:47:40.856702-04:00"
 		}
 	}
 }
